@@ -1,0 +1,2888 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Assignment Cover Page Maker – Free PDF & PNG Generator | Tools24</title>
+    <meta name="description"
+        content="Create professional assignment, project and lab report cover pages online. Add student, college, subject and teacher details, customize templates and download a high-quality A4 PDF or PNG." />
+    <meta name="keywords"
+        content="assignment cover page maker, assignment front page maker, assignment cover page PDF, college assignment cover page, school project cover page, B.Tech assignment cover page, university assignment cover page, project cover page maker, lab report cover page" />
+    <link rel="canonical" href="https://agitools24.com/assignment-cover-page-maker" />
+    <meta property="og:title" content="Assignment Cover Page Maker – Tools24" />
+    <meta property="og:description"
+        content="Create professional academic cover pages for school, college and university assignments. Download as PDF or PNG." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://agitools24.com/assignment-cover-page-maker" />
+    <meta name="theme-color" content="#7c3aed" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Export libraries (deferred, non-blocking) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+
+    <!-- FAQ Structured Data -->
+    <script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"What is an assignment cover page?","acceptedAnswer":{"@type":"Answer","text":"An assignment cover page is the first page of an academic submission containing the student's name, roll number, institution, subject, assignment title, submission date and the teacher's name."}},
+    {"@type":"Question","name":"What information should I put on an assignment cover page?","acceptedAnswer":{"@type":"Answer","text":"Typically: institution name, university, department, assignment title, subject and code, student name and roll number, semester, submitted-to details and submission date."}},
+    {"@type":"Question","name":"Can I create a B.Tech assignment cover page?","acceptedAnswer":{"@type":"Answer","text":"Yes. Choose the Engineering / B.Tech template, enter your department, subject code and assignment number, and download a professional PDF."}},
+    {"@type":"Question","name":"Can I use this for school projects?","acceptedAnswer":{"@type":"Answer","text":"Yes. The School Project template is designed for school-level project cover pages with student, class and section fields."}},
+    {"@type":"Question","name":"Can I upload my college logo?","acceptedAnswer":{"@type":"Answer","text":"Yes. Drag and drop or browse to upload a PNG, JPG or WebP logo. It is embedded locally and never uploaded to a server."}},
+    {"@type":"Question","name":"Can I download the cover page as PDF?","acceptedAnswer":{"@type":"Answer","text":"Yes. The PDF is generated as a clean A4 single page with proper margins, embedded logo and signatures."}},
+    {"@type":"Question","name":"Can I download it as PNG?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can download a high-resolution PNG suitable for printing or digital submission."}},
+    {"@type":"Question","name":"Is the generated PDF A4 size?","acceptedAnswer":{"@type":"Answer","text":"Yes. The cover page is generated at A4 portrait size (210 × 297 mm) and fits exactly on one page with no clipping."}},
+    {"@type":"Question","name":"Are my student details uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"No. All details and uploaded images stay on your device. Nothing is sent to any server and no login is required."}},
+    {"@type":"Question","name":"Can I use the tool on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes. The tool is fully mobile-responsive with a stacked layout, fitting preview and touch-friendly download buttons."}}
+  ]
+}
+</script>
+
+    <style>
+        /* =====================================================
+   TOOLS24 ASSIGNMENT COVER PAGE MAKER — ISOLATED CSS
+   Prefix: .acp-  (does not affect other tools)
+   ===================================================== */
+
+        :root {
+            --acp-bg-1: #f5f3ff;
+            --acp-bg-2: #eff6ff;
+            --acp-bg-3: #fdf2ff;
+            --acp-glass: rgba(255, 255, 255, 0.65);
+            --acp-border: rgba(124, 58, 237, 0.18);
+            --acp-shadow: 0 10px 30px -10px rgba(76, 29, 149, 0.18);
+            --acp-text: #1f2937;
+            --acp-soft: #4b5563;
+            --acp-muted: #6b7280;
+            --acp-input: rgba(255, 255, 255, 0.85);
+            --acp-input-border: rgba(124, 58, 237, 0.25);
+            --acp-grad: linear-gradient(135deg, #7c3aed 0%, #4f46e5 45%, #ec4899 100%);
+            --acp-grad-soft: linear-gradient(135deg, rgba(124, 58, 237, 0.12), rgba(79, 70, 229, 0.10), rgba(236, 72, 153, 0.12));
+            --acp-error: #dc2626;
+            --acp-preview-bg: #e5e7eb;
+        }
+
+        html[data-theme="dark"] {
+            --acp-bg-1: #0b1020;
+            --acp-bg-2: #0f1535;
+            --acp-bg-3: #1a0b2e;
+            --acp-glass: rgba(20, 22, 40, 0.65);
+            --acp-border: rgba(167, 139, 250, 0.22);
+            --acp-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.55);
+            --acp-text: #e5e7eb;
+            --acp-soft: #cbd5e1;
+            --acp-muted: #94a3b8;
+            --acp-input: rgba(15, 18, 38, 0.85);
+            --acp-input-border: rgba(167, 139, 250, 0.30);
+            --acp-grad-soft: linear-gradient(135deg, rgba(124, 58, 237, 0.20), rgba(79, 70, 229, 0.18), rgba(236, 72, 153, 0.20));
+            --acp-preview-bg: #1e293b;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background:
+                radial-gradient(1200px 700px at 10% -10%, var(--acp-bg-3) 0%, transparent 60%),
+                radial-gradient(1000px 600px at 110% 10%, var(--acp-bg-2) 0%, transparent 55%),
+                var(--acp-bg-1);
+            color: var(--acp-text);
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .acp-wrap {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 16px
+        }
+
+        .acp-section {
+            margin-top: 24px
+        }
+
+        /* ---------- Header ---------- */
+        .acp-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            background: var(--acp-glass);
+            border-bottom: 1px solid var(--acp-border)
+        }
+
+        .acp-header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            max-width: 1280px;
+            margin: 0 auto
+        }
+
+        .acp-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--acp-text);
+            font-weight: 800;
+            letter-spacing: -0.02em
+        }
+
+        .acp-logo-mark {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background: var(--acp-grad);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 800;
+            font-size: 14px;
+            box-shadow: 0 6px 18px -4px rgba(124, 58, 237, 0.55)
+        }
+
+        .acp-logo-text {
+            font-size: 18px
+        }
+
+        .acp-logo-text span {
+            background: var(--acp-grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent
+        }
+
+        .acp-nav {
+            display: flex;
+            align-items: center;
+            gap: 18px
+        }
+
+        .acp-nav a {
+            color: var(--acp-soft);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500
+        }
+
+        .acp-nav a:hover {
+            color: var(--acp-text)
+        }
+
+        .acp-icon-btn,
+        .acp-burger {
+            background: var(--acp-glass);
+            border: 1px solid var(--acp-border);
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--acp-text);
+            font-size: 18px
+        }
+
+        .acp-burger {
+            display: none
+        }
+
+        .acp-mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            padding: 14px 16px;
+            background: var(--acp-glass);
+            border-bottom: 1px solid var(--acp-border)
+        }
+
+        .acp-mobile-menu.open {
+            display: flex
+        }
+
+        .acp-mobile-menu a {
+            color: var(--acp-soft);
+            text-decoration: none;
+            font-size: 15px;
+            padding: 6px 4px
+        }
+
+        @media(max-width:820px) {
+            .acp-nav {
+                display: none
+            }
+
+            .acp-burger {
+                display: flex
+            }
+        }
+
+        /* ---------- Hero ---------- */
+        .acp-hero {
+            padding: 28px 0 4px;
+            text-align: center
+        }
+
+        .acp-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: var(--acp-grad-soft);
+            border: 1px solid var(--acp-border);
+            color: var(--acp-soft);
+            font-size: 12.5px;
+            font-weight: 600;
+            margin-bottom: 12px
+        }
+
+        .acp-badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #a855f7;
+            box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.18)
+        }
+
+        .acp-hero h1 {
+            font-size: clamp(26px, 4vw, 40px);
+            margin: 0 0 8px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            background: var(--acp-grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent
+        }
+
+        .acp-hero p {
+            margin: 0 auto;
+            max-width: 680px;
+            color: var(--acp-soft);
+            font-size: clamp(14px, 2.2vw, 16px);
+            line-height: 1.55
+        }
+
+        /* ---------- Layout ---------- */
+        .acp-main {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 20px;
+            align-items: start;
+            margin-top: 20px
+        }
+
+        @media(max-width:980px) {
+            .acp-main {
+                grid-template-columns: 1fr
+            }
+        }
+
+        /* ---------- Cards ---------- */
+        .acp-card {
+            background: var(--acp-glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--acp-border);
+            border-radius: 18px;
+            padding: 18px;
+            box-shadow: var(--acp-shadow)
+        }
+
+        .acp-card-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--acp-text);
+            margin: 0 0 12px;
+            letter-spacing: -0.01em
+        }
+
+        .acp-card-title .num {
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            background: var(--acp-grad);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 800;
+            flex: 0 0 22px
+        }
+
+        .acp-card+.acp-card {
+            margin-top: 14px
+        }
+
+        /* ---------- Form ---------- */
+        .acp-grid {
+            display: grid;
+            gap: 10px;
+            grid-template-columns: repeat(2, minmax(0, 1fr))
+        }
+
+        .acp-grid-3 {
+            display: grid;
+            gap: 10px;
+            grid-template-columns: repeat(3, minmax(0, 1fr))
+        }
+
+        @media(max-width:560px) {
+
+            .acp-grid,
+            .acp-grid-3 {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .acp-field {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            min-width: 0
+        }
+
+        .acp-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--acp-soft);
+            letter-spacing: 0.01em;
+            display: flex;
+            align-items: center;
+            gap: 4px
+        }
+
+        .acp-label .req {
+            color: var(--acp-error);
+            font-weight: 700
+        }
+
+        .acp-input,
+        .acp-select,
+        .acp-textarea {
+            width: 100%;
+            background: var(--acp-input);
+            border: 1px solid var(--acp-input-border);
+            color: var(--acp-text);
+            border-radius: 10px;
+            padding: 10px 11px;
+            font-size: 13.5px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color .15s, box-shadow .15s;
+            min-width: 0
+        }
+
+        .acp-input:focus,
+        .acp-select:focus,
+        .acp-textarea:focus {
+            border-color: #7c3aed;
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.18)
+        }
+
+        .acp-textarea {
+            resize: vertical;
+            min-height: 60px
+        }
+
+        .acp-select {
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237c3aed' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            padding-right: 30px
+        }
+
+        .acp-error-msg {
+            color: var(--acp-error);
+            font-size: 11.5px;
+            font-weight: 600;
+            display: none;
+            margin-top: -2px
+        }
+
+        .acp-field.has-error .acp-input,
+        .acp-field.has-error .acp-select,
+        .acp-field.has-error .acp-textarea {
+            border-color: var(--acp-error)
+        }
+
+        .acp-field.has-error .acp-error-msg {
+            display: block
+        }
+
+        /* ---------- Chips ---------- */
+        .acp-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px
+        }
+
+        .acp-chip {
+            padding: 7px 12px;
+            border-radius: 999px;
+            font-size: 12.5px;
+            font-weight: 600;
+            background: var(--acp-grad-soft);
+            border: 1px solid var(--acp-border);
+            color: var(--acp-soft);
+            cursor: pointer;
+            transition: all .15s;
+            font-family: inherit
+        }
+
+        .acp-chip:hover {
+            border-color: #7c3aed;
+            color: var(--acp-text)
+        }
+
+        .acp-chip.active {
+            background: var(--acp-grad);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 4px 12px -4px rgba(124, 58, 237, 0.5)
+        }
+
+        /* ---------- Template grid ---------- */
+        .acp-tpl-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 8px
+        }
+
+        @media(max-width:560px) {
+            .acp-tpl-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr))
+            }
+        }
+
+        .acp-tpl {
+            position: relative;
+            aspect-ratio: 210/297;
+            border-radius: 8px;
+            border: 2px solid var(--acp-border);
+            cursor: pointer;
+            overflow: hidden;
+            background: #fff;
+            transition: border-color .15s, transform .12s
+        }
+
+        .acp-tpl:hover {
+            transform: translateY(-1px)
+        }
+
+        .acp-tpl.active {
+            border-color: #7c3aed;
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2)
+        }
+
+        .acp-tpl-name {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(124, 58, 237, 0.92);
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            text-align: center;
+            padding: 3px 2px;
+            line-height: 1.2
+        }
+
+        .acp-tpl-thumb {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            font-size: 6px;
+            color: #374151;
+            gap: 2px
+        }
+
+        .acp-tpl-thumb .t-bar {
+            width: 70%;
+            height: 3px;
+            background: #7c3aed;
+            border-radius: 2px
+        }
+
+        .acp-tpl-thumb .t-bar.sm {
+            width: 50%;
+            height: 2px;
+            background: #4f46e5
+        }
+
+        .acp-tpl-thumb .t-bar.lg {
+            width: 80%;
+            height: 5px;
+            background: #7c3aed
+        }
+
+        .acp-tpl-thumb .t-title {
+            font-size: 7px;
+            font-weight: 800;
+            color: #7c3aed;
+            margin: 2px 0
+        }
+
+        /* ---------- Color swatches ---------- */
+        .acp-colors {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px
+        }
+
+        .acp-color {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid var(--acp-border);
+            cursor: pointer;
+            transition: transform .12s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 14px
+        }
+
+        .acp-color:hover {
+            transform: scale(1.08)
+        }
+
+        .acp-color.active {
+            border-color: #1f2937;
+            box-shadow: 0 0 0 2px #fff, 0 0 0 4px #7c3aed
+        }
+
+        html[data-theme="dark"] .acp-color.active {
+            box-shadow: 0 0 0 2px var(--acp-bg-1), 0 0 0 4px #7c3aed
+        }
+
+        .acp-color-custom {
+            background: conic-gradient(red, orange, yellow, green, cyan, blue, magenta, red);
+            position: relative;
+            overflow: hidden
+        }
+
+        .acp-color-custom input {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer
+        }
+
+        /* ---------- Dropzone ---------- */
+        .acp-dropzone {
+            border: 2px dashed var(--acp-input-border);
+            border-radius: 12px;
+            padding: 14px;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color .15s, background .15s;
+            background: var(--acp-grad-soft)
+        }
+
+        .acp-dropzone:hover,
+        .acp-dropzone.dragover {
+            border-color: #7c3aed;
+            background: rgba(124, 58, 237, 0.08)
+        }
+
+        .acp-dropzone p {
+            margin: 0;
+            font-size: 12.5px;
+            color: var(--acp-soft);
+            font-weight: 600
+        }
+
+        .acp-dropzone small {
+            font-size: 11px;
+            color: var(--acp-muted)
+        }
+
+        .acp-dropzone-preview {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center
+        }
+
+        .acp-dropzone-preview img {
+            max-height: 50px;
+            max-width: 120px;
+            border-radius: 6px;
+            border: 1px solid var(--acp-border)
+        }
+
+        .acp-dropzone-clear {
+            background: rgba(239, 68, 68, 0.12);
+            color: #dc2626;
+            border: 1px solid rgba(239, 68, 68, 0.25);
+            border-radius: 8px;
+            padding: 5px 10px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit
+        }
+
+        /* ---------- Toggle ---------- */
+        .acp-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 8px 0
+        }
+
+        .acp-toggle-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--acp-soft)
+        }
+
+        .acp-switch {
+            position: relative;
+            width: 42px;
+            height: 24px;
+            flex: 0 0 42px
+        }
+
+        .acp-switch input {
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            margin: 0;
+            cursor: pointer
+        }
+
+        .acp-switch-slider {
+            position: absolute;
+            inset: 0;
+            background: var(--acp-input-border);
+            border-radius: 999px;
+            transition: .2s
+        }
+
+        .acp-switch-slider:before {
+            content: "";
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            left: 3px;
+            top: 3px;
+            background: #fff;
+            border-radius: 50%;
+            transition: .2s;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2)
+        }
+
+        .acp-switch input:checked+.acp-switch-slider {
+            background: #7c3aed
+        }
+
+        .acp-switch input:checked+.acp-switch-slider:before {
+            transform: translateX(18px)
+        }
+
+        /* ---------- Buttons ---------- */
+        .acp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 11px 16px;
+            border-radius: 12px;
+            font-size: 13.5px;
+            font-weight: 700;
+            border: 1px solid var(--acp-border);
+            background: var(--acp-glass);
+            color: var(--acp-text);
+            cursor: pointer;
+            text-decoration: none;
+            min-height: 44px;
+            transition: transform .12s, border-color .15s, box-shadow .15s;
+            font-family: inherit
+        }
+
+        .acp-btn:hover {
+            border-color: #7c3aed
+        }
+
+        .acp-btn:active {
+            transform: translateY(1px)
+        }
+
+        .acp-btn:disabled {
+            opacity: .55;
+            cursor: not-allowed
+        }
+
+        .acp-btn-primary {
+            background: var(--acp-grad);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 6px 20px -8px rgba(124, 58, 237, 0.55)
+        }
+
+        .acp-btn-primary:hover {
+            box-shadow: 0 10px 26px -8px rgba(124, 58, 237, 0.65)
+        }
+
+        .acp-btn-ghost {
+            background: transparent
+        }
+
+        .acp-btn-sm {
+            padding: 8px 12px;
+            font-size: 12px;
+            min-height: 36px
+        }
+
+        .acp-btn-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px
+        }
+
+        .acp-btn-row .acp-btn {
+            flex: 1 1 140px;
+            min-width: 120px
+        }
+
+        .acp-btn-full {
+            width: 100%
+        }
+
+        /* ---------- Student list ---------- */
+        .acp-student-entry {
+            border: 1px solid var(--acp-border);
+            border-radius: 12px;
+            padding: 10px;
+            margin-bottom: 8px;
+            background: var(--acp-input)
+        }
+
+        .acp-student-entry-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px
+        }
+
+        .acp-student-entry-head .lbl {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--acp-soft)
+        }
+
+        .acp-student-remove {
+            background: rgba(239, 68, 68, 0.12);
+            color: #dc2626;
+            border: 1px solid rgba(239, 68, 68, 0.25);
+            border-radius: 8px;
+            padding: 4px 10px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit
+        }
+
+        /* ---------- Preview panel ---------- */
+        .acp-preview-panel {
+            position: sticky;
+            top: 72px
+        }
+
+        @media(max-width:980px) {
+            .acp-preview-panel {
+                position: relative;
+                top: 0
+            }
+        }
+
+        .acp-preview-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 10px
+        }
+
+        .acp-preview-toolbar .info {
+            font-size: 11.5px;
+            color: var(--acp-muted);
+            font-weight: 600
+        }
+
+        .acp-zoom-row {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap
+        }
+
+        .acp-zoom-btn {
+            min-width: 36px;
+            min-height: 36px;
+            padding: 0 10px;
+            font-size: 14px
+        }
+
+        .acp-preview-wrap {
+            background: var(--acp-preview-bg);
+            border-radius: 14px;
+            padding: 18px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            min-height: 400px
+        }
+
+        .acp-preview-scaler {
+            transform-origin: top center;
+            transition: transform .15s
+        }
+
+        .acp-preview-empty {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: var(--acp-muted);
+            font-size: 13px;
+            text-align: center;
+            gap: 8px;
+            padding: 60px 20px
+        }
+
+        .acp-preview-empty svg {
+            width: 48px;
+            height: 48px;
+            opacity: .5
+        }
+
+        /* ---------- A4 Page ---------- */
+        .acp-a4 {
+            width: 794px;
+            min-height: 1123px;
+            max-height: 1123px;
+            background: #fff;
+            color: #1f2937;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            position: relative;
+            font-size: 16px;
+            line-height: 1.4
+        }
+
+        .acp-a4 * {
+            box-sizing: border-box
+        }
+
+        /* Sticky mobile download */
+        .acp-sticky-dl {
+            position: sticky;
+            bottom: 0;
+            z-index: 30;
+            display: none;
+            background: linear-gradient(to top, var(--acp-bg-1) 70%, transparent);
+            padding: 10px 0 14px;
+            margin-top: 10px
+        }
+
+        @media(max-width:700px) {
+            .acp-sticky-dl {
+                display: block
+            }
+        }
+
+        /* ---------- How it works ---------- */
+        .acp-steps {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 12px
+        }
+
+        @media(max-width:680px) {
+            .acp-steps {
+                grid-template-columns: repeat(2, minmax(0, 1fr))
+            }
+        }
+
+        .acp-step {
+            background: var(--acp-glass);
+            border: 1px solid var(--acp-border);
+            border-radius: 14px;
+            padding: 14px;
+            text-align: center
+        }
+
+        .acp-step-num {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--acp-grad);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 14px;
+            margin: 0 auto 8px
+        }
+
+        .acp-step h4 {
+            margin: 0 0 4px;
+            font-size: 13.5px;
+            color: var(--acp-text)
+        }
+
+        .acp-step p {
+            margin: 0;
+            font-size: 12px;
+            color: var(--acp-muted);
+            line-height: 1.5
+        }
+
+        /* ---------- FAQ ---------- */
+        .acp-faq {
+            display: flex;
+            flex-direction: column;
+            gap: 8px
+        }
+
+        .acp-faq-item {
+            background: var(--acp-glass);
+            border: 1px solid var(--acp-border);
+            border-radius: 12px;
+            overflow: hidden
+        }
+
+        .acp-faq-q {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            padding: 13px 15px;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--acp-text);
+            background: transparent;
+            border: 0;
+            width: 100%;
+            text-align: left;
+            font-family: inherit
+        }
+
+        .acp-faq-q .chev {
+            transition: transform .2s;
+            font-size: 14px;
+            color: var(--acp-muted);
+            line-height: 1
+        }
+
+        .acp-faq-item.open .chev {
+            transform: rotate(180deg)
+        }
+
+        .acp-faq-a {
+            max-height: 0;
+            overflow: hidden;
+            color: var(--acp-soft);
+            font-size: 12.5px;
+            line-height: 1.55;
+            transition: max-height .25s ease
+        }
+
+        .acp-faq-item.open .acp-faq-a {
+            max-height: 400px
+        }
+
+        .acp-faq-a-inner {
+            padding: 0 15px 13px
+        }
+
+        /* ---------- Privacy ---------- */
+        .acp-privacy {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 13px;
+            color: var(--acp-soft);
+            line-height: 1.55
+        }
+
+        .acp-privacy svg {
+            flex: 0 0 18px;
+            width: 18px;
+            height: 18px;
+            color: #10b981;
+            margin-top: 1px
+        }
+
+        /* ---------- Toast ---------- */
+        .acp-toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--acp-glass);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--acp-border);
+            border-radius: 12px;
+            padding: 12px 18px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--acp-text);
+            box-shadow: var(--acp-shadow);
+            z-index: 200;
+            transition: transform .3s ease;
+            max-width: 90vw;
+            text-align: center
+        }
+
+        .acp-toast.show {
+            transform: translateX(-50%) translateY(0)
+        }
+
+        .acp-toast.error {
+            border-color: rgba(239, 68, 68, 0.4);
+            color: #dc2626
+        }
+
+        .acp-toast.success {
+            border-color: rgba(16, 185, 129, 0.4);
+            color: #059669
+        }
+
+        /* ---------- Footer ---------- */
+        .acp-footer {
+            margin-top: 36px;
+            padding: 22px 16px;
+            text-align: center;
+            border-top: 1px solid var(--acp-border);
+            color: var(--acp-muted);
+            font-size: 13px
+        }
+
+        .acp-footer a {
+            color: var(--acp-soft);
+            text-decoration: none;
+            font-weight: 600
+        }
+
+        /* =====================================================
+   A4 PAGE — TEMPLATE STYLES (inside the cover document)
+   These use a neutral palette; accent color injected inline.
+   ===================================================== */
+        .acp-a4 {
+            font-family: 'Inter', sans-serif
+        }
+
+        .acp-a4 .inner {
+            padding: 50px;
+            height: 100%;
+            display: flex;
+            flex-direction: column
+        }
+
+        /* shared elements */
+        .acp-a4 .acp-logo-img {
+            max-height: 80px;
+            max-width: 160px;
+            object-fit: contain
+        }
+
+        .acp-a4 .acp-sig-img {
+            max-height: 55px;
+            max-width: 140px;
+            object-fit: contain
+        }
+
+        .acp-a4 .acp-section-label {
+            font-size: 0.7em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.3em
+        }
+
+        .acp-a4 .acp-info-row {
+            display: flex;
+            gap: 0.6em;
+            font-size: 0.72em;
+            margin-bottom: 0.15em
+        }
+
+        .acp-a4 .acp-info-row .k {
+            font-weight: 600;
+            min-width: 5.5em;
+            opacity: .75
+        }
+
+        .acp-a4 .acp-info-row .v {
+            font-weight: 500;
+            flex: 1;
+            word-break: break-word;
+            overflow-wrap: break-word
+        }
+
+        .acp-a4 table {
+            border-collapse: collapse;
+            width: 100%
+        }
+
+        .acp-a4 td {
+            padding: 0.15em 0;
+            font-size: 0.72em;
+            vertical-align: top
+        }
+
+        .acp-a4 td.k {
+            font-weight: 600;
+            width: 40%;
+            opacity: .75
+        }
+
+        .acp-a4 td.v {
+            font-weight: 500;
+            word-break: break-word
+        }
+
+        .acp-a4 .acp-student-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.4em 1em
+        }
+
+        .acp-a4 .acp-student-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 0.4em 0.6em
+        }
+
+        .acp-a4 .acp-student-card .nm {
+            font-weight: 700;
+            font-size: 0.78em
+        }
+
+        .acp-a4 .acp-student-card .mt {
+            font-size: 0.62em;
+            color: #6b7280;
+            margin-top: 0.1em
+        }
+
+        .acp-a4 .sig-line {
+            border-bottom: 1px solid #9ca3af;
+            min-height: 2.2em;
+            margin-top: 1.5em;
+            margin-bottom: 0.2em
+        }
+
+        .acp-a4 .sig-cap {
+            font-size: 0.6em;
+            color: #6b7280;
+            font-weight: 600;
+            text-align: center
+        }
+
+        /* Print */
+        @media print {
+
+            .acp-header,
+            .acp-footer,
+            .acp-hero,
+            .acp-card,
+            .acp-sticky-dl,
+            .acp-preview-toolbar,
+            .acp-steps,
+            .acp-faq,
+            .acp-privacy,
+            .acp-burger,
+            .acp-mobile-menu,
+            .acp-how-section {
+                display: none !important
+            }
+
+            body {
+                background: #fff !important
+            }
+
+            .acp-preview-wrap {
+                background: #fff;
+                padding: 0;
+                overflow: visible
+            }
+
+            .acp-preview-scaler {
+                transform: none !important
+            }
+
+            .acp-a4 {
+                box-shadow: none;
+                page-break-after: avoid;
+                break-after: avoid
+            }
+
+            .acp-main {
+                display: block
+            }
+
+            .acp-preview-panel {
+                position: static
+            }
+
+            .acp-wrap {
+                max-width: none;
+                padding: 0
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ============ HEADER ============ -->
+    <header class="acp-header" role="banner">
+        <div class="acp-header-inner">
+            <a href="https://agitools24.com" class="acp-logo" aria-label="Tools24 home">
+                <span class="acp-logo-mark">T24</span>
+                <span class="acp-logo-text">Tools<span>24</span></span>
+            </a>
+            <nav class="acp-nav" aria-label="Primary">
+                <a href="https://agitools24.com">Home</a>
+                <a href="https://agitools24.com/about">About</a>
+                <a href="https://agitools24.com/privacy">Privacy</a>
+                <a href="https://agitools24.com/contact">Contact</a>
+            </nav>
+            <button class="acp-icon-btn" id="acpThemeBtn" aria-label="Toggle theme" title="Toggle light/dark">
+                <span id="acpThemeIcon">🌙</span>
+            </button>
+            <button class="acp-burger" id="acpBurger" aria-label="Open menu" aria-expanded="false">☰</button>
+        </div>
+    </header>
+    <div class="acp-mobile-menu" id="acpMobileMenu" aria-hidden="true">
+        <a href="https://agitools24.com">Home</a>
+        <a href="https://agitools24.com/about">About</a>
+        <a href="https://agitools24.com/privacy">Privacy</a>
+        <a href="https://agitools24.com/contact">Contact</a>
+    </div>
+
+    <main class="acp-wrap">
+
+        <!-- HERO -->
+        <section class="acp-hero">
+            <span class="acp-badge"><span class="acp-badge-dot"></span> Free • A4 PDF & PNG • No Login</span>
+            <h1>Assignment Cover Page Maker</h1>
+            <p>Create professional school, college and university assignment cover pages instantly.</p>
+        </section>
+
+        <!-- MAIN TOOL -->
+        <div class="acp-main">
+
+            <!-- LEFT: FORM -->
+            <div class="acp-form-col">
+
+                <!-- Doc type + Edu level -->
+                <div class="acp-card">
+                    <div class="acp-card-title"><span class="num">1</span> Document Type & Level</div>
+                    <div class="acp-field" style="margin-bottom:10px">
+                        <label class="acp-label">Document Type</label>
+                        <div class="acp-chips" id="acpDocType"></div>
+                    </div>
+                    <div class="acp-field">
+                        <label class="acp-label" for="acpEduLevel">Education Level</label>
+                        <select class="acp-select" id="acpEduLevel">
+                            <option>School</option>
+                            <option>Class 9–10</option>
+                            <option>Class 11–12</option>
+                            <option>Diploma</option>
+                            <option>ITI</option>
+                            <option selected>B.Tech / BE</option>
+                            <option>BCA / MCA</option>
+                            <option>BBA / MBA</option>
+                            <option>B.Sc / M.Sc</option>
+                            <option>BA / MA</option>
+                            <option>Polytechnic</option>
+                            <option>University</option>
+                            <option>Competitive / Coaching</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Institution -->
+                <div class="acp-card">
+                    <div class="acp-card-title"><span class="num">2</span> Institution Details</div>
+                    <div class="acp-grid">
+                        <div class="acp-field"><label class="acp-label" for="acpInstName">Institution Name <span
+                                    class="req">*</span></label><input class="acp-input" id="acpInstName" type="text"
+                                placeholder="ABC Institute of Technology" /><span class="acp-error-msg">Required</span>
+                        </div>
+                        <div class="acp-field"><label class="acp-label" for="acpUniversity">University
+                                Name</label><input class="acp-input" id="acpUniversity" type="text"
+                                placeholder="State Technical University" /></div>
+                        <div class="acp-field"><label class="acp-label" for="acpDept">Department / Branch</label><input
+                                class="acp-input" id="acpDept" type="text"
+                                placeholder="Computer Science & Engineering" /></div>
+                        <div class="acp-field"><label class="acp-label" for="acpFaculty">Faculty</label><input
+                                class="acp-input" id="acpFaculty" type="text" placeholder="Faculty of Engineering" />
+                        </div>
+                        <div class="acp-field" style="grid-column:1/-1"><label class="acp-label"
+                                for="acpInstAddr">Institute Address</label><input class="acp-input" id="acpInstAddr"
+                                type="text" placeholder="City, State – PIN" /></div>
+                        <div class="acp-field"><label class="acp-label" for="acpAcadSession">Academic
+                                Session</label><input class="acp-input" id="acpAcadSession" type="text"
+                                placeholder="2025–2026" /></div>
+                        <div class="acp-field"><label class="acp-label" for="acpAccred">Accreditation /
+                                Affiliation</label><input class="acp-input" id="acpAccred" type="text"
+                                placeholder="NBA / AICTE Approved" /></div>
+                        <div class="acp-field"><label class="acp-label" for="acpWebsite">Website</label><input
+                                class="acp-input" id="acpWebsite" type="text" placeholder="www.institute.edu" /></div>
+                    </div>
+                    <div class="acp-field" style="margin-top:10px">
+                        <label class="acp-label">Institute Logo</label>
+                        <div class="acp-dropzone" id="acpLogoDrop">
+                            <input type="file" id="acpLogoInput" accept="image/png,image/jpeg,image/jpg,image/webp"
+                                hidden />
+                            <div id="acpLogoDropContent">
+                                <p>📁 Drop logo here or click to upload</p><small>PNG, JPG or WebP — preserved
+                                    locally</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assignment details -->
+                <div class="acp-card">
+                    <div class="acp-card-title"><span class="num">3</span> Assignment Details</div>
+                    <div class="acp-grid">
+                        <div class="acp-field" style="grid-column:1/-1"><label class="acp-label"
+                                for="acpAssignTitle">Assignment Title <span class="req">*</span></label><input
+                                class="acp-input" id="acpAssignTitle" type="text"
+                                placeholder="Database Management Systems" /><span class="acp-error-msg">Required</span>
+                        </div>
+                        <div class="acp-field"><label class="acp-label" for="acpAssignNo">Assignment
+                                Number</label><input class="acp-input" id="acpAssignNo" type="text" placeholder="03" />
+                        </div>
+                        <div class="acp-field"><label class="acp-label" for="acpAssignTopic">Assignment
+                                Topic</label><input class="acp-input" id="acpAssignTopic" type="text"
+                                placeholder="Normalization & Joins" /></div>
+                        <div class="acp-field"><label class="acp-label" for="acpSubject">Subject Name <span
+                                    class="req">*</span></label><input class="acp-input" id="acpSubject" type="text"
+                                placeholder="DBMS" /><span class="acp-error-msg">Required</span></div>
+                        <div class="acp-field"><label class="acp-label" for="acpSubjectCode">Subject Code</label><input
+                                class="acp-input" id="acpSubjectCode" type="text" placeholder="CS-401" /></div>
+                        <div class="acp-field"><label class="acp-label" for="acpCourse">Course / Program</label><input
+                                class="acp-input" id="acpCourse" type="text" placeholder="B.Tech CSE" /></div>
+                        <div class="acp-field"><label class="acp-label" for="acpCourseCode">Course Code</label><input
+                                class="acp-input" id="acpCourseCode" type="text" placeholder="CSE-401" /></div>
+                        <div class="acp-field"><label class="acp-label" for="acpSemester">Semester</label><input
+                                class="acp-input" id="acpSemester" type="text" placeholder="VI" /></div>
+                        <div class="acp-field"><label class="acp-label" for="acpYear">Year</label><input
+                                class="acp-input" id="acpYear" type="text" placeholder="2026" /></div>
+                        <div class="acp-field"><label class="acp-label" for="acpClass">Class</label><input
+                                class="acp-input" id="acpClass" type="text" placeholder="CSE-3" /></div>
+                        <div class="acp-field"><label class="acp-label" for="acpSection">Section</label><input
+                                class="acp-input" id="acpSection" type="text" placeholder="A" /></div>
+                        <div class="acp-field"><label class="acp-label" for="acpAcadSession2">Academic
+                                Session</label><input class="acp-input" id="acpAcadSession2" type="text"
+                                placeholder="2025–2026" /></div>
+                        <div class="acp-field"><label class="acp-label" for="acpSubDate">Submission Date</label>
+                            <div style="display:flex;gap:6px"><input class="acp-input" id="acpSubDate" type="date"
+                                    style="flex:1" /><button type="button" class="acp-btn acp-btn-sm" id="acpTodayDate"
+                                    title="Use today's date">Today</button></div>
+                        </div>
+                        <div class="acp-field"><label class="acp-label" for="acpDateFormat">Date Format</label><select
+                                class="acp-select" id="acpDateFormat">
+                                <option value="dmy-word">18 September 2026</option>
+                                <option value="mdy-word">September 18, 2026</option>
+                                <option value="dmy-slash">18/09/2026</option>
+                                <option value="dmy-dash">18-09-2026</option>
+                            </select></div>
+                        <div class="acp-field"><label class="acp-label" for="acpMaxMarks">Maximum Marks</label><input
+                                class="acp-input" id="acpMaxMarks" type="text" placeholder="100" /></div>
+                        <div class="acp-field"><label class="acp-label" for="acpObtMarks">Obtained Marks</label><input
+                                class="acp-input" id="acpObtMarks" type="text" placeholder="—" /></div>
+                        <div class="acp-field" style="grid-column:1/-1"><label class="acp-label"
+                                for="acpRemarks">Teacher Remarks</label><input class="acp-input" id="acpRemarks"
+                                type="text" placeholder="Excellent work" /></div>
+                    </div>
+                </div>
+
+                <!-- Student details -->
+                <div class="acp-card">
+                    <div class="acp-card-title"><span class="num">4</span> Student Details — Submitted By</div>
+                    <div class="acp-toggle">
+                        <span class="acp-toggle-label">Group Assignment</span>
+                        <label class="acp-switch"><input type="checkbox" id="acpGroupMode"><span
+                                class="acp-switch-slider"></span></label>
+                    </div>
+                    <div id="acpStudentList"></div>
+                    <button type="button" class="acp-btn acp-btn-sm" id="acpAddStudent" style="margin-top:8px">＋ Add
+                        Student</button>
+                </div>
+
+                <!-- Submitted To -->
+                <div class="acp-card">
+                    <div class="acp-card-title"><span class="num">5</span> Submitted To</div>
+                    <div class="acp-grid">
+                        <div class="acp-field"><label class="acp-label" for="acpTeacherName">Teacher / Professor
+                                Name</label><input class="acp-input" id="acpTeacherName" type="text"
+                                placeholder="Dr. Anjali Verma" /></div>
+                        <div class="acp-field"><label class="acp-label" for="acpTeacherDesig">Designation</label><input
+                                class="acp-input" id="acpTeacherDesig" type="text" placeholder="Assistant Professor" />
+                        </div>
+                        <div class="acp-field"><label class="acp-label" for="acpTeacherDept">Department</label><input
+                                class="acp-input" id="acpTeacherDept" type="text"
+                                placeholder="Computer Science & Engineering" /></div>
+                        <div class="acp-field"><label class="acp-label" for="acpTeacherCollege">College /
+                                University</label><input class="acp-input" id="acpTeacherCollege" type="text"
+                                placeholder="ABC Institute of Technology" /></div>
+                    </div>
+                </div>
+
+                <!-- Signatures -->
+                <div class="acp-card">
+                    <div class="acp-card-title"><span class="num">6</span> Signature Options</div>
+                    <div id="acpSigOptions"></div>
+                </div>
+
+                <!-- Template -->
+                <div class="acp-card">
+                    <div class="acp-card-title"><span class="num">7</span> Template</div>
+                    <div class="acp-tpl-grid" id="acpTplGrid"></div>
+                </div>
+
+                <!-- Colors + Font + Paper -->
+                <div class="acp-card">
+                    <div class="acp-card-title"><span class="num">8</span> Colors, Font & Paper</div>
+                    <div class="acp-field" style="margin-bottom:12px">
+                        <label class="acp-label">Accent Color</label>
+                        <div class="acp-colors" id="acpColors"></div>
+                    </div>
+                    <div class="acp-field" style="margin-bottom:12px">
+                        <label class="acp-label">Border Style</label>
+                        <div class="acp-chips" id="acpBorderChips">
+                            <button type="button" class="acp-chip" data-border="none">None</button>
+                            <button type="button" class="acp-chip active" data-border="single">Single</button>
+                            <button type="button" class="acp-chip" data-border="double">Double</button>
+                        </div>
+                    </div>
+                    <div class="acp-grid">
+                        <div class="acp-field"><label class="acp-label" for="acpFont">Font</label><select
+                                class="acp-select" id="acpFont">
+                                <option selected>Inter</option>
+                                <option>Poppins</option>
+                                <option>Roboto</option>
+                                <option>Montserrat</option>
+                                <option>Georgia</option>
+                                <option>Times New Roman</option>
+                                <option>Arial</option>
+                            </select></div>
+                        <div class="acp-field"><label class="acp-label" for="acpPaper">Paper Size</label><select
+                                class="acp-select" id="acpPaper">
+                                <option value="a4" selected>A4 (210×297mm)</option>
+                                <option value="letter">Letter (216×279mm)</option>
+                            </select></div>
+                    </div>
+                </div>
+
+                <!-- Save / Reset -->
+                <div class="acp-card">
+                    <div class="acp-card-title"><span class="num">9</span> Save & Reset</div>
+                    <div class="acp-btn-row">
+                        <button type="button" class="acp-btn" id="acpSaveBtn">💾 Save Details</button>
+                        <button type="button" class="acp-btn" id="acpReuseBtn">↻ Reuse Previous</button>
+                        <button type="button" class="acp-btn" id="acpLoadBtn">📂 Load Saved</button>
+                        <button type="button" class="acp-btn" id="acpClearBtn">🗑 Clear Saved</button>
+                        <button type="button" class="acp-btn" id="acpExampleBtn">✨ Load Example</button>
+                        <button type="button" class="acp-btn" id="acpResetBtn">⟲ Reset Form</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- RIGHT: PREVIEW -->
+            <div class="acp-preview-panel">
+                <div class="acp-card" style="padding:14px">
+                    <div class="acp-preview-toolbar">
+                        <div>
+                            <div style="font-weight:700;font-size:14px;color:var(--acp-text)">Live A4 Preview</div>
+                            <div class="info" id="acpPaperInfo">A4 • 210 × 297 mm</div>
+                        </div>
+                        <div class="acp-zoom-row">
+                            <button class="acp-btn acp-btn-sm acp-zoom-btn" id="acpZoomOut"
+                                aria-label="Zoom out">−</button>
+                            <button class="acp-btn acp-btn-sm acp-zoom-btn" id="acpZoomFit"
+                                title="Fit to screen">Fit</button>
+                            <button class="acp-btn acp-btn-sm acp-zoom-btn" id="acpZoomReset"
+                                title="Reset zoom">100%</button>
+                            <button class="acp-btn acp-btn-sm acp-zoom-btn" id="acpZoomIn"
+                                aria-label="Zoom in">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="acp-preview-wrap" id="acpPreviewWrap">
+                    <div class="acp-preview-scaler" id="acpScaler">
+                        <div class="acp-a4" id="acpA4" style="display:none"></div>
+                        <div class="acp-preview-empty" id="acpPreviewEmpty">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="4" y="2" width="16" height="20" rx="2" />
+                                <path d="M16 6H8M16 10H8M16 14H8M12 18h.01" />
+                            </svg>
+                            <div><strong>Your cover page will appear here</strong><br />Fill in the form to see a live
+                                A4 preview.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Download buttons -->
+                <div class="acp-card" style="margin-top:14px">
+                    <div class="acp-btn-row">
+                        <button class="acp-btn acp-btn-primary" id="acpDlPDF">⬇ Download PDF</button>
+                        <button class="acp-btn" id="acpDlPNG">⬇ Download PNG</button>
+                        <button class="acp-btn" id="acpDlJPG">⬇ Download JPG</button>
+                        <button class="acp-btn" id="acpPrint">🖨 Print</button>
+                    </div>
+                </div>
+
+                <!-- Sticky mobile download -->
+                <div class="acp-sticky-dl">
+                    <button class="acp-btn acp-btn-primary acp-btn-full" id="acpStickyPDF">⬇ Download PDF</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Privacy -->
+        <section class="acp-section">
+            <div class="acp-card">
+                <div class="acp-privacy">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                    <div><b style="color:var(--acp-text)">Privacy First —</b> Your details, uploaded logos and
+                        signatures stay on this device. Nothing is sent to any server and no login is required. Saved
+                        details are stored locally in your browser only.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How it works -->
+        <section class="acp-section acp-how-section" aria-labelledby="acp-how-h">
+            <h2 id="acp-how-h"
+                style="font-size:18px;font-weight:800;margin:0 0 14px;text-align:center;background:var(--acp-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">
+                How It Works</h2>
+            <div class="acp-steps">
+                <div class="acp-step">
+                    <div class="acp-step-num">1</div>
+                    <h4>Enter Details</h4>
+                    <p>Add institution, assignment, student and teacher information.</p>
+                </div>
+                <div class="acp-step">
+                    <div class="acp-step-num">2</div>
+                    <h4>Choose Template</h4>
+                    <p>Pick from 8 professional layouts and accent colors.</p>
+                </div>
+                <div class="acp-step">
+                    <div class="acp-step-num">3</div>
+                    <h4>Preview Live</h4>
+                    <p>See your A4 cover update instantly as you type.</p>
+                </div>
+                <div class="acp-step">
+                    <div class="acp-step-num">4</div>
+                    <h4>Download</h4>
+                    <p>Export as PDF, PNG or JPG — ready to print or submit.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="acp-section" aria-labelledby="acp-faq-h">
+            <div class="acp-card">
+                <h2 id="acp-faq-h" style="font-size:18px;font-weight:800;margin:0 0 12px">Frequently Asked Questions
+                </h2>
+                <div class="acp-faq" id="acpFaq"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="acp-footer">
+        <div>© <span id="acpYear"></span> <a href="https://agitools24.com">Tools24</a> — Free online tools for students.
+        </div>
+    </footer>
+
+    <div class="acp-toast" id="acpToast" role="status" aria-live="polite"></div>
+
+    <script>
+        /* =====================================================
+           ASSIGNMENT COVER PAGE MAKER — Vanilla JS
+           ===================================================== */
+        (function () {
+            'use strict';
+            const $ = (s, c = document) => c.querySelector(s);
+            const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
+            const esc = s => String(s || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+            const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+            /* ---------- State ---------- */
+            const state = {
+                docType: 'Assignment',
+                eduLevel: 'B.Tech / BE',
+                // institution
+                instName: '', university: '', dept: '', faculty: '', instAddr: '', acadSession: '', accred: '', website: '', logo: null,
+                // assignment
+                assignTitle: '', assignNo: '', assignTopic: '', subject: '', subjectCode: '', course: '', courseCode: '',
+                semester: '', year: '', className: '', section: '', acadSession2: '', subDate: '', dateFormat: 'dmy-word',
+                maxMarks: '', obtMarks: '', remarks: '',
+                // students
+                groupMode: false,
+                students: [{ name: '', roll: '', enrollment: '', reg: '', id: '', class: '', section: '', semester: '', branch: '', year: '', email: '', mobile: '' }],
+                // submitted to
+                teacherName: '', teacherDesig: '', teacherDept: '', teacherCollege: '',
+                // signatures
+                sigStudent: true, sigStudentImg: null,
+                sigTeacher: true, sigTeacherImg: null,
+                sigHod: false, sigHodImg: null,
+                // style
+                template: 'classic',
+                accent: 'purple',
+                customAccent: '#7c3aed',
+                border: 'single',
+                font: 'Inter',
+                paper: 'a4',
+                zoom: 1
+            };
+
+            const ACCENTS = {
+                purple: '#7c3aed', blue: '#2563eb', navy: '#1e3a8a', green: '#059669',
+                maroon: '#9f1239', black: '#1f2937', teal: '#0d9488'
+            };
+
+            const DOC_TYPES = ['Assignment', 'Project Report', 'Lab Report', 'Practical File', 'Seminar Report', 'Internship Report', 'School Project', 'College Project', 'Research / Mini Project', 'Custom'];
+
+            const TEMPLATES = [
+                { id: 'classic', name: 'Classic Academic' },
+                { id: 'modern', name: 'Modern University' },
+                { id: 'minimal', name: 'Minimal Professional' },
+                { id: 'double', name: 'Formal Double Border' },
+                { id: 'gradient', name: 'Modern Gradient' },
+                { id: 'school', name: 'School Project' },
+                { id: 'engineering', name: 'Engineering / B.Tech' },
+                { id: 'lab', name: 'Research / Lab Report' }
+            ];
+
+            /* ---------- Theme ---------- */
+            function initTheme() {
+                const saved = localStorage.getItem('acp-theme') || 'light';
+                document.documentElement.setAttribute('data-theme', saved);
+                $('#acpThemeIcon').textContent = saved === 'dark' ? '☀️' : '🌙';
+            }
+            $('#acpThemeBtn').addEventListener('click', () => {
+                const cur = document.documentElement.getAttribute('data-theme');
+                const next = cur === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', next);
+                localStorage.setItem('acp-theme', next);
+                $('#acpThemeIcon').textContent = next === 'dark' ? '☀️' : '🌙';
+                renderPreview();
+            });
+
+            $('#acpBurger').addEventListener('click', () => {
+                const m = $('#acpMobileMenu');
+                const open = m.classList.toggle('open');
+                $('#acpBurger').setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+
+            $('#acpYear').textContent = new Date().getFullYear();
+
+            /* ---------- Toast ---------- */
+            let toastTimer;
+            function toast(msg, type = 'success') {
+                const t = $('#acpToast');
+                t.textContent = msg;
+                t.className = 'acp-toast show ' + type;
+                clearTimeout(toastTimer);
+                toastTimer = setTimeout(() => { t.className = 'acp-toast'; }, 2800);
+            }
+
+            /* ---------- Date helpers ---------- */
+            function formatDate(dateStr, fmt) {
+                if (!dateStr) return '';
+                const d = new Date(dateStr + 'T00:00:00');
+                if (isNaN(d)) return dateStr;
+                const dd = String(d.getDate()).padStart(2, '0');
+                const mm = String(d.getMonth() + 1).padStart(2, '0');
+                const yyyy = d.getFullYear();
+                const monthName = MONTHS[d.getMonth()];
+                if (fmt === 'dmy-word') return `${dd} ${monthName} ${yyyy}`;
+                if (fmt === 'mdy-word') return `${monthName} ${dd}, ${yyyy}`;
+                if (fmt === 'dmy-slash') return `${dd}/${mm}/${yyyy}`;
+                if (fmt === 'dmy-dash') return `${dd}-${mm}-${yyyy}`;
+                return dateStr;
+            }
+
+            /* ---------- Doc type label ---------- */
+            function docTypeLabel(t) {
+                const map = {
+                    'Assignment': 'ASSIGNMENT',
+                    'Project Report': 'PROJECT REPORT',
+                    'Lab Report': 'LAB REPORT',
+                    'Practical File': 'PRACTICAL FILE',
+                    'Seminar Report': 'SEMINAR REPORT',
+                    'Internship Report': 'INTERNSHIP REPORT',
+                    'School Project': 'SCHOOL PROJECT',
+                    'College Project': 'COLLEGE PROJECT',
+                    'Research / Mini Project': 'RESEARCH PROJECT',
+                    'Custom': 'COVER PAGE'
+                };
+                return map[t] || 'COVER PAGE';
+            }
+
+            /* ---------- Render: Doc type chips ---------- */
+            function renderDocTypeChips() {
+                const c = $('#acpDocType');
+                c.innerHTML = DOC_TYPES.map(t => `<button type="button" class="acp-chip ${t === state.docType ? 'active' : ''}" data-doc="${t}">${t}</button>`).join('');
+                $$('.acp-chip', c).forEach(chip => {
+                    chip.addEventListener('click', () => {
+                        state.docType = chip.dataset.doc;
+                        renderDocTypeChips();
+                        renderPreview();
+                    });
+                });
+            }
+
+            /* ---------- Render: Template grid ---------- */
+            function renderTemplateGrid() {
+                const c = $('#acpTplGrid');
+                c.innerHTML = TEMPLATES.map(t => `
+      <div class="acp-tpl ${t.id === state.template ? 'active' : ''}" data-tpl="${t.id}" role="button" tabindex="0" aria-label="${t.name}">
+        <div class="acp-tpl-thumb">
+          ${tplThumb(t.id)}
+        </div>
+        <div class="acp-tpl-name">${t.name}</div>
+      </div>
+    `).join('');
+                $$('.acp-tpl', c).forEach(el => {
+                    const click = () => { state.template = el.dataset.tpl; renderTemplateGrid(); renderPreview(); };
+                    el.addEventListener('click', click);
+                    el.addEventListener('keypress', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); click(); } });
+                });
+            }
+            function tplThumb(id) {
+                // mini visual representation
+                const bars = (n, cls = '') => Array(n).fill(`<div class="t-bar ${cls}"></div>`).join('');
+                switch (id) {
+                    case 'classic': return `<div class="t-bar lg"></div>${bars(2)}<div class="t-title">TITLE</div>${bars(2)}`;
+                    case 'modern': return `<div class="t-bar" style="width:100%"></div><div class="t-title" style="margin-top:4px">TITLE</div>${bars(2)}`;
+                    case 'minimal': return `<div style="flex:1"></div><div class="t-title">TITLE</div><div class="t-bar sm"></div><div style="flex:1"></div>`;
+                    case 'double': return `<div style="border:1.5px solid #7c3aed;border-radius:2px;padding:4px;width:100%;display:flex;flex-direction:column;align-items:center;gap:2px"><div class="t-title">TITLE</div>${bars(1)}</div>`;
+                    case 'gradient': return `<div style="width:100%;height:8px;background:linear-gradient(90deg,#7c3aed,#ec4899);border-radius:2px"></div><div class="t-title" style="margin-top:3px">TITLE</div>${bars(2)}`;
+                    case 'school': return `<div style="width:14px;height:14px;background:#7c3aed;border-radius:50%"></div><div class="t-title">PROJECT</div>${bars(2)}`;
+                    case 'engineering': return `<div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;width:100%"><div class="t-bar"></div><div class="t-bar"></div><div class="t-bar"></div><div class="t-bar"></div></div><div class="t-title" style="margin-top:2px">TITLE</div>`;
+                    case 'lab': return `<div style="width:100%;border:1px solid #7c3aed;padding:3px;border-radius:2px"><div class="t-title">LAB REPORT</div>${bars(2)}</div>`;
+                    default: return bars(3);
+                }
+            }
+
+            /* ---------- Render: Color swatches ---------- */
+            function renderColors() {
+                const c = $('#acpColors');
+                const items = Object.entries(ACCENTS).map(([k, v]) => `<div class="acp-color ${state.accent === k ? 'active' : ''}" data-color="${k}" style="background:${v}" role="button" tabindex="0" aria-label="${k}">${state.accent === k ? '✓' : ''}</div>`);
+                c.innerHTML = items.join('') + `<div class="acp-color acp-color-custom ${state.accent === 'custom' ? 'active' : ''}" role="button" tabindex="0" aria-label="Custom color">${state.accent === 'custom' ? '✓' : ''}<input type="color" id="acpCustomColor" value="${state.customAccent}" /></div>`;
+                $$('.acp-color', c).forEach(el => {
+                    if (el.classList.contains('acp-color-custom')) {
+                        const inp = el.querySelector('input');
+                        inp.addEventListener('input', e => { state.accent = 'custom'; state.customAccent = e.target.value; renderColors(); renderPreview(); });
+                    } else {
+                        el.addEventListener('click', () => { state.accent = el.dataset.color; renderColors(); renderPreview(); });
+                        el.addEventListener('keypress', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); el.click(); } });
+                    }
+                });
+            }
+
+            /* ---------- Border chips ---------- */
+            $$('#acpBorderChips .acp-chip').forEach(chip => {
+                chip.addEventListener('click', () => {
+                    $$('#acpBorderChips .acp-chip').forEach(c => c.classList.remove('active'));
+                    chip.classList.add('active');
+                    state.border = chip.dataset.border;
+                    renderPreview();
+                });
+            });
+
+            /* ---------- Accent color ---------- */
+            function getAccent() {
+                if (state.accent === 'custom') return state.customAccent;
+                return ACCENTS[state.accent] || '#7c3aed';
+            }
+
+            /* ---------- Student list ---------- */
+            function renderStudentList() {
+                const c = $('#acpStudentList');
+                const students = state.students;
+                c.innerHTML = students.map((s, i) => `
+      <div class="acp-student-entry" data-idx="${i}">
+        <div class="acp-student-entry-head">
+          <span class="lbl">Student ${i + 1}</span>
+          ${students.length > 1 ? `<button type="button" class="acp-student-remove" data-rm="${i}">Remove</button>` : ''}
+        </div>
+        <div class="acp-grid">
+          <div class="acp-field" style="grid-column:1/-1"><label class="acp-label">Student Name ${i === 0 ? '<span class="req">*</span>' : ''}</label><input class="acp-input acp-st-name" type="text" value="${esc(s.name)}" placeholder="Rahul Sharma" /></div>
+          <div class="acp-field"><label class="acp-label">Roll Number</label><input class="acp-input acp-st-roll" type="text" value="${esc(s.roll)}" placeholder="24CS104" /></div>
+          <div class="acp-field"><label class="acp-label">Enrollment No</label><input class="acp-input acp-st-enr" type="text" value="${esc(s.enrollment)}" placeholder="ENR2024001" /></div>
+          <div class="acp-field"><label class="acp-label">Registration No</label><input class="acp-input acp-st-reg" type="text" value="${esc(s.reg)}" placeholder="REG-2025" /></div>
+          <div class="acp-field"><label class="acp-label">Student ID</label><input class="acp-input acp-st-id" type="text" value="${esc(s.id)}" placeholder="STU001" /></div>
+          <div class="acp-field"><label class="acp-label">Class</label><input class="acp-input acp-st-class" type="text" value="${esc(s.class)}" placeholder="B.Tech" /></div>
+          <div class="acp-field"><label class="acp-label">Section</label><input class="acp-input acp-st-section" type="text" value="${esc(s.section)}" placeholder="A" /></div>
+          <div class="acp-field"><label class="acp-label">Semester</label><input class="acp-input acp-st-sem" type="text" value="${esc(s.semester)}" placeholder="VI" /></div>
+          <div class="acp-field"><label class="acp-label">Branch / Dept</label><input class="acp-input acp-st-branch" type="text" value="${esc(s.branch)}" placeholder="CSE" /></div>
+          <div class="acp-field"><label class="acp-label">Academic Year</label><input class="acp-input acp-st-year" type="text" value="${esc(s.year)}" placeholder="2025-2026" /></div>
+          <div class="acp-field"><label class="acp-label">Email</label><input class="acp-input acp-st-email" type="text" value="${esc(s.email)}" placeholder="rahul@college.edu" /></div>
+          <div class="acp-field"><label class="acp-label">Mobile</label><input class="acp-input acp-st-mobile" type="text" value="${esc(s.mobile)}" placeholder="+91 98765 43210" /></div>
+        </div>
+      </div>
+    `).join('');
+
+                $$('.acp-student-entry', c).forEach((entry, idx) => {
+                    const s = state.students[idx];
+                    $('.acp-st-name', entry).addEventListener('input', e => { s.name = e.target.value; renderPreview(); });
+                    $('.acp-st-roll', entry).addEventListener('input', e => { s.roll = e.target.value; renderPreview(); });
+                    $('.acp-st-enr', entry).addEventListener('input', e => { s.enrollment = e.target.value; renderPreview(); });
+                    $('.acp-st-reg', entry).addEventListener('input', e => { s.reg = e.target.value; renderPreview(); });
+                    $('.acp-st-id', entry).addEventListener('input', e => { s.id = e.target.value; renderPreview(); });
+                    $('.acp-st-class', entry).addEventListener('input', e => { s.class = e.target.value; renderPreview(); });
+                    $('.acp-st-section', entry).addEventListener('input', e => { s.section = e.target.value; renderPreview(); });
+                    $('.acp-st-sem', entry).addEventListener('input', e => { s.semester = e.target.value; renderPreview(); });
+                    $('.acp-st-branch', entry).addEventListener('input', e => { s.branch = e.target.value; renderPreview(); });
+                    $('.acp-st-year', entry).addEventListener('input', e => { s.year = e.target.value; renderPreview(); });
+                    $('.acp-st-email', entry).addEventListener('input', e => { s.email = e.target.value; renderPreview(); });
+                    $('.acp-st-mobile', entry).addEventListener('input', e => { s.mobile = e.target.value; renderPreview(); });
+                });
+                $$('.acp-student-remove', c).forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        state.students.splice(parseInt(btn.dataset.rm), 1);
+                        renderStudentList();
+                        renderPreview();
+                    });
+                });
+            }
+
+            $('#acpAddStudent').addEventListener('click', () => {
+                if (state.students.length >= 8) { toast('Maximum 8 students supported', 'error'); return; }
+                state.students.push({ name: '', roll: '', enrollment: '', reg: '', id: '', class: '', section: '', semester: '', branch: '', year: '', email: '', mobile: '' });
+                renderStudentList();
+            });
+
+            $('#acpGroupMode').addEventListener('change', e => {
+                state.groupMode = e.target.checked;
+                if (!state.groupMode && state.students.length > 1) {
+                    state.students = state.students.slice(0, 1);
+                }
+                renderStudentList();
+                renderPreview();
+            });
+
+            /* ---------- Signature options ---------- */
+            function renderSigOptions() {
+                const c = $('#acpSigOptions');
+                const sigs = [
+                    { key: 'sigStudent', label: 'Student Signature', imgKey: 'sigStudentImg' },
+                    { key: 'sigTeacher', label: 'Teacher Signature', imgKey: 'sigTeacherImg' },
+                    { key: 'sigHod', label: 'HOD Signature', imgKey: 'sigHodImg' }
+                ];
+                c.innerHTML = sigs.map(sig => `
+      <div style="border:1px solid var(--acp-border);border-radius:12px;padding:10px;margin-bottom:8px">
+        <div class="acp-toggle">
+          <span class="acp-toggle-label">${sig.label}</span>
+          <label class="acp-switch"><input type="checkbox" class="acp-sig-toggle" data-key="${sig.key}" ${state[sig.key] ? 'checked' : ''}><span class="acp-switch-slider"></span></label>
+        </div>
+        <div class="acp-dropzone acp-sig-drop" data-key="${sig.imgKey}" style="margin-top:6px;${!state[sig.key] ? 'display:none' : ''}">
+          <input type="file" class="acp-sig-input" data-key="${sig.imgKey}" accept="image/png,image/jpeg,image/jpg,image/webp" hidden />
+          <div class="acp-sig-drop-content" data-key="${sig.imgKey}">
+            ${state[sig.imgKey] ? `<div class="acp-dropzone-preview"><img src="${state[sig.imgKey]}" alt="${sig.label}"/><button type="button" class="acp-dropzone-clear" data-clear="${sig.imgKey}">Remove</button></div>` : '<p>📁 Upload signature image</p><small>Transparent PNG recommended</small>'}
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+                $$('.acp-sig-toggle', c).forEach(t => {
+                    t.addEventListener('change', e => { state[e.target.dataset.key] = e.target.checked; renderSigOptions(); renderPreview(); });
+                });
+                $$('.acp-sig-drop', c).forEach(dz => {
+                    const inp = dz.querySelector('.acp-sig-input');
+                    dz.addEventListener('click', e => {
+                        if (e.target.classList.contains('acp-dropzone-clear')) return;
+                        inp.click();
+                    });
+                    dz.addEventListener('dragover', e => { e.preventDefault(); dz.classList.add('dragover'); });
+                    dz.addEventListener('dragleave', () => dz.classList.remove('dragover'));
+                    dz.addEventListener('drop', e => {
+                        e.preventDefault(); dz.classList.remove('dragover');
+                        if (e.dataTransfer.files[0]) handleSigFile(e.dataTransfer.files[0], inp.dataset.key);
+                    });
+                    inp.addEventListener('change', e => { if (e.target.files[0]) handleSigFile(e.target.files[0], inp.dataset.key); });
+                });
+                $$('.acp-dropzone-clear', c).forEach(btn => {
+                    btn.addEventListener('click', e => {
+                        e.stopPropagation();
+                        state[btn.dataset.clear] = null;
+                        renderSigOptions();
+                        renderPreview();
+                    });
+                });
+            }
+
+            function handleSigFile(file, key) {
+                if (!file.type.startsWith('image/')) { toast('Please upload an image file', 'error'); return; }
+                const reader = new FileReader();
+                reader.onload = e => {
+                    // Resize if too large
+                    const img = new Image();
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        const maxW = 400, maxH = 200;
+                        let w = img.width, h = img.height;
+                        if (w > maxW) { h = h * maxW / w; w = maxW; }
+                        if (h > maxH) { w = w * maxH / h; h = maxH; }
+                        canvas.width = w; canvas.height = h;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, w, h);
+                        state[key] = canvas.toDataURL('image/png');
+                        renderSigOptions();
+                        renderPreview();
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+
+            /* ---------- Logo upload ---------- */
+            function setupLogoDrop() {
+                const drop = $('#acpLogoDrop');
+                const inp = $('#acpLogoInput');
+                drop.addEventListener('click', e => {
+                    if (e.target.classList.contains('acp-dropzone-clear')) return;
+                    inp.click();
+                });
+                drop.addEventListener('dragover', e => { e.preventDefault(); drop.classList.add('dragover'); });
+                drop.addEventListener('dragleave', () => drop.classList.remove('dragover'));
+                drop.addEventListener('drop', e => {
+                    e.preventDefault(); drop.classList.remove('dragover');
+                    if (e.dataTransfer.files[0]) handleLogoFile(e.dataTransfer.files[0]);
+                });
+                inp.addEventListener('change', e => { if (e.target.files[0]) handleLogoFile(e.target.files[0]); });
+            }
+            function handleLogoFile(file) {
+                if (!file.type.startsWith('image/')) { toast('Please upload an image file', 'error'); return; }
+                const reader = new FileReader();
+                reader.onload = e => {
+                    const img = new Image();
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        const maxW = 500, maxH = 250;
+                        let w = img.width, h = img.height;
+                        if (w > maxW) { h = h * maxW / w; w = maxW; }
+                        if (h > maxH) { w = w * maxH / h; h = maxH; }
+                        canvas.width = Math.max(1, w); canvas.height = Math.max(1, h);
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, w, h);
+                        state.logo = canvas.toDataURL('image/png');
+                        updateLogoDropzone();
+                        renderPreview();
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+            function updateLogoDropzone() {
+                const c = $('#acpLogoDropContent');
+                if (state.logo) {
+                    c.innerHTML = `<div class="acp-dropzone-preview"><img src="${state.logo}" alt="Logo preview"/><button type="button" class="acp-dropzone-clear" id="acpLogoClear">Remove</button></div>`;
+                    $('#acpLogoClear').addEventListener('click', e => {
+                        e.stopPropagation();
+                        state.logo = null;
+                        updateLogoDropzone();
+                        renderPreview();
+                    });
+                } else {
+                    c.innerHTML = '<p>📁 Drop logo here or click to upload</p><small>PNG, JPG or WebP — preserved locally</small>';
+                }
+            }
+
+            /* ---------- Form binding ---------- */
+            const formBindings = {
+                acpEduLevel: 'eduLevel', acpInstName: 'instName', acpUniversity: 'university', acpDept: 'dept',
+                acpFaculty: 'faculty', acpInstAddr: 'instAddr', acpAcadSession: 'acadSession', acpAccred: 'accred',
+                acpWebsite: 'website', acpAssignTitle: 'assignTitle', acpAssignNo: 'assignNo', acpAssignTopic: 'assignTopic',
+                acpSubject: 'subject', acpSubjectCode: 'subjectCode', acpCourse: 'course', acpCourseCode: 'courseCode',
+                acpSemester: 'semester', acpYear: 'year', acpClass: 'className', acpSection: 'section',
+                acpAcadSession2: 'acadSession2', acpSubDate: 'subDate', acpDateFormat: 'dateFormat',
+                acpMaxMarks: 'maxMarks', acpObtMarks: 'obtMarks', acpRemarks: 'remarks',
+                acpTeacherName: 'teacherName', acpTeacherDesig: 'teacherDesig', acpTeacherDept: 'teacherDept',
+                acpTeacherCollege: 'teacherCollege', acpFont: 'font', acpPaper: 'paper'
+            };
+            Object.entries(formBindings).forEach(([id, key]) => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                el.addEventListener('input', e => { state[key] = e.target.value; renderPreview(); });
+                el.addEventListener('change', e => {
+                    state[key] = e.target.value;
+                    if (key === 'paper') updatePaperInfo();
+                    renderPreview();
+                });
+            });
+
+            function updatePaperInfo() {
+                const info = state.paper === 'letter' ? 'Letter • 216 × 279 mm' : 'A4 • 210 × 297 mm';
+                $('#acpPaperInfo').textContent = info;
+            }
+
+            $('#acpTodayDate').addEventListener('click', () => {
+                const today = new Date();
+                const iso = today.toISOString().split('T')[0];
+                $('#acpSubDate').value = iso;
+                state.subDate = iso;
+                renderPreview();
+            });
+
+            /* ---------- Student render helpers for A4 ---------- */
+            function renderStudentInfo(s, groupMode) {
+                if (groupMode) {
+                    const cards = state.students.map((st, i) => `
+        <div class="acp-student-card">
+          <div class="nm">${i + 1}. ${esc(st.name || '—')}</div>
+          <div class="mt">${[st.roll && 'Roll: ' + st.roll, st.enrollment && 'Enr: ' + st.enrollment, st.branch].filter(Boolean).join(' • ')}</div>
+        </div>
+      `).join('');
+                    return `<div class="acp-student-grid">${cards}</div>`;
+                }
+                const rows = [];
+                if (s.name) rows.push(['Name', s.name]);
+                if (s.roll) rows.push(['Roll No', s.roll]);
+                if (s.enrollment) rows.push(['Enrollment No', s.enrollment]);
+                if (s.reg) rows.push(['Registration No', s.reg]);
+                if (s.id) rows.push(['Student ID', s.id]);
+                if (s.semester) rows.push(['Semester', s.semester]);
+                if (s.branch) rows.push(['Branch', s.branch]);
+                if (s.class) rows.push(['Class', s.class]);
+                if (s.section) rows.push(['Section', s.section]);
+                if (s.year) rows.push(['Academic Year', s.year]);
+                if (s.email) rows.push(['Email', s.email]);
+                if (s.mobile) rows.push(['Mobile', s.mobile]);
+                return `<table>${rows.map(([k, v]) => `<tr><td class="k">${esc(k)}</td><td class="v">: ${esc(v)}</td></tr>`).join('')}</table>`;
+            }
+
+            function renderSubmittedTo(s) {
+                const lines = [];
+                if (s.teacherName) lines.push(`<div style="font-weight:700;font-size:1em">${esc(s.teacherName)}</div>`);
+                if (s.teacherDesig) lines.push(`<div style="font-size:0.78em;color:#6b7280">${esc(s.teacherDesig)}</div>`);
+                if (s.teacherDept) lines.push(`<div style="font-size:0.78em;color:#6b7280">${esc(s.teacherDept)}</div>`);
+                if (s.teacherCollege) lines.push(`<div style="font-size:0.78em;color:#6b7280">${esc(s.teacherCollege)}</div>`);
+                return lines.join('');
+            }
+
+            function renderAssignmentInfo(s) {
+                const rows = [];
+                if (s.subject) rows.push(['Subject', s.subject]);
+                if (s.subjectCode) rows.push(['Subject Code', s.subjectCode]);
+                if (s.assignNo) rows.push(['Assignment No', s.assignNo]);
+                if (s.assignTopic) rows.push(['Topic', s.assignTopic]);
+                if (s.course) rows.push(['Course', s.course]);
+                if (s.courseCode) rows.push(['Course Code', s.courseCode]);
+                if (s.semester) rows.push(['Semester', s.semester]);
+                if (s.year) rows.push(['Year', s.year]);
+                if (s.className) rows.push(['Class', s.className]);
+                if (s.section) rows.push(['Section', s.section]);
+                if (s.acadSession2) rows.push(['Session', s.acadSession2]);
+                if (s.subDate) rows.push(['Submission Date', formatDate(s.subDate, s.dateFormat)]);
+                if (s.maxMarks) rows.push(['Max Marks', s.maxMarks]);
+                if (s.obtMarks) rows.push(['Obtained Marks', s.obtMarks]);
+                if (s.remarks) rows.push(['Remarks', s.remarks]);
+                return `<table>${rows.map(([k, v]) => `<tr><td class="k">${esc(k)}</td><td class="v">: ${esc(v)}</td></tr>`).join('')}</table>`;
+            }
+
+            function renderSignatures(s) {
+                const sigs = [];
+                if (s.sigStudent) {
+                    sigs.push(`<div style="flex:1;text-align:center">
+        ${s.sigStudentImg ? `<img src="${s.sigStudentImg}" class="acp-sig-img" alt="Student signature"/>` : `<div class="sig-line"></div>`}
+        <div class="sig-cap">${esc(s.students[0]?.name || 'Student Signature')}</div>
+      </div>`);
+                }
+                if (s.sigTeacher) {
+                    sigs.push(`<div style="flex:1;text-align:center">
+        ${s.sigTeacherImg ? `<img src="${s.sigTeacherImg}" class="acp-sig-img" alt="Teacher signature"/>` : `<div class="sig-line"></div>`}
+        <div class="sig-cap">${esc(s.teacherName || 'Teacher Signature')}</div>
+      </div>`);
+                }
+                if (s.sigHod) {
+                    sigs.push(`<div style="flex:1;text-align:center">
+        ${s.sigHodImg ? `<img src="${s.sigHodImg}" class="acp-sig-img" alt="HOD signature"/>` : `<div class="sig-line"></div>`}
+        <div class="sig-cap">HOD Signature</div>
+      </div>`);
+                }
+                return sigs.length ? `<div style="display:flex;gap:1.2em;margin-top:1.5em">${sigs.join('')}</div>` : '';
+            }
+
+            /* ---------- Templates ---------- */
+            function getBorderCSS(s) {
+                const a = getAccent();
+                if (s.border === 'single') return `border:8px solid ${a};`;
+                if (s.border === 'double') return `border:3px solid ${a};box-shadow:inset 0 0 0 3px #fff,inset 0 0 0 6px ${a};`;
+                return '';
+            }
+
+            function buildTemplate(s) {
+                const a = getAccent();
+                const accent = a;
+                const label = docTypeLabel(s.docType);
+                const font = s.font;
+                const borderCSS = getBorderCSS(s);
+
+                // Common header parts
+                const logo = s.logo ? `<img src="${s.logo}" class="acp-logo-img" alt="Institute logo"/>` : '';
+
+                const instBlock = `
+      ${logo ? `<div style="text-align:center;margin-bottom:0.6em">${logo}</div>` : ''}
+      ${s.instName ? `<div style="text-align:center;font-size:1.4em;font-weight:800;color:${accent};line-height:1.2;letter-spacing:-0.01em">${esc(s.instName)}</div>` : ''}
+      ${s.university ? `<div style="text-align:center;font-size:0.82em;font-weight:600;color:#4b5563;margin-top:0.2em">(Affiliated to ${esc(s.university)})</div>` : ''}
+      ${s.faculty ? `<div style="text-align:center;font-size:0.78em;color:#6b7280;margin-top:0.1em">${esc(s.faculty)}</div>` : ''}
+      ${s.dept ? `<div style="text-align:center;font-size:0.85em;font-weight:600;color:${accent};margin-top:0.2em">Department of ${esc(s.dept)}</div>` : ''}
+      ${s.instAddr ? `<div style="text-align:center;font-size:0.7em;color:#6b7280;margin-top:0.1em">${esc(s.instAddr)}</div>` : ''}
+      ${s.accred ? `<div style="text-align:center;font-size:0.65em;color:#6b7280">${esc(s.accred)}</div>` : ''}
+      ${s.website ? `<div style="text-align:center;font-size:0.65em;color:#6b7280">${esc(s.website)}</div>` : ''}
+    `;
+
+                const studentInfo = renderStudentInfo(s.students[0] || {}, s.groupMode);
+                const submittedTo = renderSubmittedTo(s);
+                const assignInfo = renderAssignmentInfo(s);
+                const signatures = renderSignatures(s);
+                const dateStr = s.subDate ? formatDate(s.subDate, s.dateFormat) : '';
+
+                let html = '';
+
+                switch (s.template) {
+                    case 'classic': {
+                        html = `
+          <div class="inner" style="padding:48px 50px;${borderCSS}">
+            <div style="text-align:center">${instBlock}</div>
+            <div style="border-top:2px solid ${accent};border-bottom:2px solid ${accent};padding:0.6em 0;margin:0.8em 0;text-align:center">
+              <div style="font-size:2em;font-weight:800;color:${accent};letter-spacing:0.05em">${label}</div>
+            </div>
+            <div style="text-align:center;margin:0.6em 0 1em">
+              ${s.assignTitle ? `<div style="font-size:1.5em;font-weight:700;color:#1f2937;line-height:1.3;max-width:90%;margin:0 auto">“${esc(s.assignTitle)}”</div>` : ''}
+              ${s.assignTopic ? `<div style="font-size:0.85em;color:#6b7280;margin-top:0.3em;font-style:italic">${esc(s.assignTopic)}</div>` : ''}
+            </div>
+            <div style="margin:0.4em 0 0.6em;font-size:0.72em">${assignInfo}</div>
+            <div style="display:flex;gap:1.5em;margin:0.6em 0">
+              <div style="flex:1">
+                <div class="acp-section-label" style="color:${accent}">Submitted By</div>
+                ${studentInfo}
+              </div>
+              <div style="flex:1">
+                <div class="acp-section-label" style="color:${accent}">Submitted To</div>
+                ${submittedTo || '<div style="font-size:0.8em;color:#9ca3af">—</div>'}
+              </div>
+            </div>
+            ${signatures}
+            ${dateStr ? `<div style="text-align:right;margin-top:1em;font-size:0.8em;font-weight:600;color:#4b5563">Date: ${esc(dateStr)}</div>` : ''}
+          </div>`;
+                        break;
+                    }
+
+                    case 'modern': {
+                        html = `
+          <div class="inner" style="padding:0;display:flex;flex-direction:column">
+            <div style="background:linear-gradient(135deg,${accent},${accent}cc);padding:28px 40px;color:#fff;display:flex;align-items:center;gap:16px">
+              ${s.logo ? `<img src="${s.logo}" class="acp-logo-img" style="max-height:60px;background:#fff;border-radius:8px;padding:4px" alt="Logo"/>` : ''}
+              <div style="flex:1">
+                ${s.instName ? `<div style="font-size:1.3em;font-weight:800;line-height:1.2">${esc(s.instName)}</div>` : ''}
+                ${s.university ? `<div style="font-size:0.7em;opacity:.9">Affiliated to ${esc(s.university)}</div>` : ''}
+                ${s.dept ? `<div style="font-size:0.72em;opacity:.95;margin-top:2px">Department of ${esc(s.dept)}</div>` : ''}
+              </div>
+            </div>
+            <div style="padding:28px 40px;flex:1;display:flex;flex-direction:column">
+              <div style="text-align:center;margin-bottom:0.6em">
+                <div style="font-size:1.6em;font-weight:800;color:${accent};letter-spacing:0.04em">${label}</div>
+                <div style="width:50px;height:3px;background:${accent};margin:6px auto 0;border-radius:2px"></div>
+              </div>
+              ${s.assignTitle ? `<div style="text-align:center;font-size:1.3em;font-weight:700;color:#1f2937;line-height:1.3;margin:0.4em 0 0.8em">${esc(s.assignTitle)}</div>` : ''}
+              <div style="font-size:0.72em;margin-bottom:0.6em">${assignInfo}</div>
+              <div style="display:flex;gap:1.5em;flex:1">
+                <div style="flex:1;background:#f9fafb;border-radius:8px;padding:10px 12px">
+                  <div class="acp-section-label" style="color:${accent}">Submitted By</div>
+                  ${studentInfo}
+                </div>
+                <div style="flex:1;background:#f9fafb;border-radius:8px;padding:10px 12px">
+                  <div class="acp-section-label" style="color:${accent}">Submitted To</div>
+                  ${submittedTo || '<div style="font-size:0.8em;color:#9ca3af">—</div>'}
+                </div>
+              </div>
+              ${signatures}
+              ${dateStr ? `<div style="text-align:right;margin-top:0.6em"><span style="background:${accent};color:#fff;padding:4px 12px;border-radius:999px;font-size:0.72em;font-weight:600">📅 ${esc(dateStr)}</span></div>` : ''}
+            </div>
+          </div>`;
+                        break;
+                    }
+
+                    case 'minimal': {
+                        html = `
+          <div class="inner" style="padding:60px 56px;${borderCSS === 'border:8px solid ' + accent + ';' ? '' : borderCSS}">
+            <div style="text-align:center;margin-bottom:0.5em">
+              ${s.logo ? `<img src="${s.logo}" class="acp-logo-img" style="max-height:55px" alt="Logo"/>` : ''}
+              ${s.instName ? `<div style="font-size:1.1em;font-weight:700;color:#1f2937;margin-top:0.3em">${esc(s.instName)}</div>` : ''}
+              ${s.dept ? `<div style="font-size:0.75em;color:#6b7280">${esc(s.dept)}</div>` : ''}
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;justify-content:center">
+              <div style="text-align:center">
+                <div style="font-size:0.7em;font-weight:600;color:${accent};letter-spacing:0.15em;text-transform:uppercase">${label}</div>
+                ${s.assignTitle ? `<div style="font-size:1.8em;font-weight:300;color:#1f2937;line-height:1.25;margin:0.3em 0.2em;letter-spacing:-0.01em">${esc(s.assignTitle)}</div>` : ''}
+                <div style="width:40px;height:2px;background:${accent};margin:0.4em auto;border-radius:1px"></div>
+                ${s.assignTopic ? `<div style="font-size:0.85em;color:#6b7280;margin-top:0.4em;font-style:italic">${esc(s.assignTopic)}</div>` : ''}
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5em;margin-top:1.8em;font-size:0.72em">
+                <div>
+                  <div class="acp-section-label" style="color:${accent};border-bottom:1px solid ${accent};padding-bottom:3px;margin-bottom:6px">Submitted By</div>
+                  ${studentInfo}
+                </div>
+                <div>
+                  <div class="acp-section-label" style="color:${accent};border-bottom:1px solid ${accent};padding-bottom:3px;margin-bottom:6px">Submitted To</div>
+                  ${submittedTo || '<div style="color:#9ca3af">—</div>'}
+                </div>
+              </div>
+              <div style="margin-top:1.2em;font-size:0.72em">${assignInfo}</div>
+            </div>
+            ${signatures}
+            ${dateStr ? `<div style="text-align:center;margin-top:0.8em;font-size:0.78em;color:#6b7280">${esc(dateStr)}</div>` : ''}
+          </div>`;
+                        break;
+                    }
+
+                    case 'double': {
+                        html = `
+          <div style="height:100%;padding:14px;${borderCSS}">
+            <div style="height:100%;border:2px solid ${accent};padding:14px;display:flex">
+              <div class="inner" style="padding:24px 28px;width:100%">
+                <div style="text-align:center">${instBlock}</div>
+                <div style="border-top:2px double ${accent};border-bottom:2px double ${accent};padding:0.5em 0;margin:0.6em 0;text-align:center">
+                  <div style="font-size:1.9em;font-weight:800;color:${accent};letter-spacing:0.06em;font-family:'Georgia',serif">${label}</div>
+                </div>
+                ${s.assignTitle ? `<div style="text-align:center;font-size:1.3em;font-weight:700;color:#1f2937;margin:0.4em 0;line-height:1.3">“${esc(s.assignTitle)}”</div>` : ''}
+                <div style="font-size:0.72em;margin:0.4em 0">${assignInfo}</div>
+                <div style="display:flex;gap:1.2em;margin:0.6em 0">
+                  <div style="flex:1;border-left:3px solid ${accent};padding-left:10px">
+                    <div class="acp-section-label" style="color:${accent}">Submitted By</div>
+                    ${studentInfo}
+                  </div>
+                  <div style="flex:1;border-left:3px solid ${accent};padding-left:10px">
+                    <div class="acp-section-label" style="color:${accent}">Submitted To</div>
+                    ${submittedTo || '<div style="font-size:0.8em;color:#9ca3af">—</div>'}
+                  </div>
+                </div>
+                ${signatures}
+                ${dateStr ? `<div style="text-align:center;margin-top:0.8em;font-size:0.78em;font-weight:600;color:${accent}">Date: ${esc(dateStr)}</div>` : ''}
+              </div>
+            </div>
+          </div>`;
+                        break;
+                    }
+
+                    case 'gradient': {
+                        html = `
+          <div class="inner" style="padding:0;${borderCSS}">
+            <div style="background:linear-gradient(135deg,${accent} 0%,${accent}99 50%,${accent}cc 100%);padding:34px 40px 28px;color:#fff;text-align:center">
+              ${s.logo ? `<img src="${s.logo}" class="acp-logo-img" style="max-height:50px;background:#fff;border-radius:8px;padding:3px;margin-bottom:6px" alt="Logo"/>` : ''}
+              ${s.instName ? `<div style="font-size:1.2em;font-weight:800;line-height:1.2">${esc(s.instName)}</div>` : ''}
+              ${s.dept ? `<div style="font-size:0.75em;opacity:.9;margin-top:2px">${esc(s.dept)}</div>` : ''}
+              <div style="font-size:1.4em;font-weight:800;letter-spacing:0.06em;margin-top:0.4em">${label}</div>
+            </div>
+            <div style="padding:24px 40px;flex:1;display:flex;flex-direction:column">
+              ${s.assignTitle ? `<div style="text-align:center;font-size:1.4em;font-weight:700;color:#1f2937;line-height:1.3;margin-bottom:0.5em">${esc(s.assignTitle)}</div>` : ''}
+              <div style="font-size:0.72em;margin:0.3em 0 0.6em">${assignInfo}</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1em;flex:1">
+                <div style="background:linear-gradient(135deg,${accent}11,${accent}08);border:1px solid ${accent}33;border-radius:8px;padding:10px">
+                  <div class="acp-section-label" style="color:${accent}">Submitted By</div>
+                  ${studentInfo}
+                </div>
+                <div style="background:linear-gradient(135deg,${accent}11,${accent}08);border:1px solid ${accent}33;border-radius:8px;padding:10px">
+                  <div class="acp-section-label" style="color:${accent}">Submitted To</div>
+                  ${submittedTo || '<div style="font-size:0.8em;color:#9ca3af">—</div>'}
+                </div>
+              </div>
+              ${signatures}
+              ${dateStr ? `<div style="text-align:right;margin-top:0.5em;font-size:0.78em;font-weight:600;color:${accent}">📅 ${esc(dateStr)}</div>` : ''}
+            </div>
+          </div>`;
+                        break;
+                    }
+
+                    case 'school': {
+                        html = `
+          <div class="inner" style="padding:44px 40px;${borderCSS}">
+            <div style="text-align:center;margin-bottom:0.4em">
+              ${s.logo ? `<img src="${s.logo}" class="acp-logo-img" style="max-height:65px" alt="Logo"/>` : ''}
+              ${s.instName ? `<div style="font-size:1.3em;font-weight:800;color:${accent};line-height:1.2">${esc(s.instName)}</div>` : ''}
+              ${s.instAddr ? `<div style="font-size:0.7em;color:#6b7280">${esc(s.instAddr)}</div>` : ''}
+            </div>
+            <div style="text-align:center;background:${accent}11;border:2px solid ${accent};border-radius:12px;padding:0.8em;margin:0.6em 0">
+              <div style="display:inline-block;background:${accent};color:#fff;font-size:0.65em;font-weight:700;padding:2px 10px;border-radius:999px;letter-spacing:0.05em;margin-bottom:4px">SCHOOL PROJECT</div>
+              <div style="font-size:1.6em;font-weight:800;color:${accent};letter-spacing:0.04em">${label}</div>
+            </div>
+            ${s.assignTitle ? `<div style="text-align:center;font-size:1.3em;font-weight:700;color:#1f2937;margin:0.4em 0;line-height:1.3">${esc(s.assignTitle)}</div>` : ''}
+            <div style="font-size:0.72em;margin:0.3em 0">${assignInfo}</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1em;margin-top:0.5em">
+              <div style="background:${accent}08;border-radius:10px;padding:10px">
+                <div class="acp-section-label" style="color:${accent}">Submitted By</div>
+                ${studentInfo}
+              </div>
+              <div style="background:${accent}08;border-radius:10px;padding:10px">
+                <div class="acp-section-label" style="color:${accent}">Submitted To</div>
+                ${submittedTo || '<div style="font-size:0.8em;color:#9ca3af">—</div>'}
+              </div>
+            </div>
+            ${signatures}
+            ${dateStr ? `<div style="text-align:center;margin-top:0.6em;font-size:0.78em;font-weight:600;color:${accent}">Date: ${esc(dateStr)}</div>` : ''}
+          </div>`;
+                        break;
+                    }
+
+                    case 'engineering': {
+                        html = `
+          <div class="inner" style="padding:0;${borderCSS}">
+            <div style="display:flex;align-items:stretch;border-bottom:3px solid ${accent}">
+              <div style="background:${accent};color:#fff;padding:14px 18px;display:flex;align-items:center;justify-content:center;min-width:80px">
+                ${s.logo ? `<img src="${s.logo}" style="max-height:50px;max-width:50px;filter:brightness(0) invert(1)" alt="Logo"/>` : '<div style="font-size:1.5em;font-weight:800">T24</div>'}
+              </div>
+              <div style="padding:10px 16px;flex:1">
+                ${s.instName ? `<div style="font-size:1.2em;font-weight:800;color:${accent};line-height:1.15">${esc(s.instName)}</div>` : ''}
+                ${s.university ? `<div style="font-size:0.65em;color:#6b7280">Affiliated to ${esc(s.university)}</div>` : ''}
+                ${s.dept ? `<div style="font-size:0.72em;font-weight:600;color:#374151;margin-top:2px">Department of ${esc(s.dept)}</div>` : ''}
+                ${s.accred ? `<div style="font-size:0.6em;color:#6b7280">${esc(s.accred)}</div>` : ''}
+              </div>
+            </div>
+            <div style="padding:22px 30px;flex:1;display:flex;flex-direction:column">
+              <div style="text-align:center;background:${accent};color:#fff;padding:6px 0;border-radius:6px;margin-bottom:10px">
+                <div style="font-size:1.4em;font-weight:800;letter-spacing:0.06em">${label}</div>
+              </div>
+              ${s.assignTitle ? `<div style="text-align:center;font-size:1.2em;font-weight:700;color:#1f2937;line-height:1.3;margin-bottom:0.5em;border:1px dashed ${accent}66;padding:8px;border-radius:6px">${esc(s.assignTitle)}</div>` : ''}
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6em 1.2em;font-size:0.72em;border:1px solid ${accent}33;border-radius:6px;padding:8px 12px;margin-bottom:0.6em">
+                ${s.subject ? `<div><b style="color:${accent}">Subject:</b> ${esc(s.subject)}</div>` : ''}
+                ${s.subjectCode ? `<div><b style="color:${accent}">Code:</b> ${esc(s.subjectCode)}</div>` : ''}
+                ${s.assignNo ? `<div><b style="color:${accent}">Asg. No:</b> ${esc(s.assignNo)}</div>` : ''}
+                ${s.semester ? `<div><b style="color:${accent}">Semester:</b> ${esc(s.semester)}</div>` : ''}
+                ${s.course ? `<div><b style="color:${accent}">Course:</b> ${esc(s.course)}</div>` : ''}
+                ${s.section ? `<div><b style="color:${accent}">Section:</b> ${esc(s.section)}</div>` : ''}
+                ${s.subDate ? `<div><b style="color:${accent}">Date:</b> ${esc(formatDate(s.subDate, s.dateFormat))}</div>` : ''}
+                ${s.maxMarks ? `<div><b style="color:${accent}">Max Marks:</b> ${esc(s.maxMarks)}</div>` : ''}
+              </div>
+              <div style="display:flex;gap:1em;flex:1">
+                <div style="flex:1">
+                  <div style="background:${accent};color:#fff;font-size:0.65em;font-weight:700;padding:3px 8px;border-radius:4px 4px 0 0;text-transform:uppercase;letter-spacing:0.05em">Submitted By</div>
+                  <div style="border:1px solid ${accent}33;border-top:0;padding:6px 8px;font-size:0.72em">${studentInfo}</div>
+                </div>
+                <div style="flex:1">
+                  <div style="background:${accent};color:#fff;font-size:0.65em;font-weight:700;padding:3px 8px;border-radius:4px 4px 0 0;text-transform:uppercase;letter-spacing:0.05em">Submitted To</div>
+                  <div style="border:1px solid ${accent}33;border-top:0;padding:6px 8px;font-size:0.72em">${submittedTo || '<div style="color:#9ca3af">—</div>'}</div>
+                </div>
+              </div>
+              ${signatures}
+            </div>
+          </div>`;
+                        break;
+                    }
+
+                    case 'lab': {
+                        html = `
+          <div class="inner" style="padding:40px 44px;${borderCSS}">
+            <div style="text-align:center;border:1px solid ${accent};padding:10px;border-radius:6px;margin-bottom:0.6em">
+              ${s.logo ? `<img src="${s.logo}" class="acp-logo-img" style="max-height:45px;margin-bottom:4px" alt="Logo"/>` : ''}
+              ${s.instName ? `<div style="font-size:1.15em;font-weight:800;color:${accent}">${esc(s.instName)}</div>` : ''}
+              ${s.university ? `<div style="font-size:0.65em;color:#6b7280">Affiliated to ${esc(s.university)}</div>` : ''}
+              ${s.dept ? `<div style="font-size:0.72em;font-weight:600;color:#374151;margin-top:2px">Department of ${esc(s.dept)}</div>` : ''}
+              ${s.acadSession ? `<div style="font-size:0.65em;color:#6b7280">Session: ${esc(s.acadSession)}</div>` : ''}
+            </div>
+            <div style="text-align:center;margin:0.5em 0">
+              <div style="font-size:1.7em;font-weight:800;color:${accent};letter-spacing:0.05em;font-family:'Georgia',serif">${label}</div>
+              <div style="width:60%;height:2px;background:${accent};margin:4px auto 0"></div>
+            </div>
+            ${s.assignTitle ? `<div style="text-align:center;font-size:1.25em;font-weight:700;color:#1f2937;line-height:1.3;margin:0.4em 0;font-style:italic">${esc(s.assignTitle)}</div>` : ''}
+            <div style="font-size:0.72em;margin:0.4em 0;border-left:3px solid ${accent};padding-left:10px">${assignInfo}</div>
+            <div style="display:flex;gap:1.2em;margin:0.5em 0">
+              <div style="flex:1">
+                <div class="acp-section-label" style="color:${accent}">Submitted By</div>
+                ${studentInfo}
+              </div>
+              <div style="flex:1">
+                <div class="acp-section-label" style="color:${accent}">Submitted To</div>
+                ${submittedTo || '<div style="font-size:0.8em;color:#9ca3af">—</div>'}
+              </div>
+            </div>
+            ${signatures}
+            ${dateStr ? `<div style="text-align:right;margin-top:0.6em;font-size:0.78em;font-weight:600;color:${accent}">Date: ${esc(dateStr)}</div>` : ''}
+          </div>`;
+                        break;
+                    }
+                }
+
+                // wrap with font family
+                const fontFamily = s.font === 'Times New Roman' ? "'Times New Roman',serif"
+                    : s.font === 'Georgia' ? "Georgia,serif"
+                        : s.font === 'Arial' ? "Arial,Helvetica,sans-serif"
+                            : `'${s.font}',sans-serif`;
+
+                return `<div style="height:100%;font-family:${fontFamily}">${html}</div>`;
+            }
+
+            /* ---------- Render Preview ---------- */
+            let renderRAF;
+            function renderPreview() {
+                cancelAnimationFrame(renderRAF);
+                renderRAF = requestAnimationFrame(() => {
+                    const page = $('#acpA4');
+                    const empty = $('#acpPreviewEmpty');
+                    // Check if has minimum content
+                    const hasContent = state.instName || state.assignTitle || state.subject || (state.students[0] && state.students[0].name);
+                    if (!hasContent) {
+                        page.style.display = 'none';
+                        empty.style.display = 'flex';
+                        return;
+                    }
+                    page.style.display = 'block';
+                    empty.style.display = 'none';
+                    page.innerHTML = buildTemplate(state);
+                    fitPreview();
+                    // Auto-fit font size if overflow
+                    setTimeout(autoFitFont, 50);
+                });
+            }
+
+            function autoFitFont() {
+                const page = $('#acpA4');
+                if (!page || page.style.display === 'none') return;
+                let fs = 16;
+                page.style.fontSize = fs + 'px';
+                // check overflow
+                let tries = 0;
+                function check() {
+                    tries++;
+                    if (page.scrollHeight > page.clientHeight + 2 && fs > 9) {
+                        fs -= 0.5;
+                        page.style.fontSize = fs + 'px';
+                        if (tries < 30) requestAnimationFrame(check);
+                    }
+                }
+                check();
+            }
+
+            /* ---------- Preview Zoom ---------- */
+            function fitPreview() {
+                const wrap = $('#acpPreviewWrap');
+                const scaler = $('#acpScaler');
+                const page = $('#acpA4');
+                if (page.style.display === 'none') { scaler.style.transform = 'scale(1)'; return; }
+                const availW = wrap.clientWidth - 36; // padding
+                const availH = wrap.clientHeight - 36;
+                const scaleX = availW / 794;
+                const scaleY = availH / 1123;
+                const scale = Math.min(scaleX, scaleY, 1) * state.zoom;
+                scaler.style.transform = `scale(${scale})`;
+                // set wrap height to scaled
+                if (state.zoom === 1) {
+                    const h = 1123 * scale + 36;
+                    if (wrap.clientHeight < h) wrap.style.minHeight = h + 'px';
+                }
+            }
+
+            $('#acpZoomIn').addEventListener('click', () => { state.zoom = Math.min(2, state.zoom + 0.15); fitPreview(); });
+            $('#acpZoomOut').addEventListener('click', () => { state.zoom = Math.max(0.3, state.zoom - 0.15); fitPreview(); });
+            $('#acpZoomFit').addEventListener('click', () => { state.zoom = 1; fitPreview(); });
+            $('#acpZoomReset').addEventListener('click', () => { state.zoom = 1; $('#acpScaler').style.transform = 'scale(1)'; });
+
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(fitPreview, 150);
+            });
+
+            /* ---------- Validation ---------- */
+            function validate() {
+                const required = [
+                    { id: 'acpInstName', key: 'instName', label: 'Institution Name' },
+                    { id: 'acpAssignTitle', key: 'assignTitle', label: 'Assignment Title' },
+                    { id: 'acpSubject', key: 'subject', label: 'Subject' },
+                ];
+                if (!state.groupMode && state.students[0]) {
+                    // student name required
+                }
+                const errors = [];
+                required.forEach(r => {
+                    const el = document.getElementById(r.id);
+                    const field = el.closest('.acp-field');
+                    if (!state[r.key]) {
+                        field.classList.add('has-error');
+                        errors.push(r.label);
+                    } else {
+                        field.classList.remove('has-error');
+                    }
+                });
+                // student name
+                if (!state.groupMode && !state.students[0]?.name) {
+                    const entry = document.querySelector('.acp-student-entry');
+                    if (entry) {
+                        const f = entry.querySelector('.acp-st-name').closest('.acp-field');
+                        f.classList.add('has-error');
+                    }
+                    errors.push('Student Name');
+                }
+                return errors;
+            }
+
+            /* ---------- Filename ---------- */
+            function makeFilename(ext) {
+                const parts = [];
+                const docSlug = state.docType.replace(/[^a-zA-Z0-9]/g, '');
+                parts.push(docSlug || 'Cover');
+                parts.push('Cover_Page');
+                if (state.subject) parts.push(state.subject.replace(/[^a-zA-Z0-9]/g, ''));
+                if (state.students[0]?.name) {
+                    const nm = state.students[0].name.replace(/[^a-zA-Z0-9]/g, '_');
+                    if (nm) parts.push(nm);
+                }
+                const safe = parts.filter(Boolean).join('_').replace(/_{2,}/g, '_').replace(/^_|_$/g, '');
+                return (safe || 'Cover_Page') + '.' + ext;
+            }
+
+            /* ---------- Capture A4 (reset transform during capture) ---------- */
+            async function captureA4(scale = 2) {
+                const page = $('#acpA4');
+                const scaler = page.parentElement;
+                const origTransform = scaler.style.transform;
+                scaler.style.transform = 'none';
+                // Ensure visible for capture
+                const origDisplay = page.style.display;
+                page.style.display = 'block';
+                await new Promise(r => setTimeout(r, 30));
+                try {
+                    const canvas = await html2canvas(page, {
+                        scale: scale,
+                        backgroundColor: '#ffffff',
+                        useCORS: true,
+                        logging: false,
+                        width: 794,
+                        height: 1123,
+                        windowWidth: 794,
+                        windowHeight: 1123
+                    });
+                    return canvas;
+                } finally {
+                    scaler.style.transform = origTransform;
+                    page.style.display = origDisplay;
+                    fitPreview();
+                }
+            }
+
+            function libsReady() {
+                return typeof window.jspdf !== 'undefined' && typeof html2canvas !== 'undefined';
+            }
+
+            /* ---------- Download: PDF ---------- */
+            async function downloadPDF() {
+                const errors = validate();
+                if (errors.length) { toast('Please complete: ' + errors.join(', '), 'error'); document.getElementById('acpInstName').scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+                if (!libsReady()) { toast('PDF library loading… please try again in a moment', 'error'); return; }
+                const btn = $('#acpDlPDF'); const orig = btn.innerHTML; btn.innerHTML = 'Generating PDF…'; btn.disabled = true;
+                try {
+                    const canvas = await captureA4(2);
+                    const { jsPDF } = window.jspdf;
+                    const format = state.paper === 'letter' ? 'letter' : 'a4';
+                    const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: format });
+                    const pageW = pdf.internal.pageSize.getWidth();
+                    const pageH = pdf.internal.pageSize.getHeight();
+                    const imgData = canvas.toDataURL('image/jpeg', 0.95);
+                    pdf.addImage(imgData, 'JPEG', 0, 0, pageW, pageH, undefined, 'FAST');
+                    pdf.save(makeFilename('pdf'));
+                    toast('PDF downloaded successfully', 'success');
+                } catch (e) {
+                    console.error(e);
+                    toast('Could not generate PDF. Please try again.', 'error');
+                } finally {
+                    btn.innerHTML = orig; btn.disabled = false;
+                }
+            }
+
+            /* ---------- Download: PNG ---------- */
+            async function downloadPNG() {
+                const errors = validate();
+                if (errors.length) { toast('Please complete: ' + errors.join(', '), 'error'); return; }
+                if (!libsReady()) { toast('Library loading…', 'error'); return; }
+                const btn = $('#acpDlPNG'); const orig = btn.innerHTML; btn.innerHTML = 'Generating…'; btn.disabled = true;
+                try {
+                    const canvas = await captureA4(3);
+                    const link = document.createElement('a');
+                    link.download = makeFilename('png');
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                    toast('PNG downloaded successfully', 'success');
+                } catch (e) {
+                    console.error(e); toast('Could not generate PNG', 'error');
+                } finally { btn.innerHTML = orig; btn.disabled = false; }
+            }
+
+            /* ---------- Download: JPG ---------- */
+            async function downloadJPG() {
+                const errors = validate();
+                if (errors.length) { toast('Please complete: ' + errors.join(', '), 'error'); return; }
+                if (!libsReady()) { toast('Library loading…', 'error'); return; }
+                const btn = $('#acpDlJPG'); const orig = btn.innerHTML; btn.innerHTML = 'Generating…'; btn.disabled = true;
+                try {
+                    const canvas = await captureA4(3);
+                    const link = document.createElement('a');
+                    link.download = makeFilename('jpg');
+                    link.href = canvas.toDataURL('image/jpeg', 0.92);
+                    link.click();
+                    toast('JPG downloaded successfully', 'success');
+                } catch (e) {
+                    console.error(e); toast('Could not generate JPG', 'error');
+                } finally { btn.innerHTML = orig; btn.disabled = false; }
+            }
+
+            /* ---------- Print ---------- */
+            function doPrint() {
+                const errors = validate();
+                if (errors.length) { toast('Please complete: ' + errors.join(', '), 'error'); return; }
+                // ensure preview rendered
+                const scaler = $('#acpScaler');
+                const origT = scaler.style.transform;
+                scaler.style.transform = 'none';
+                setTimeout(() => {
+                    window.print();
+                    scaler.style.transform = origT;
+                }, 100);
+            }
+
+            $('#acpDlPDF').addEventListener('click', downloadPDF);
+            $('#acpDlPNG').addEventListener('click', downloadPNG);
+            $('#acpDlJPG').addEventListener('click', downloadJPG);
+            $('#acpPrint').addEventListener('click', doPrint);
+            $('#acpStickyPDF').addEventListener('click', downloadPDF);
+
+            /* ---------- Save / Load / Reuse / Clear ---------- */
+            function saveState(key) {
+                try { localStorage.setItem(key, JSON.stringify(state)); } catch (e) { toast('Could not save (storage full)', 'error'); }
+            }
+            function loadState(key) {
+                try {
+                    const s = JSON.parse(localStorage.getItem(key));
+                    if (!s) return false;
+                    Object.assign(state, s);
+                    // sync form
+                    syncFormFromState();
+                    return true;
+                } catch (e) { return false; }
+            }
+            function syncFormFromState() {
+                Object.entries(formBindings).forEach(([id, key]) => {
+                    const el = document.getElementById(id);
+                    if (el && state[key] !== undefined) el.value = state[key];
+                });
+                $('#acpGroupMode').checked = state.groupMode;
+                updateLogoDropzone();
+                renderDocTypeChips();
+                renderStudentList();
+                renderSigOptions();
+                renderTemplateGrid();
+                renderColors();
+                $$('#acpBorderChips .acp-chip').forEach(c => c.classList.toggle('active', c.dataset.border === state.border));
+                updatePaperInfo();
+                renderPreview();
+            }
+
+            $('#acpSaveBtn').addEventListener('click', () => {
+                saveState('acp-saved');
+                toast('Details saved on this device', 'success');
+            });
+            $('#acpLoadBtn').addEventListener('click', () => {
+                if (loadState('acp-saved')) toast('Saved details loaded', 'success');
+                else toast('No saved details found', 'error');
+            });
+            $('#acpReuseBtn').addEventListener('click', () => {
+                if (loadState('acp-saved')) toast('Previous details loaded', 'success');
+                else toast('No previous details found. Click "Save Details" first.', 'error');
+            });
+            $('#acpClearBtn').addEventListener('click', () => {
+                if (!confirm('Clear saved details from this device?')) return;
+                localStorage.removeItem('acp-saved');
+                toast('Saved details cleared', 'success');
+            });
+            $('#acpResetBtn').addEventListener('click', () => {
+                if (!confirm('Reset the entire form? Saved details will remain.')) return;
+                localStorage.removeItem('acp-autosave');
+                location.reload();
+            });
+
+            /* ---------- Load Example ---------- */
+            $('#acpExampleBtn').addEventListener('click', () => {
+                state.docType = 'Assignment';
+                state.eduLevel = 'B.Tech / BE';
+                state.instName = 'ABC Institute of Technology';
+                state.university = 'State Technical University';
+                state.dept = 'Computer Science & Engineering';
+                state.faculty = 'Faculty of Engineering & Technology';
+                state.instAddr = 'Tech City, State – 110001';
+                state.acadSession = '2025–2026';
+                state.accred = 'NBA & AICTE Approved';
+                state.website = 'www.abcinstitute.edu';
+                state.assignTitle = 'Database Management Systems';
+                state.assignNo = '03';
+                state.assignTopic = 'Normalization & SQL Joins';
+                state.subject = 'DBMS';
+                state.subjectCode = 'CS-401';
+                state.course = 'B.Tech CSE';
+                state.courseCode = 'CSE-401';
+                state.semester = 'VI';
+                state.year = '2026';
+                state.className = 'B.Tech';
+                state.section = 'A';
+                state.acadSession2 = '2025–2026';
+                const d = new Date(2026, 8, 18);
+                state.subDate = d.toISOString().split('T')[0];
+                state.dateFormat = 'dmy-word';
+                state.maxMarks = '100';
+                state.obtMarks = '';
+                state.remarks = '';
+                state.students = [{ name: 'Rahul Sharma', roll: '24CS104', enrollment: 'ENR2025104', reg: 'REG-2025-104', id: 'STU001', class: 'B.Tech', section: 'A', semester: 'VI', branch: 'CSE', year: '2025-2026', email: 'rahul@abcinstitute.edu', mobile: '+91 98765 43210' }];
+                state.groupMode = false;
+                state.teacherName = 'Dr. Anjali Verma';
+                state.teacherDesig = 'Assistant Professor';
+                state.teacherDept = 'Computer Science & Engineering';
+                state.teacherCollege = 'ABC Institute of Technology';
+                state.template = 'engineering';
+                state.accent = 'purple';
+                state.border = 'single';
+                syncFormFromState();
+                toast('Example loaded — edit freely', 'success');
+            });
+
+            /* ---------- Autosave ---------- */
+            let autosaveTimer;
+            function autosave() {
+                clearTimeout(autosaveTimer);
+                autosaveTimer = setTimeout(() => { try { localStorage.setItem('acp-autosave', JSON.stringify(state)); } catch (e) { } }, 800);
+            }
+            // Wrap renderPreview to also autosave
+            const origRender = renderPreview;
+            renderPreview = function () { origRender(); autosave(); };
+
+            /* ---------- FAQ ---------- */
+            const faqData = [
+                { q: 'What is an assignment cover page?', a: 'An assignment cover page is the first page of an academic submission containing the student’s name, roll number, institution, subject, assignment title, submission date and the teacher’s name.' },
+                { q: 'What information should I put on an assignment cover page?', a: 'Typically: institution name, university, department, assignment title, subject and code, student name and roll number, semester, submitted-to details and submission date.' },
+                { q: 'Can I create a B.Tech assignment cover page?', a: 'Yes. Choose the Engineering / B.Tech template, enter your department, subject code and assignment number, and download a professional PDF.' },
+                { q: 'Can I use this for school projects?', a: 'Yes. The School Project template is designed for school-level project cover pages with student, class and section fields.' },
+                { q: 'Can I upload my college logo?', a: 'Yes. Drag and drop or browse to upload a PNG, JPG or WebP logo. It is embedded locally and never uploaded to a server.' },
+                { q: 'Can I download the cover page as PDF?', a: 'Yes. The PDF is generated as a clean A4 single page with proper margins, embedded logo and signatures.' },
+                { q: 'Can I download it as PNG?', a: 'Yes. You can download a high-resolution PNG suitable for printing or digital submission.' },
+                { q: 'Is the generated PDF A4 size?', a: 'Yes. The cover page is generated at A4 portrait size (210 × 297 mm) and fits exactly on one page with no clipping.' },
+                { q: 'Are my student details uploaded to a server?', a: 'No. All details and uploaded images stay on your device. Nothing is sent to any server and no login is required.' },
+                { q: 'Can I use the tool on mobile?', a: 'Yes. The tool is fully mobile-responsive with a stacked layout, fitting preview and touch-friendly download buttons.' }
+            ];
+            $('#acpFaq').innerHTML = faqData.map((f, i) => `
+    <div class="acp-faq-item" id="acp-faq-${i}">
+      <button class="acp-faq-q" aria-expanded="false" aria-controls="acp-faq-a-${i}">
+        <span>${esc(f.q)}</span><span class="chev" aria-hidden="true">▾</span>
+      </button>
+      <div class="acp-faq-a" id="acp-faq-a-${i}" role="region">
+        <div class="acp-faq-a-inner">${esc(f.a)}</div>
+      </div>
+    </div>
+  `).join('');
+            $$('.acp-faq-item').forEach(item => {
+                const btn = item.querySelector('.acp-faq-q');
+                btn.addEventListener('click', () => {
+                    const open = item.classList.toggle('open');
+                    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+                });
+            });
+
+            /* ---------- Indian presets note ---------- */
+            // (Already handled by example + education level)
+
+            /* ---------- Init ---------- */
+            function init() {
+                initTheme();
+                renderDocTypeChips();
+                renderTemplateGrid();
+                renderColors();
+                renderStudentList();
+                renderSigOptions();
+                setupLogoDropzone();
+                updatePaperInfo();
+
+                // Set today's date as default
+                const today = new Date();
+                const iso = today.toISOString().split('T')[0];
+                $('#acpSubDate').value = iso;
+                state.subDate = iso;
+
+                // Try restore autosave
+                try {
+                    const auto = JSON.parse(localStorage.getItem('acp-autosave'));
+                    if (auto) {
+                        Object.assign(state, auto);
+                        syncFormFromState();
+                    }
+                } catch (e) { }
+
+                renderPreview();
+                setTimeout(fitPreview, 100);
+            }
+
+            init();
+        })();
+    </script>
+</body>
+
+</html>

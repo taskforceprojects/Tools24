@@ -1,0 +1,2623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>YouTube Hashtag Generator – Free YouTube SEO Hashtag Tool | Tools24</title>
+  <meta name="description"
+    content="Generate relevant YouTube hashtags instantly with the free Tools24 YouTube Hashtag Generator. Create, copy and download hashtags for your videos.">
+  <meta name="keywords"
+    content="youtube hashtag generator, youtube hashtags, youtube seo hashtags, youtube hashtag tool, free hashtag generator, video hashtags, youtube shorts hashtags, youtube content creator tools">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://tools24.app/youtube-hashtag-generator">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Tools24">
+  <meta property="og:title" content="YouTube Hashtag Generator – Free YouTube SEO Hashtag Tool | Tools24">
+  <meta property="og:description"
+    content="Generate relevant YouTube hashtags instantly. Create, copy and download hashtags for your videos and Shorts.">
+  <meta property="og:url" content="https://tools24.app/youtube-hashtag-generator">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="YouTube Hashtag Generator | Tools24">
+  <meta name="twitter:description"
+    content="Free YouTube hashtag generator — create, copy and download SEO-friendly hashtags in seconds.">
+  <meta name="theme-color" content="#f4f1fd">
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237c3aed'/%3E%3Cstop offset='1' stop-color='%23db2777'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='url(%23g)'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Arial,sans-serif' font-weight='800' font-size='19' fill='white'%3E%23%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <script>
+    /* theme before first paint: saved → system → light */
+    (function () {
+      try {
+        var t = localStorage.getItem('tools24-theme');
+        if (!t) t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = t;
+      } catch (e) { document.documentElement.dataset.theme = 'light'; }
+    })();
+  </script>
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"YouTube Hashtag Generator","applicationCategory":"UtilityApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","description":"Free YouTube hashtag generator. Create, copy and download relevant, SEO-friendly hashtags for videos and Shorts.","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}
+</script>
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is a YouTube hashtag?","acceptedAnswer":{"@type":"Answer","text":"A YouTube hashtag is a clickable label starting with # that helps viewers find related videos. Hashtags in your title or description become links that group your video with similar content."}},
+{"@type":"Question","name":"How many hashtags should I use on YouTube?","acceptedAnswer":{"@type":"Answer","text":"YouTube recommends focusing on 3–5 highly relevant hashtags. If a video has more than 60 hashtags, YouTube ignores every hashtag on it."}},
+{"@type":"Question","name":"Can I use these hashtags for YouTube Shorts?","acceptedAnswer":{"@type":"Answer","text":"Yes. Shorts use the same hashtag system, and #Shorts in the title or description helps YouTube identify the video as a Short."}},
+{"@type":"Question","name":"Are these hashtags guaranteed to make my video rank?","acceptedAnswer":{"@type":"Answer","text":"No tool can guarantee rankings. Hashtags help categorisation and discovery, but watch time, thumbnails, titles and content quality matter far more."}},
+{"@type":"Question","name":"Can I download the generated hashtags?","acceptedAnswer":{"@type":"Answer","text":"Yes — export as TXT, CSV or JSON. Each file is generated in your browser and saved to your device's Downloads folder."}}]}
+</script>
+  <style>
+    /* ============ TOKENS ============ */
+    :root {
+      --font-d: 'Bricolage Grotesque', Georgia, serif;
+      --font-b: 'Instrument Sans', -apple-system, 'Segoe UI', sans-serif;
+      --grad-brand: linear-gradient(135deg, #7c3aed 0%, #6d5df6 50%, #db2777 100%);
+      --sh-btn: 0 10px 24px -10px rgba(124, 58, 237, .55);
+      --r-md: 16px;
+      --r-lg: 22px;
+      --r-xl: 28px;
+    }
+
+    :root[data-theme="light"] {
+      --bg: #f4f1fd;
+      --glass: rgba(255, 255, 255, .66);
+      --glass2: rgba(255, 255, 255, .82);
+      --navbd: rgba(255, 255, 255, .7);
+      --navbs: 0 20px 50px -24px rgba(80, 40, 180, .35);
+      --ink: #161029;
+      --ink2: #4d4670;
+      --ink3: #7d76a0;
+      --line: rgba(93, 63, 211, .14);
+      --line2: rgba(93, 63, 211, .28);
+      --brand: #7c3aed;
+      --brand-ink: #6d28d9;
+      --pink: #db2777;
+      --blue: #4f6df5;
+      --gold: #d97706;
+      --ok: #0a8a5f;
+      --err: #e11d48;
+      --tint: rgba(124, 58, 237, .08);
+      --tint2: rgba(124, 58, 237, .16);
+      --tint-ok: rgba(10, 138, 95, .1);
+      --tint-err: rgba(225, 29, 72, .08);
+      --grad-text: linear-gradient(96deg, #6d28d9 5%, #4f6df5 45%, #db2777 90%);
+      --ring: rgba(124, 58, 237, .3);
+      --amb1: rgba(124, 58, 237, .14);
+      --amb2: rgba(79, 109, 245, .12);
+      --amb3: rgba(236, 72, 153, .1);
+      --sh-card: 0 30px 70px -34px rgba(64, 28, 140, .3), 0 4px 14px -8px rgba(64, 28, 140, .08);
+      --sh-pop: 0 18px 50px -20px rgba(40, 20, 100, .3);
+      --chipbd: rgba(255, 255, 255, .85);
+      --foot-ink: #5a537d;
+      --foot-line: rgba(93, 63, 211, .14);
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #0a0715;
+      --glass: rgba(24, 17, 46, .62);
+      --glass2: rgba(26, 19, 50, .85);
+      --navbd: rgba(255, 255, 255, .1);
+      --navbs: 0 20px 50px -24px rgba(0, 0, 0, .8);
+      --ink: #f0ecfb;
+      --ink2: #b8b0d9;
+      --ink3: #8b83af;
+      --line: rgba(167, 139, 250, .16);
+      --line2: rgba(167, 139, 250, .34);
+      --brand: #8b5cf6;
+      --brand-ink: #a78bfa;
+      --pink: #f472b6;
+      --blue: #7c96ff;
+      --gold: #fbbf24;
+      --ok: #34d399;
+      --err: #fb7185;
+      --tint: rgba(139, 92, 246, .14);
+      --tint2: rgba(139, 92, 246, .24);
+      --tint-ok: rgba(52, 211, 153, .13);
+      --tint-err: rgba(251, 113, 133, .13);
+      --grad-text: linear-gradient(96deg, #a78bfa 5%, #8ba3ff 45%, #f472b6 90%);
+      --ring: rgba(167, 139, 250, .38);
+      --amb1: rgba(124, 58, 237, .22);
+      --amb2: rgba(79, 109, 245, .16);
+      --amb3: rgba(236, 72, 153, .13);
+      --sh-card: 0 30px 80px -34px rgba(0, 0, 0, .8), 0 0 0 1px rgba(167, 139, 250, .05);
+      --sh-pop: 0 24px 60px -20px rgba(0, 0, 0, .75);
+      --chipbd: rgba(255, 255, 255, .09);
+      --foot-ink: #9a92c0;
+      --foot-line: rgba(255, 255, 255, .08);
+    }
+
+    /* ============ BASE ============ */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    html,
+    body {
+      overflow-x: clip
+    }
+
+    body {
+      font: 400 16px/1.6 var(--font-b);
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      position: relative
+    }
+
+    .bg-blobs {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background:
+        radial-gradient(680px 480px at 8% -6%, var(--amb1), transparent 65%),
+        radial-gradient(620px 460px at 96% 4%, var(--amb2), transparent 65%),
+        radial-gradient(700px 520px at 50% 112%, var(--amb3), transparent 62%)
+    }
+
+    .blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(4px);
+      z-index: -1;
+      pointer-events: none;
+      opacity: .5
+    }
+
+    .blob.b1 {
+      width: 150px;
+      height: 150px;
+      border: 2px solid var(--brand);
+      opacity: .16;
+      top: 16%;
+      left: -60px;
+      background: none;
+      filter: none
+    }
+
+    .blob.b2 {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, var(--brand), var(--pink));
+      top: 64%;
+      right: 4%;
+      opacity: .14
+    }
+
+    .blob.b3 {
+      width: 26px;
+      height: 26px;
+      border: 2px solid var(--pink);
+      background: none;
+      filter: none;
+      top: 26%;
+      right: 12%;
+      opacity: .3
+    }
+
+    .blob.b4 {
+      width: 14px;
+      height: 14px;
+      background: var(--blue);
+      bottom: 14%;
+      left: 8%;
+      opacity: .3
+    }
+
+    [hidden] {
+      display: none !important
+    }
+
+    ::selection {
+      background: rgba(124, 58, 237, .25)
+    }
+
+    svg {
+      display: block
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    button {
+      font: inherit;
+      color: inherit;
+      background: none;
+      border: 0;
+      cursor: pointer
+    }
+
+    textarea {
+      font: inherit
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--brand);
+      outline-offset: 2px;
+      border-radius: 8px
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      clip-path: inset(50%);
+      overflow: hidden;
+      white-space: nowrap
+    }
+
+    .wrap {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 22px
+    }
+
+    .ic {
+      width: 1em;
+      height: 1em;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round
+    }
+
+    /* ============ BUTTONS ============ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      white-space: nowrap;
+      font: 600 14.5px/1 var(--font-b);
+      height: 46px;
+      padding: 0 20px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      transition: transform .18s, box-shadow .18s, background .18s, border-color .18s, color .18s
+    }
+
+    .btn svg {
+      width: 17px;
+      height: 17px;
+      flex: none
+    }
+
+    .btn-lg {
+      height: 54px;
+      padding: 0 28px;
+      border-radius: 16px;
+      font-size: 15.5px
+    }
+
+    .btn-lg svg {
+      width: 19px;
+      height: 19px
+    }
+
+    .btn-sm {
+      height: 40px;
+      padding: 0 14px;
+      border-radius: 11px;
+      font-size: 13.5px
+    }
+
+    .btn-sm svg {
+      width: 15px;
+      height: 15px
+    }
+
+    .btn-primary {
+      background: var(--grad-brand);
+      color: #fff;
+      box-shadow: var(--sh-btn)
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 32px -12px rgba(124, 58, 237, .6)
+    }
+
+    .btn-primary:disabled {
+      opacity: .65;
+      cursor: wait
+    }
+
+    .btn-ghost {
+      background: var(--glass2);
+      border-color: var(--line2);
+      color: var(--ink2)
+    }
+
+    .btn-ghost:hover:not(:disabled) {
+      border-color: var(--brand);
+      color: var(--ink);
+      background: var(--tint)
+    }
+
+    .btn:disabled.ghost-off {
+      opacity: .5
+    }
+
+    .spin {
+      width: 16px;
+      height: 16px;
+      border: 2.5px solid rgba(255, 255, 255, .35);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      flex: none
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    @keyframes btnpulse {
+
+      0%,
+      100% {
+        transform: scale(1)
+      }
+
+      50% {
+        transform: scale(1.015)
+      }
+    }
+
+    .btn.busy {
+      animation: btnpulse 1s ease-in-out infinite
+    }
+
+    .btn.done {
+      background: var(--tint-ok) !important;
+      color: var(--ok) !important;
+      border-color: transparent !important;
+      box-shadow: none !important
+    }
+
+    /* ============ NAVBAR ============ */
+    .nav-shell {
+      position: sticky;
+      top: 0;
+      z-index: 70;
+      padding: 16px 22px 8px
+    }
+
+    .navbar {
+      max-width: 1140px;
+      margin: 0 auto;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 0 12px 0 18px;
+      background: var(--glass);
+      border: 1.5px solid var(--navbd);
+      border-radius: 22px;
+      backdrop-filter: blur(18px) saturate(1.6);
+      -webkit-backdrop-filter: blur(18px) saturate(1.6);
+      box-shadow: var(--navbs);
+      transition: box-shadow .25s, border-color .25s
+    }
+
+    .navbar.scrolled {
+      box-shadow: var(--sh-pop);
+      border-color: var(--line2)
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font: 700 20px/1 var(--font-d);
+      letter-spacing: -.02em;
+      margin-right: auto
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--grad-brand);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 6px 16px -6px rgba(124, 58, 237, .65);
+      flex: none
+    }
+
+    .brand-mark svg {
+      width: 17px;
+      height: 17px;
+      stroke: #fff;
+      stroke-width: 2.4;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2px
+    }
+
+    .nav-link {
+      font: 600 14px/1 var(--font-b);
+      color: var(--ink2);
+      padding: 10px 14px;
+      border-radius: 12px;
+      transition: .15s;
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center
+    }
+
+    .nav-link:hover {
+      color: var(--ink);
+      background: var(--tint)
+    }
+
+    .icon-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 13px;
+      border: 1px solid var(--line);
+      background: var(--glass2);
+      color: var(--ink2);
+      transition: .18s;
+      flex: none
+    }
+
+    .icon-btn:hover {
+      color: var(--ink);
+      border-color: var(--line2);
+      background: var(--tint)
+    }
+
+    .icon-btn svg {
+      width: 18px;
+      height: 18px
+    }
+
+    #menuBtn {
+      display: none
+    }
+
+    @media(max-width:860px) {
+      .nav-links {
+        display: none
+      }
+
+      #menuBtn {
+        display: inline-flex
+      }
+
+      .nav-shell {
+        padding: 12px 14px 6px
+      }
+
+      .navbar {
+        height: 60px;
+        border-radius: 18px
+      }
+    }
+
+    /* drawer */
+    .scrim {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      background: rgba(12, 6, 30, .5);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .25s;
+      backdrop-filter: blur(2px)
+    }
+
+    .scrim.show {
+      opacity: 1;
+      pointer-events: auto
+    }
+
+    .drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 90;
+      width: min(300px, 84vw);
+      background: var(--bg);
+      border-left: 1px solid var(--line);
+      transform: translateX(105%);
+      transition: transform .3s cubic-bezier(.3, .9, .3, 1);
+      display: flex;
+      flex-direction: column;
+      padding: 18px;
+      box-shadow: var(--sh-pop)
+    }
+
+    .drawer.open {
+      transform: none
+    }
+
+    .drawer-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px
+    }
+
+    .drawer-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1
+    }
+
+    .drawer-nav a,
+    .drawer-nav button {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-align: left;
+      font: 600 15px/1 var(--font-b);
+      color: var(--ink2);
+      padding: 14px 12px;
+      border-radius: 12px;
+      transition: .15s;
+      min-height: 48px
+    }
+
+    .drawer-nav a:hover,
+    .drawer-nav button:hover {
+      background: var(--tint);
+      color: var(--ink)
+    }
+
+    .drawer-nav svg {
+      width: 17px;
+      height: 17px;
+      color: var(--brand)
+    }
+
+    body.lock {
+      overflow: hidden
+    }
+
+    /* ============ HERO ============ */
+    .hero {
+      position: relative;
+      text-align: center;
+      padding: 40px 0 34px
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font: 700 11px/1 var(--font-b);
+      letter-spacing: .16em;
+      color: var(--brand-ink);
+      border: 1.5px solid var(--line2);
+      border-radius: 99px;
+      padding: 10px 18px;
+      background: var(--glass);
+      backdrop-filter: blur(8px)
+    }
+
+    .badge b {
+      color: var(--gold);
+      font-weight: 400;
+      font-size: 13px
+    }
+
+    .hero h1 {
+      font: 800 clamp(38px, 6.4vw, 68px)/1.06 var(--font-d);
+      letter-spacing: -.035em;
+      margin: 20px 0 0
+    }
+
+    .grad-text {
+      background: var(--grad-text);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent
+    }
+
+    .hero-sub {
+      font: 500 clamp(15px, 2vw, 18.5px)/1.6 var(--font-b);
+      color: var(--ink2);
+      max-width: 620px;
+      margin: 16px auto 0
+    }
+
+    /* ============ GLASS CARD BASE ============ */
+    .card {
+      position: relative;
+      background: var(--glass);
+      border: 1.5px solid var(--chipbd);
+      border-radius: var(--r-xl);
+      backdrop-filter: blur(16px) saturate(1.5);
+      -webkit-backdrop-filter: blur(16px) saturate(1.5);
+      box-shadow: var(--sh-card);
+      padding: 30px;
+      transition: transform .25s, box-shadow .25s, border-color .25s
+    }
+
+    .card:hover {
+      border-color: var(--line2);
+      box-shadow: var(--sh-pop), var(--sh-card)
+    }
+
+    .card-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 20px
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      flex: none;
+      border-radius: 15px;
+      background: var(--grad-brand);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 10px 22px -10px rgba(124, 58, 237, .6)
+    }
+
+    .card-icon svg {
+      width: 22px;
+      height: 22px
+    }
+
+    .card h2 {
+      font: 700 clamp(20px, 3vw, 26px)/1.2 var(--font-d);
+      letter-spacing: -.02em
+    }
+
+    .card-desc {
+      font: 400 14px/1.6 var(--font-b);
+      color: var(--ink3);
+      margin-top: 5px
+    }
+
+    section {
+      padding: 22px 0
+    }
+
+    /* ============ GENERATOR ============ */
+    .gen-label {
+      display: block;
+      font: 700 11.5px/1 var(--font-b);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-bottom: 9px
+    }
+
+    #topicInput {
+      width: 100%;
+      min-height: 120px;
+      resize: vertical;
+      border: 1.5px solid var(--line2);
+      border-radius: 18px;
+      background: var(--glass2);
+      color: var(--ink);
+      padding: 16px 18px;
+      font: 500 15.5px/1.55 var(--font-b);
+      transition: .18s
+    }
+
+    #topicInput::placeholder {
+      color: var(--ink3)
+    }
+
+    #topicInput:focus {
+      outline: 0;
+      border-color: var(--brand);
+      box-shadow: 0 0 0 4px var(--ring)
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 18px
+    }
+
+    @media(max-width:720px) {
+      .controls {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .sel {
+      position: relative;
+      display: block
+    }
+
+    .sel select {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 100%;
+      min-height: 50px;
+      font: 600 14.5px/1.3 var(--font-b);
+      color: var(--ink);
+      background: var(--glass2);
+      border: 1.5px solid var(--line2);
+      border-radius: 14px;
+      padding: 0 40px 0 14px;
+      cursor: pointer;
+      transition: .15s
+    }
+
+    .sel select:focus {
+      outline: 0;
+      border-color: var(--brand);
+      box-shadow: 0 0 0 4px var(--ring)
+    }
+
+    .sel>svg {
+      position: absolute;
+      right: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 15px;
+      height: 15px;
+      color: var(--ink3);
+      pointer-events: none
+    }
+
+    .gen-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 22px;
+      flex-wrap: wrap
+    }
+
+    .gen-actions .btn-primary {
+      flex: 1;
+      min-width: 220px
+    }
+
+    .gen-error {
+      display: none;
+      align-items: center;
+      gap: 9px;
+      margin-top: 16px;
+      font: 600 13.5px/1.5 var(--font-b);
+      color: var(--err);
+      background: var(--tint-err);
+      border-radius: 13px;
+      padding: 12px 15px
+    }
+
+    .gen-error.show {
+      display: flex;
+      animation: shake .4s
+    }
+
+    .gen-error svg {
+      width: 16px;
+      height: 16px;
+      flex: none
+    }
+
+    @keyframes shake {
+
+      0%,
+      100% {
+        transform: translateX(0)
+      }
+
+      25% {
+        transform: translateX(-6px)
+      }
+
+      55% {
+        transform: translateX(5px)
+      }
+
+      80% {
+        transform: translateX(-3px)
+      }
+    }
+
+    .gen-hint {
+      font: 400 12.5px/1.5 var(--font-b);
+      color: var(--ink3);
+      margin-top: 12px;
+      display: flex;
+      gap: 6px;
+      align-items: center
+    }
+
+    .gen-hint kbd {
+      font: 600 10.5px/1 var(--font-b);
+      color: var(--ink3);
+      border: 1px solid var(--line2);
+      border-bottom-width: 2px;
+      border-radius: 5px;
+      padding: 3px 6px;
+      background: var(--glass2)
+    }
+
+    /* ============ RESULTS ============ */
+    .results-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 20px
+    }
+
+    .results-bar .spacer {
+      flex: 1
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      max-width: 100%;
+      background: var(--glass2);
+      border: 1.5px solid var(--chipbd);
+      border-radius: 14px;
+      padding: 6px 6px 6px 15px;
+      box-shadow: 0 6px 18px -12px rgba(64, 28, 140, .4);
+      transition: .18s;
+      animation: chipIn .3s cubic-bezier(.3, .9, .35, 1) backwards
+    }
+
+    @keyframes chipIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px) scale(.95)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    .chip:hover {
+      border-color: var(--brand);
+      transform: translateY(-2px)
+    }
+
+    .chip-tag {
+      font: 600 14px/1 var(--font-b);
+      word-break: break-all;
+      background: var(--grad-text);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent
+    }
+
+    .chip-copy {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      color: var(--ink3);
+      transition: .15s;
+      flex: none
+    }
+
+    .chip-copy:hover {
+      background: var(--tint);
+      color: var(--brand)
+    }
+
+    .chip-copy svg {
+      width: 15px;
+      height: 15px
+    }
+
+    .chip.copied {
+      border-color: transparent;
+      background: var(--tint-ok)
+    }
+
+    .chip.copied .chip-copy {
+      color: var(--ok)
+    }
+
+    /* ============ STATS / QUALITY ============ */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px
+    }
+
+    @media(max-width:760px) {
+      .stats-grid {
+        grid-template-columns: 1fr 1fr
+      }
+    }
+
+    .stat {
+      background: var(--glass2);
+      border: 1.5px solid var(--chipbd);
+      border-radius: 18px;
+      padding: 18px;
+      text-align: center;
+      transition: .2s
+    }
+
+    .stat:hover {
+      transform: translateY(-3px);
+      border-color: var(--line2)
+    }
+
+    .stat b {
+      display: block;
+      font: 800 28px/1.1 var(--font-d);
+      letter-spacing: -.02em;
+      background: var(--grad-text);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-variant-numeric: tabular-nums
+    }
+
+    .stat span {
+      font: 600 12px/1.4 var(--font-b);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-top: 6px;
+      display: block
+    }
+
+    .q-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap
+    }
+
+    .q-score {
+      flex: none;
+      text-align: center;
+      min-width: 96px
+    }
+
+    .q-score b {
+      font: 800 42px/1 var(--font-d);
+      background: var(--grad-text);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-variant-numeric: tabular-nums
+    }
+
+    .q-score span {
+      font: 600 12px/1 var(--font-b);
+      color: var(--ink3);
+      display: block;
+      margin-top: 4px
+    }
+
+    .q-body {
+      flex: 1;
+      min-width: 220px
+    }
+
+    .q-bar {
+      height: 12px;
+      border-radius: 99px;
+      background: var(--tint);
+      overflow: hidden;
+      border: 1px solid var(--line)
+    }
+
+    .q-fill {
+      height: 100%;
+      width: 0;
+      border-radius: 99px;
+      background: var(--grad-brand);
+      transition: width .8s cubic-bezier(.3, .9, .3, 1)
+    }
+
+    .q-text {
+      font: 600 14px/1.5 var(--font-b);
+      color: var(--ink2);
+      margin-top: 10px
+    }
+
+    .q-note {
+      font: 400 12px/1.5 var(--font-b);
+      color: var(--ink3);
+      margin-top: 4px
+    }
+
+    /* ============ EXPORT ============ */
+    .export-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px
+    }
+
+    @media(max-width:640px) {
+      .export-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .exp-btn {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+      min-height: 66px;
+      padding: 12px 16px;
+      border-radius: 16px;
+      background: var(--glass2);
+      border: 1.5px solid var(--chipbd);
+      transition: .2s;
+      text-align: left
+    }
+
+    .exp-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      border-color: var(--brand);
+      box-shadow: var(--sh-pop)
+    }
+
+    .exp-btn:disabled {
+      opacity: .55;
+      cursor: not-allowed
+    }
+
+    .exp-ic {
+      width: 42px;
+      height: 42px;
+      flex: none;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: #fff
+    }
+
+    .exp-ic svg {
+      width: 19px;
+      height: 19px
+    }
+
+    .exp-ic.t {
+      background: linear-gradient(135deg, #7c3aed, #9333ea)
+    }
+
+    .exp-ic.c {
+      background: linear-gradient(135deg, #4f6df5, #2563eb)
+    }
+
+    .exp-ic.j {
+      background: linear-gradient(135deg, #db2777, #e11d48)
+    }
+
+    .exp-btn b {
+      display: block;
+      font: 700 15px/1.2 var(--font-b)
+    }
+
+    .exp-btn small {
+      font: 400 12px/1.4 var(--font-b);
+      color: var(--ink3)
+    }
+
+    /* ============ HISTORY ============ */
+    .hist-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .hist-item {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      background: var(--glass2);
+      border: 1.5px solid var(--chipbd);
+      border-radius: 16px;
+      padding: 14px 16px;
+      transition: .18s;
+      animation: chipIn .25s backwards
+    }
+
+    .hist-item:hover {
+      border-color: var(--line2)
+    }
+
+    .hist-ic {
+      width: 40px;
+      height: 40px;
+      flex: none;
+      border-radius: 12px;
+      background: var(--tint);
+      color: var(--brand);
+      display: grid;
+      place-items: center
+    }
+
+    .hist-ic svg {
+      width: 18px;
+      height: 18px
+    }
+
+    .hist-info {
+      flex: 1;
+      min-width: 0
+    }
+
+    .hist-topic {
+      font: 600 14px/1.35 var(--font-b);
+      word-break: break-word;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden
+    }
+
+    .hist-meta {
+      font: 500 11.5px/1.4 var(--font-m);
+      color: var(--ink3);
+      margin-top: 3px
+    }
+
+    .hist-act {
+      display: flex;
+      gap: 7px;
+      flex: none
+    }
+
+    .hist-empty {
+      text-align: center;
+      padding: 26px 10px;
+      color: var(--ink3);
+      font: 500 14px/1.6 var(--font-b)
+    }
+
+    .hist-empty svg {
+      width: 38px;
+      height: 38px;
+      margin: 0 auto 10px;
+      opacity: .5
+    }
+
+    /* ============ HOW / SEO / FAQ ============ */
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      counter-reset: step
+    }
+
+    @media(max-width:760px) {
+      .how-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .how-card {
+      background: var(--glass);
+      border: 1.5px solid var(--chipbd);
+      border-radius: var(--r-lg);
+      padding: 26px 22px;
+      backdrop-filter: blur(14px);
+      transition: .25s;
+      position: relative;
+      overflow: hidden
+    }
+
+    .how-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--line2);
+      box-shadow: var(--sh-pop)
+    }
+
+    .how-num {
+      font: 800 15px/1 var(--font-d);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--grad-brand);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      box-shadow: 0 8px 18px -8px rgba(124, 58, 237, .6)
+    }
+
+    .how-card h3 {
+      font: 700 17px/1.3 var(--font-d);
+      margin-bottom: 7px
+    }
+
+    .how-card p {
+      font: 400 14px/1.6 var(--font-b);
+      color: var(--ink2)
+    }
+
+    .seo-block {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 26px 0
+    }
+
+    .seo-block+.seo-block {
+      border-top: 1px solid var(--line)
+    }
+
+    .seo-block h2 {
+      font: 700 clamp(21px, 3vw, 28px)/1.25 var(--font-d);
+      letter-spacing: -.02em;
+      margin-bottom: 12px
+    }
+
+    .seo-block h3 {
+      font: 700 15.5px/1.4 var(--font-b);
+      margin: 18px 0 6px
+    }
+
+    .seo-block p {
+      font: 400 14.5px/1.75 var(--font-b);
+      color: var(--ink2);
+      margin-top: 10px
+    }
+
+    .seo-block ul {
+      margin: 10px 0 0 22px;
+      color: var(--ink2);
+      font: 400 14.5px/1.75 var(--font-b)
+    }
+
+    .seo-block li {
+      margin-top: 7px
+    }
+
+    .faq-list {
+      max-width: 780px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .faq-item {
+      background: var(--glass);
+      border: 1.5px solid var(--chipbd);
+      border-radius: 18px;
+      backdrop-filter: blur(12px);
+      transition: border-color .2s
+    }
+
+    .faq-item.open {
+      border-color: var(--line2)
+    }
+
+    .faq-q {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+      text-align: left;
+      font: 600 15px/1.4 var(--font-b);
+      color: var(--ink);
+      padding: 18px 20px;
+      min-height: 48px
+    }
+
+    .faq-q svg {
+      width: 17px;
+      height: 17px;
+      flex: none;
+      color: var(--brand);
+      transition: transform .3s;
+      margin-left: auto
+    }
+
+    .faq-item.open .faq-q svg {
+      transform: rotate(180deg)
+    }
+
+    .faq-a {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows .35s cubic-bezier(.3, .8, .3, 1)
+    }
+
+    .faq-item.open .faq-a {
+      grid-template-rows: 1fr
+    }
+
+    .faq-a>div {
+      overflow: hidden
+    }
+
+    .faq-a p {
+      font: 400 14px/1.7 var(--font-b);
+      color: var(--ink2);
+      padding: 0 20px 20px;
+      max-width: 640px
+    }
+
+    /* ============ FOOTER ============ */
+    footer {
+      margin-top: 40px;
+      padding: 44px 0 30px;
+      border-top: 1px solid var(--foot-line);
+      text-align: center
+    }
+
+    .f-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font: 700 20px/1 var(--font-d)
+    }
+
+    .f-tag {
+      font: 500 14px/1.5 var(--font-b);
+      color: var(--foot-ink);
+      margin-top: 10px
+    }
+
+    .f-links {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 18px
+    }
+
+    .f-links a,
+    .f-links button {
+      font: 600 13.5px/1 var(--font-b);
+      color: var(--foot-ink);
+      padding: 10px 14px;
+      border-radius: 10px;
+      transition: .15s;
+      min-height: 40px
+    }
+
+    .f-links a:hover,
+    .f-links button:hover {
+      color: var(--brand);
+      background: var(--tint)
+    }
+
+    .f-copy {
+      font: 500 13px/1.5 var(--font-b);
+      color: var(--foot-ink);
+      margin-top: 18px
+    }
+
+    /* ============ TOAST / MODAL ============ */
+    .toasts {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      z-index: 120;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      pointer-events: none
+    }
+
+    .toast {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      max-width: min(380px, calc(100vw - 44px));
+      background: var(--glass2);
+      border: 1.5px solid var(--line2);
+      border-radius: 14px;
+      padding: 13px 17px;
+      font: 600 13.5px/1.45 var(--font-b);
+      color: var(--ink);
+      box-shadow: var(--sh-pop);
+      backdrop-filter: blur(14px);
+      opacity: 0;
+      transform: translateY(14px) scale(.97);
+      transition: .3s cubic-bezier(.3, .9, .3, 1)
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: none
+    }
+
+    .toast svg {
+      width: 18px;
+      height: 18px;
+      flex: none
+    }
+
+    .toast.ok svg {
+      color: var(--ok)
+    }
+
+    .toast.info svg {
+      color: var(--brand)
+    }
+
+    .toast.err svg {
+      color: var(--err)
+    }
+
+    @media(max-width:640px) {
+      .toasts {
+        left: 22px;
+        right: 22px;
+        align-items: center
+      }
+
+      .toast {
+        width: 100%
+      }
+    }
+
+    .modal-wrap {
+      position: fixed;
+      inset: 0;
+      z-index: 115;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px
+    }
+
+    .modal-scrim {
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 5, 28, .55);
+      backdrop-filter: blur(4px)
+    }
+
+    .modal {
+      position: relative;
+      width: min(540px, 100%);
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--glass2);
+      border: 1.5px solid var(--chipbd);
+      border-radius: 22px;
+      box-shadow: var(--sh-pop);
+      backdrop-filter: blur(20px);
+      animation: mIn .28s cubic-bezier(.3, .9, .3, 1)
+    }
+
+    @keyframes mIn {
+      from {
+        opacity: 0;
+        transform: translateY(16px) scale(.97)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    .modal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .modal-head h3 {
+      font: 700 18px/1.2 var(--font-d)
+    }
+
+    .modal-body {
+      padding: 20px;
+      overflow-y: auto;
+      font: 400 14.5px/1.7 var(--font-b);
+      color: var(--ink2)
+    }
+
+    .modal-body p+p {
+      margin-top: 12px
+    }
+
+    .reveal {
+      animation: reveal .4s cubic-bezier(.25, .9, .3, 1)
+    }
+
+    @keyframes reveal {
+      from {
+        opacity: 0;
+        transform: translateY(14px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important
+      }
+
+      html {
+        scroll-behavior: auto
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-blobs" aria-hidden="true"></div>
+  <span class="blob b1" aria-hidden="true"></span><span class="blob b2" aria-hidden="true"></span>
+  <span class="blob b3" aria-hidden="true"></span><span class="blob b4" aria-hidden="true"></span>
+
+  <!-- ============ NAVBAR ============ -->
+  <div class="nav-shell">
+    <nav class="navbar" id="navbar" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Tools24 home">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24">
+            <path d="M4 9h5M6.5 6.5v5M13 5l-3 14M20 9h-5M17.5 6.5v5" opacity="0" />
+            <path d="M9 4 6.5 20M17.5 4 15 20M4 9h17M3.5 15h17" />
+          </svg></span>
+        Tools<em
+          style="font-style:normal;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent">24</em>
+      </a>
+      <div class="nav-links">
+        <a class="nav-link" href="#top">Home</a>
+        <button class="nav-link" type="button" data-toast="More YouTube tools are coming soon to Tools24.">YouTube
+          Tools</button>
+        <button class="nav-link" type="button" data-modal="about">About</button>
+        <button class="nav-link" type="button" data-modal="privacy">Privacy</button>
+        <a class="nav-link" href="mailto:hello@tools24.app">Contact</a>
+      </div>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle light or dark theme">
+        <svg class="i-moon" viewBox="0 0 24 24" class="ic">
+          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+        </svg>
+        <svg class="i-sun" viewBox="0 0 24 24" class="ic" style="display:none">
+          <circle cx="12" cy="12" r="4" />
+          <path
+            d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8" />
+        </svg>
+      </button>
+      <button class="icon-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" class="ic">
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+    </nav>
+  </div>
+  <aside class="drawer" id="drawer" aria-label="Mobile menu">
+    <div class="drawer-head">
+      <span class="brand"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24">
+            <path d="M9 4 6.5 20M17.5 4 15 20M4 9h17M3.5 15h17" />
+          </svg></span>Tools<em
+          style="font-style:normal;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent">24</em></span>
+      <button class="icon-btn" id="drawerClose" type="button" aria-label="Close menu"><svg viewBox="0 0 24 24"
+          class="ic">
+          <path d="M6 6l12 12M18 6 6 18" />
+        </svg></button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="#top"><svg viewBox="0 0 24 24" class="ic">
+          <path d="M4 11 12 4l8 7v9H4z" />
+        </svg>Home</a>
+      <button type="button" data-toast="More YouTube tools are coming soon to Tools24."><svg viewBox="0 0 24 24"
+          class="ic">
+          <path d="M9 4 6.5 20M17.5 4 15 20M4 9h17M3.5 15h17" />
+        </svg>YouTube Tools</button>
+      <button type="button" data-modal="about"><svg viewBox="0 0 24 24" class="ic">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 11v5M12 7.5v.5" />
+        </svg>About</button>
+      <button type="button" data-modal="privacy"><svg viewBox="0 0 24 24" class="ic">
+          <path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z" />
+        </svg>Privacy</button>
+      <a href="mailto:hello@tools24.app"><svg viewBox="0 0 24 24" class="ic">
+          <rect x="3" y="5" width="18" height="14" rx="3" />
+          <path d="M3.5 7.5 12 13.5l8.5-6" />
+        </svg>Contact</a>
+    </nav>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="top">
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="wrap">
+        <span class="badge"><b>✦</b> FREE YOUTUBE SEO TOOL</span>
+        <h1>YouTube <span class="grad-text">Hashtag Generator</span></h1>
+        <p class="hero-sub">Generate relevant, powerful and copy-ready YouTube hashtags for your videos in seconds.</p>
+      </div>
+    </section>
+
+    <!-- ============ GENERATOR ============ -->
+    <section id="generator" aria-labelledby="genTitle">
+      <div class="wrap">
+        <div class="card">
+          <div class="card-head">
+            <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" class="ic">
+                <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z" />
+                <path d="M19 16.5v3M17.5 18h3" />
+              </svg></span>
+            <div>
+              <h2 id="genTitle">Generate YouTube Hashtags</h2>
+              <p class="card-desc">Enter your video topic, title or keywords and generate relevant hashtags.</p>
+            </div>
+          </div>
+          <label class="gen-label" for="topicInput">Your video topic</label>
+          <textarea id="topicInput" rows="3" placeholder="Enter your YouTube video topic, title or keywords…"
+            aria-describedby="genHint"></textarea>
+          <p class="gen-error" id="genError" role="alert"><svg viewBox="0 0 24 24" class="ic">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 8v5M12 16.5v.5" />
+            </svg><span id="genErrorMsg"></span></p>
+
+          <div class="controls">
+            <div>
+              <label class="gen-label" for="countSel">Number of hashtags</label>
+              <span class="sel">
+                <select id="countSel">
+                  <option value="10">10 hashtags</option>
+                  <option value="20" selected>20 hashtags</option>
+                  <option value="30">30 hashtags</option>
+                  <option value="50">50 hashtags</option>
+                </select>
+                <svg viewBox="0 0 24 24" class="ic">
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </span>
+            </div>
+            <div>
+              <label class="gen-label" for="styleSel">Hashtag style</label>
+              <span class="sel">
+                <select id="styleSel">
+                  <option value="balanced" selected>Balanced</option>
+                  <option value="trending">Trending-style</option>
+                  <option value="niche">Niche</option>
+                  <option value="seo">SEO-focused</option>
+                  <option value="mixed">Mixed</option>
+                </select>
+                <svg viewBox="0 0 24 24" class="ic">
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </span>
+            </div>
+            <div>
+              <label class="gen-label" for="langSel">Language</label>
+              <span class="sel">
+                <select id="langSel">
+                  <option value="en" selected>English</option>
+                  <option value="hi">Hindi</option>
+                  <option value="hg">Hinglish</option>
+                </select>
+                <svg viewBox="0 0 24 24" class="ic">
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </span>
+            </div>
+          </div>
+
+          <div class="gen-actions">
+            <button class="btn btn-primary btn-lg" id="generateBtn" type="button">
+              <svg viewBox="0 0 24 24" class="ic">
+                <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z" />
+                <path d="M19 16.5v3M17.5 18h3" />
+              </svg>
+              <span id="genBtnLabel">✨ Generate Hashtags</span>
+            </button>
+            <button class="btn btn-ghost btn-lg" id="clearBtn" type="button">
+              <svg viewBox="0 0 24 24" class="ic">
+                <path d="M4 7h16M9.5 7V5h5v2M6.5 7l1 13h9l1-13M10 11v5M14 11v5" />
+              </svg>
+              Clear
+            </button>
+          </div>
+          <p class="gen-hint" id="genHint">
+            <kbd>Ctrl</kbd>+<kbd>Enter</kbd> to generate quickly · hashtags are created in your browser — nothing is
+            uploaded.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ RESULTS ============ -->
+    <section id="resultsSection" hidden aria-labelledby="resTitle">
+      <div class="wrap">
+        <div class="card" id="resultsCard">
+          <div class="card-head">
+            <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" class="ic">
+                <path d="M9 4 6.5 20M17.5 4 15 20M4 9h17M3.5 15h17" />
+              </svg></span>
+            <div style="flex:1;min-width:0">
+              <h2 id="resTitle">Generated Hashtags</h2>
+              <p class="card-desc" id="resTopicDesc"></p>
+            </div>
+          </div>
+          <div class="results-bar">
+            <button class="btn btn-primary btn-sm" id="copyAllBtn" type="button"><svg viewBox="0 0 24 24" class="ic">
+                <rect x="9" y="9" width="11" height="11" rx="2.5" />
+                <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+              </svg>Copy All</button>
+            <button class="btn btn-ghost btn-sm" id="regenBtn" type="button"><svg viewBox="0 0 24 24" class="ic">
+                <path d="M20 11a8 8 0 1 0-2.3 6.3M20 5v6h-6" />
+              </svg>Regenerate</button>
+            <span class="spacer"></span>
+            <button class="btn btn-ghost btn-sm" id="dlTxtBtn" type="button"><svg viewBox="0 0 24 24" class="ic">
+                <path d="M12 4v12m0 0 4.5-4.5M12 16l-4.5-4.5" />
+                <path d="M4 16.5v2A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5v-2" />
+              </svg>TXT</button>
+            <button class="btn btn-ghost btn-sm" id="dlCsvBtn" type="button"><svg viewBox="0 0 24 24" class="ic">
+                <path d="M12 4v12m0 0 4.5-4.5M12 16l-4.5-4.5" />
+                <path d="M4 16.5v2A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5v-2" />
+              </svg>CSV</button>
+            <button class="btn btn-ghost btn-sm" id="dlJsonBtn" type="button"><svg viewBox="0 0 24 24" class="ic">
+                <path d="M12 4v12m0 0 4.5-4.5M12 16l-4.5-4.5" />
+                <path d="M4 16.5v2A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5v-2" />
+              </svg>JSON</button>
+          </div>
+          <div class="chips" id="chipsWrap" aria-label="Generated hashtags"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STATS + QUALITY ============ -->
+    <section id="statsSection" hidden aria-label="Hashtag statistics">
+      <div class="wrap">
+        <div class="stats-grid">
+          <div class="stat"><b id="stTotal">0</b><span>Total Hashtags</span></div>
+          <div class="stat"><b id="stUnique">0</b><span>Unique Hashtags</span></div>
+          <div class="stat"><b id="stChars">0</b><span>Characters</span></div>
+          <div class="stat"><b id="stKeywords">0</b><span>Keywords Used</span></div>
+        </div>
+      </div>
+    </section>
+    <section id="qualitySection" hidden aria-labelledby="qTitle">
+      <div class="wrap">
+        <div class="card">
+          <div class="card-head">
+            <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" class="ic">
+                <path d="M12 3l2.5 5.6L20 9.4l-4 4 .9 6.1L12 16.6 7.1 19.5 8 13.4l-4-4 5.5-.8L12 3z" />
+              </svg></span>
+            <div>
+              <h2 id="qTitle">Hashtag Quality</h2>
+              <p class="card-desc">A quick heuristic check of your hashtag mix.</p>
+            </div>
+          </div>
+          <div class="q-row">
+            <div class="q-score"><b id="qScore">0</b><span>/ 100</span></div>
+            <div class="q-body">
+              <div class="q-bar" role="img" id="qBar" aria-label="Quality score progress bar">
+                <div class="q-fill" id="qFill"></div>
+              </div>
+              <p class="q-text" id="qText"></p>
+              <p class="q-note">This score reflects hashtag variety and topic relevance only — it is not official
+                YouTube ranking data.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPORT ============ -->
+    <section id="exportSection" aria-labelledby="expTitle">
+      <div class="wrap">
+        <div class="card">
+          <div class="card-head">
+            <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" class="ic">
+                <path d="M12 4v12m0 0 4.5-4.5M12 16l-4.5-4.5" />
+                <path d="M4 16.5v2A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5v-2" />
+              </svg></span>
+            <div>
+              <h2 id="expTitle">Export Your Hashtags</h2>
+              <p class="card-desc">Save your generated hashtags for later use.</p>
+            </div>
+          </div>
+          <div class="export-grid">
+            <button class="exp-btn" id="expTxt" type="button">
+              <span class="exp-ic t" aria-hidden="true"><svg viewBox="0 0 24 24" class="ic">
+                  <path d="M7 3h7l4 4v14H7z" />
+                  <path d="M14 3v4h4M10 12h5M10 16h5" />
+                </svg></span>
+              <span><b>Download TXT</b><small>Plain text list — paste anywhere</small></span>
+            </button>
+            <button class="exp-btn" id="expCsv" type="button">
+              <span class="exp-ic c" aria-hidden="true"><svg viewBox="0 0 24 24" class="ic">
+                  <rect x="4" y="4" width="16" height="16" rx="3" />
+                  <path d="M4 10h16M4 15h16M10 4v16" />
+                </svg></span>
+              <span><b>Download CSV</b><small>Spreadsheet-ready format</small></span>
+            </button>
+            <button class="exp-btn" id="expJson" type="button">
+              <span class="exp-ic j" aria-hidden="true"><svg viewBox="0 0 24 24" class="ic">
+                  <path
+                    d="M8 4c-2 0-3 1-3 3v3c0 1.4-.9 2.3-2 3 1.1.7 2 1.6 2 3v3c0 2 1 3 3 3M16 4c2 0 3 1 3 3v3c0 1.4.9 2.3 2 3-1.1.7-2 1.6-2 3v3c0 2-1 3-3 3" />
+                </svg></span>
+              <span><b>Download JSON</b><small>For developers &amp; automation</small></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HISTORY ============ -->
+    <section id="historySection" aria-labelledby="histTitle">
+      <div class="wrap">
+        <div class="card">
+          <div class="card-head">
+            <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" class="ic">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 7v5l3.5 2" />
+              </svg></span>
+            <div style="flex:1;min-width:0">
+              <h2 id="histTitle">Recent Generations</h2>
+              <p class="card-desc">Stored locally in your browser — only on this device.</p>
+            </div>
+            <button class="btn btn-ghost btn-sm" id="clearHistBtn" type="button" hidden>
+              <svg viewBox="0 0 24 24" class="ic">
+                <path d="M4 7h16M9.5 7V5h5v2M6.5 7l1 13h9l1-13" />
+              </svg>Clear History
+            </button>
+          </div>
+          <div class="hist-list" id="histList"></div>
+          <div class="hist-empty" id="histEmpty">
+            <svg viewBox="0 0 24 24" class="ic">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 7v5l3.5 2" />
+            </svg>
+            No generations yet. Your recent hashtag sets will appear here after you generate.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section aria-labelledby="howTitle">
+      <div class="wrap">
+        <div class="card" style="text-align:center">
+          <h2 id="howTitle" style="font-size:clamp(22px,3vw,28px)">How It Works</h2>
+          <p class="card-desc" style="margin-bottom:24px">Three simple steps to better YouTube hashtags.</p>
+          <div class="how-grid">
+            <div class="how-card"><span class="how-num">01</span>
+              <h3>Enter Your Topic</h3>
+              <p>Enter your YouTube video title, topic or keywords.</p>
+            </div>
+            <div class="how-card"><span class="how-num">02</span>
+              <h3>Generate</h3>
+              <p>Our hashtag generator creates relevant hashtag suggestions for your content.</p>
+            </div>
+            <div class="how-card"><span class="how-num">03</span>
+              <h3>Copy &amp; Download</h3>
+              <p>Copy your hashtags or download them as TXT, CSV or JSON.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SEO CONTENT ============ -->
+    <section aria-label="About YouTube hashtags">
+      <div class="wrap">
+        <div class="seo-block">
+          <h2>YouTube Hashtags That Actually Help Your Videos</h2>
+          <p>Hashtags help YouTube understand what your video is about and connect it with viewers browsing similar
+            topics. A good <strong>YouTube hashtag generator</strong> saves you from guessing: instead of repeating the
+            same generic tags, you get a mix of topic-specific, niche and discovery-friendly <strong>YouTube
+              hashtags</strong> built directly from your video's title and keywords.</p>
+          <p>The best results usually combine three layers — a few broad tags for reach (#YouTubeIndia, #Trending),
+            several specific tags built from your topic (#SmartphoneUnder20000), and a couple of niche community tags
+            your target audience already follows. This free <strong>YouTube hashtag tool</strong> builds all three
+            layers for you, in English, Hindi or Hinglish.</p>
+        </div>
+        <div class="seo-block">
+          <h2>How to Use Hashtags for YouTube SEO</h2>
+          <ul>
+            <li><strong>Put 3–5 hashtags in your description</strong> — the first three appear above your video title.
+            </li>
+            <li><strong>Match search intent</strong> — use the words your viewers actually type, like "under 20000" or
+              "tutorial".</li>
+            <li><strong>Stay relevant</strong> — unrelated trending hashtags can hurt watch time, which matters more
+              than any tag.</li>
+            <li><strong>Never exceed 60 hashtags</strong> — YouTube ignores every hashtag on a video that does.</li>
+            <li><strong>For Shorts</strong>, keep #Shorts plus 2–3 topic tags so the video is categorised correctly.
+            </li>
+          </ul>
+          <p>Consistency matters too: creators who reuse a small, focused set of <strong>video hashtags</strong> across
+            a series help YouTube group their episodes together — which is exactly why the export formats here make
+            saving and reusing sets easy.</p>
+        </div>
+        <div class="seo-block">
+          <h2>Built for Indian Creators</h2>
+          <p>From <strong>YouTube Shorts hashtags</strong> for a phone-review channel to Hinglish tags for daily vlogs,
+            the generator adapts to how Indian audiences actually search. Your topics never leave your browser —
+            generation, copying and downloads all happen locally, and your recent generations stay in your own device
+            storage.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section id="faq" aria-labelledby="faqTitle">
+      <div class="wrap">
+        <div class="card" style="text-align:center;margin-bottom:22px">
+          <h2 id="faqTitle" style="font-size:clamp(22px,3vw,28px)">Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item open">
+            <button class="faq-q" type="button" aria-expanded="true">What is a YouTube hashtag?<svg viewBox="0 0 24 24"
+                class="ic">
+                <path d="M6 9l6 6 6-6" />
+              </svg></button>
+            <div class="faq-a">
+              <div>
+                <p>A YouTube hashtag is a clickable label starting with # that helps viewers find related videos.
+                  Hashtags you add to your title or description become links that group your video with similar content
+                  on that topic.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button" aria-expanded="false">How many hashtags should I use on YouTube?<svg
+                viewBox="0 0 24 24" class="ic">
+                <path d="M6 9l6 6 6-6" />
+              </svg></button>
+            <div class="faq-a">
+              <div>
+                <p>YouTube recommends focusing on 3–5 highly relevant hashtags rather than stuffing dozens. Note: if a
+                  video has more than 60 hashtags, YouTube ignores every hashtag on it — so quality beats quantity.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button" aria-expanded="false">Can I use these hashtags for YouTube Shorts?<svg
+                viewBox="0 0 24 24" class="ic">
+                <path d="M6 9l6 6 6-6" />
+              </svg></button>
+            <div class="faq-a">
+              <div>
+                <p>Yes. Shorts use exactly the same hashtag system as regular videos, and including #Shorts in the title
+                  or description helps YouTube identify the video as a Short.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button" aria-expanded="false">Are these hashtags guaranteed to make my video
+              rank?<svg viewBox="0 0 24 24" class="ic">
+                <path d="M6 9l6 6 6-6" />
+              </svg></button>
+            <div class="faq-a">
+              <div>
+                <p>No tool can honestly guarantee rankings. Hashtags help categorisation and discovery, but watch time,
+                  click-through rate, thumbnails and content quality influence results far more. Use these suggestions
+                  as a starting point, not a magic formula.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button" aria-expanded="false">Can I download the generated hashtags?<svg
+                viewBox="0 0 24 24" class="ic">
+                <path d="M6 9l6 6 6-6" />
+              </svg></button>
+            <div class="faq-a">
+              <div>
+                <p>Yes — export your set as TXT, CSV or JSON. Each file is generated in your browser and saved to your
+                  device's Downloads folder, so you can reuse your best-performing sets anytime.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="wrap">
+      <span class="f-brand"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24">
+            <path d="M9 4 6.5 20M17.5 4 15 20M4 9h17M3.5 15h17" />
+          </svg></span>Tools<em
+          style="font-style:normal;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent">24</em></span>
+      <p class="f-tag">Smart online tools made simple.</p>
+      <nav class="f-links" aria-label="Footer">
+        <a href="#top">Home</a>
+        <button type="button" data-modal="about">About</button>
+        <button type="button" data-modal="privacy">Privacy</button>
+        <a href="mailto:hello@tools24.app">Contact</a>
+      </nav>
+      <p class="f-copy">© 2026 Tools24. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+
+  <div class="modal-wrap" id="modal" hidden>
+    <div class="modal-scrim" data-modal-close></div>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-head">
+        <h3 id="modalTitle"></h3>
+        <button class="icon-btn" id="modalClose" type="button" aria-label="Close dialog"><svg viewBox="0 0 24 24"
+            class="ic">
+            <path d="M6 6l12 12M18 6 6 18" />
+          </svg></button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <script>
+    'use strict';
+    /* ================================================================
+       Tools24 · YouTube Hashtag Generator
+       Real engine: input → keywords → category detection → weighted
+       pool drawing → dedupe → results. Everything runs locally.
+       ================================================================ */
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+    const esc = s => s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const wait = ms => new Promise(r => setTimeout(r, ms));
+    function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[a[i], a[j]] = [a[j], a[i]]; } return a; }
+    const ICON = {
+      check: '<svg viewBox="0 0 24 24" class="ic"><path d="M4 12.5l5 5L20 6.5"/></svg>',
+      info: '<svg viewBox="0 0 24 24" class="ic"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.5v.5"/></svg>'
+    };
+
+    /* ---------------- theme ---------------- */
+    const themeBtn = $('#themeBtn'), rootEl = document.documentElement;
+    function setTheme(t) {
+      rootEl.dataset.theme = t;
+      try { localStorage.setItem('tools24-theme', t) } catch (e) { }
+      const mc = $('meta[name="theme-color"]'); if (mc) mc.content = t === 'dark' ? '#0a0715' : '#f4f1fd';
+      $('.i-moon', themeBtn).style.display = t === 'dark' ? 'none' : 'block';
+      $('.i-sun', themeBtn).style.display = t === 'dark' ? 'block' : 'none';
+    }
+    setTheme(rootEl.dataset.theme || 'light');
+    themeBtn.addEventListener('click', () => setTheme(rootEl.dataset.theme === 'dark' ? 'light' : 'dark'));
+
+    /* ---------------- nav / drawer / modal / toast ---------------- */
+    const navbar = $('#navbar');
+    addEventListener('scroll', () => navbar.classList.toggle('scrolled', scrollY > 8), { passive: true });
+    const drawer = $('#drawer'), scrim = $('#scrim'), menuBtn = $('#menuBtn');
+    function openDrawer() { drawer.classList.add('open'); scrim.classList.add('show'); document.body.classList.add('lock'); menuBtn.setAttribute('aria-expanded', 'true'); }
+    function closeDrawer() { drawer.classList.remove('open'); scrim.classList.remove('show'); document.body.classList.remove('lock'); menuBtn.setAttribute('aria-expanded', 'false'); }
+    menuBtn.addEventListener('click', openDrawer);
+    $('#drawerClose').addEventListener('click', closeDrawer);
+    scrim.addEventListener('click', closeDrawer);
+    $$('.drawer-nav a').forEach(a => a.addEventListener('click', closeDrawer));
+
+    const MODALS = {
+      about: { t: 'About Tools24', h: '<p>Tools24 builds fast, focused online utilities for creators and everyday users — no sign-ups, no clutter. This YouTube Hashtag Generator runs entirely in your browser: your topics are analysed locally, downloads are created locally, and your history stays in your own device storage.</p><p>More YouTube, PDF and image tools are on the way.</p>' },
+      privacy: { t: 'Privacy', h: '<p><strong>Nothing you type here is uploaded anywhere.</strong> Hashtag generation happens locally in your browser with plain JavaScript.</p><p>The only data stored is your theme preference and your recent generations list — both kept in your own browser\u2019s localStorage on this device. "Clear History" removes them permanently. There are no accounts, no cookies for tracking, and no third-party analytics on this page.</p>' }
+    };
+    const modal = $('#modal');
+    function openModal(k) { const d = MODALS[k]; if (!d) return; $('#modalTitle').textContent = d.t; $('#modalBody').innerHTML = d.h; modal.hidden = false; document.body.classList.add('lock'); }
+    function closeModal() { modal.hidden = true; document.body.classList.remove('lock'); }
+    $('#modalClose').addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target.hasAttribute('data-modal-close')) closeModal(); });
+    document.addEventListener('click', e => {
+      const t = e.target.closest('[data-toast]');
+      if (t) { toast(t.dataset.toast, 'info'); closeDrawer(); }
+      const m = e.target.closest('[data-modal]');
+      if (m) { openModal(m.dataset.modal); closeDrawer(); }
+    });
+
+    const toasts = $('#toasts');
+    function toast(msg, type = 'ok') {
+      const t = document.createElement('div');
+      t.className = 'toast ' + type;
+      t.innerHTML = (type === 'ok' ? ICON.check : type === 'err' ? ICON.info : ICON.info) + '<span></span>';
+      $('span', t).textContent = msg;
+      toasts.appendChild(t);
+      requestAnimationFrame(() => t.classList.add('show'));
+      setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 400); }, 2600);
+    }
+
+    /* ---------------- FAQ ---------------- */
+    $$('.faq-item').forEach(item => {
+      $('.faq-q', item).addEventListener('click', () => {
+        const open = item.classList.contains('open');
+        $$('.faq-item.open').forEach(o => { o.classList.remove('open'); $('.faq-q', o).setAttribute('aria-expanded', 'false'); });
+        if (!open) { item.classList.add('open'); $('.faq-q', item).setAttribute('aria-expanded', 'true'); }
+      });
+    });
+
+    /* ================================================================
+       HASHTAG ENGINE — data
+       ================================================================ */
+    const STOP = new Set(('a an the in on at of for to and or with without my your his her its is are was were be being been am ' +
+      'this that these those it how what why when where who whom which under over into from by as about vs versus ' +
+      'i me you we they he she him them us do does did done doing can could should would shall will just only also ' +
+      'very too so than then but if because while during before after above below up down out off again further ' +
+      'here there all any both each few more most other some such no nor not own same have has had having of\'s ' +
+      'get got make made use used using way ways day days time video videos new best top').split(' '));
+    /* note: 'new/best/top/video' removed from STOP — they are useful in hashtags */
+    ['new', 'best', 'top', 'video', 'videos'].forEach(w => STOP.delete(w));
+
+    const CATS = [
+      {
+        tr: ['phone', 'smartphone', 'smartphones', 'mobile', 'mobiles', 'android', 'iphone', '5g', 'camera', 'tablet', 'gadget', 'gadgets', 'laptop', 'computer', 'pc', 'tech', 'technology', 'electronics', 'unboxing', 'review', 'reviews', 'spec', 'specs', 'processor', 'battery', 'display', 'watch', 'smartwatch', 'earbuds', 'headphone', 'headphones', 'मोबाइल', 'फोन', 'स्मार्टफोन', 'टेक', 'गैजेट', 'लैपटॉप'],
+        en: ['Smartphones', 'MobilePhones', 'TechReview', 'Gadgets', 'TechTips', 'AndroidPhones', 'iPhoneUsers', 'TechNews', 'Unboxing', 'TechCommunity', 'MobileTech', 'GadgetReview', 'TechIndia', 'LatestTech', 'TechUpdates', 'SmartTech', 'PhoneReview', 'BudgetPhones'],
+        hi: ['टेक्नोलॉजी', 'मोबाइलफोन', 'स्मार्टफोन', 'टेकटिप्स', 'गैजेट्स', 'मोबाइलरिव्यू', 'टेकन्यूज़', 'एंड्रॉयडफोन', 'आईफोन', 'लैपटॉपरिव्यू', 'टेकइंडिया', 'नयाफोन'],
+        hg: ['DesiTech', 'TechKeFunde', 'PhoneKaReview', 'TechBhai', 'GadgetLover', 'IndiaKaTech', 'TechSathi', 'PhoneKiBaat']
+      },
+      {
+        tr: ['food', 'recipe', 'recipes', 'cook', 'cooking', 'kitchen', 'restaurant', 'street', 'eat', 'eating', 'tasty', 'delicious', 'chef', 'baking', 'snack', 'snacks', 'biryani', 'paneer', 'chai', 'sweet', 'dessert', 'veg', 'nonveg', 'foodie', 'खाना', 'रेसिपी', 'स्वाद', 'स्ट्रीटफूड', 'मिठाई'],
+        en: ['IndianFood', 'FoodVlog', 'Recipes', 'StreetFood', 'Foodie', 'CookingAtHome', 'HomeCooking', 'FoodLovers', 'TastyFood', 'DesiRecipes', 'FoodPhotography', 'ChefLife', 'EasyRecipes', 'FoodiesOfIndia', 'StreetFoodIndia', 'QuickRecipes'],
+        hi: ['भारतीयखाना', 'स्ट्रीटफूड', 'रेसिपी', 'घरकाखाना', 'स्वादिष्ट', 'फूडी', 'चायलवर', 'मिठाई', 'फूडव्लॉग', 'झटपटरेसिपी'],
+        hg: ['DesiFood', 'SwadIndia', 'KhanaKhazana', 'Chatpata', 'DesiSwad', 'FoodieIndia', 'ZaykaDaar']
+      },
+      {
+        tr: ['fitness', 'gym', 'workout', 'yoga', 'weight', 'fat', 'muscle', 'health', 'healthy', 'diet', 'exercise', 'fit', 'bodybuilding', 'running', 'फिटनेस', 'जिम', 'योग', 'वर्कआउट', 'सेहत'],
+        en: ['FitnessMotivation', 'WorkoutAtHome', 'GymLife', 'FitnessJourney', 'HealthyLifestyle', 'WeightLossJourney', 'YogaEveryday', 'FitIndia', 'ExerciseDaily', 'StrengthTraining', 'FitnessGoals', 'HomeWorkout', 'WellnessJourney', 'ActiveLife'],
+        hi: ['फिटनेस', 'वर्कआउट', 'जिममोटिवेशन', 'हेल्दीलाइफ', 'योग', 'वजनघटाना', 'एक्सरसाइज', 'फिटइंडिया'],
+        hg: ['FitIndia', 'DesiFitness', 'GymMotivation', 'SehatKaKhazana', 'FitBhai', 'PumpItUp']
+      },
+      {
+        tr: ['travel', 'trip', 'tour', 'vlog', 'vlogs', 'journey', 'explore', 'vacation', 'holiday', 'beach', 'mountain', 'mountains', 'himalaya', 'goa', 'tourist', 'यात्रा', 'घूमना', 'ट्रैवल', 'सफर'],
+        en: ['TravelIndia', 'TravelVlog', 'Wanderlust', 'ExploreIndia', 'TravelDiaries', 'IncredibleIndia', 'RoadTrip', 'TravelGoals', 'NatureLovers', 'TravelPhotography', 'HiddenGems', 'Backpacking', 'CityEscape', 'MountainLovers'],
+        hi: ['ट्रैवलइंडिया', 'घूमना', 'यात्राव्लॉग', 'हिमालय', 'बीचलाइफ', 'इंडियाटूरिज्म', 'सफरनामा', 'घुमक्कड़'],
+        hg: ['GhumakkadIndia', 'DesiTraveller', 'SafarStories', 'IndiaGhumo', 'TravelBhai', 'WanderIndia']
+      },
+      {
+        tr: ['gaming', 'game', 'games', 'gamer', 'gameplay', 'pubg', 'bgmi', 'freefire', 'minecraft', 'fortnite', 'esports', 'console', 'ps5', 'stream', 'streaming', 'गेमिंग', 'गेम'],
+        en: ['GamingCommunity', 'Gameplay', 'GamerLife', 'MobileGaming', 'LetsPlay', 'GamingVideos', 'ProGamer', 'GamingSetup', 'ConsoleGaming', 'EsportsIndia', 'GameNight', 'GamingTips', 'NewGame', 'LiveStream'],
+        hi: ['गेमिंग', 'गेमर', 'गेमप्ले', 'मोबाइलगेमिंग', 'गेमिंगइंडिया', 'लाइवगेमिंग', 'नयागेम'],
+        hg: ['DesiGamer', 'GamingIndia', 'BGMIIndia', 'GameOnHai', 'GamerBhai', 'NoobToPro']
+      },
+      {
+        tr: ['study', 'studies', 'exam', 'exams', 'education', 'learning', 'school', 'college', 'student', 'students', 'class', 'course', 'tutorial', 'tutorials', 'learn', 'english', 'spoken', 'upsc', 'neet', 'jee', 'पढ़ाई', 'परीक्षा', 'स्टडी', 'शिक्षा'],
+        en: ['StudyTips', 'OnlineLearning', 'Education', 'ExamPreparation', 'LearnWithMe', 'StudyMotivation', 'StudentLife', 'KnowledgeIsPower', 'LearningEveryday', 'CareerGuidance', 'StudyWithMe', 'TutorialVideo', 'SkillDevelopment', 'BoardExam'],
+        hi: ['शिक्षा', 'स्टडीटिप्स', 'परीक्षा', 'ऑनलाइनक्लास', 'स्टडीमोटिवेशन', 'एग्जामटिप्स', 'पढ़ाई', 'लर्निंग'],
+        hg: ['PadhaiKaTime', 'StudyWithMe', 'TopperTips', 'Padhaku', 'ShikshaIndia', 'ExamReady']
+      },
+      {
+        tr: ['money', 'finance', 'financial', 'invest', 'investing', 'investment', 'stock', 'stocks', 'share', 'market', 'trading', 'crypto', 'bitcoin', 'business', 'income', 'salary', 'saving', 'savings', 'loan', 'tax', 'insurance', 'bank', 'पैसा', 'निवेश', 'बाजार', 'बिजनेस', 'कमाई'],
+        en: ['PersonalFinance', 'InvestingTips', 'StockMarket', 'MoneyManagement', 'FinancialFreedom', 'SavingsTips', 'MutualFunds', 'BusinessIdeas', 'PassiveIncome', 'WealthBuilding', 'FinanceIndia', 'SmartInvesting', 'CryptoNews', 'BudgetingTips'],
+        hi: ['पैसा', 'निवेश', 'शेयरबाजार', 'फाइनेंसटिप्स', 'सेविंग', 'म्यूचुअलफंड', 'पर्सनलफाइनेंस', 'बिजनेसआइडिया'],
+        hg: ['PaisaBanao', 'InvestIndia', 'MoneyMatters', 'BusinessBhai', 'KamaiTips', 'PaisaSmart']
+      },
+      {
+        tr: ['beauty', 'makeup', 'skincare', 'skin', 'hair', 'hairstyle', 'glow', 'cosmetic', 'cosmetics', 'salon', 'face', 'haircare', 'ब्यूटी', 'मेकअप', 'स्किन'],
+        en: ['BeautyTips', 'SkincareRoutine', 'MakeupTutorial', 'GlowingSkin', 'BeautyHacks', 'HairCareTips', 'NaturalBeauty', 'MakeupLover', 'SkincareProducts', 'BeautyCommunity', 'SelfCareRoutine', 'FlawlessMakeup', 'BeautyReview', 'GlamLook'],
+        hi: ['ब्यूटीटिप्स', 'स्किनकेयर', 'मेकअप', 'ग्लोइंगस्किन', 'ब्यूटीहैक्स', 'हेयरकेयर', 'नेचुरलब्यूटी'],
+        hg: ['DesiGlow', 'GlowUpIndia', 'BeautyKaRaz', 'SundarLooks', 'MakeupLoverIndia']
+      },
+      {
+        tr: ['fashion', 'style', 'outfit', 'outfits', 'clothing', 'dress', 'saree', 'shirt', 'trend', 'trends', 'trending', 'wardrobe', 'shopping', 'haul', 'फैशन', 'स्टाइल', 'कपड़े'],
+        en: ['FashionTips', 'StyleInspo', 'OutfitIdeas', 'FashionTrends', 'OOTDIndia', 'StreetStyle', 'FashionBlogger', 'StyleGuide', 'TrendyFashion', 'EthnicWear', 'FashionHaul', 'WardrobeEssentials', 'LookBook', 'StyleStatement'],
+        hi: ['फैशन', 'स्टाइल', 'ऑउटफिट', 'फैशनइंडिया', 'साड़ीलव', 'देशीफैशन', 'स्ट्रीटस्टाइल', 'ट्रेंडिंगफैशन'],
+        hg: ['DesiSwag', 'FashionKeFunde', 'OutfitGoals', 'StyleBhai', 'OOTDIndia', 'DesiTrend']
+      },
+      {
+        tr: ['car', 'cars', 'bike', 'bikes', 'scooter', 'automobile', 'driving', 'driver', 'engine', 'mileage', 'electric', 'ev', 'road', 'ride', 'कार', 'बाइक', 'गाड़ी'],
+        en: ['CarReview', 'BikeLovers', 'AutoIndia', 'CarEnthusiast', 'BikeRide', 'AutomobileNews', 'TestDrive', 'CarCommunity', 'SuperBikes', 'ElectricVehicles', 'AutoTips', 'NewLaunch', 'RideSafe', 'CarMods'],
+        hi: ['कारलवर', 'बाइकरिव्यू', 'ऑटोइंडिया', 'काररिव्यू', 'रोडट्रिप', 'नईगाड़ी'],
+        hg: ['GaadiKiBaat', 'DesiRide', 'RoadPeIndia', 'BikeLover', 'CarLoverIndia']
+      },
+      {
+        tr: ['movie', 'movies', 'film', 'films', 'bollywood', 'trailer', 'review', 'webseries', 'series', 'ott', 'netflix', 'actor', 'actress', 'cinema', 'drama', 'मूवी', 'फिल्म', 'बॉलीवुड'],
+        en: ['MovieReview', 'BollywoodNews', 'FilmTrailer', 'MovieTime', 'WebSeries', 'Entertainment', 'CinemaLovers', 'MovieNight', 'FilmIndustry', 'OTTRelease', 'CelebrityNews', 'DramaSeries', 'FilmFan', 'MustWatch'],
+        hi: ['बॉलीवुड', 'मूवीरिव्यू', 'फिल्मीखबर', 'ट्रेलर', 'मूवीटाइम', 'सिनेमा', 'वेबसीरीज़'],
+        hg: ['FilmyDuniya', 'MovieMasala', 'BollyBuzz', 'DramaLover', 'FilmyReview']
+      },
+      {
+        tr: ['music', 'song', 'songs', 'singer', 'singing', 'cover', 'concert', 'guitar', 'piano', 'beat', 'beats', 'rap', 'lyrics', 'audio', 'म्यूजिक', 'गाना', 'सॉन्ग'],
+        en: ['MusicLover', 'NewSong', 'MusicVideo', 'LiveConcert', 'SingingCover', 'BollywoodSongs', 'MusicIsLife', 'IndieArtist', 'CoverSong', 'MusicCommunity', 'LyricalVideo', 'BeatDrop', 'MelodyMakers', 'SongRelease'],
+        hi: ['म्यूजिक', 'गाना', 'सॉन्ग', 'म्यूजिकलवर', 'बॉलीवुडसॉन्ग', 'लाइवकंसर्ट', 'सिंगिंग'],
+        hg: ['GaanaSunao', 'DesiBeats', 'MusicMaza', 'SurilaSafar', 'CoverGaana']
+      },
+      {
+        tr: ['vlog', 'daily', 'routine', 'life', 'family', 'morning', 'day', 'lifestyle', 'apartment', 'room', 'home', 'house', 'व्लॉग', 'डेली', 'लाइफ'],
+        en: ['DailyVlog', 'VlogLife', 'MyDailyRoutine', 'LifeInIndia', 'FamilyVlog', 'RealLife', 'DayInMyLife', 'VloggersCommunity', 'LifestyleVlog', 'StoryTime', 'SliceOfLife', 'VlogIndia', 'MorningRoutine', 'WeekendVibes'],
+        hi: ['व्लॉग', 'डेलीव्लॉग', 'व्लॉगइंडिया', 'मायलाइफ', 'डेलीरूटीन', 'फैमिलीव्लॉग', 'लाइफस्टाइल'],
+        hg: ['MeriZindagi', 'DailyVlogIndia', 'ZindagiKePal', 'ApniKahani', 'VloggersOfIndia']
+      },
+      {
+        tr: ['comedy', 'funny', 'fun', 'humor', 'meme', 'memes', 'prank', 'joke', 'roast', 'laugh', 'troll', 'कॉमेडी', 'फनी', 'मजाक', 'हँसी'],
+        en: ['ComedyVideo', 'FunnyVideos', 'ComedySketch', 'StandUpComedy', 'MemeReview', 'ComedyLovers', 'LOL', 'FunnyMoments', 'PrankVideo', 'Humor', 'ComedyClips', 'RoastVideo', 'JokeOfTheDay', 'DesiComedy'],
+        hi: ['कॉमेडी', 'फनी', 'हँसी', 'मजाक', 'कॉमेडीवीडियो', 'फनीवीडियो', 'मीम'],
+        hg: ['HasnaManaHai', 'DesiMeme', 'FunnyBhai', 'ComedyKaDose', 'HasiKaDose']
+      }
+    ];
+    const GENERIC = {
+      en: ['YouTube', 'YouTubeIndia', 'ContentCreator', 'YouTuber', 'CreatorLife', 'SubscribeNow', 'NewVideo', 'VideoCreator', 'YouTubeChannel', 'CreatorCommunity', 'IndianYouTuber', 'WatchNow', 'CreatorEconomy', 'VideoOfTheDay', 'SupportSmallCreators', 'YouTubeFamily', 'MustWatch', 'BehindTheScenes', 'CreatorJourney', 'ChannelGrowth', 'VideoLover', 'WatchTillEnd'],
+      hi: ['यूट्यूब', 'यूट्यूबइंडिया', 'कंटेंटक्रिएटर', 'यूट्यूबर', 'न्यूवीडियो', 'वीडियो', 'सब्सक्राइबकरें', 'शॉर्ट्स', 'यूट्यूबशॉर्ट्स', 'क्रिएटरइंडिया', 'नयावीडियो', 'देखिए', 'बनेंयूट्यूबर', 'व्लॉगर', 'वीडियोक्रिएटर', 'इंडियनक्रिएटर'],
+      hg: ['DesiCreator', 'IndianYouTuber', 'ContentDesiStyle', 'CreatorIndia', 'SubscribeKaro', 'NayaVideo', 'DekhoAurSeekho', 'IndiaKaContent', 'CreatorBhai', 'VideoHoGaya', 'FullSupport', 'DesiYouTube']
+    };
+    const TREND = {
+      en: ['Viral', 'Trending', 'Explore', 'ForYou', 'TrendingNow', 'ViralVideo', 'YouTubeShorts', 'Shorts', 'ShortsVideo', 'ExplorePage', 'TopTrending', 'VideoViral', 'TrendAlert', 'DailyTrending', 'TrendingToday', 'TrendingReels', 'BreakTheInternet', 'Recommended'],
+      hi: ['ट्रेंडिंग', 'वायरल', 'ट्रेंडिंगनाउ', 'वायरलवीडियो', 'एक्सप्लोर', 'फॉरयू', 'इंडियाट्रेंडिंग', 'टॉपट्रेंड', 'आजकावायरल', 'ट्रेंडिंगटुडे', 'शॉर्ट्सवायरल'],
+      hg: ['ViralHoGaya', 'TrendingIndia', 'AajKaTrend', 'DesiTrending', 'ExploreKaro', 'ForYouIndia', 'TrendHoGaya', 'ViralReels']
+    };
+    const SEO_POOL = ['YouTubeSEO', 'SearchOptimization', 'KeywordResearch', 'VideoSEO', 'ContentStrategy', 'Discoverability', 'YouTubeGrowth', 'AudienceRetention', 'VideoMarketing', 'YouTubeAlgorithm', 'GrowYourChannel', 'SEOTips', 'ClickableTitle', 'RankHigher'];
+    const HI_EXTRA = ['प्रेरणा', 'मोटिवेशन', 'ज्ञान', 'सीखतेहैं', 'इंडियान्यूज़', 'सच्चीबात', 'देशकीबात', 'आगेबढ़ो', 'मेहनत', 'सपने', 'हौसला', 'कहानियाँ', 'अनुभव', 'जोश'];
+
+    /* ---------------- engine ---------------- */
+    const MAXLEN = 34;
+    function normalizeInput(s) { return String(s || '').toLowerCase().replace(/[^\p{L}\p{N}\s]/gu, ' ').replace(/\s+/g, ' ').trim(); }
+    function tokenize(s) { return normalizeInput(s).split(' ').filter(Boolean); }
+    function keywordsOf(tokens) {
+      const seen = new Set(), out = [];
+      for (const t of tokens) { if (t.length >= 2 && !STOP.has(t) && !seen.has(t)) { seen.add(t); out.push(t); } }
+      return out;
+    }
+    const capW = w => /^[\u0900-\u109F\u0600-\u06FF\u3040-\u30FF\u4E00-\u9FFF\uAC00-\uD7AF\u0400-\u04FF]/.test(w) ? w : w.charAt(0).toUpperCase() + w.slice(1);
+    const camel = arr => arr.map(capW).join('');
+    function sanitizeTag(t) { const c = t.replace(/[^\p{L}\p{N}]/gu, ''); return (c && c.length >= 2 && c.length <= MAXLEN) ? c : null; }
+    function detectCategory(kws) {
+      let best = null, score = 0;
+      for (const c of CATS) {
+        let s = 0; for (const k of kws) { if (c.tr.includes(k)) s += 2; else if (c.tr.some(t => t.length > 3 && k.includes(t))) s += 1; }
+        if (s > score) { score = s; best = c; }
+      }
+      return score >= 2 ? best : null;
+    }
+    function inputDerived(seq, kws, lang) {
+      const out = [], push = t => { const s = sanitizeTag(t); if (s) out.push('#' + s); };
+      kws.slice(0, 8).forEach(k => push(k));
+      const has = new Set(kws);
+      for (let i = 0; i < seq.length; i++) {
+        if (!has.has(seq[i])) continue;
+        for (let j = i + 1; j < Math.min(i + 3, seq.length); j++) {
+          if (!has.has(seq[j])) continue;
+          const mid = seq.slice(i + 1, j);
+          if (mid.every(w => STOP.has(w))) push(seq.slice(i, j + 1).join(''));
+        }
+      }
+      if (kws.length >= 2) { push(kws[0] + kws[kws.length - 1]); push(kws[0] + kws[1]); if (kws.length >= 3) push(kws[1] + kws[2]); }
+      if (lang !== 'hi') {
+        const sfx = shuffle(['Tips', 'Tricks', 'Guide', 'Review', 'Hacks', 'India', String(new Date().getFullYear()), 'Update', 'Facts', 'Daily', 'Zone', 'Lover', 'Shorts', 'World']);
+        kws.slice(0, 6).forEach(k => { sfx.slice(0, 5).forEach(s => push(k + s)); push('Best' + capW(k)); push('Top' + capW(k)); });
+      }
+      return out;
+    }
+    function catTags(cat, langSet) { return cat ? langSet.flatMap(l => cat[l] || []) : []; }
+    function poolTags(pool, langSet) { return langSet.flatMap(l => pool[l] || []); }
+    const STYLE_MIX = {
+      balanced: { input: 5, category: 3, general: 2, trending: 1 },
+      trending: { input: 2, category: 2, general: 2, trending: 5 },
+      niche: { input: 6, category: 4, general: 1, trending: 1 },
+      seo: { input: 5, category: 2, general: 1, trending: 1, seo: 3 },
+      mixed: { input: 3, category: 3, general: 2, trending: 2, seo: 1 }
+    };
+    function generateTags(topic, count, style, lang) {
+      const seq = tokenize(topic), kws = keywordsOf(seq);
+      const primary = lang === 'en' ? ['en'] : lang === 'hi' ? ['hi'] : ['hg', 'en'];
+      const overflowLang = lang === 'hi' ? ['hg', 'en'] : [];
+      const cat = detectCategory(kws);
+      const mix = { ...STYLE_MIX[style] };
+      const buckets = [];
+      const addB = (items, w) => { const u = [...new Set(items)]; if (u.length && w > 0) buckets.push({ items: shuffle(u.map(t => t.startsWith('#') ? t : '#' + t)), w }); };
+      addB(inputDerived(seq, kws, lang), mix.input);
+      addB(catTags(cat, primary), mix.category);
+      addB(poolTags(GENERIC, primary), mix.general);
+      addB(poolTags(TREND, primary), mix.trending);
+      if (primary.includes('en')) addB(SEO_POOL, mix.seo || 0);
+      if (lang === 'hi') addB(HI_EXTRA, 1);
+      /* weighted draw */
+      const used = new Set(), res = [];
+      const take = b => { while (b.i < b.items.length) { const t = b.items[b.i++]; if (!used.has(t.toLowerCase())) { used.add(t.toLowerCase()); return t; } } return null; };
+      buckets.forEach(b => b.i = 0);
+      let bag = [];
+      const refill = () => { bag = []; buckets.forEach((b, bi) => { for (let k = 0; k < b.w; k++)bag.push(bi); }); shuffle(bag); };
+      refill();
+      while (res.length < count) {
+        let progressed = false;
+        while (bag.length && res.length < count) { const t = take(buckets[bag.pop()]); if (t) { res.push(t); progressed = true; } }
+        if (res.length >= count) break;
+        if (!progressed) break;
+        refill();
+      }
+      if (res.length < count) { /* overflow: realistic language mixing */
+        const ov = shuffle([...poolTags(GENERIC, overflowLang), ...poolTags(TREND, overflowLang)]);
+        for (const t of ov) { if (res.length >= count) break; if (!used.has(t.toLowerCase())) { used.add(t.toLowerCase()); res.push(t); } }
+      }
+      return { tags: res, kws, category: cat };
+    }
+
+    /* ================================================================
+       APP STATE + UI
+       ================================================================ */
+    const state = { tags: [], topic: '', kws: [], busy: false };
+    const input = $('#topicInput'), countSel = $('#countSel'), styleSel = $('#styleSel'), langSel = $('#langSel');
+    const genBtn = $('#generateBtn'), genBtnLabel = $('#genBtnLabel'), genError = $('#genError'), genErrorMsg = $('#genErrorMsg');
+    const resultsSection = $('#resultsSection'), chipsWrap = $('#chipsWrap'), resTopicDesc = $('#resTopicDesc');
+    const statsSection = $('#statsSection'), qualitySection = $('#qualitySection');
+    const genBtnHTML = genBtn.innerHTML;
+
+    function showError(msg) { genErrorMsg.textContent = msg; genError.classList.add('show'); setTimeout(() => genError.classList.remove('show', 'shake'), 4500); }
+    function clearError() { genError.classList.remove('show'); }
+
+    function renderChips(tags) {
+      chipsWrap.innerHTML = '';
+      const frag = document.createDocumentFragment();
+      tags.forEach((t, i) => {
+        const chip = document.createElement('span');
+        chip.className = 'chip'; chip.style.animationDelay = Math.min(i * 18, 500) + 'ms';
+        const label = document.createElement('span'); label.className = 'chip-tag'; label.textContent = t;
+        const btn = document.createElement('button');
+        btn.type = 'button'; btn.className = 'chip-copy';
+        btn.setAttribute('aria-label', 'Copy ' + t);
+        btn.innerHTML = '<svg viewBox="0 0 24 24" class="ic"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg>';
+        btn.addEventListener('click', async () => {
+          const ok = await copyText(t);
+          if (ok) {
+            toast('✓ ' + t + ' copied'); chip.classList.add('copied');
+            btn.innerHTML = ICON.check;
+            setTimeout(() => {
+              chip.classList.remove('copied');
+              btn.innerHTML = '<svg viewBox="0 0 24 24" class="ic"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg>';
+            }, 1300);
+          }
+          else toast('Unable to copy automatically. Please select and copy the hashtags manually.', 'err');
+        });
+        chip.append(label, btn); frag.appendChild(chip);
+      });
+      chipsWrap.appendChild(frag);
+    }
+    function computeQuality(tags, kws) {
+      const n = tags.length; if (!n) return { score: 0, text: '' };
+      const kwLow = kws.map(k => k.toLowerCase());
+      const rel = tags.filter(t => kwLow.some(k => t.toLowerCase().includes(k))).length / n;
+      const variety = Math.min(4, 1 + (kws.length >= 2 ? 1 : 0) + (kws.length >= 4 ? 1 : 0) + (n >= 15 ? 1 : 0)) / 4;
+      const score = Math.round(clampN(rel * 45 + variety * 25 + Math.min(n / 20, 1) * 30, 0, 100));
+      let text;
+      if (score >= 85) text = 'Excellent hashtag mix — relevant and well varied.';
+      else if (score >= 70) text = 'Good hashtag mix.';
+      else if (score >= 50) text = 'Decent mix — add a few more specific keywords for better results.';
+      else text = 'Add more specific keywords to your topic for stronger suggestions.';
+      return { score, text };
+    }
+    const clampN = (v, a, b) => Math.min(b, Math.max(a, v));
+    function updatePanels(tags, kws) {
+      const n = tags.length;
+      $('#stTotal').textContent = n;
+      $('#stUnique').textContent = new Set(tags.map(t => t.toLowerCase())).size;
+      $('#stChars').textContent = tags.join('').length;
+      $('#stKeywords').textContent = kws.length;
+      const q = computeQuality(tags, kws);
+      $('#qScore').textContent = q.score;
+      $('#qText').textContent = q.text;
+      requestAnimationFrame(() => { $('#qFill').style.width = q.score + '%'; });
+      $('#qBar').setAttribute('aria-label', 'Quality score ' + q.score + ' out of 100');
+    }
+    function showResults(tags, topic, kws) {
+      state.tags = tags; state.topic = topic; state.kws = kws;
+      resTopicDesc.textContent = 'For: “' + topic + '” · ' + tags.length + ' hashtags';
+      renderChips(tags);
+      resultsSection.hidden = false;
+      statsSection.hidden = false; qualitySection.hidden = false;
+      resultsSection.classList.remove('reveal'); void resultsSection.offsetWidth;
+      resultsSection.classList.add('reveal'); statsSection.classList.add('reveal'); qualitySection.classList.add('reveal');
+      updatePanels(tags, kws);
+      if (innerWidth < 860) setTimeout(() => resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' }), 120);
+    }
+
+    /* ---------------- generate flow ---------------- */
+    async function doGenerate() {
+      if (state.busy) return;
+      clearError();
+      const raw = input.value.trim();
+      if (!raw) { showError('Please enter a video topic, title or keyword first.'); input.focus(); return; }
+      const kws = keywordsOf(tokenize(raw));
+      if (normalizeInput(raw).length < 3 || !kws.length) { showError('Please enter a little more information for better hashtag suggestions.'); return; }
+      state.busy = true;
+      genBtn.disabled = true; genBtn.classList.add('busy');
+      genBtn.innerHTML = '<span class="spin"></span><span>Generating hashtags…</span>';
+      await wait(480); /* short professional pause; generation itself is instant */
+      const count = +countSel.value, style = styleSel.value, lang = langSel.value;
+      const { tags, kws: kw2 } = generateTags(raw, count, style, lang);
+      showResults(tags, raw, kw2);
+      addHistory({ t: raw, g: tags, n: tags.length, ts: Date.now(), lang, style });
+      state.busy = false;
+      genBtn.disabled = false; genBtn.classList.remove('busy');
+      genBtn.innerHTML = genBtnHTML;
+    }
+    genBtn.addEventListener('click', doGenerate);
+    input.addEventListener('keydown', e => { if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') { e.preventDefault(); doGenerate(); } });
+    input.addEventListener('input', clearError);
+
+    /* regenerate */
+    $('#regenBtn').addEventListener('click', () => {
+      if (state.busy) return;
+      const raw = input.value.trim() || state.topic;
+      if (!raw) { showError('Please enter a video topic, title or keyword first.'); return; }
+      const count = +countSel.value, style = styleSel.value, lang = langSel.value;
+      const { tags, kws } = generateTags(raw, count, style, lang);
+      showResults(tags, raw, kws);
+      toast('New hashtag set generated');
+    });
+
+    /* ---------------- copy ---------------- */
+    async function copyText(text) {
+      try { await navigator.clipboard.writeText(text); return true; }
+      catch (e) {
+        try {
+          const ta = document.createElement('textarea');
+          ta.value = text; ta.setAttribute('readonly', '');
+          ta.style.cssText = 'position:fixed;top:-999px;left:-999px;opacity:0';
+          document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, text.length);
+          const ok = document.execCommand('copy'); ta.remove(); return ok;
+        } catch (e2) { return false; }
+      }
+    }
+    function flashBtn(btn, html, ms = 1700) {
+      if (btn.dataset.busy) return; btn.dataset.busy = '1';
+      const orig = btn.innerHTML;
+      btn.innerHTML = html; btn.classList.add('done');
+      setTimeout(() => { btn.innerHTML = orig; btn.classList.remove('done'); delete btn.dataset.busy; }, ms);
+    }
+    $('#copyAllBtn').addEventListener('click', async () => {
+      if (!state.tags.length) { toast('Generate hashtags first.', 'err'); return; }
+      const ok = await copyText(state.tags.join('\n'));
+      if (ok) { toast('✓ All hashtags copied!'); flashBtn($('#copyAllBtn'), ICON.check + '<span>Copied!</span>'); }
+      else toast('Unable to copy automatically. Please select and copy the hashtags manually.', 'err');
+    });
+
+    /* ---------------- downloads ---------------- */
+    function requireTags() {
+      if (!state.tags.length) { toast('Generate hashtags first.', 'err'); return false; }
+      return true;
+    }
+    function buildTXT(tags) {
+      return 'YouTube Hashtags\n================\n\n' + tags.join('\n') + '\n';
+    }
+    function csvEsc(v) { return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }
+    function buildCSV(tags) { return 'Hashtag\n' + tags.map(csvEsc).join('\n') + '\n'; }
+    function buildJSON(tags, topic, style, lang) {
+      return JSON.stringify({
+        tool: 'YouTube Hashtag Generator', topic: topic, style: style, language: lang,
+        generatedAt: new Date().toISOString(), count: tags.length, hashtags: tags
+      }, null, 2) + '\n';
+    }
+    function triggerDownload(filename, content, mime) {
+      if (typeof content !== 'string' || content.trim().length === 0) { toast('Nothing to download — content is empty.', 'err'); return; }
+      try {
+        const blob = new Blob([content], { type: mime + ';charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = filename; a.rel = 'noopener';
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 4000);
+        toast('✓ ' + filename + ' downloaded');
+      } catch (e) {
+        toast('Download failed — please try again.', 'err');
+        console.error('[download]', e);
+      }
+    }
+    function dlTxt() {
+      if (!requireTags()) return;
+      triggerDownload('youtube-hashtags.txt', buildTXT(state.tags), 'text/plain');
+    }
+    function dlCsv() {
+      if (!requireTags()) return;
+      triggerDownload('youtube-hashtags.csv', buildCSV(state.tags), 'text/csv');
+    }
+    function dlJson() {
+      if (!requireTags()) return;
+      triggerDownload('youtube-hashtags.json',
+        buildJSON(state.tags, state.topic, styleSel.value, langSel.value), 'application/json');
+    }
+    [['dlTxtBtn', dlTxt], ['dlCsvBtn', dlCsv], ['dlJsonBtn', dlJson],
+    ['expTxt', dlTxt], ['expCsv', dlCsv], ['expJson', dlJson]].forEach(([id, fn]) => {
+      $('#' + id).addEventListener('click', fn);
+    });
+
+    /* ---------------- history ---------------- */
+    const HKEY = 'tools24-hashtag-history';
+    function loadHistory() { try { const v = JSON.parse(localStorage.getItem(HKEY)); return Array.isArray(v) ? v.slice(0, 12) : []; } catch (e) { return []; } }
+    function saveHistory(h) { try { localStorage.setItem(HKEY, JSON.stringify(h.slice(0, 12))); } catch (e) { } }
+    function addHistory(entry) {
+      const h = loadHistory().filter(x => !(x.t === entry.t && x.n === entry.n));
+      h.unshift(entry); saveHistory(h); renderHistory();
+    }
+    function renderHistory() {
+      const h = loadHistory(), list = $('#histList');
+      $('#histEmpty').hidden = h.length > 0;
+      $('#clearHistBtn').hidden = h.length === 0;
+      list.innerHTML = '';
+      h.forEach((it, idx) => {
+        const row = document.createElement('div'); row.className = 'hist-item';
+        const d = new Date(it.ts);
+        const when = d.toLocaleDateString(undefined, { day: 'numeric', month: 'short' }) + ' · ' + d.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
+        row.innerHTML = '<span class="hist-ic" aria-hidden="true"><svg viewBox="0 0 24 24" class="ic"><path d="M9 4 6.5 20M17.5 4 15 20M4 9h17M3.5 15h17"/></svg></span>' +
+          '<span class="hist-info"><span class="hist-topic"></span><span class="hist-meta"></span></span>';
+        $('.hist-topic', row).textContent = it.t;
+        $('.hist-meta', row).textContent = when + ' · ' + it.n + ' hashtags · ' + it.style;
+        const acts = document.createElement('span'); acts.className = 'hist-act';
+        const use = document.createElement('button');
+        use.type = 'button'; use.className = 'btn btn-ghost btn-sm';
+        use.setAttribute('aria-label', 'Use hashtags for: ' + it.t);
+        use.innerHTML = '<svg viewBox="0 0 24 24" class="ic"><path d="M4 11 12 4l8 7v9H4z"/></svg>Use';
+        use.addEventListener('click', () => {
+          input.value = it.t; countSel.value = String(it.n >= 30 ? 50 : it.n > 20 ? 30 : it.n >= 20 ? 20 : it.n >= 10 ? 10 : 20);
+          styleSel.value = it.style || 'balanced'; langSel.value = it.lang || 'en';
+          showResults(it.g, it.t, keywordsOf(tokenize(it.t)));
+          toast('Hashtags restored');
+          resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+        const del = document.createElement('button');
+        del.type = 'button'; del.className = 'btn btn-ghost btn-sm';
+        del.setAttribute('aria-label', 'Delete history entry: ' + it.t);
+        del.innerHTML = '<svg viewBox="0 0 24 24" class="ic"><path d="M4 7h16M9.5 7V5h5v2M6.5 7l1 13h9l1-13"/></svg>';
+        del.addEventListener('click', () => {
+          const h2 = loadHistory(); h2.splice(idx, 1); saveHistory(h2); renderHistory();
+          toast('Removed from history', 'info');
+        });
+        acts.append(use, del); row.appendChild(acts);
+        list.appendChild(row);
+      });
+    }
+    $('#clearHistBtn').addEventListener('click', () => {
+      saveHistory([]); renderHistory();
+      toast('History cleared', 'info');
+    });
+
+    /* ---------------- reset ---------------- */
+    $('#clearBtn').addEventListener('click', () => {
+      input.value = '';
+      countSel.value = '20'; styleSel.value = 'balanced'; langSel.value = 'en';
+      state.tags = []; state.topic = ''; state.kws = [];
+      chipsWrap.innerHTML = '';
+      resultsSection.hidden = true; statsSection.hidden = true; qualitySection.hidden = true;
+      $('#qFill').style.width = '0';
+      clearError();
+      input.focus();
+      toast('Cleared — history is kept until you clear it in History.', 'info');
+    });
+
+    /* ---------------- global keys ---------------- */
+    addEventListener('keydown', e => {
+      if (e.key === 'Escape') { closeDrawer(); if (!modal.hidden) closeModal(); }
+    });
+    addEventListener('resize', () => { if (innerWidth > 860) closeDrawer(); }, { passive: true });
+
+    /* init */
+    renderHistory();
+  </script>
+</body>
+
+</html>

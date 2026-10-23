@@ -1,0 +1,1873 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Paper Generator | Tools24 Tools24</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Times New Roman', 'Georgia', 'serif'],
+                        arial: ['Arial', 'sans-serif'],
+                        georgia: ['Georgia', 'serif'],
+                        roboto: ['Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- html2pdf.js for clean PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- html2canvas for PNG export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- SheetJS / docx libraries or custom export handlers -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <style>
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+
+            #printable-paper-container,
+            #printable-paper-container * {
+                visibility: visible;
+            }
+
+            #printable-paper-container {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                background: white !important;
+                box-shadow: none !important;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(51, 65, 85, 0.8);
+        }
+
+        .a4-page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 15mm;
+            margin: 0 auto;
+            background: white;
+            color: #1e293b;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 768px) {
+            .a4-page {
+                width: 100% !important;
+                min-height: auto !important;
+                padding: 10px !important;
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+
+        .dark ::-webkit-scrollbar-thumb {
+            background: #475569;
+        }
+    </style>
+</head>
+
+<body
+    class="h-full bg-gradient-to-br from-slate-50 via-purple-50/30 to-blue-50/30 dark:from-slate-950 dark:via-purple-950/20 dark:to-slate-900 text-slate-800 dark:text-slate-100 font-sans antialiased transition-colors duration-300 flex flex-col min-h-screen">
+
+    <header
+        class="sticky top-0 z-50 glass-card border-b border-slate-200/80 dark:border-slate-800/80 px-4 lg:px-8 py-3 flex items-center justify-between shadow-sm">
+        <div class="flex items-center space-x-3">
+            <a href="#" class="flex items-center space-x-2 group">
+                <div
+                    class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 via-indigo-600 to-pink-500 flex items-center justify-center text-white font-bold text-xl shadow-md group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-file-lines"></i>
+                </div>
+                <div>
+                    <span
+                        class="text-xl font-extrabold bg-gradient-to-r from-purple-600 via-indigo-600 to-pink-600 bg-clip-text text-transparent">Tools24</span>
+                    <span
+                        class="text-xs block text-slate-500 dark:text-slate-400 font-medium tracking-wider uppercase">AGITools24
+                        Suite</span>
+                </div>
+            </a>
+        </div>
+        <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+            <a href="#" class="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Home</a>
+            <a href="#how-it-works" class="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">How It
+                Works</a>
+            <a href="#faq" class="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">FAQ</a>
+            <a href="#about" class="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">About</a>
+            <a href="#contact" class="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Contact</a>
+        </nav>
+        <div class="flex items-center space-x-3">
+            <button id="theme-toggle"
+                class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+                title="Toggle Light/Dark Mode">
+                <i class="fa-solid fa-moon dark:hidden"></i>
+                <i class="fa-solid fa-sun hidden dark:inline"></i>
+            </button>
+            <button id="mobile-menu-btn"
+                class="md:hidden p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Modal -->
+    <div id="mobile-menu" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex-col justify-end md:hidden">
+        <div class="glass-card p-6 rounded-t-3xl space-y-4 shadow-2xl">
+            <div class="flex justify-between items-center pb-2 border-b border-slate-200 dark:border-slate-700">
+                <span class="font-bold text-lg">Menu</span>
+                <button id="mobile-menu-close" class="p-2 text-slate-500 hover:text-slate-800 dark:hover:text-white"><i
+                        class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+            <div class="flex flex-col space-y-3 font-medium">
+                <a href="#" class="p-2 rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/30">Home</a>
+                <a href="#how-it-works" class="p-2 rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/30">How It
+                    Works</a>
+                <a href="#faq" class="p-2 rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/30">FAQ</a>
+                <a href="#about" class="p-2 rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/30">About</a>
+                <a href="#contact" class="p-2 rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/30">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <section class="px-4 py-8 max-w-7xl mx-auto w-full text-center">
+        <div
+            class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 text-xs font-semibold mb-4 border border-purple-200 dark:border-purple-800">
+            <i class="fa-solid fa-bolt text-amber-500"></i>
+            <span>Professional Academic & Exam Tool</span>
+        </div>
+        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-3">
+            Question Paper <span
+                class="bg-gradient-to-r from-purple-600 via-indigo-600 to-pink-600 bg-clip-text text-transparent">Generator</span>
+        </h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-sm md:text-base mb-6">
+            Create professional exam papers in minutes. Add questions, organize sections, calculate marks automatically,
+            and download print-ready PDFs.
+        </p>
+        <div
+            class="flex flex-wrap justify-center gap-2 md:gap-4 text-xs md:text-sm font-medium text-slate-600 dark:text-slate-300">
+            <span
+                class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 shadow-sm border border-slate-200 dark:border-slate-700">
+                <i class="fa-solid fa-check text-emerald-500"></i><span>Multiple Question Types</span>
+            </span>
+            <span
+                class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 shadow-sm border border-slate-200 dark:border-slate-700">
+                <i class="fa-solid fa-check text-emerald-500"></i><span>Automatic Marks</span>
+            </span>
+            <span
+                class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 shadow-sm border border-slate-200 dark:border-slate-700">
+                <i class="fa-solid fa-check text-emerald-500"></i><span>Live Preview</span>
+            </span>
+            <span
+                class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 shadow-sm border border-slate-200 dark:border-slate-700">
+                <i class="fa-solid fa-check text-emerald-500"></i><span>PDF Download</span>
+            </span>
+        </div>
+    </section>
+
+    <!-- Main Workspace -->
+    <main class="flex-grow max-w-7xl mx-auto w-full px-4 pb-16 grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+        <div class="lg:col-span-6 space-y-6">
+
+            <!-- Quick Actions & Draft Controls -->
+            <div class="glass-card p-4 rounded-2xl shadow-sm flex flex-wrap items-center justify-between gap-3">
+                <div class="flex items-center space-x-2">
+                    <button id="load-sample-btn"
+                        class="px-3 py-2 rounded-xl bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 text-xs font-semibold hover:bg-purple-200 dark:hover:bg-purple-900/60 transition-colors">
+                        <i class="fa-solid fa-flask mr-1"></i> Load Sample Science Questions
+                    </button>
+                    <button id="save-draft-btn"
+                        class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                        <i class="fa-solid fa-floppy-disk mr-1"></i> Save Draft
+                    </button>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button id="duplicate-paper-btn"
+                        class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+                        title="Duplicate Paper / Set">
+                        <i class="fa-solid fa-copy mr-1"></i> Duplicate
+                    </button>
+                    <button id="reset-paper-btn"
+                        class="px-3 py-2 rounded-xl bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 text-xs font-semibold hover:bg-rose-100 dark:hover:bg-rose-900/60 transition-colors">
+                        <i class="fa-solid fa-trash-can mr-1"></i> Clear All
+                    </button>
+                </div>
+            </div>
+
+            <!-- Paper Details Card -->
+            <div class="glass-card p-6 rounded-3xl shadow-sm space-y-4">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-700">
+                    <h2 class="text-lg font-bold flex items-center space-x-2">
+                        <i class="fa-solid fa-id-card text-purple-600"></i>
+                        <span>Paper Details</span>
+                    </h2>
+                    <span id="auto-save-status" class="text-xs text-emerald-600 dark:text-emerald-400 font-medium">Saved
+                        just now</span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Institution /
+                            School / College</label>
+                        <input type="text" id="p-institution" value="Delhi Public International School"
+                            class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">University /
+                            Board</label>
+                        <input type="text" id="p-university" value="Central Board of Secondary Education"
+                            class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div>
+                        <label
+                            class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Department</label>
+                        <input type="text" id="p-department" value="Department of Science"
+                            class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Exam
+                            Name</label>
+                        <input type="text" id="p-examname" value="Annual Examination 2026"
+                            class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Exam
+                            Type</label>
+                        <select id="p-examtype"
+                            class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <option value="Unit Test">Unit Test</option>
+                            <option value="Class Test">Class Test</option>
+                            <option value="Monthly Test">Monthly Test</option>
+                            <option value="Half Yearly">Half Yearly</option>
+                            <option value="Pre Board">Pre Board</option>
+                            <option value="Board Exam" selected>Board Exam</option>
+                            <option value="Mid Term">Mid Term</option>
+                            <option value="Final Exam">Final Exam</option>
+                            <option value="Semester Exam">Semester Exam</option>
+                            <option value="Mock Test">Mock Test</option>
+                            <option value="Practice Test">Practice Test</option>
+                            <option value="Competitive Exam">Competitive Exam</option>
+                            <option value="Custom">Custom</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Class /
+                            Course</label>
+                        <input type="text" id="p-class" value="Class X"
+                            class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div>
+                        <label
+                            class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Subject</label>
+                        <input type="text" id="p-subject" value="Science (Physics, Chemistry & Biology)"
+                            class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Subject
+                            Code</label>
+                        <input type="text" id="p-subjectcode" value="SCI-086"
+                            class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Semester /
+                            Term</label>
+                        <input type="text" id="p-semester" value="Term II"
+                            class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Academic
+                            Session</label>
+                        <input type="text" id="p-session" value="2025-2026"
+                            class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Exam
+                            Date</label>
+                        <input type="date" id="p-date" value="2026-03-25"
+                            class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Time
+                            Allowed</label>
+                        <input type="text" id="p-time" value="3 Hours"
+                            class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Maximum
+                            Marks</label>
+                        <input type="number" id="p-maxmarks" value="80"
+                            class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div>
+                        <label
+                            class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Language</label>
+                        <select id="p-language"
+                            class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <option value="English" selected>English</option>
+                            <option value="Hindi">Hindi (हिंदी)</option>
+                            <option value="Bilingual">English + Hindi (Bilingual)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Set</label>
+                        <select id="p-set"
+                            class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <option value="Set A" selected>Set A</option>
+                            <option value="Set B">Set B</option>
+                            <option value="Set C">Set C</option>
+                            <option value="Set D">Set D</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Upload
+                            Logo</label>
+                        <input type="file" id="p-logo-file" accept="image/*"
+                            class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-purple-50 file:text-purple-700 dark:file:bg-purple-900/50 dark:file:text-purple-300 hover:file:bg-purple-100 cursor-pointer">
+                    </div>
+                </div>
+
+                <!-- Advanced Styling & Layout Settings accordion / panel -->
+                <div class="pt-3 border-t border-slate-200 dark:border-slate-700">
+                    <details class="group">
+                        <summary
+                            class="cursor-pointer text-xs font-bold text-purple-600 dark:text-purple-400 flex items-center justify-between">
+                            <span><i class="fa-solid fa-paintbrush mr-1"></i> Paper Design, Template & Watermark
+                                Settings</span>
+                            <i class="fa-solid fa-chevron-down group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                            <div>
+                                <label
+                                    class="block font-medium text-slate-600 dark:text-slate-400 mb-1">Template</label>
+                                <select id="p-template"
+                                    class="w-full px-2.5 py-1.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                                    <option value="Classic Academic" selected>Classic Academic</option>
+                                    <option value="Modern Academic">Modern Academic</option>
+                                    <option value="Minimal">Minimal</option>
+                                    <option value="School Exam">School Exam</option>
+                                    <option value="University">University</option>
+                                    <option value="Engineering">Engineering</option>
+                                    <option value="Coaching">Coaching</option>
+                                    <option value="Formal">Formal</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block font-medium text-slate-600 dark:text-slate-400 mb-1">Color
+                                    Accent</label>
+                                <select id="p-accent"
+                                    class="w-full px-2.5 py-1.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                                    <option value="purple" selected>Purple</option>
+                                    <option value="blue">Blue</option>
+                                    <option value="green">Green</option>
+                                    <option value="navy">Navy</option>
+                                    <option value="maroon">Maroon</option>
+                                    <option value="black">Black</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block font-medium text-slate-600 dark:text-slate-400 mb-1">Font
+                                    Family</label>
+                                <select id="p-font"
+                                    class="w-full px-2.5 py-1.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                                    <option value="Times New Roman" selected>Times New Roman</option>
+                                    <option value="Arial">Arial</option>
+                                    <option value="Georgia">Georgia</option>
+                                    <option value="Roboto">Roboto</option>
+                                    <option value="Inter">Inter</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label
+                                    class="block font-medium text-slate-600 dark:text-slate-400 mb-1">Watermark</label>
+                                <select id="p-watermark"
+                                    class="w-full px-2.5 py-1.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                                    <option value="" selected>None</option>
+                                    <option value="DRAFT">DRAFT</option>
+                                    <option value="CONFIDENTIAL">CONFIDENTIAL</option>
+                                    <option value="SAMPLE">SAMPLE</option>
+                                </select>
+                            </div>
+                            <div class="sm:col-span-2 flex items-center space-x-4 pt-1">
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="checkbox" id="p-shuffle-q"
+                                        class="rounded text-purple-600 focus:ring-purple-500">
+                                    <span>Shuffle Questions</span>
+                                </label>
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="checkbox" id="p-shuffle-opt"
+                                        class="rounded text-purple-600 focus:ring-purple-500" checked>
+                                    <span>Shuffle MCQ Options</span>
+                                </label>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+            </div>
+
+            <!-- Marks Validation Summary Card -->
+            <div id="marks-validation-card"
+                class="glass-card p-4 rounded-2xl shadow-sm border-l-4 border-emerald-500 flex items-center justify-between">
+                <div>
+                    <h3 class="font-bold text-sm flex items-center space-x-1.5">
+                        <span id="marks-status-icon"><i class="fa-solid fa-circle-check text-emerald-500"></i></span>
+                        <span id="marks-status-title">Marks Complete</span>
+                    </h3>
+                    <p id="marks-status-desc" class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Total questions
+                        marks match maximum marks (80 / 80).</p>
+                </div>
+                <button id="fix-marks-btn"
+                    class="hidden px-3 py-1.5 bg-amber-500 text-white rounded-xl text-xs font-semibold hover:bg-amber-600 transition-colors">
+                    Fix / Adjust
+                </button>
+            </div>
+
+            <!-- Questions Builder Header & Controls -->
+            <div class="glass-card p-6 rounded-3xl shadow-sm space-y-4">
+                <div
+                    class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-200 dark:border-slate-700">
+                    <div>
+                        <h2 class="text-lg font-bold flex items-center space-x-2">
+                            <i class="fa-solid fa-list-check text-purple-600"></i>
+                            <span>Questions & Sections</span>
+                        </h2>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Add questions across 13 verified question
+                            types.</p>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button id="open-add-q-modal"
+                            class="px-3.5 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold shadow-md shadow-purple-500/20 transition-all flex items-center space-x-1.5">
+                            <i class="fa-solid fa-plus"></i><span>Add Question</span>
+                        </button>
+                        <button id="add-section-btn"
+                            class="px-3.5 py-2 rounded-xl bg-slate-800 dark:bg-slate-700 hover:bg-slate-900 text-white text-xs font-semibold transition-all flex items-center space-x-1.5">
+                            <i class="fa-solid fa-folder-plus"></i><span>Add Section</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quick Question Adder Bar -->
+                <div class="p-3 rounded-2xl bg-slate-100 dark:bg-slate-800/60 flex items-center space-x-2">
+                    <input type="text" id="quick-q-text" placeholder="Quick add question text..."
+                        class="flex-grow px-3 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    <input type="number" id="quick-q-marks" value="1" min="1" max="50"
+                        class="w-16 px-2 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-center focus:outline-none focus:ring-2 focus:ring-purple-500"
+                        title="Marks">
+                    <button id="quick-add-btn"
+                        class="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-xl text-xs font-semibold transition-colors">
+                        Add
+                    </button>
+                </div>
+
+                <!-- Search & Difficulty Filter -->
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                    <div class="relative flex-grow">
+                        <i class="fa-solid fa-search absolute left-3 top-2.5 text-slate-400 text-xs"></i>
+                        <input type="text" id="search-questions-input"
+                            placeholder="Search questions by text, topic, type..."
+                            class="w-full pl-8 pr-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div class="flex items-center space-x-1 text-xs font-medium">
+                        <button class="filter-diff-btn px-2.5 py-1 rounded-lg bg-purple-600 text-white"
+                            data-diff="All">All</button>
+                        <button
+                            class="filter-diff-btn px-2.5 py-1 rounded-lg bg-slate-200 dark:bg-slate-700 hover:bg-slate-300"
+                            data-diff="Easy">Easy</button>
+                        <button
+                            class="filter-diff-btn px-2.5 py-1 rounded-lg bg-slate-200 dark:bg-slate-700 hover:bg-slate-300"
+                            data-diff="Medium">Medium</button>
+                        <button
+                            class="filter-diff-btn px-2.5 py-1 rounded-lg bg-slate-200 dark:bg-slate-700 hover:bg-slate-300"
+                            data-diff="Hard">Hard</button>
+                    </div>
+                </div>
+
+                <!-- Question List Container -->
+                <div id="questions-list-container" class="space-y-4 max-h-[600px] overflow-y-auto pr-1">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </div>
+
+            <!-- General Instructions Card -->
+            <div class="glass-card p-6 rounded-3xl shadow-sm space-y-4">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-700">
+                    <h2 class="text-lg font-bold flex items-center space-x-2">
+                        <i class="fa-solid fa-circle-info text-purple-600"></i>
+                        <span>General Instructions</span>
+                    </h2>
+                    <button id="add-instruction-btn"
+                        class="px-3 py-1.5 bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 rounded-xl text-xs font-semibold hover:bg-purple-200 transition-colors">
+                        <i class="fa-solid fa-plus mr-1"></i> Add Instruction
+                    </button>
+                </div>
+                <div id="instructions-list" class="space-y-2">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+
+        </div>
+
+        <div class="lg:col-span-6 space-y-6">
+
+            <!-- Preview Controls Bar -->
+            <div
+                class="glass-card p-4 rounded-2xl shadow-sm flex flex-wrap items-center justify-between gap-3 sticky top-20 z-40">
+                <div class="flex items-center space-x-2">
+                    <button id="tab-preview-btn"
+                        class="px-4 py-2 rounded-xl bg-purple-600 text-white text-xs font-semibold shadow-sm transition-all">
+                        <i class="fa-solid fa-eye mr-1.5"></i> Live Paper Preview
+                    </button>
+                    <button id="tab-answerkey-btn"
+                        class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">
+                        <i class="fa-solid fa-key mr-1.5"></i> Answer Key
+                    </button>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button id="zoom-out-btn"
+                        class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs"
+                        title="Zoom Out"><i class="fa-solid fa-minus"></i></button>
+                    <button id="zoom-fit-btn"
+                        class="px-2.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-medium">Fit</button>
+                    <button id="zoom-in-btn"
+                        class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs"
+                        title="Zoom In"><i class="fa-solid fa-plus"></i></button>
+                </div>
+            </div>
+
+            <!-- Export Action Buttons Bar -->
+            <div class="glass-card p-4 rounded-2xl shadow-sm flex flex-wrap items-center justify-center gap-2">
+                <button id="download-pdf-btn"
+                    class="flex-1 min-w-[130px] py-2.5 px-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white rounded-xl text-xs font-bold shadow-md shadow-purple-500/20 transition-all flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-file-pdf"></i><span>DOWNLOAD PDF</span>
+                </button>
+                <button id="download-word-btn"
+                    class="flex-1 min-w-[130px] py-2.5 px-4 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white rounded-xl text-xs font-bold shadow-md shadow-blue-500/20 transition-all flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-file-word"></i><span>DOWNLOAD WORD</span>
+                </button>
+                <button id="download-png-btn"
+                    class="flex-1 min-w-[130px] py-2.5 px-4 bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700 text-white rounded-xl text-xs font-bold shadow-md shadow-pink-500/20 transition-all flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-file-image"></i><span>DOWNLOAD PNG</span>
+                </button>
+                <button id="print-paper-btn"
+                    class="py-2.5 px-4 bg-slate-800 hover:bg-slate-900 dark:bg-slate-700 dark:hover:bg-slate-600 text-white rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-2"
+                    title="Print Paper">
+                    <i class="fa-solid fa-print"></i><span>PRINT</span>
+                </button>
+            </div>
+
+            <!-- Live Preview Tab Content Container -->
+            <div id="preview-tab-pane" class="space-y-4">
+                <div
+                    class="flex items-center justify-between text-xs font-semibold px-1 text-slate-500 dark:text-slate-400">
+                    <span id="pagination-info">Page 1 of 1</span>
+                    <div class="flex items-center space-x-2">
+                        <button id="prev-page-btn"
+                            class="px-2.5 py-1 rounded bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 disabled:opacity-50">Previous</button>
+                        <button id="next-page-btn"
+                            class="px-2.5 py-1 rounded bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 disabled:opacity-50">Next</button>
+                    </div>
+                </div>
+
+                <!-- Printable Paper Container (A4 Sheet) -->
+                <div class="overflow-x-auto pb-4">
+                    <div id="printable-paper-container"
+                        class="a4-page rounded-2xl shadow-xl transition-all duration-300">
+                        <!-- Rendered Paper Header, Instructions, Sections, Questions -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Answer Key Tab Content Container (Hidden by default) -->
+            <div id="answerkey-tab-pane" class="glass-card p-6 rounded-3xl shadow-sm space-y-4 hidden">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-700">
+                    <h3 class="font-bold text-base flex items-center space-x-2">
+                        <i class="fa-solid fa-key text-purple-600"></i>
+                        <span>Answer Key & Marking Scheme</span>
+                    </h3>
+                    <button id="download-ak-pdf-btn"
+                        class="px-3.5 py-2 bg-purple-600 text-white rounded-xl text-xs font-semibold hover:bg-purple-700 transition-colors">
+                        <i class="fa-solid fa-file-pdf mr-1"></i> Download Answer Key PDF
+                    </button>
+                </div>
+                <div id="answer-key-content" class="space-y-4 text-sm">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <section id="how-it-works"
+        class="max-w-7xl mx-auto w-full px-4 py-12 border-t border-slate-200 dark:border-slate-800">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+            <h2 class="text-2xl font-bold mb-2">How It Works</h2>
+            <p class="text-slate-600 dark:text-slate-400 text-sm">Create high-quality exam papers in 5 simple steps.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            <div class="glass-card p-5 rounded-2xl text-center space-y-2">
+                <div
+                    class="w-10 h-10 mx-auto rounded-xl bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-300 flex items-center justify-center font-bold">
+                    1</div>
+                <h3 class="font-semibold text-sm">Enter Details</h3>
+                <p class="text-xs text-slate-500">Provide institute name, subject, exam type & marks.</p>
+            </div>
+            <div class="glass-card p-5 rounded-2xl text-center space-y-2">
+                <div
+                    class="w-10 h-10 mx-auto rounded-xl bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-300 flex items-center justify-center font-bold">
+                    2</div>
+                <h3 class="font-semibold text-sm">Add Questions</h3>
+                <p class="text-xs text-slate-500">Choose from 13 question types with difficulty & marks.</p>
+            </div>
+            <div class="glass-card p-5 rounded-2xl text-center space-y-2">
+                <div
+                    class="w-10 h-10 mx-auto rounded-xl bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-300 flex items-center justify-center font-bold">
+                    3</div>
+                <h3 class="font-semibold text-sm">Organize Sections</h3>
+                <p class="text-xs text-slate-500">Group questions into logical sections with instructions.</p>
+            </div>
+            <div class="glass-card p-5 rounded-2xl text-center space-y-2">
+                <div
+                    class="w-10 h-10 mx-auto rounded-xl bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-300 flex items-center justify-center font-bold">
+                    4</div>
+                <h3 class="font-semibold text-sm">Preview Paper</h3>
+                <p class="text-xs text-slate-500">Inspect real-time A4 layout, pagination & answer key.</p>
+            </div>
+            <div class="glass-card p-5 rounded-2xl text-center space-y-2">
+                <div
+                    class="w-10 h-10 mx-auto rounded-xl bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-300 flex items-center justify-center font-bold">
+                    5</div>
+                <h3 class="font-semibold text-sm">Download PDF</h3>
+                <p class="text-xs text-slate-500">Export print-ready PDF, Word DOCX, PNG or print directly.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="max-w-4xl mx-auto w-full px-4 py-12 border-t border-slate-200 dark:border-slate-800">
+        <div class="text-center mb-10">
+            <h2 class="text-2xl font-bold mb-2">Frequently Asked Questions</h2>
+            <p class="text-slate-600 dark:text-slate-400 text-sm">Everything you need to know about the Question Paper
+                Generator.</p>
+        </div>
+        <div class="space-y-3">
+            <details class="glass-card rounded-2xl p-4 group">
+                <summary class="cursor-pointer font-semibold text-sm flex items-center justify-between">
+                    <span>What is the Question Paper Generator?</span>
+                    <i class="fa-solid fa-chevron-down text-xs group-open:rotate-180 transition-transform"></i>
+                </summary>
+                <p class="mt-2 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                    It is a professional academic tool built for teachers, professors, and coaching institutes to
+                    design, organize, and export fully formatted exam question papers and answer keys without hassle.
+                </p>
+            </details>
+            <details class="glass-card rounded-2xl p-4 group">
+                <summary class="cursor-pointer font-semibold text-sm flex items-center justify-between">
+                    <span>Can I create Hindi or bilingual question papers?</span>
+                    <i class="fa-solid fa-chevron-down text-xs group-open:rotate-180 transition-transform"></i>
+                </summary>
+                <p class="mt-2 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Yes! You can select Hindi or Bilingual (English + Hindi) mode. All Hindi text renders cleanly using
+                    Unicode-safe fonts and exports properly in PDFs.
+                </p>
+            </details>
+            <details class="glass-card rounded-2xl p-4 group">
+                <summary class="cursor-pointer font-semibold text-sm flex items-center justify-between">
+                    <span>How does automatic mark calculation work?</span>
+                    <i class="fa-solid fa-chevron-down text-xs group-open:rotate-180 transition-transform"></i>
+                </summary>
+                <p class="mt-2 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                    The tool automatically tallies marks assigned to all questions. If the total differs from your
+                    specified Maximum Marks, a warning notification appears with a [Fix / Adjust] helper.
+                </p>
+            </details>
+            <details class="glass-card rounded-2xl p-4 group">
+                <summary class="cursor-pointer font-semibold text-sm flex items-center justify-between">
+                    <span>Can I generate Set A, B, C and D?</span>
+                    <i class="fa-solid fa-chevron-down text-xs group-open:rotate-180 transition-transform"></i>
+                </summary>
+                <p class="mt-2 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Yes! You can choose sets from the Paper Details and optionally shuffle questions and MCQ options
+                    while preserving total marks and section structures.
+                </p>
+            </details>
+            <details class="glass-card rounded-2xl p-4 group">
+                <summary class="cursor-pointer font-semibold text-sm flex items-center justify-between">
+                    <span>Is my paper data stored online?</span>
+                    <i class="fa-solid fa-chevron-down text-xs group-open:rotate-180 transition-transform"></i>
+                </summary>
+                <p class="mt-2 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                    No. All your paper details, questions, and drafts are processed locally in your browser using secure
+                    localStorage. Your academic data remains completely private.
+                </p>
+            </details>
+        </div>
+    </section>
+
+    <footer
+        class="glass-card border-t border-slate-200 dark:border-slate-800 mt-auto py-8 px-4 lg:px-8 text-center text-xs text-slate-500 dark:text-slate-400 space-y-3">
+        <div class="flex flex-wrap justify-center gap-6 font-medium">
+            <a href="#" class="hover:text-purple-600">Home</a>
+            <a href="#" class="hover:text-purple-600">About Tools24</a>
+            <a href="#" class="hover:text-purple-600">Privacy Policy</a>
+            <a href="#" class="hover:text-purple-600">Terms of Service</a>
+            <a href="#" class="hover:text-purple-600">Contact Support</a>
+        </div>
+        <p>© 2026 Tools24 / Tools24 Suite. All rights reserved. Your paper data is processed locally in your browser.
+        </p>
+    </footer>
+
+    <div id="question-modal"
+        class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="glass-card max-w-xl w-full p-6 rounded-3xl shadow-2xl max-h-[90vh] overflow-y-auto space-y-4">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-700">
+                <h3 id="modal-title" class="font-bold text-base flex items-center space-x-2">
+                    <i class="fa-solid fa-circle-plus text-purple-600"></i>
+                    <span>Add New Question</span>
+                </h3>
+                <button id="close-q-modal" class="p-2 text-slate-500 hover:text-slate-800 dark:hover:text-white"><i
+                        class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+
+            <form id="question-form" class="space-y-4 text-xs">
+                <input type="hidden" id="edit-q-id">
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-semibold text-slate-600 dark:text-slate-400 mb-1">Question Type</label>
+                        <select id="q-type"
+                            class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-purple-500">
+                            <option value="Multiple Choice" selected>1. Multiple Choice (MCQ)</option>
+                            <option value="True / False">2. True / False</option>
+                            <option value="Fill in the Blank">3. Fill in the Blank</option>
+                            <option value="Very Short Answer">4. Very Short Answer</option>
+                            <option value="Short Answer">5. Short Answer</option>
+                            <option value="Long Answer">6. Long Answer</option>
+                            <option value="Essay">7. Essay</option>
+                            <option value="Numerical">8. Numerical</option>
+                            <option value="Assertion & Reason">9. Assertion & Reason</option>
+                            <option value="Match the Following">10. Match the Following</option>
+                            <option value="Case Study">11. Case Study</option>
+                            <option value="Image Based Question">12. Image Based Question</option>
+                            <option value="Custom Question">13. Custom Question</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-600 dark:text-slate-400 mb-1">Section</label>
+                        <select id="q-section"
+                            class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-purple-500">
+                            <!-- Populated dynamically -->
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div>
+                        <label class="block font-semibold text-slate-600 dark:text-slate-400 mb-1">Marks</label>
+                        <input type="number" id="q-marks" value="1" min="1" max="50"
+                            class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-600 dark:text-slate-400 mb-1">Difficulty</label>
+                        <select id="q-difficulty"
+                            class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-purple-500">
+                            <option value="Easy">Easy</option>
+                            <option value="Medium" selected>Medium</option>
+                            <option value="Hard">Hard</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-600 dark:text-slate-400 mb-1">Chapter /
+                            Topic</label>
+                        <input type="text" id="q-chapter" placeholder="e.g. Chemical Reactions"
+                            class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-purple-500">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-slate-600 dark:text-slate-400 mb-1">Question Text</label>
+                    <textarea id="q-text" rows="3" placeholder="Enter question statement..."
+                        class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-purple-500"
+                        required></textarea>
+                </div>
+
+                <!-- Dynamic Type Specific Fields Container -->
+                <div id="dynamic-type-fields" class="space-y-3 pt-2 border-t border-slate-200 dark:border-slate-700">
+                    <!-- MCQ Options -->
+                    <div id="fields-mcq" class="space-y-2">
+                        <label class="block font-semibold text-slate-600 dark:text-slate-400">Options & Correct
+                            Answer</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            <input type="text" id="opt-a" placeholder="Option A"
+                                class="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                            <input type="text" id="opt-b" placeholder="Option B"
+                                class="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                            <input type="text" id="opt-c" placeholder="Option C"
+                                class="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                            <input type="text" id="opt-d" placeholder="Option D"
+                                class="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                        </div>
+                        <div>
+                            <label class="block font-medium text-slate-500 mt-1">Correct Option</label>
+                            <select id="q-mcq-correct"
+                                class="w-full px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- True/False -->
+                    <div id="fields-tf" class="space-y-2 hidden">
+                        <label class="block font-semibold text-slate-600 dark:text-slate-400">Correct Answer</label>
+                        <select id="q-tf-correct"
+                            class="w-full px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                            <option value="True">True</option>
+                            <option value="False">False</option>
+                        </select>
+                    </div>
+
+                    <!-- Fill in the blank -->
+                    <div id="fields-fill" class="space-y-2 hidden">
+                        <label class="block font-semibold text-slate-600 dark:text-slate-400">Answer</label>
+                        <input type="text" id="q-fill-answer" placeholder="Expected fill in the blank answer"
+                            class="w-full px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                    </div>
+
+                    <!-- Assertion & Reason -->
+                    <div id="fields-assertion" class="space-y-2 hidden">
+                        <div>
+                            <label class="block font-semibold text-slate-600 dark:text-slate-400 mb-1">Reason Statement
+                                (R)</label>
+                            <textarea id="q-reason" rows="2" placeholder="Reason statement..."
+                                class="w-full px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700"></textarea>
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-600 dark:text-slate-400 mb-1">Correct
+                                Code</label>
+                            <select id="q-assertion-correct"
+                                class="w-full px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                                <option value="A">Both A and R are true and R is correct explanation of A</option>
+                                <option value="B">Both A and R are true but R is NOT correct explanation of A</option>
+                                <option value="C">A is true but R is false</option>
+                                <option value="D">A is false but R is true</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Match the Following -->
+                    <div id="fields-match" class="space-y-2 hidden">
+                        <label class="block font-semibold text-slate-600 dark:text-slate-400">Columns (A & B)</label>
+                        <div id="match-rows-container" class="space-y-2">
+                            <!-- Rows added dynamically -->
+                        </div>
+                        <button type="button" id="add-match-row-btn"
+                            class="px-3 py-1 bg-slate-200 dark:bg-slate-700 rounded-lg text-xs font-semibold">
+                            <i class="fa-solid fa-plus mr-1"></i> Add Row
+                        </button>
+                    </div>
+
+                    <!-- Case Study -->
+                    <div id="fields-casestudy" class="space-y-2 hidden">
+                        <label class="block font-semibold text-slate-600 dark:text-slate-400">Case / Passage</label>
+                        <textarea id="q-case-passage" rows="3" placeholder="Passage / Case study text..."
+                            class="w-full px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700"></textarea>
+                    </div>
+
+                    <!-- Image Based Question -->
+                    <div id="fields-image" class="space-y-2 hidden">
+                        <label class="block font-semibold text-slate-600 dark:text-slate-400">Upload Image</label>
+                        <input type="file" id="q-img-upload" accept="image/*"
+                            class="w-full text-xs file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-purple-50 file:text-purple-700 dark:file:bg-purple-900/50">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-slate-600 dark:text-slate-400 mb-1">Answer / Key Points (For
+                        Answer Key)</label>
+                    <textarea id="q-answer" rows="2" placeholder="Expected answer or key points..."
+                        class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-purple-500"></textarea>
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-slate-600 dark:text-slate-400 mb-1">Explanation
+                        (Optional)</label>
+                    <textarea id="q-explanation" rows="2" placeholder="Detailed explanation..."
+                        class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-purple-500"></textarea>
+                </div>
+
+                <div class="flex justify-end space-x-2 pt-3 border-t border-slate-200 dark:border-slate-700">
+                    <button type="button" id="cancel-q-modal"
+                        class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold hover:bg-slate-300">Cancel</button>
+                    <button type="submit"
+                        class="px-5 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-semibold shadow-md shadow-purple-500/20">Save
+                        Question</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="section-modal"
+        class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="glass-card max-w-md w-full p-6 rounded-3xl shadow-2xl space-y-4">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-700">
+                <h3 id="sec-modal-title" class="font-bold text-base">Add / Edit Section</h3>
+                <button id="close-sec-modal" class="p-2 text-slate-500 hover:text-slate-800"><i
+                        class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="section-form" class="space-y-3 text-xs">
+                <input type="hidden" id="edit-sec-id">
+                <div>
+                    <label class="block font-semibold mb-1">Section Title</label>
+                    <input type="text" id="sec-title" placeholder="e.g. SECTION A - Multiple Choice"
+                        class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+                        required>
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1">Section Subtitle / Instructions</label>
+                    <input type="text" id="sec-subtitle"
+                        placeholder="e.g. All questions are compulsory. 10 x 1 = 10 Marks"
+                        class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                </div>
+                <div class="flex justify-end space-x-2 pt-2">
+                    <button type="button" id="cancel-sec-modal"
+                        class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-700 font-semibold">Cancel</button>
+                    <button type="submit"
+                        class="px-5 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-semibold">Save
+                        Section</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // State Management
+        let appState = {
+            paper: {
+                institution: "Delhi Public International School",
+                university: "Central Board of Secondary Education",
+                department: "Department of Science",
+                examName: "Annual Examination 2026",
+                examType: "Board Exam",
+                class: "Class X",
+                subject: "Science (Physics, Chemistry & Biology)",
+                subjectCode: "SCI-086",
+                semester: "Term II",
+                session: "2025-2026",
+                date: "2026-03-25",
+                time: "3 Hours",
+                maxMarks: 80,
+                language: "English",
+                set: "Set A",
+                logoUrl: "",
+                template: "Classic Academic",
+                accent: "purple",
+                font: "Times New Roman",
+                watermark: "",
+                shuffleQ: false,
+                shuffleOpt: true
+            },
+            sections: [
+                { id: "sec-1", title: "SECTION A", subtitle: "Multiple Choice Questions (10 × 1 = 10 Marks)" },
+                { id: "sec-2", title: "SECTION B", subtitle: "Short Answer Questions (5 × 2 = 10 Marks)" },
+                { id: "sec-3", title: "SECTION C", subtitle: "Long Answer Questions (5 × 6 = 30 Marks)" },
+                { id: "sec-4", title: "SECTION D", subtitle: "Case Study & Competency Based Questions (3 × 10 = 30 Marks)" }
+            ],
+            questions: [],
+            instructions: [
+                "1. Please check that this question paper contains 15 printed pages.",
+                "2. Please write down the Serial Number of the question in the answer book before attempting it.",
+                "3. 15 minute time has been allotted to read this question paper.",
+                "4. All questions are compulsory. However, internal choices are provided in some questions."
+            ],
+            currentZoom: 1,
+            activeTab: 'preview',
+            activeDiffFilter: 'All',
+            searchQuery: '',
+            historyStack: [],
+            redoStack: []
+        };
+
+        // DOM Elements
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+
+        // Initialize sample science questions if empty
+        function loadSampleQuestions() {
+            appState.questions = [
+                {
+                    id: "q-1",
+                    sectionId: "sec-1",
+                    type: "Multiple Choice",
+                    text: "Which of the following reaction is characterized by the evolution of hydrogen gas?",
+                    marks: 1,
+                    difficulty: "Easy",
+                    chapter: "Chemical Reactions",
+                    options: { A: "Zinc granules reacting with dilute sulfuric acid", B: "Copper turning reacting with HCl", C: "Sodium carbonate reacting with HCl", D: "Magnesium oxide with water" },
+                    correct: "A",
+                    answer: "A. Zinc granules reacting with dilute sulfuric acid",
+                    explanation: "Metals like Zinc react with dilute acids to evolve hydrogen gas."
+                },
+                {
+                    id: "q-2",
+                    sectionId: "sec-1",
+                    type: "Multiple Choice",
+                    text: "The refractive index of diamond is 2.42. What is the meaning of this statement?",
+                    marks: 1,
+                    difficulty: "Medium",
+                    chapter: "Light - Reflection and Refraction",
+                    options: { A: "Speed of light in diamond is 2.42 times speed in vacuum", B: "Speed of light in vacuum is 2.42 times speed in diamond", C: "Density of diamond is 2.42", D: "None of the above" },
+                    correct: "B",
+                    answer: "B. Speed of light in vacuum is 2.42 times speed in diamond",
+                    explanation: "Refractive index n = c / v, hence c = 2.42 v."
+                },
+                {
+                    id: "q-3",
+                    sectionId: "sec-2",
+                    type: "Short Answer",
+                    text: "State Ohm's Law. Write the mathematical formula and units of resistance.",
+                    marks: 2,
+                    difficulty: "Easy",
+                    chapter: "Electricity",
+                    answer: "Ohm's law states that the current flowing through a conductor is directly proportional to the potential difference across its ends, provided temperature remains constant. V = IR. Unit of resistance is Ohm (Ω).",
+                    explanation: "Fundamental electricity law."
+                },
+                {
+                    id: "q-4",
+                    sectionId: "sec-2",
+                    type: "Short Answer",
+                    text: "Why do ionic compounds have high melting points?",
+                    marks: 2,
+                    difficulty: "Medium",
+                    chapter: "Metals and Non-metals",
+                    answer: "Ionic compounds are formed by strong electrostatic forces of attraction between oppositely charged ions. Considerable amount of energy is required to break this strong inter-ionic attraction.",
+                    explanation: "Electrostatic bonding energy."
+                },
+                {
+                    id: "q-5",
+                    sectionId: "sec-3",
+                    type: "Long Answer",
+                    text: "Explain the process of double circulation in human beings. Why is it necessary?",
+                    marks: 6,
+                    difficulty: "Hard",
+                    chapter: "Life Processes",
+                    answer: "Blood passes through the heart twice during one complete cycle of the body (Pulmonary circulation and Systemic circulation). It is necessary to prevent mixing of oxygenated and deoxygenated blood for high energy needs.",
+                    explanation: "Avian and mammalian circulatory efficiency."
+                }
+            ];
+            saveStateToLocalStorage();
+            renderApp();
+        }
+
+        // Event Listeners for Theme
+        themeToggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('flex');
+        });
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('flex');
+        });
+
+        // Save State & LocalStorage
+        function saveStateToLocalStorage() {
+            localStorage.setItem('tools24_qp_state', JSON.stringify(appState));
+            const statusEl = document.getElementById('auto-save-status');
+            statusEl.textContent = "Saved just now";
+            setTimeout(() => { statusEl.textContent = "All changes saved"; }, 2000);
+        }
+
+        function loadStateFromLocalStorage() {
+            const saved = localStorage.getItem('tools24_qp_state');
+            if (saved) {
+                try {
+                    appState = JSON.parse(saved);
+                    syncFormWithState();
+                } catch (e) {
+                    console.error("Error loading saved draft", e);
+                }
+            } else {
+                loadSampleQuestions();
+            }
+            renderApp();
+        }
+
+        function syncFormWithState() {
+            const p = appState.paper;
+            document.getElementById('p-institution').value = p.institution || '';
+            document.getElementById('p-university').value = p.university || '';
+            document.getElementById('p-department').value = p.department || '';
+            document.getElementById('p-examname').value = p.examName || '';
+            document.getElementById('p-examtype').value = p.examType || 'Board Exam';
+            document.getElementById('p-class').value = p.class || '';
+            document.getElementById('p-subject').value = p.subject || '';
+            document.getElementById('p-subjectcode').value = p.subjectCode || '';
+            document.getElementById('p-semester').value = p.semester || '';
+            document.getElementById('p-session').value = p.session || '';
+            document.getElementById('p-date').value = p.date || '';
+            document.getElementById('p-time').value = p.time || '';
+            document.getElementById('p-maxmarks').value = p.maxMarks || 80;
+            document.getElementById('p-language').value = p.language || 'English';
+            document.getElementById('p-set').value = p.set || 'Set A';
+            document.getElementById('p-template').value = p.template || 'Classic Academic';
+            document.getElementById('p-accent').value = p.accent || 'purple';
+            document.getElementById('p-font').value = p.font || 'Times New Roman';
+            document.getElementById('p-watermark').value = p.watermark || '';
+            document.getElementById('p-shuffle-q').checked = !!p.shuffleQ;
+            document.getElementById('p-shuffle-opt').checked = p.shuffleOpt !== false;
+        }
+
+        // Input Bindings
+        const paperInputs = ['p-institution', 'p-university', 'p-department', 'p-examname', 'p-examtype', 'p-class', 'p-subject', 'p-subjectcode', 'p-semester', 'p-session', 'p-date', 'p-time', 'p-maxmarks', 'p-language', 'p-set', 'p-template', 'p-accent', 'p-font', 'p-watermark', 'p-shuffle-q', 'p-shuffle-opt'];
+        paperInputs.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.addEventListener('input', () => {
+                    updatePaperStateFromForm();
+                    renderApp();
+                });
+                el.addEventListener('change', () => {
+                    updatePaperStateFromForm();
+                    renderApp();
+                });
+            }
+        });
+
+        function updatePaperStateFromForm() {
+            appState.paper.institution = document.getElementById('p-institution').value;
+            appState.paper.university = document.getElementById('p-university').value;
+            appState.paper.department = document.getElementById('p-department').value;
+            appState.paper.examName = document.getElementById('p-examname').value;
+            appState.paper.examType = document.getElementById('p-examtype').value;
+            appState.paper.class = document.getElementById('p-class').value;
+            appState.paper.subject = document.getElementById('p-subject').value;
+            appState.paper.subjectCode = document.getElementById('p-subjectcode').value;
+            appState.paper.semester = document.getElementById('p-semester').value;
+            appState.paper.session = document.getElementById('p-session').value;
+            appState.paper.date = document.getElementById('p-date').value;
+            appState.paper.time = document.getElementById('p-time').value;
+            appState.paper.maxMarks = parseInt(document.getElementById('p-maxmarks').value) || 80;
+            appState.paper.language = document.getElementById('p-language').value;
+            appState.paper.set = document.getElementById('p-set').value;
+            appState.paper.template = document.getElementById('p-template').value;
+            appState.paper.accent = document.getElementById('p-accent').value;
+            appState.paper.font = document.getElementById('p-font').value;
+            appState.paper.watermark = document.getElementById('p-watermark').value;
+            appState.paper.shuffleQ = document.getElementById('p-shuffle-q').checked;
+            appState.paper.shuffleOpt = document.getElementById('p-shuffle-opt').checked;
+            saveStateToLocalStorage();
+        }
+
+        // Logo upload handler
+        document.getElementById('p-logo-file').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    appState.paper.logoUrl = event.target.result;
+                    renderApp();
+                    saveStateToLocalStorage();
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Question Modal Handler
+        const qModal = document.getElementById('question-modal');
+        document.getElementById('open-add-q-modal').addEventListener('click', () => {
+            openQuestionModal();
+        });
+        document.getElementById('close-q-modal').addEventListener('click', () => {
+            qModal.classList.add('hidden');
+            qModal.classList.remove('flex');
+        });
+        document.getElementById('cancel-q-modal').addEventListener('click', () => {
+            qModal.classList.add('hidden');
+            qModal.classList.remove('flex');
+        });
+
+        function populateSectionDropdowns() {
+            const sel = document.getElementById('q-section');
+            sel.innerHTML = '';
+            appState.sections.forEach(sec => {
+                const opt = document.createElement('option');
+                opt.value = sec.id;
+                opt.textContent = `${sec.title}: ${sec.subtitle || ''}`;
+                sel.appendChild(opt);
+            });
+        }
+
+        function openQuestionModal(questionData = null) {
+            populateSectionDropdowns();
+            const form = document.getElementById('question-form');
+            form.reset();
+            document.getElementById('edit-q-id').value = '';
+            document.getElementById('modal-title').innerHTML = `<i class="fa-solid fa-circle-plus text-purple-600"></i><span>Add New Question</span>`;
+
+            if (questionData) {
+                document.getElementById('edit-q-id').value = questionData.id;
+                document.getElementById('q-type').value = questionData.type;
+                document.getElementById('q-section').value = questionData.sectionId;
+                document.getElementById('q-marks').value = questionData.marks;
+                document.getElementById('q-difficulty').value = questionData.difficulty;
+                document.getElementById('q-chapter').value = questionData.chapter || '';
+                document.getElementById('q-text').value = questionData.text;
+                document.getElementById('q-answer').value = questionData.answer || '';
+                document.getElementById('q-explanation').value = questionData.explanation || '';
+                document.getElementById('modal-title').innerHTML = `<i class="fa-solid fa-pen-to-square text-purple-600"></i><span>Edit Question</span>`;
+
+                if (questionData.type === 'Multiple Choice' && questionData.options) {
+                    document.getElementById('opt-a').value = questionData.options.A || '';
+                    document.getElementById('opt-b').value = questionData.options.B || '';
+                    document.getElementById('opt-c').value = questionData.options.C || '';
+                    document.getElementById('opt-d').value = questionData.options.D || '';
+                    document.getElementById('q-mcq-correct').value = questionData.correct || 'A';
+                }
+            }
+            toggleQuestionTypeFields();
+            qModal.classList.remove('hidden');
+            qModal.classList.add('flex');
+        }
+
+        const qTypeSelect = document.getElementById('q-type');
+        qTypeSelect.addEventListener('change', toggleQuestionTypeFields);
+
+        function toggleQuestionTypeFields() {
+            const val = qTypeSelect.value;
+            document.getElementById('fields-mcq').classList.toggle('hidden', val !== 'Multiple Choice');
+            document.getElementById('fields-tf').classList.toggle('hidden', val !== 'True / False');
+            document.getElementById('fields-fill').classList.toggle('hidden', val !== 'Fill in the Blank');
+            document.getElementById('fields-assertion').classList.toggle('hidden', val !== 'Assertion & Reason');
+            document.getElementById('fields-match').classList.toggle('hidden', val !== 'Match the Following');
+            document.getElementById('fields-casestudy').classList.toggle('hidden', val !== 'Case Study');
+            document.getElementById('fields-image').classList.toggle('hidden', val !== 'Image Based Question');
+        }
+
+        // Match table rows handler
+        document.getElementById('add-match-row-btn').addEventListener('click', () => {
+            addMatchRow();
+        });
+
+        function addMatchRow(colA = '', colB = '') {
+            const container = document.getElementById('match-rows-container');
+            const div = document.createElement('div');
+            div.className = 'flex items-center space-x-2 match-row';
+            div.innerHTML = `
+                <input type="text" placeholder="Column A item" value="${colA}" class="flex-1 px-2.5 py-1 rounded bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 match-a">
+                <input type="text" placeholder="Column B item" value="${colB}" class="flex-1 px-2.5 py-1 rounded bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 match-b">
+                <button type="button" onclick="this.parentElement.remove()" class="p-1 text-rose-500 hover:text-rose-700"><i class="fa-solid fa-trash"></i></button>
+            `;
+            container.appendChild(div);
+        }
+
+        // Question Form Submit
+        document.getElementById('question-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const editId = document.getElementById('edit-q-id').value;
+            const type = document.getElementById('q-type').value;
+            const sectionId = document.getElementById('q-section').value;
+            const marks = parseInt(document.getElementById('q-marks').value) || 1;
+            const difficulty = document.getElementById('q-difficulty').value;
+            const chapter = document.getElementById('q-chapter').value;
+            const text = document.getElementById('q-text').value;
+            const answer = document.getElementById('q-answer').value;
+            const explanation = document.getElementById('q-explanation').value;
+
+            let qObj = {
+                id: editId || 'q-' + Date.now(),
+                sectionId,
+                type,
+                marks,
+                difficulty,
+                chapter,
+                text,
+                answer,
+                explanation
+            };
+
+            if (type === 'Multiple Choice') {
+                qObj.options = {
+                    A: document.getElementById('opt-a').value,
+                    B: document.getElementById('opt-b').value,
+                    C: document.getElementById('opt-c').value,
+                    D: document.getElementById('opt-d').value
+                };
+                qObj.correct = document.getElementById('q-mcq-correct').value;
+            } else if (type === 'True / False') {
+                qObj.correct = document.getElementById('q-tf-correct').value;
+            } else if (type === 'Fill in the Blank') {
+                qObj.answer = document.getElementById('q-fill-answer').value;
+            } else if (type === 'Assertion & Reason') {
+                qObj.reason = document.getElementById('q-reason').value;
+                qObj.correct = document.getElementById('q-assertion-correct').value;
+            }
+
+            if (editId) {
+                const idx = appState.questions.findIndex(q => q.id === editId);
+                if (idx !== -1) appState.questions[idx] = qObj;
+            } else {
+                appState.questions.push(qObj);
+            }
+
+            qModal.classList.add('hidden');
+            qModal.classList.remove('flex');
+            saveStateToLocalStorage();
+            renderApp();
+        });
+
+        // Quick Question Add
+        document.getElementById('quick-add-btn').addEventListener('click', () => {
+            const text = document.getElementById('quick-q-text').value.trim();
+            const marks = parseInt(document.getElementById('quick-q-marks').value) || 1;
+            if (!text) return;
+
+            const qObj = {
+                id: 'q-' + Date.now(),
+                sectionId: appState.sections[0]?.id || 'sec-1',
+                type: 'Short Answer',
+                marks,
+                difficulty: 'Medium',
+                chapter: 'General',
+                text,
+                answer: 'Standard expected answer.',
+                explanation: ''
+            };
+            appState.questions.push(qObj);
+            document.getElementById('quick-q-text').value = '';
+            saveStateToLocalStorage();
+            renderApp();
+        });
+
+        // Section Modal Handler
+        const secModal = document.getElementById('section-modal');
+        document.getElementById('add-section-btn').addEventListener('click', () => {
+            document.getElementById('edit-sec-id').value = '';
+            document.getElementById('sec-title').value = '';
+            document.getElementById('sec-subtitle').value = '';
+            secModal.classList.remove('hidden');
+            secModal.classList.add('flex');
+        });
+        document.getElementById('close-sec-modal').addEventListener('click', () => secModal.classList.add('hidden'));
+        document.getElementById('cancel-sec-modal').addEventListener('click', () => secModal.classList.add('hidden'));
+
+        document.getElementById('section-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const editId = document.getElementById('edit-sec-id').value;
+            const title = document.getElementById('sec-title').value;
+            const subtitle = document.getElementById('sec-subtitle').value;
+
+            if (editId) {
+                const sec = appState.sections.find(s => s.id === editId);
+                if (sec) {
+                    sec.title = title;
+                    sec.subtitle = subtitle;
+                }
+            } else {
+                appState.sections.push({
+                    id: 'sec-' + Date.now(),
+                    title,
+                    subtitle
+                });
+            }
+            secModal.classList.add('hidden');
+            saveStateToLocalStorage();
+            renderApp();
+        });
+
+        // Instruction Add Handler
+        document.getElementById('add-instruction-btn').addEventListener('click', () => {
+            const text = prompt("Enter new instruction:");
+            if (text) {
+                appState.instructions.push(text);
+                saveStateToLocalStorage();
+                renderApp();
+            }
+        });
+
+        // Question Card Actions
+        window.editQuestion = function (id) {
+            const q = appState.questions.find(item => item.id === id);
+            if (q) openQuestionModal(q);
+        };
+        window.duplicateQuestion = function (id) {
+            const q = appState.questions.find(item => item.id === id);
+            if (q) {
+                const copy = JSON.parse(JSON.stringify(q));
+                copy.id = 'q-' + Date.now();
+                const idx = appState.questions.findIndex(item => item.id === id);
+                appState.questions.splice(idx + 1, 0, copy);
+                saveStateToLocalStorage();
+                renderApp();
+            }
+        };
+        window.deleteQuestion = function (id) {
+            appState.questions = appState.questions.filter(item => item.id !== id);
+            saveStateToLocalStorage();
+            renderApp();
+        };
+        window.moveQuestion = function (id, direction) {
+            const idx = appState.questions.findIndex(item => item.id === id);
+            if (idx === -1) return;
+            const targetIdx = idx + direction;
+            if (targetIdx < 0 || targetIdx >= appState.questions.length) return;
+            const temp = appState.questions[idx];
+            appState.questions[idx] = appState.questions[targetIdx];
+            appState.questions[targetIdx] = temp;
+            saveStateToLocalStorage();
+            renderApp();
+        };
+
+        // Section Actions
+        window.deleteSection = function (secId) {
+            if (confirm("Delete section and its questions?")) {
+                appState.sections = appState.sections.filter(s => s.id !== secId);
+                appState.questions = appState.questions.filter(q => q.sectionId !== secId);
+                saveStateToLocalStorage();
+                renderApp();
+            }
+        };
+
+        // Search and Filter
+        document.getElementById('search-questions-input').addEventListener('input', (e) => {
+            appState.searchQuery = e.target.value.toLowerCase();
+            renderQuestionsList();
+        });
+
+        document.querySelectorAll('.filter-diff-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.filter-diff-btn').forEach(b => b.classList.replace('bg-purple-600', 'bg-slate-200'));
+                document.querySelectorAll('.filter-diff-btn').forEach(b => b.classList.remove('text-white'));
+                e.target.classList.replace('bg-slate-200', 'bg-purple-600');
+                e.target.classList.add('text-white');
+                appState.activeDiffFilter = e.target.getAttribute('data-diff');
+                renderQuestionsList();
+            });
+        });
+
+        // Tabs Toggle
+        const tabPreviewBtn = document.getElementById('tab-preview-btn');
+        const tabAnswerKeyBtn = document.getElementById('tab-answerkey-btn');
+        const previewPane = document.getElementById('preview-tab-pane');
+        const answerKeyPane = document.getElementById('answerkey-tab-pane');
+
+        tabPreviewBtn.addEventListener('click', () => {
+            appState.activeTab = 'preview';
+            tabPreviewBtn.className = "px-4 py-2 rounded-xl bg-purple-600 text-white text-xs font-semibold shadow-sm transition-all";
+            tabAnswerKeyBtn.className = "px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 transition-all";
+            previewPane.classList.remove('hidden');
+            answerKeyPane.classList.add('hidden');
+        });
+
+        tabAnswerKeyBtn.addEventListener('click', () => {
+            appState.activeTab = 'answerkey';
+            tabAnswerKeyBtn.className = "px-4 py-2 rounded-xl bg-purple-600 text-white text-xs font-semibold shadow-sm transition-all";
+            tabPreviewBtn.className = "px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 transition-all";
+            answerKeyPane.classList.remove('hidden');
+            previewPane.classList.add('hidden');
+            renderAnswerKey();
+        });
+
+        // Render Application UI
+        function renderApp() {
+            renderQuestionsList();
+            renderInstructionsList();
+            renderMarksValidation();
+            renderLivePreview();
+            if (appState.activeTab === 'answerkey') renderAnswerKey();
+        }
+
+        function renderQuestionsList() {
+            const container = document.getElementById('questions-list-container');
+            container.innerHTML = '';
+
+            let filtered = appState.questions.filter(q => {
+                if (appState.activeDiffFilter !== 'All' && q.difficulty !== appState.activeDiffFilter) return false;
+                if (appState.searchQuery && !q.text.toLowerCase().includes(appState.searchQuery) && !q.type.toLowerCase().includes(appState.searchQuery) && !(q.chapter && q.chapter.toLowerCase().includes(appState.searchQuery))) return false;
+                return true;
+            });
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="p-6 text-center text-slate-400 text-xs">No questions found matching criteria.</div>`;
+                return;
+            }
+
+            let qCounter = 1;
+            appState.sections.forEach(sec => {
+                const secQuestions = filtered.filter(q => q.sectionId === sec.id);
+                if (secQuestions.length === 0) return;
+
+                const secHeader = document.createElement('div');
+                secHeader.className = 'font-bold text-xs uppercase tracking-wider text-purple-600 dark:text-purple-400 pt-3 pb-1 border-b border-purple-200 dark:border-purple-900/50 flex justify-between items-center';
+                secHeader.innerHTML = `<span>${sec.title}</span><span class="text-[10px] text-slate-400">${secQuestions.length} items</span>`;
+                container.appendChild(secHeader);
+
+                secQuestions.forEach(q => {
+                    const card = document.createElement('div');
+                    card.className = 'p-3.5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm space-y-2';
+                    card.innerHTML = `
+                        <div class="flex items-center justify-between text-xs">
+                            <div class="flex items-center space-x-2">
+                                <span class="font-bold text-purple-600">Q${qCounter++}</span>
+                                <span class="px-2 py-0.5 rounded-md bg-purple-50 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300 font-medium">${q.type}</span>
+                                <span class="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-700 font-medium">${q.marks} Mark${q.marks > 1 ? 's' : ''}</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <span class="px-2 py-0.5 rounded text-[10px] font-semibold ${q.difficulty === 'Easy' ? 'bg-emerald-100 text-emerald-700' : q.difficulty === 'Medium' ? 'bg-amber-100 text-amber-700' : 'bg-rose-100 text-rose-700'}">${q.difficulty}</span>
+                                <button onclick="editQuestion('${q.id}')" class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded text-slate-500" title="Edit"><i class="fa-solid fa-pen"></i></button>
+                                <button onclick="duplicateQuestion('${q.id}')" class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded text-slate-500" title="Duplicate"><i class="fa-solid fa-copy"></i></button>
+                                <button onclick="moveQuestion('${q.id}', -1)" class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded text-slate-500" title="Move Up"><i class="fa-solid fa-arrow-up"></i></button>
+                                <button onclick="moveQuestion('${q.id}', 1)" class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded text-slate-500" title="Move Down"><i class="fa-solid fa-arrow-down"></i></button>
+                                <button onclick="deleteQuestion('${q.id}')" class="p-1.5 hover:bg-rose-50 dark:hover:bg-rose-950/50 rounded text-rose-500" title="Delete"><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <p class="text-xs font-medium text-slate-800 dark:text-slate-200 line-clamp-2">${q.text}</p>
+                    `;
+                    container.appendChild(card);
+                });
+            });
+        }
+
+        function renderInstructionsList() {
+            const container = document.getElementById('instructions-list');
+            container.innerHTML = '';
+            appState.instructions.forEach((ins, idx) => {
+                const div = document.createElement('div');
+                div.className = 'flex items-center justify-between text-xs p-2 rounded-xl bg-slate-100 dark:bg-slate-800/60';
+                div.innerHTML = `
+                    <span>${ins}</span>
+                    <button onclick="appState.instructions.splice(${idx},1); saveStateToLocalStorage(); renderApp();" class="text-rose-500 hover:text-rose-700 p-1"><i class="fa-solid fa-xmark"></i></button>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function renderMarksValidation() {
+            const totalMarks = appState.questions.reduce((acc, q) => acc + (q.marks || 0), 1);
+            const max = appState.paper.maxMarks;
+            const card = document.getElementById('marks-validation-card');
+            const icon = document.getElementById('marks-status-icon');
+            const title = document.getElementById('marks-status-title');
+            const desc = document.getElementById('marks-status-desc');
+            const fixBtn = document.getElementById('fix-marks-btn');
+
+            if (totalMarks === max) {
+                card.className = "glass-card p-4 rounded-2xl shadow-sm border-l-4 border-emerald-500 flex items-center justify-between";
+                icon.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-500"></i>`;
+                title.textContent = "Marks Complete";
+                desc.textContent = `Total questions marks match maximum marks (${totalMarks} / ${max}).`;
+                fixBtn.classList.add('hidden');
+            } else {
+                card.className = "glass-card p-4 rounded-2xl shadow-sm border-l-4 border-amber-500 flex items-center justify-between";
+                icon.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-amber-500"></i>`;
+                title.textContent = "Marks Mismatch Warning";
+                desc.textContent = `Question marks total (${totalMarks}) does not match maximum marks (${max}).`;
+                fixBtn.classList.remove('hidden');
+            }
+        }
+
+        document.getElementById('fix-marks-btn').addEventListener('click', () => {
+            const total = appState.questions.reduce((acc, q) => acc + (q.marks || 0), 0);
+            const diff = appState.paper.maxMarks - total;
+            if (appState.questions.length > 0) {
+                appState.questions[0].marks += diff;
+                saveStateToLocalStorage();
+                renderApp();
+            }
+        });
+
+        // Live Paper Preview Render
+        function renderLivePreview() {
+            const container = document.getElementById('printable-paper-container');
+            const p = appState.paper;
+            let questionsList = [...appState.questions];
+
+            if (p.shuffleQ) {
+                // Fisher-Yates shuffle copy
+                questionsList = questionsList.sort(() => Math.random() - 0.5);
+            }
+
+            let html = `
+                <div style="font-family: ${p.font}; color: #1e293b;" class="relative">
+                    ${p.watermark ? `<div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10 font-black text-6xl rotate-[-30deg] tracking-widest text-slate-800 dark:text-white">${p.watermark}</div>` : ''}
+                    
+                    <!-- Institute Header -->
+                    <div class="text-center pb-4 mb-4 border-b-2 border-slate-800 dark:border-slate-200">
+                        ${p.logoUrl ? `<img src="${p.logoUrl}" class="h-16 mx-auto mb-2 object-contain" alt="Logo">` : ''}
+                        <h2 class="text-lg font-bold uppercase tracking-wider">${p.institution}</h2>
+                        <h3 class="text-sm font-semibold text-slate-600">${p.university}</h3>
+                        <p class="text-xs text-slate-500">${p.department}</p>
+                        <h1 class="text-base font-extrabold mt-2 uppercase tracking-wide text-purple-700">${p.examName} (${p.examType})</h1>
+                        <div class="flex justify-between items-center text-xs font-semibold mt-3 px-2">
+                            <span>Class: ${p.class}</span>
+                            <span>Subject: ${p.subject} (${p.subjectCode})</span>
+                            <span>Set: ${p.set}</span>
+                        </div>
+                        <div class="flex justify-between items-center text-xs font-medium mt-1 px-2 border-t border-slate-200 pt-1">
+                            <span>Time Allowed: ${p.time}</span>
+                            <span>Maximum Marks: ${p.maxMarks}</span>
+                        </div>
+                    </div>
+
+                    <!-- General Instructions -->
+                    <div class="mb-6 p-3 rounded-lg bg-slate-50 border border-slate-200 text-xs">
+                        <h4 class="font-bold uppercase tracking-wider mb-1">General Instructions:</h4>
+                        <ul class="list-disc list-inside space-y-0.5 text-slate-700">
+                            ${appState.instructions.map(ins => `<li>${ins}</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <!-- Sections & Questions -->
+            `;
+
+            let qNum = 1;
+            appState.sections.forEach(sec => {
+                const secQuestions = questionsList.filter(q => q.sectionId === sec.id);
+                if (secQuestions.length === 0) return;
+
+                html += `
+                    <div class="mb-6">
+                        <div class="font-bold text-sm uppercase bg-slate-100 dark:bg-slate-800 p-2 rounded border-l-4 border-purple-600 mb-3 flex justify-between items-center">
+                            <span>${sec.title}</span>
+                            <span class="text-xs font-normal text-slate-500">${sec.subtitle || ''}</span>
+                        </div>
+                        <div class="space-y-4">
+                `;
+
+                secQuestions.forEach(q => {
+                    html += `
+                        <div class="flex items-start space-x-2 text-xs leading-relaxed">
+                            <span class="font-bold min-w-[24px]">${qNum++}.</span>
+                            <div class="flex-grow space-y-1.5">
+                                <div class="flex justify-between font-medium">
+                                    <span>${q.text}</span>
+                                    <span class="font-semibold text-slate-500">[${q.marks} Mark${q.marks > 1 ? 's' : ''}]</span>
+                                </div>
+                    `;
+
+                    if (q.type === 'Multiple Choice' && q.options) {
+                        let opts = ['A', 'B', 'C', 'D'];
+                        if (p.shuffleOpt) {
+                            opts = opts.sort(() => Math.random() - 0.5);
+                        }
+                        html += `<div class="grid grid-cols-2 gap-2 mt-2 pl-2">`;
+                        opts.forEach(k => {
+                            if (q.options[k]) {
+                                html += `<div><span class="font-bold mr-1">${k}.</span> ${q.options[k]}</div>`;
+                            }
+                        });
+                        html += `</div>`;
+                    } else if (q.type === 'True / False') {
+                        html += `<div class="text-slate-500 italic mt-1">[True / False]</div>`;
+                    } else if (q.type === 'Fill in the Blank') {
+                        html += `<div class="mt-1 border-b border-dashed border-slate-400 w-48 h-5"></div>`;
+                    }
+
+                    html += `
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `
+                </div>
+            `;
+            container.innerHTML = html;
+        }
+
+        function renderAnswerKey() {
+            const container = document.getElementById('answer-key-content');
+            let html = `<div class="space-y-3">`;
+            let qNum = 1;
+
+            appState.sections.forEach(sec => {
+                const secQuestions = appState.questions.filter(q => q.sectionId === sec.id);
+                if (secQuestions.length === 0) return;
+
+                html += `<div class="font-bold text-xs uppercase text-purple-600 pt-2 border-b border-slate-200">${sec.title}</div>`;
+                secQuestions.forEach(q => {
+                    html += `
+                        <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 space-y-1 text-xs">
+                            <div class="font-bold text-slate-800 dark:text-slate-200">Q${qNum++}. ${q.text}</div>
+                            <div class="text-emerald-600 dark:text-emerald-400 font-semibold">Answer: ${q.correct || q.answer || 'Refer to marking scheme'}</div>
+                            ${q.explanation ? `<div class="text-slate-500 italic">Explanation: ${q.explanation}</div>` : ''}
+                        </div>
+                    `;
+                });
+            });
+
+            html += `</div>`;
+            container.innerHTML = html;
+        }
+
+        // Zoom Controls
+        document.getElementById('zoom-in-btn').addEventListener('click', () => {
+            appState.currentZoom = Math.min(appState.currentZoom + 0.1, 1.5);
+            document.getElementById('printable-paper-container').style.transform = `scale(${appState.currentZoom})`;
+            document.getElementById('printable-paper-container').style.transformOrigin = 'top center';
+        });
+        document.getElementById('zoom-out-btn').addEventListener('click', () => {
+            appState.currentZoom = Math.max(appState.currentZoom - 0.1, 0.6);
+            document.getElementById('printable-paper-container').style.transform = `scale(${appState.currentZoom})`;
+            document.getElementById('printable-paper-container').style.transformOrigin = 'top center';
+        });
+        document.getElementById('zoom-fit-btn').addEventListener('click', () => {
+            appState.currentZoom = 1;
+            document.getElementById('printable-paper-container').style.transform = `scale(1)`;
+        });
+
+        // Export Actions
+        document.getElementById('download-pdf-btn').addEventListener('click', () => {
+            const element = document.getElementById('printable-paper-container');
+            const opt = {
+                margin: 10,
+                filename: `${appState.paper.subject.replace(/[^a-zA-Z0-9]/g, '_')}_${appState.paper.set}.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            html2pdf().from(element).set(opt).save();
+        });
+
+        document.getElementById('download-ak-pdf-btn').addEventListener('click', () => {
+            const element = document.getElementById('answerkey-tab-pane');
+            const opt = {
+                margin: 10,
+                filename: `Answer_Key_${appState.paper.subject.replace(/[^a-zA-Z0-9]/g, '_')}_${appState.paper.set}.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            html2pdf().from(element).set(opt).save();
+        });
+
+        document.getElementById('download-word-btn').addEventListener('click', () => {
+            let content = `${appState.paper.institution}\n${appState.paper.examName} - ${appState.paper.subject}\nMaximum Marks: ${appState.paper.maxMarks}\n\n`;
+            let qNum = 1;
+            appState.questions.forEach(q => {
+                content += `Q${qNum++}. ${q.text} [${q.marks} Marks]\n`;
+                if (q.options) {
+                    content += `A. ${q.options.A}\tB. ${q.options.B}\nC. ${q.options.C}\tD. ${q.options.D}\n`;
+                }
+                content += `\n`;
+            });
+            const blob = new Blob([content], { type: "application/msword;charset=utf-8" });
+            saveAs(blob, `${appState.paper.subject.replace(/[^a-zA-Z0-9]/g, '_')}_${appState.paper.set}.doc`);
+        });
+
+        document.getElementById('download-png-btn').addEventListener('click', () => {
+            const element = document.getElementById('printable-paper-container');
+            html2canvas(element, { scale: 2 }).then(canvas => {
+                canvas.toBlob(blob => {
+                    saveAs(blob, `${appState.paper.subject.replace(/[^a-zA-Z0-9]/g, '_')}_${appState.paper.set}.png`);
+                });
+            });
+        });
+
+        document.getElementById('print-paper-btn').addEventListener('click', () => {
+            window.print();
+        });
+
+        // Reset / Clear & Draft Handlers
+        document.getElementById('reset-paper-btn').addEventListener('click', () => {
+            if (confirm("Clear all questions and reset paper?")) {
+                appState.questions = [];
+                localStorage.removeItem('tools24_qp_state');
+                loadSampleQuestions();
+            }
+        });
+
+        document.getElementById('save-draft-btn').addEventListener('click', () => {
+            saveStateToLocalStorage();
+            alert("Draft saved successfully to browser storage!");
+        });
+
+        document.getElementById('load-sample-btn').addEventListener('click', () => {
+            loadSampleQuestions();
+        });
+
+        document.getElementById('duplicate-paper-btn').addEventListener('click', () => {
+            appState.paper.set = appState.paper.set === 'Set A' ? 'Set B' : 'Set A';
+            document.getElementById('p-set').value = appState.paper.set;
+            saveStateToLocalStorage();
+            renderApp();
+            alert(`Duplicated paper for ${appState.paper.set}!`);
+        });
+
+        // On Load Initialization
+        window.onload = function () {
+            loadStateFromLocalStorage();
+        };
+    </script>
+</body>
+
+</html>

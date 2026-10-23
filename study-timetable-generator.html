@@ -1,0 +1,2828 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Study Timetable Generator – Free Student Study Planner | Tools24</title>
+    <meta name="description"
+        content="Create a personalized study timetable for school, college, board exams and competitive exams. Generate, edit and download your weekly study schedule with Tools24." />
+    <meta name="keywords"
+        content="study timetable generator, study planner, student timetable generator, study schedule maker, exam timetable generator, study timetable for students, board exam study timetable, college study timetable, JEE study timetable, NEET study timetable, study planner India" />
+    <meta name="theme-color" content="#7c3aed" />
+    <meta property="og:title" content="Study Timetable Generator – Tools24" />
+    <meta property="og:description"
+        content="Create a personalized study timetable for school, college, board and competitive exams." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tools24.si" />
+
+    <!-- Export libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+
+    <!-- FAQ Structured Data -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"What is a study timetable generator?","acceptedAnswer":{"@type":"Answer","text":"A study timetable generator is a tool that creates a personalized weekly study schedule based on your subjects, difficulty, priority, available time and exam date."}},
+    {"@type":"Question","name":"Can I create a timetable for board exams?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can use the Class 10 Board or Class 12 Board preset, set your exam date, and the generator will distribute your subjects across available days."}},
+    {"@type":"Question","name":"Can I create a college study timetable?","acceptedAnswer":{"@type":"Answer","text":"Yes. Choose the College Semester preset, add your course subjects, set difficulty and priority, then generate your weekly schedule."}},
+    {"@type":"Question","name":"Can I download my timetable?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can download your timetable as PDF, PNG or CSV, and print it directly from your browser."}},
+    {"@type":"Question","name":"Can I edit my generated timetable?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can click any block to edit it, delete sessions, add custom sessions, or regenerate the entire timetable."}},
+    {"@type":"Question","name":"Does the timetable work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes. The timetable is mobile-first with a dedicated Day View and a horizontally scrollable Week View inside the timetable container."}}
+  ]
+}
+</script>
+
+    <style>
+        /* =====================================================
+   TOOLS24 STUDY TIMETABLE GENERATOR — ISOLATED CSS
+   Prefix: .stg-  (so other tools are not affected)
+   ===================================================== */
+
+        :root {
+            /* Light theme (default) */
+            --stg-bg-1: #f5f3ff;
+            --stg-bg-2: #eff6ff;
+            --stg-bg-3: #fdf2ff;
+            --stg-glass-bg: rgba(255, 255, 255, 0.65);
+            --stg-glass-border: rgba(124, 58, 237, 0.18);
+            --stg-card-shadow: 0 10px 30px -10px rgba(76, 29, 149, 0.18);
+            --stg-text: #1f2937;
+            --stg-text-soft: #4b5563;
+            --stg-text-muted: #6b7280;
+            --stg-input-bg: rgba(255, 255, 255, 0.85);
+            --stg-input-border: rgba(124, 58, 237, 0.25);
+            --stg-grad: linear-gradient(135deg, #7c3aed 0%, #4f46e5 45%, #ec4899 100%);
+            --stg-grad-soft: linear-gradient(135deg, rgba(124, 58, 237, 0.12), rgba(79, 70, 229, 0.10), rgba(236, 72, 153, 0.12));
+            --stg-block-text: #1f2937;
+        }
+
+        html[data-theme="dark"] {
+            --stg-bg-1: #0b1020;
+            --stg-bg-2: #0f1535;
+            --stg-bg-3: #1a0b2e;
+            --stg-glass-bg: rgba(20, 22, 40, 0.65);
+            --stg-glass-border: rgba(167, 139, 250, 0.22);
+            --stg-card-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.55);
+            --stg-text: #e5e7eb;
+            --stg-text-soft: #cbd5e1;
+            --stg-text-muted: #94a3b8;
+            --stg-input-bg: rgba(15, 18, 38, 0.85);
+            --stg-input-border: rgba(167, 139, 250, 0.30);
+            --stg-grad-soft: linear-gradient(135deg, rgba(124, 58, 237, 0.20), rgba(79, 70, 229, 0.18), rgba(236, 72, 153, 0.20));
+            --stg-block-text: #f8fafc;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background:
+                radial-gradient(1200px 700px at 10% -10%, var(--stg-bg-3) 0%, transparent 60%),
+                radial-gradient(1000px 600px at 110% 10%, var(--stg-bg-2) 0%, transparent 55%),
+                var(--stg-bg-1);
+            color: var(--stg-text);
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            overflow-x: hidden;
+        }
+
+        .stg-wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px
+        }
+
+        .stg-section {
+            margin-top: 28px
+        }
+
+        .stg-sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0
+        }
+
+        /* ---------- Header ---------- */
+        .stg-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            background: var(--stg-glass-bg);
+            border-bottom: 1px solid var(--stg-glass-border);
+        }
+
+        .stg-header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stg-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--stg-text);
+            font-weight: 800;
+            letter-spacing: -0.02em
+        }
+
+        .stg-logo-mark {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background: var(--stg-grad);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 800;
+            font-size: 14px;
+            box-shadow: 0 6px 18px -4px rgba(124, 58, 237, 0.55);
+        }
+
+        .stg-logo-text {
+            font-size: 18px
+        }
+
+        .stg-logo-text span {
+            background: var(--stg-grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent
+        }
+
+        .stg-nav {
+            display: flex;
+            align-items: center;
+            gap: 18px
+        }
+
+        .stg-nav a {
+            color: var(--stg-text-soft);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500
+        }
+
+        .stg-nav a:hover {
+            color: var(--stg-text)
+        }
+
+        .stg-theme-btn,
+        .stg-burger {
+            background: var(--stg-glass-bg);
+            border: 1px solid var(--stg-glass-border);
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--stg-text);
+            font-size: 18px;
+        }
+
+        .stg-burger {
+            display: none
+        }
+
+        .stg-mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            padding: 14px 16px;
+            background: var(--stg-glass-bg);
+            border-bottom: 1px solid var(--stg-glass-border);
+        }
+
+        .stg-mobile-menu.open {
+            display: flex
+        }
+
+        .stg-mobile-menu a {
+            color: var(--stg-text-soft);
+            text-decoration: none;
+            font-size: 15px;
+            padding: 6px 4px
+        }
+
+        @media(max-width:820px) {
+            .stg-nav {
+                display: none
+            }
+
+            .stg-burger {
+                display: flex
+            }
+        }
+
+        /* ---------- Hero ---------- */
+        .stg-hero {
+            padding: 30px 0 6px;
+            text-align: center
+        }
+
+        .stg-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: var(--stg-grad-soft);
+            border: 1px solid var(--stg-glass-border);
+            color: var(--stg-text-soft);
+            font-size: 12.5px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .stg-badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #a855f7;
+            box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.18)
+        }
+
+        .stg-hero h1 {
+            font-size: clamp(26px, 4vw, 40px);
+            margin: 0 0 8px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            background: var(--stg-grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stg-hero p {
+            margin: 0 auto 4px;
+            max-width: 680px;
+            color: var(--stg-text-soft);
+            font-size: clamp(14px, 2.2vw, 16px);
+            line-height: 1.55
+        }
+
+        /* ---------- Cards ---------- */
+        .stg-card {
+            background: var(--stg-glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--stg-glass-border);
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: var(--stg-card-shadow);
+        }
+
+        .stg-card-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--stg-text);
+            margin: 0 0 14px;
+            letter-spacing: -0.01em;
+        }
+
+        .stg-card-title svg {
+            width: 18px;
+            height: 18px;
+            color: #7c3aed
+        }
+
+        /* ---------- Form grid ---------- */
+        .stg-grid {
+            display: grid;
+            gap: 14px;
+            grid-template-columns: repeat(2, minmax(0, 1fr))
+        }
+
+        .stg-grid-3 {
+            display: grid;
+            gap: 14px;
+            grid-template-columns: repeat(3, minmax(0, 1fr))
+        }
+
+        .stg-grid-4 {
+            display: grid;
+            gap: 12px;
+            grid-template-columns: repeat(4, minmax(0, 1fr))
+        }
+
+        @media(max-width:760px) {
+
+            .stg-grid,
+            .stg-grid-3,
+            .stg-grid-4 {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .stg-field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            min-width: 0
+        }
+
+        .stg-label {
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--stg-text-soft);
+            letter-spacing: 0.01em
+        }
+
+        .stg-input,
+        .stg-select {
+            width: 100%;
+            background: var(--stg-input-bg);
+            border: 1px solid var(--stg-input-border);
+            color: var(--stg-text);
+            border-radius: 12px;
+            padding: 11px 12px;
+            font-size: 14px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color .15s, box-shadow .15s;
+            min-width: 0;
+        }
+
+        .stg-input:focus,
+        .stg-select:focus {
+            border-color: #7c3aed;
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.18);
+        }
+
+        .stg-select {
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237c3aed' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 34px
+        }
+
+        /* ---------- Preset chips ---------- */
+        .stg-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px
+        }
+
+        .stg-chip {
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            background: var(--stg-grad-soft);
+            border: 1px solid var(--stg-glass-border);
+            color: var(--stg-text-soft);
+            cursor: pointer;
+            transition: all .15s;
+        }
+
+        .stg-chip:hover {
+            border-color: #7c3aed;
+            color: var(--stg-text)
+        }
+
+        .stg-chip.active {
+            background: var(--stg-grad);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 6px 18px -6px rgba(124, 58, 237, 0.55)
+        }
+
+        /* ---------- Subject rows ---------- */
+        .stg-subject-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px
+        }
+
+        .stg-subject-row {
+            background: var(--stg-input-bg);
+            border: 1px solid var(--stg-glass-border);
+            border-radius: 14px;
+            padding: 12px;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 0.8fr auto;
+            gap: 10px;
+            align-items: end;
+        }
+
+        @media(max-width:760px) {
+            .stg-subject-row {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px
+            }
+
+            .stg-subject-row>.stg-field:nth-child(1) {
+                grid-column: 1 / -1
+            }
+
+            .stg-subject-row>.stg-subject-remove {
+                grid-column: 1 / -1;
+                justify-self: start
+            }
+        }
+
+        .stg-subject-remove {
+            background: rgba(239, 68, 68, 0.12);
+            color: #dc2626;
+            border: 1px solid rgba(239, 68, 68, 0.25);
+            border-radius: 10px;
+            padding: 10px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            min-height: 42px;
+            white-space: nowrap;
+        }
+
+        .stg-subject-remove:hover {
+            background: rgba(239, 68, 68, 0.2)
+        }
+
+        .stg-color-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            display: inline-block;
+            border: 1px solid rgba(0, 0, 0, 0.1)
+        }
+
+        /* ---------- Day picker ---------- */
+        .stg-days {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px
+        }
+
+        .stg-day {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            border-radius: 10px;
+            background: var(--stg-input-bg);
+            border: 1px solid var(--stg-glass-border);
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--stg-text-soft);
+            user-select: none;
+            min-height: 38px;
+        }
+
+        .stg-day input {
+            margin: 0;
+            width: 16px;
+            height: 16px;
+            accent-color: #7c3aed
+        }
+
+        .stg-day.active {
+            border-color: #7c3aed;
+            color: var(--stg-text);
+            background: var(--stg-grad-soft)
+        }
+
+        /* ---------- Slider ---------- */
+        .stg-slider-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap
+        }
+
+        .stg-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            max-width: 280px;
+            height: 6px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #7c3aed, #ec4899);
+            outline: none;
+        }
+
+        .stg-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid #7c3aed;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2)
+        }
+
+        .stg-slider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid #7c3aed;
+            cursor: pointer
+        }
+
+        .stg-slider-val {
+            font-weight: 700;
+            color: var(--stg-text);
+            min-width: 70px;
+            font-size: 14px
+        }
+
+        /* ---------- Toggle / checkbox ---------- */
+        .stg-check {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--stg-text-soft);
+            font-weight: 600
+        }
+
+        .stg-check input {
+            width: 18px;
+            height: 18px;
+            accent-color: #7c3aed;
+            cursor: pointer
+        }
+
+        /* ---------- Buttons ---------- */
+        .stg-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            border: 1px solid var(--stg-glass-border);
+            background: var(--stg-glass-bg);
+            color: var(--stg-text);
+            cursor: pointer;
+            text-decoration: none;
+            min-height: 44px;
+            transition: transform .12s, box-shadow .15s, border-color .15s;
+            font-family: inherit;
+        }
+
+        .stg-btn:hover {
+            border-color: #7c3aed
+        }
+
+        .stg-btn:active {
+            transform: translateY(1px)
+        }
+
+        .stg-btn-primary {
+            background: var(--stg-grad);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 8px 22px -8px rgba(124, 58, 237, 0.6)
+        }
+
+        .stg-btn-primary:hover {
+            box-shadow: 0 12px 28px -8px rgba(124, 58, 237, 0.7)
+        }
+
+        .stg-btn-ghost {
+            background: transparent
+        }
+
+        .stg-btn-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px
+        }
+
+        .stg-btn-row .stg-btn {
+            flex: 1 1 160px;
+            min-width: 140px
+        }
+
+        .stg-btn-full {
+            width: 100%
+        }
+
+        /* ---------- Alerts ---------- */
+        .stg-alert {
+            padding: 12px 14px;
+            border-radius: 12px;
+            font-size: 13.5px;
+            line-height: 1.5;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .stg-alert.warn {
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px solid rgba(245, 158, 11, 0.35);
+            color: #b45309
+        }
+
+        .stg-alert.danger {
+            background: rgba(239, 68, 68, 0.10);
+            border: 1px solid rgba(239, 68, 68, 0.35);
+            color: #b91c1c
+        }
+
+        .stg-alert.info {
+            background: var(--stg-grad-soft);
+            border: 1px solid var(--stg-glass-border);
+            color: var(--stg-text-soft)
+        }
+
+        html[data-theme="dark"] .stg-alert.warn {
+            color: #fbbf24
+        }
+
+        html[data-theme="dark"] .stg-alert.danger {
+            color: #f87171
+        }
+
+        /* ---------- Timetable ---------- */
+        .stg-tt-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 14px
+        }
+
+        .stg-view-toggle {
+            display: inline-flex;
+            background: var(--stg-input-bg);
+            border: 1px solid var(--stg-glass-border);
+            border-radius: 12px;
+            padding: 4px
+        }
+
+        .stg-view-toggle button {
+            border: 0;
+            background: transparent;
+            color: var(--stg-text-soft);
+            padding: 8px 14px;
+            font-weight: 600;
+            font-size: 13px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit
+        }
+
+        .stg-view-toggle button.active {
+            background: var(--stg-grad);
+            color: #fff
+        }
+
+        .stg-day-nav {
+            display: flex;
+            gap: 8px;
+            align-items: center
+        }
+
+        .stg-day-nav button {
+            min-height: 40px;
+            min-width: 40px
+        }
+
+        .stg-tt-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 14px;
+            font-size: 13px;
+            color: var(--stg-text-soft)
+        }
+
+        .stg-tt-meta b {
+            color: var(--stg-text);
+            font-weight: 700
+        }
+
+        .stg-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 14px
+        }
+
+        .stg-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12.5px;
+            color: var(--stg-text-soft);
+            font-weight: 600;
+            padding: 4px 10px;
+            background: var(--stg-input-bg);
+            border: 1px solid var(--stg-glass-border);
+            border-radius: 999px
+        }
+
+        /* Week view (desktop) */
+        .stg-week {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 4px;
+            table-layout: fixed;
+            min-width: 760px
+        }
+
+        .stg-week th,
+        .stg-week td {
+            padding: 0;
+            vertical-align: top
+        }
+
+        .stg-week th {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--stg-text-soft);
+            padding: 8px 6px;
+            text-align: left
+        }
+
+        .stg-week th:first-child {
+            width: 78px
+        }
+
+        .stg-week .stg-time-col {
+            font-size: 11.5px;
+            color: var(--stg-text-muted);
+            font-weight: 600;
+            padding: 8px 6px;
+            text-align: left;
+            width: 78px
+        }
+
+        .stg-cell {
+            border-radius: 10px;
+            padding: 8px 9px;
+            font-size: 12px;
+            line-height: 1.3;
+            min-height: 54px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: transform .08s, box-shadow .15s;
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .stg-cell:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.15)
+        }
+
+        .stg-cell.empty {
+            background: var(--stg-input-bg);
+            border: 1px dashed var(--stg-glass-border);
+            color: var(--stg-text-muted);
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11.5px;
+            cursor: default
+        }
+
+        .stg-cell.empty:hover {
+            transform: none;
+            box-shadow: none
+        }
+
+        .stg-cell .stg-cell-time {
+            font-size: 10.5px;
+            color: var(--stg-block-text);
+            opacity: .7;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 2px
+        }
+
+        .stg-cell .stg-cell-subj {
+            font-weight: 700;
+            color: var(--stg-block-text);
+            font-size: 12.5px;
+            display: block
+        }
+
+        .stg-cell .stg-cell-type {
+            font-size: 10px;
+            color: var(--stg-block-text);
+            opacity: .75;
+            text-transform: uppercase;
+            letter-spacing: .04em
+        }
+
+        /* Week view wrapper (horizontal scroll ONLY inside timetable) */
+        .stg-week-scroll {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 14px;
+            padding-bottom: 6px
+        }
+
+        .stg-week-scroll::-webkit-scrollbar {
+            height: 8px
+        }
+
+        .stg-week-scroll::-webkit-scrollbar-thumb {
+            background: rgba(124, 58, 237, 0.4);
+            border-radius: 8px
+        }
+
+        /* Day view (mobile) */
+        .stg-day-view .stg-day-block {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 6px 0
+        }
+
+        .stg-day-view .stg-day-row {
+            display: flex;
+            align-items: stretch;
+            gap: 10px;
+            background: var(--stg-input-bg);
+            border: 1px solid var(--stg-glass-border);
+            border-radius: 12px;
+            padding: 10px;
+        }
+
+        .stg-day-view .stg-day-time {
+            flex: 0 0 90px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--stg-text-muted);
+            padding-top: 2px
+        }
+
+        .stg-day-view .stg-day-content {
+            flex: 1;
+            min-width: 0
+        }
+
+        .stg-day-view .stg-day-content .stg-cell-subj {
+            font-weight: 700;
+            color: var(--stg-block-text);
+            font-size: 14px;
+            display: block
+        }
+
+        .stg-day-view .stg-day-content .stg-cell-type {
+            font-size: 11px;
+            color: var(--stg-block-text);
+            opacity: .75;
+            text-transform: uppercase;
+            letter-spacing: .04em
+        }
+
+        /* Block colors (soft, readable in both themes) */
+        .stg-c-0 {
+            background: rgba(124, 58, 237, 0.18);
+            border-color: rgba(124, 58, 237, 0.35)
+        }
+
+        .stg-c-1 {
+            background: rgba(59, 130, 246, 0.18);
+            border-color: rgba(59, 130, 246, 0.35)
+        }
+
+        .stg-c-2 {
+            background: rgba(236, 72, 153, 0.18);
+            border-color: rgba(236, 72, 153, 0.35)
+        }
+
+        .stg-c-3 {
+            background: rgba(16, 185, 129, 0.18);
+            border-color: rgba(16, 185, 129, 0.35)
+        }
+
+        .stg-c-4 {
+            background: rgba(245, 158, 11, 0.18);
+            border-color: rgba(245, 158, 11, 0.40)
+        }
+
+        .stg-c-5 {
+            background: rgba(6, 182, 212, 0.18);
+            border-color: rgba(6, 182, 212, 0.35)
+        }
+
+        .stg-c-6 {
+            background: rgba(168, 85, 247, 0.18);
+            border-color: rgba(168, 85, 247, 0.35)
+        }
+
+        .stg-c-7 {
+            background: rgba(239, 68, 68, 0.16);
+            border-color: rgba(239, 68, 68, 0.32)
+        }
+
+        .stg-c-8 {
+            background: rgba(99, 102, 241, 0.18);
+            border-color: rgba(99, 102, 241, 0.35)
+        }
+
+        .stg-c-9 {
+            background: rgba(14, 165, 233, 0.18);
+            border-color: rgba(14, 165, 233, 0.35)
+        }
+
+        .stg-c-10 {
+            background: rgba(217, 70, 239, 0.18);
+            border-color: rgba(217, 70, 239, 0.35)
+        }
+
+        .stg-c-11 {
+            background: rgba(34, 197, 94, 0.18);
+            border-color: rgba(34, 197, 94, 0.35)
+        }
+
+        .stg-c-break {
+            background: rgba(148, 163, 184, 0.16);
+            border-color: rgba(148, 163, 184, 0.32)
+        }
+
+        .stg-c-revision {
+            background: rgba(245, 158, 11, 0.18);
+            border-color: rgba(245, 158, 11, 0.40)
+        }
+
+        .stg-c-mock {
+            background: rgba(236, 72, 153, 0.18);
+            border-color: rgba(236, 72, 153, 0.35)
+        }
+
+        .stg-c-other {
+            background: rgba(99, 102, 241, 0.18);
+            border-color: rgba(99, 102, 241, 0.35)
+        }
+
+        /* Summary */
+        .stg-summary {
+            display: grid;
+            gap: 10px;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            margin-top: 14px
+        }
+
+        @media(max-width:680px) {
+            .stg-summary {
+                grid-template-columns: repeat(2, 1fr)
+            }
+        }
+
+        .stg-summary-card {
+            background: var(--stg-input-bg);
+            border: 1px solid var(--stg-glass-border);
+            border-radius: 12px;
+            padding: 12px 14px;
+        }
+
+        .stg-summary-card .lbl {
+            font-size: 11.5px;
+            color: var(--stg-text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .05em
+        }
+
+        .stg-summary-card .val {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--stg-text);
+            margin-top: 2px
+        }
+
+        .stg-summary-card .val span {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--stg-text-muted);
+            margin-left: 3px
+        }
+
+        .stg-subj-hours {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 6px
+        }
+
+        .stg-subj-hours .item {
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--stg-text-soft);
+            padding: 5px 10px;
+            background: var(--stg-input-bg);
+            border: 1px solid var(--stg-glass-border);
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        /* Empty state */
+        .stg-empty {
+            text-align: center;
+            padding: 40px 20px;
+            border: 2px dashed var(--stg-glass-border);
+            border-radius: 18px;
+            color: var(--stg-text-muted);
+        }
+
+        .stg-empty svg {
+            width: 48px;
+            height: 48px;
+            opacity: .5;
+            margin-bottom: 10px
+        }
+
+        .stg-empty h3 {
+            margin: 0 0 4px;
+            font-size: 16px;
+            color: var(--stg-text-soft)
+        }
+
+        .stg-empty p {
+            margin: 0;
+            font-size: 13px
+        }
+
+        /* Modal */
+        .stg-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 10, 30, 0.55);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            z-index: 100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 16px
+        }
+
+        .stg-modal-overlay.open {
+            display: flex
+        }
+
+        .stg-modal {
+            background: var(--stg-glass-bg);
+            border: 1px solid var(--stg-glass-border);
+            border-radius: 18px;
+            padding: 20px;
+            max-width: 480px;
+            width: 100%;
+            box-shadow: var(--stg-card-shadow);
+            max-height: 90vh;
+            overflow: auto
+        }
+
+        .stg-modal h3 {
+            margin: 0 0 14px;
+            font-size: 16px;
+            color: var(--stg-text)
+        }
+
+        .stg-modal .stg-modal-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 18px;
+            flex-wrap: wrap
+        }
+
+        .stg-modal .stg-btn {
+            flex: 0 0 auto
+        }
+
+        /* FAQ */
+        .stg-faq {
+            display: flex;
+            flex-direction: column;
+            gap: 8px
+        }
+
+        .stg-faq-item {
+            background: var(--stg-glass-bg);
+            border: 1px solid var(--stg-glass-border);
+            border-radius: 12px;
+            overflow: hidden
+        }
+
+        .stg-faq-q {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            padding: 14px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--stg-text);
+            background: transparent;
+            border: 0;
+            width: 100%;
+            text-align: left;
+            font-family: inherit
+        }
+
+        .stg-faq-q .chev {
+            transition: transform .2s;
+            font-size: 14px;
+            color: var(--stg-text-muted)
+        }
+
+        .stg-faq-item.open .chev {
+            transform: rotate(180deg)
+        }
+
+        .stg-faq-a {
+            max-height: 0;
+            overflow: hidden;
+            color: var(--stg-text-soft);
+            font-size: 13px;
+            line-height: 1.55;
+            transition: max-height .25s ease
+        }
+
+        .stg-faq-item.open .stg-faq-a {
+            max-height: 300px
+        }
+
+        .stg-faq-a-inner {
+            padding: 0 16px 14px
+        }
+
+        /* Privacy */
+        .stg-privacy {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 13px;
+            color: var(--stg-text-soft);
+            line-height: 1.55
+        }
+
+        .stg-privacy svg {
+            flex: 0 0 18px;
+            width: 18px;
+            height: 18px;
+            color: #10b981;
+            margin-top: 1px
+        }
+
+        /* Footer */
+        .stg-footer {
+            margin-top: 40px;
+            padding: 24px 16px;
+            text-align: center;
+            border-top: 1px solid var(--stg-glass-border);
+            color: var(--stg-text-muted);
+            font-size: 13px;
+        }
+
+        .stg-footer a {
+            color: var(--stg-text-soft);
+            text-decoration: none;
+            font-weight: 600
+        }
+
+        .stg-footer a:hover {
+            color: var(--stg-text)
+        }
+
+        /* Section header */
+        .stg-section-h {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 0 12px
+        }
+
+        .stg-section-h h2 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--stg-text);
+            margin: 0;
+            letter-spacing: -0.01em
+        }
+
+        .stg-section-h .sub {
+            font-size: 12.5px;
+            color: var(--stg-text-muted);
+            font-weight: 500
+        }
+
+        /* Sticky CTA on mobile */
+        .stg-cta-sticky {
+            position: sticky;
+            bottom: 0;
+            z-index: 30;
+            padding: 12px 0;
+            background: linear-gradient(to top, var(--stg-bg-1) 60%, transparent);
+            margin-top: 10px;
+        }
+
+        /* Print styles */
+        @media print {
+
+            .stg-header,
+            .stg-footer,
+            .stg-cta-sticky,
+            .stg-btn,
+            .stg-tt-toolbar,
+            .stg-faq,
+            .stg-empty,
+            .stg-modal-overlay,
+            .stg-burger,
+            .stg-mobile-menu {
+                display: none !important
+            }
+
+            body {
+                background: #fff !important;
+                color: #000 !important
+            }
+
+            .stg-card,
+            .stg-cell,
+            .stg-week {
+                box-shadow: none !important
+            }
+
+            .stg-week-scroll {
+                overflow: visible !important
+            }
+
+            .stg-week {
+                min-width: 0 !important;
+                width: 100% !important
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ============ HEADER ============ -->
+    <header class="stg-header" role="banner">
+        <div class="stg-header-inner">
+            <a href="https://tools24.si" class="stg-logo" aria-label="Tools24 home">
+                <span class="stg-logo-mark">T24</span>
+                <span class="stg-logo-text">Tools<span>24</span></span>
+            </a>
+            <nav class="stg-nav" aria-label="Primary">
+                <a href="https://tools24.si">Home</a>
+                <a href="https://tools24.si/about">About</a>
+                <a href="https://tools24.si/privacy">Privacy</a>
+                <a href="https://tools24.si/contact">Contact</a>
+            </nav>
+            <button class="stg-theme-btn" id="stgThemeBtn" aria-label="Toggle theme" title="Toggle light/dark">
+                <span id="stgThemeIcon">🌙</span>
+            </button>
+            <button class="stg-burger" id="stgBurger" aria-label="Open menu" aria-expanded="false">☰</button>
+        </div>
+    </header>
+    <div class="stg-mobile-menu" id="stgMobileMenu" aria-hidden="true">
+        <a href="https://tools24.si">Home</a>
+        <a href="https://tools24.si/about">About</a>
+        <a href="https://tools24.si/privacy">Privacy</a>
+        <a href="https://tools24.si/contact">Contact</a>
+    </div>
+
+    <main class="stg-wrap">
+
+        <!-- HERO -->
+        <section class="stg-hero">
+            <span class="stg-badge"><span class="stg-badge-dot"></span> Free • Smart • Customizable</span>
+            <h1>Study Timetable Generator</h1>
+            <p>Create a personalized study schedule for school, college, board exams and competitive exams.</p>
+        </section>
+
+        <!-- STUDENT INFO -->
+        <section class="stg-section" aria-labelledby="stg-h-info">
+            <div class="stg-card">
+                <div class="stg-section-h">
+                    <h2 id="stg-h-info">Your Study Details</h2>
+                    <span class="sub">Tell us about your goal</span>
+                </div>
+
+                <div class="stg-grid" style="margin-bottom:14px">
+                    <div class="stg-field">
+                        <label class="stg-label" for="stgStudentName">Student Name</label>
+                        <input class="stg-input" id="stgStudentName" type="text" placeholder="Enter your name"
+                            value="" />
+                    </div>
+                    <div class="stg-field">
+                        <label class="stg-label" for="stgTtTitle">Timetable Title</label>
+                        <input class="stg-input" id="stgTtTitle" type="text" placeholder="My Study Timetable"
+                            value="My Study Timetable" />
+                    </div>
+                    <div class="stg-field">
+                        <label class="stg-label" for="stgExamGoal">Exam / Goal</label>
+                        <select class="stg-select" id="stgExamGoal">
+                            <option>Class 10 Board</option>
+                            <option selected>Class 12 Board</option>
+                            <option>JEE</option>
+                            <option>NEET</option>
+                            <option>CUET</option>
+                            <option>College Semester</option>
+                            <option>Competitive Exam</option>
+                            <option>Custom</option>
+                        </select>
+                    </div>
+                    <div class="stg-field">
+                        <label class="stg-label" for="stgExamDate">Exam Date</label>
+                        <input class="stg-input" id="stgExamDate" type="date" />
+                    </div>
+                    <div class="stg-field">
+                        <label class="stg-label" for="stgClass">Class / Course (optional)</label>
+                        <input class="stg-input" id="stgClass" type="text" placeholder="Class 12 / B.Tech / College" />
+                    </div>
+                    <div class="stg-field">
+                        <label class="stg-label">Quick Preset</label>
+                        <div class="stg-chips" id="stgPresets">
+                            <button type="button" class="stg-chip" data-preset="Class 10 Board">Class 10 Board</button>
+                            <button type="button" class="stg-chip active" data-preset="Class 12 Board">Class 12
+                                Board</button>
+                            <button type="button" class="stg-chip" data-preset="JEE">JEE</button>
+                            <button type="button" class="stg-chip" data-preset="NEET">NEET</button>
+                            <button type="button" class="stg-chip" data-preset="CUET">CUET</button>
+                            <button type="button" class="stg-chip" data-preset="College Semester">College
+                                Semester</button>
+                            <button type="button" class="stg-chip" data-preset="Competitive Exam">Competitive
+                                Exam</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SUBJECTS -->
+        <section class="stg-section" aria-labelledby="stg-h-subjects">
+            <div class="stg-card">
+                <div class="stg-section-h">
+                    <h2 id="stg-h-subjects">Your Subjects</h2>
+                    <span class="sub">Add up to 12 subjects</span>
+                </div>
+
+                <div class="stg-subject-list" id="stgSubjectList"></div>
+
+                <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+                    <button type="button" class="stg-btn" id="stgAddSubject">＋ Add Subject</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- STUDY AVAILABILITY -->
+        <section class="stg-section" aria-labelledby="stg-h-avail">
+            <div class="stg-card">
+                <div class="stg-section-h">
+                    <h2 id="stg-h-avail">Study Availability</h2>
+                    <span class="sub">When can you study?</span>
+                </div>
+
+                <div class="stg-grid-3" style="margin-bottom:14px">
+                    <div class="stg-field">
+                        <label class="stg-label" for="stgDailyHours">Daily Study Hours</label>
+                        <select class="stg-select" id="stgDailyHours">
+                            <option>1 hour</option>
+                            <option>2 hours</option>
+                            <option>3 hours</option>
+                            <option selected>4 hours</option>
+                            <option>5 hours</option>
+                            <option>6 hours</option>
+                            <option>7 hours</option>
+                            <option>8+ hours</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                    </div>
+                    <div class="stg-field" id="stgCustomHoursWrap" style="display:none">
+                        <label class="stg-label" for="stgCustomHours">Custom Hours / Day</label>
+                        <input class="stg-input" id="stgCustomHours" type="number" min="1" max="16" value="4" />
+                    </div>
+                    <div class="stg-field">
+                        <label class="stg-label" for="stgPrefTime">Preferred Study Time</label>
+                        <select class="stg-select" id="stgPrefTime">
+                            <option value="morning">Morning</option>
+                            <option value="afternoon">Afternoon</option>
+                            <option value="evening" selected>Evening</option>
+                            <option value="night">Night</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="stg-grid" id="stgCustomTimeWrap" style="display:none;margin-bottom:14px">
+                    <div class="stg-field">
+                        <label class="stg-label" for="stgStartTime">Start Time</label>
+                        <input class="stg-input" id="stgStartTime" type="time" value="06:00" />
+                    </div>
+                    <div class="stg-field">
+                        <label class="stg-label" for="stgEndTime">End Time</label>
+                        <input class="stg-input" id="stgEndTime" type="time" value="22:00" />
+                    </div>
+                </div>
+
+                <div class="stg-field">
+                    <label class="stg-label">Study Days</label>
+                    <div class="stg-days" id="stgDays">
+                        <label class="stg-day active"><input type="checkbox" value="1" checked /> Mon</label>
+                        <label class="stg-day active"><input type="checkbox" value="2" checked /> Tue</label>
+                        <label class="stg-day active"><input type="checkbox" value="3" checked /> Wed</label>
+                        <label class="stg-day active"><input type="checkbox" value="4" checked /> Thu</label>
+                        <label class="stg-day active"><input type="checkbox" value="5" checked /> Fri</label>
+                        <label class="stg-day active"><input type="checkbox" value="6" checked /> Sat</label>
+                        <label class="stg-day"><input type="checkbox" value="0" /> Sun</label>
+                    </div>
+                    <div style="display:flex;gap:8px;margin-top:10px">
+                        <button type="button" class="stg-btn stg-btn-ghost" id="stgDaysAll"
+                            style="min-height:38px;padding:8px 14px;font-size:13px">Select All</button>
+                        <button type="button" class="stg-btn stg-btn-ghost" id="stgDaysClear"
+                            style="min-height:38px;padding:8px 14px;font-size:13px">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SESSION SETTINGS -->
+        <section class="stg-section" aria-labelledby="stg-h-session">
+            <div class="stg-card">
+                <div class="stg-section-h">
+                    <h2 id="stg-h-session">Session Settings</h2>
+                    <span class="sub">Pomodoro-style focus blocks</span>
+                </div>
+
+                <div class="stg-grid-3" style="margin-bottom:14px">
+                    <div class="stg-field">
+                        <label class="stg-label" for="stgSession">Study Session Duration</label>
+                        <select class="stg-select" id="stgSession">
+                            <option value="25">25 min</option>
+                            <option value="30">30 min</option>
+                            <option value="45">45 min</option>
+                            <option value="50" selected>50 min</option>
+                            <option value="60">60 min</option>
+                            <option value="90">90 min</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                    </div>
+                    <div class="stg-field" id="stgCustomSessionWrap" style="display:none">
+                        <label class="stg-label" for="stgCustomSession">Custom Session (min)</label>
+                        <input class="stg-input" id="stgCustomSession" type="number" min="10" max="180" value="50" />
+                    </div>
+                    <div class="stg-field">
+                        <label class="stg-label" for="stgBreak">Break Duration</label>
+                        <select class="stg-select" id="stgBreak">
+                            <option value="5">5 min</option>
+                            <option value="10" selected>10 min</option>
+                            <option value="15">15 min</option>
+                            <option value="20">20 min</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                    </div>
+                    <div class="stg-field" id="stgCustomBreakWrap" style="display:none">
+                        <label class="stg-label" for="stgCustomBreak">Custom Break (min)</label>
+                        <input class="stg-input" id="stgCustomBreak" type="number" min="1" max="60" value="10" />
+                    </div>
+                </div>
+
+                <div class="stg-field" style="margin-bottom:14px">
+                    <label class="stg-label">Revision Time</label>
+                    <div class="stg-slider-row">
+                        <input type="range" min="0" max="50" value="20" step="5" id="stgRevision" class="stg-slider" />
+                        <span class="stg-slider-val" id="stgRevisionVal">Revision: 20%</span>
+                    </div>
+                </div>
+
+                <label class="stg-check">
+                    <input type="checkbox" id="stgMock" />
+                    Include Mock Test / Practice Sessions
+                </label>
+
+                <div id="stgMockOpts" style="display:none;margin-top:10px" class="stg-grid-3">
+                    <label class="stg-check"><input type="checkbox" id="stgMockWeekly" checked /> Weekly Mock
+                        Test</label>
+                    <label class="stg-check"><input type="checkbox" id="stgMockPractice" checked /> Practice
+                        Questions</label>
+                    <label class="stg-check"><input type="checkbox" id="stgMockPYQ" checked /> Previous Year
+                        Questions</label>
+                </div>
+            </div>
+        </section>
+
+        <!-- GENERATE CTA -->
+        <section class="stg-section stg-cta-sticky">
+            <button type="button" class="stg-btn stg-btn-primary stg-btn-full" id="stgGenerate" style="font-size:15px">
+                ⚡ Generate My Timetable
+            </button>
+        </section>
+
+        <!-- TIMETABLE OUTPUT -->
+        <section class="stg-section" aria-labelledby="stg-h-tt">
+            <div class="stg-card" id="stgTtCard">
+                <div class="stg-section-h" style="justify-content:space-between;width:100%">
+                    <h2 id="stg-h-tt">Your Study Timetable</h2>
+                </div>
+
+                <div id="stgAlerts"></div>
+
+                <div id="stgTtEmpty" class="stg-empty">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="3" y="4" width="18" height="18" rx="2" />
+                        <path d="M16 2v4M8 2v4M3 10h18" />
+                    </svg>
+                    <h3>Your timetable will appear here</h3>
+                    <p>Fill in your details above and click <b>Generate My Timetable</b>.</p>
+                </div>
+
+                <div id="stgTtContent" style="display:none">
+                    <!-- Meta + toolbar -->
+                    <div class="stg-tt-meta" id="stgTtMeta"></div>
+
+                    <div class="stg-tt-toolbar">
+                        <div class="stg-view-toggle" role="tablist" aria-label="View mode">
+                            <button data-view="day" class="active" id="stgViewDay" role="tab">Day View</button>
+                            <button data-view="week" id="stgViewWeek" role="tab">Week View</button>
+                        </div>
+                        <div class="stg-day-nav" id="stgDayNav">
+                            <button class="stg-btn" id="stgPrevDay" aria-label="Previous day">‹</button>
+                            <button class="stg-btn" id="stgToday">Today</button>
+                            <button class="stg-btn" id="stgNextDay" aria-label="Next day">›</button>
+                        </div>
+                    </div>
+
+                    <div class="stg-legend" id="stgLegend"></div>
+
+                    <div id="stgTtArea">
+                        <div class="stg-day-view" id="stgDayView"></div>
+                        <div class="stg-week-scroll" id="stgWeekScroll" style="display:none">
+                            <table class="stg-week" id="stgWeekTable"></table>
+                        </div>
+                    </div>
+
+                    <!-- Summary -->
+                    <div class="stg-summary" id="stgSummary"></div>
+                    <div class="stg-subj-hours" id="stgSubjHours" style="margin-top:14px"></div>
+
+                    <!-- Actions -->
+                    <div class="stg-btn-row" style="margin-top:18px">
+                        <button class="stg-btn" id="stgEditSettings">✎ Edit Settings</button>
+                        <button class="stg-btn" id="stgRegenerate">↻ Regenerate</button>
+                        <button class="stg-btn" id="stgReset">Reset</button>
+                        <button class="stg-btn" id="stgAddSession">＋ Add Session</button>
+                    </div>
+                    <div class="stg-btn-row" style="margin-top:10px">
+                        <button class="stg-btn stg-btn-primary" id="stgDlPDF">⬇ Download PDF</button>
+                        <button class="stg-btn" id="stgDlPNG">⬇ Download PNG</button>
+                        <button class="stg-btn" id="stgDlCSV">⬇ Download CSV</button>
+                        <button class="stg-btn" id="stgPrint">🖨 Print</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRIVACY -->
+        <section class="stg-section">
+            <div class="stg-card">
+                <div class="stg-privacy">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                    <div>
+                        <b style="color:var(--stg-text)">Your timetable is created in your browser.</b>
+                        All scheduling happens locally on your device. No personal data is uploaded to any server.
+                        If you save the timetable, it is stored locally in this browser only.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="stg-section" aria-labelledby="stg-h-faq">
+            <div class="stg-card">
+                <div class="stg-section-h">
+                    <h2 id="stg-h-faq">Frequently Asked Questions</h2>
+                </div>
+                <div class="stg-faq" id="stgFaq"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="stg-footer">
+        <div>© <span id="stgYear"></span> <a href="https://tools24.si">Tools24</a> — Free online tools for students.
+        </div>
+    </footer>
+
+    <!-- Edit session modal -->
+    <div class="stg-modal-overlay" id="stgModalOverlay" role="dialog" aria-modal="true" aria-labelledby="stgModalTitle">
+        <div class="stg-modal">
+            <h3 id="stgModalTitle">Edit Session</h3>
+            <input type="hidden" id="stgModalIndex" />
+            <div class="stg-grid">
+                <div class="stg-field">
+                    <label class="stg-label" for="stgModalSubject">Subject / Label</label>
+                    <input class="stg-input" id="stgModalSubject" type="text" list="stgModalSubjectList" />
+                    <datalist id="stgModalSubjectList"></datalist>
+                </div>
+                <div class="stg-field">
+                    <label class="stg-label" for="stgModalType">Type</label>
+                    <select class="stg-select" id="stgModalType">
+                        <option>Study</option>
+                        <option>Revision</option>
+                        <option>Mock Test</option>
+                        <option>Break</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="stg-field">
+                    <label class="stg-label" for="stgModalDay">Day</label>
+                    <select class="stg-select" id="stgModalDay">
+                        <option value="1">Monday</option>
+                        <option value="2">Tuesday</option>
+                        <option value="3">Wednesday</option>
+                        <option value="4">Thursday</option>
+                        <option value="5">Friday</option>
+                        <option value="6">Saturday</option>
+                        <option value="0">Sunday</option>
+                    </select>
+                </div>
+                <div class="stg-field">
+                    <label class="stg-label" for="stgModalStart">Start Time</label>
+                    <input class="stg-input" id="stgModalStart" type="time" />
+                </div>
+                <div class="stg-field">
+                    <label class="stg-label" for="stgModalEnd">End Time</label>
+                    <input class="stg-input" id="stgModalEnd" type="time" />
+                </div>
+                <div class="stg-field">
+                    <label class="stg-label" for="stgModalNotes">Notes</label>
+                    <input class="stg-input" id="stgModalNotes" type="text" placeholder="Optional" />
+                </div>
+            </div>
+            <div class="stg-modal-actions">
+                <button class="stg-btn" id="stgModalDelete"
+                    style="color:#dc2626;border-color:rgba(239,68,68,0.35)">Delete</button>
+                <button class="stg-btn" id="stgModalCancel">Cancel</button>
+                <button class="stg-btn stg-btn-primary" id="stgModalSave">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* =====================================================
+           STUDY TIMETABLE GENERATOR — VANILLA JS
+           ===================================================== */
+        (function () {
+            'use strict';
+
+            const $ = (sel, ctx = document) => ctx.querySelector(sel);
+            const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+            const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const DAY_SHORT = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+            // ---------- State ----------
+            const state = {
+                subjects: [
+                    { name: 'Mathematics', difficulty: 'Hard', priority: 'High', hours: 6 },
+                    { name: 'Physics', difficulty: 'Hard', priority: 'High', hours: 5 },
+                    { name: 'Chemistry', difficulty: 'Medium', priority: 'Medium', hours: 4 },
+                    { name: 'English', difficulty: 'Easy', priority: 'Medium', hours: 3 }
+                ],
+                timetable: [],            // {day, start, end, subject, type, notes, colorIdx}
+                activeDay: 1,             // 0=Sun...6=Sat
+                view: 'day',              // 'day' | 'week'
+                subjectColorMap: {}
+            };
+
+            // ---------- Theme ----------
+            function initTheme() {
+                const saved = localStorage.getItem('stg-theme') || 'light';
+                document.documentElement.setAttribute('data-theme', saved);
+                $('#stgThemeIcon').textContent = saved === 'dark' ? '☀️' : '🌙';
+            }
+            $('#stgThemeBtn').addEventListener('click', () => {
+                const cur = document.documentElement.getAttribute('data-theme');
+                const next = cur === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', next);
+                localStorage.setItem('stg-theme', next);
+                $('#stgThemeIcon').textContent = next === 'dark' ? '☀️' : '🌙';
+            });
+
+            // ---------- Mobile menu ----------
+            $('#stgBurger').addEventListener('click', () => {
+                const m = $('#stgMobileMenu');
+                const open = m.classList.toggle('open');
+                $('#stgBurger').setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+
+            // ---------- Year ----------
+            $('#stgYear').textContent = new Date().getFullYear();
+
+            // ---------- Preset chips ----------
+            $$('#stgPresets .stg-chip').forEach(chip => {
+                chip.addEventListener('click', () => {
+                    $$('#stgPresets .stg-chip').forEach(c => c.classList.remove('active'));
+                    chip.classList.add('active');
+                    $('#stgExamGoal').value = chip.dataset.preset;
+                    applyPresetDefaults(chip.dataset.preset);
+                });
+            });
+
+            function applyPresetDefaults(preset) {
+                if (preset === 'JEE' || preset === 'NEET') {
+                    setSubjects([
+                        { name: 'Physics', difficulty: 'Hard', priority: 'High', hours: 6 },
+                        { name: 'Chemistry', difficulty: 'Hard', priority: 'High', hours: 5 },
+                        { name: 'Mathematics', difficulty: 'Hard', priority: 'High', hours: 6 },
+                        { name: 'Biology', difficulty: 'Medium', priority: 'Medium', hours: 4 }
+                    ].slice(0, preset === 'NEET' ? 4 : 3));
+                    if (preset === 'NEET') {
+                        setSubjects([
+                            { name: 'Physics', difficulty: 'Hard', priority: 'High', hours: 5 },
+                            { name: 'Chemistry', difficulty: 'Hard', priority: 'High', hours: 5 },
+                            { name: 'Biology', difficulty: 'Hard', priority: 'High', hours: 6 }
+                        ]);
+                    }
+                } else if (preset === 'Class 10 Board') {
+                    setSubjects([
+                        { name: 'Mathematics', difficulty: 'Hard', priority: 'High', hours: 5 },
+                        { name: 'Science', difficulty: 'Medium', priority: 'High', hours: 5 },
+                        { name: 'Social Science', difficulty: 'Medium', priority: 'Medium', hours: 4 },
+                        { name: 'English', difficulty: 'Easy', priority: 'Medium', hours: 3 },
+                        { name: 'Hindi', difficulty: 'Easy', priority: 'Low', hours: 3 }
+                    ]);
+                } else if (preset === 'Class 12 Board') {
+                    setSubjects([
+                        { name: 'Mathematics', difficulty: 'Hard', priority: 'High', hours: 6 },
+                        { name: 'Physics', difficulty: 'Hard', priority: 'High', hours: 5 },
+                        { name: 'Chemistry', difficulty: 'Medium', priority: 'High', hours: 5 },
+                        { name: 'English', difficulty: 'Easy', priority: 'Medium', hours: 3 },
+                        { name: 'Computer Science', difficulty: 'Medium', priority: 'Medium', hours: 4 }
+                    ]);
+                } else if (preset === 'CUET') {
+                    setSubjects([
+                        { name: 'English', difficulty: 'Medium', priority: 'High', hours: 4 },
+                        { name: 'General Test', difficulty: 'Medium', priority: 'High', hours: 4 },
+                        { name: 'Domain Subject 1', difficulty: 'Hard', priority: 'High', hours: 5 },
+                        { name: 'Domain Subject 2', difficulty: 'Medium', priority: 'Medium', hours: 4 }
+                    ]);
+                } else if (preset === 'College Semester') {
+                    setSubjects([
+                        { name: 'Subject 1', difficulty: 'Medium', priority: 'High', hours: 5 },
+                        { name: 'Subject 2', difficulty: 'Medium', priority: 'Medium', hours: 4 },
+                        { name: 'Subject 3', difficulty: 'Easy', priority: 'Medium', hours: 3 },
+                        { name: 'Subject 4', difficulty: 'Easy', priority: 'Low', hours: 3 }
+                    ]);
+                } else if (preset === 'Competitive Exam') {
+                    setSubjects([
+                        { name: 'Quantitative Aptitude', difficulty: 'Hard', priority: 'High', hours: 5 },
+                        { name: 'Reasoning', difficulty: 'Medium', priority: 'High', hours: 4 },
+                        { name: 'English Language', difficulty: 'Medium', priority: 'Medium', hours: 3 },
+                        { name: 'General Awareness', difficulty: 'Easy', priority: 'Medium', hours: 3 }
+                    ]);
+                }
+                renderSubjects();
+            }
+
+            function setSubjects(arr) { state.subjects = arr.slice(0, 12); }
+
+            // ---------- Subject rows ----------
+            function renderSubjects() {
+                const list = $('#stgSubjectList');
+                list.innerHTML = '';
+                state.subjects.forEach((s, i) => {
+                    const row = document.createElement('div');
+                    row.className = 'stg-subject-row';
+                    row.innerHTML = `
+        <div class="stg-field">
+          <label class="stg-label">Subject Name</label>
+          <input class="stg-input stg-subj-name" type="text" value="${escapeHtml(s.name)}" placeholder="Subject ${i + 1}" />
+        </div>
+        <div class="stg-field">
+          <label class="stg-label">Difficulty</label>
+          <select class="stg-select stg-subj-diff">
+            <option ${s.difficulty === 'Easy' ? 'selected' : ''}>Easy</option>
+            <option ${s.difficulty === 'Medium' ? 'selected' : ''}>Medium</option>
+            <option ${s.difficulty === 'Hard' ? 'selected' : ''}>Hard</option>
+          </select>
+        </div>
+        <div class="stg-field">
+          <label class="stg-label">Priority</label>
+          <select class="stg-select stg-subj-prio">
+            <option ${s.priority === 'Low' ? 'selected' : ''}>Low</option>
+            <option ${s.priority === 'Medium' ? 'selected' : ''}>Medium</option>
+            <option ${s.priority === 'High' ? 'selected' : ''}>High</option>
+          </select>
+        </div>
+        <div class="stg-field">
+          <label class="stg-label">Weekly Hours</label>
+          <input class="stg-input stg-subj-hours" type="number" min="1" max="40" value="${s.hours}" />
+        </div>
+        <button type="button" class="stg-subject-remove" aria-label="Remove subject">Remove</button>
+      `;
+                    // wire events
+                    row.querySelector('.stg-subj-name').addEventListener('input', e => { state.subjects[i].name = e.target.value; });
+                    row.querySelector('.stg-subj-diff').addEventListener('change', e => { state.subjects[i].difficulty = e.target.value; });
+                    row.querySelector('.stg-subj-prio').addEventListener('change', e => { state.subjects[i].priority = e.target.value; });
+                    row.querySelector('.stg-subj-hours').addEventListener('input', e => { state.subjects[i].hours = parseInt(e.target.value) || 0; });
+                    row.querySelector('.stg-subject-remove').addEventListener('click', () => {
+                        state.subjects.splice(i, 1);
+                        renderSubjects();
+                    });
+                    list.appendChild(row);
+                });
+            }
+
+            $('#stgAddSubject').addEventListener('click', () => {
+                if (state.subjects.length >= 12) {
+                    alert('You can add up to 12 subjects.');
+                    return;
+                }
+                state.subjects.push({ name: '', difficulty: 'Medium', priority: 'Medium', hours: 4 });
+                renderSubjects();
+                // focus last input
+                const inputs = $$('.stg-subj-name');
+                if (inputs.length) inputs[inputs.length - 1].focus();
+            });
+
+            // ---------- Days toggle ----------
+            $$('#stgDays .stg-day').forEach(label => {
+                const cb = label.querySelector('input');
+                cb.addEventListener('change', () => {
+                    label.classList.toggle('active', cb.checked);
+                });
+            });
+            $('#stgDaysAll').addEventListener('click', () => {
+                $$('#stgDays .stg-day').forEach(l => { l.classList.add('active'); l.querySelector('input').checked = true; });
+            });
+            $('#stgDaysClear').addEventListener('click', () => {
+                $$('#stgDays .stg-day').forEach(l => { l.classList.remove('active'); l.querySelector('input').checked = false; });
+            });
+
+            // ---------- Custom selects ----------
+            $('#stgDailyHours').addEventListener('change', e => {
+                $('#stgCustomHoursWrap').style.display = e.target.value === 'custom' ? 'block' : 'none';
+            });
+            $('#stgPrefTime').addEventListener('change', e => {
+                $('#stgCustomTimeWrap').style.display = e.target.value === 'custom' ? 'grid' : 'none';
+            });
+            $('#stgSession').addEventListener('change', e => {
+                $('#stgCustomSessionWrap').style.display = e.target.value === 'custom' ? 'block' : 'none';
+            });
+            $('#stgBreak').addEventListener('change', e => {
+                $('#stgCustomBreakWrap').style.display = e.target.value === 'custom' ? 'block' : 'none';
+            });
+            $('#stgMock').addEventListener('change', e => {
+                $('#stgMockOpts').style.display = e.target.checked ? 'grid' : 'none';
+            });
+            $('#stgRevision').addEventListener('input', e => {
+                $('#stgRevisionVal').textContent = `Revision: ${e.target.value}%`;
+            });
+
+            // ---------- Helpers ----------
+            function escapeHtml(s) { return String(s || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+            function timeStrToMin(t) { const [h, m] = t.split(':').map(Number); return h * 60 + m; }
+            function minToTime(min) { min = ((min % 1440) + 1440) % 1440; const h = Math.floor(min / 60), m = min % 60; return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`; }
+            function formatHourLabel(min) { const h = Math.floor(min / 60); const ampm = h < 12 ? 'AM' : 'PM'; const hh = h % 12 === 0 ? 12 : h % 12; return `${hh} ${ampm}`; }
+            function getDailyHours() { const v = $('#stgDailyHours').value; if (v === 'custom') return parseInt($('#stgCustomHours').value) || 0; return parseInt(v) || 0; }
+            function getSessionMin() { const v = $('#stgSession').value; if (v === 'custom') return parseInt($('#stgCustomSession').value) || 50; return parseInt(v) || 50; }
+            function getBreakMin() { const v = $('#stgBreak').value; if (v === 'custom') return parseInt($('#stgCustomBreak').value) || 10; return parseInt(v) || 10; }
+            function getPreferredWindow() {
+                const pref = $('#stgPrefTime').value;
+                if (pref === 'morning') return { start: 6 * 60, end: 12 * 60 };
+                if (pref === 'afternoon') return { start: 12 * 60, end: 17 * 60 };
+                if (pref === 'evening') return { start: 16 * 60, end: 22 * 60 };
+                if (pref === 'night') return { start: 20 * 60, end: 23 * 60 + 59 };
+                return { start: timeStrToMin($('#stgStartTime').value || '06:00'), end: timeStrToMin($('#stgEndTime').value || '22:00') };
+            }
+            function getSelectedDays() { return $$('#stgDays .stg-day input:checked').map(cb => parseInt(cb.value)); }
+
+            // ---------- Color assignment ----------
+            function buildColorMap() {
+                state.subjectColorMap = {};
+                let idx = 0;
+                state.subjects.forEach(s => {
+                    if (s.name && state.subjectColorMap[s.name] === undefined) {
+                        state.subjectColorMap[s.name] = idx % 12;
+                        idx++;
+                    }
+                });
+            }
+            function colorClassFor(name, type) {
+                if (type === 'Break') return 'stg-c-break';
+                if (type === 'Revision') return 'stg-c-revision';
+                if (type === 'Mock Test') return 'stg-c-mock';
+                if (type === 'Other') return 'stg-c-other';
+                const idx = state.subjectColorMap[name];
+                return `stg-c-${idx === undefined ? 0 : idx}`;
+            }
+
+            // ---------- Smart Scheduling Algorithm ----------
+            // Deterministic, client-side. Not "AI" or "scientifically optimal" — just a smart suggestion.
+            function generateTimetable() {
+                const dailyHours = getDailyHours();
+                const sessionMin = getSessionMin();
+                const breakMin = getBreakMin();
+                const revisionPct = parseInt($('#stgRevision').value) / 100;
+                const mockEnabled = $('#stgMock').checked;
+                const days = getSelectedDays().sort((a, b) => a - b);
+                const window = getPreferredWindow();
+                const studentName = $('#stgStudentName').value.trim() || 'Student';
+                const examGoal = $('#stgExamGoal').value;
+                const examDate = $('#stgExamDate').value;
+
+                const alerts = [];
+                if (state.subjects.length === 0) { alerts.push({ type: 'danger', msg: 'Please add at least one subject before generating the timetable.' }); }
+                if (dailyHours <= 0) { alerts.push({ type: 'danger', msg: 'Please set a valid daily study hours value.' }); }
+                if (days.length === 0) { alerts.push({ type: 'danger', msg: 'Please select at least one study day.' }); }
+                if (sessionMin <= 0) { alerts.push({ type: 'danger', msg: 'Session duration must be greater than 0.' }); }
+                if (window.end <= window.start) { alerts.push({ type: 'danger', msg: 'Preferred study time window is invalid (end time must be after start time).' }); }
+
+                const windowMins = window.end - window.start;
+                const maxDailyMins = Math.min(dailyHours * 60, windowMins);
+                if (dailyHours * 60 > windowMins) {
+                    alerts.push({ type: 'warn', msg: `Your preferred time window is only ${Math.floor(windowMins / 60)}h ${windowMins % 60}m long, but you requested ${dailyHours}h daily. Timetable will be capped to the available window.` });
+                }
+
+                const totalWeeklyAvailable = maxDailyMins * days.length;
+                const requestedWeekly = state.subjects.reduce((a, s) => a + (s.hours * 60), 0);
+                if (requestedWeekly > totalWeeklyAvailable + 1) {
+                    const overH = Math.ceil((requestedWeekly - totalWeeklyAvailable) / 60);
+                    alerts.push({ type: 'warn', msg: `Your requested study hours exceed your available weekly time by approximately ${overH} hour(s). Some subject targets may not be fully met.` });
+                }
+
+                if (alerts.some(a => a.type === 'danger')) {
+                    renderAlerts(alerts);
+                    return null;
+                }
+
+                // Build subject list with weights
+                // Difficulty weight: Easy=1, Medium=1.3, Hard=1.6
+                // Priority weight: Low=1, Medium=1.3, High=1.6
+                const diffW = { Easy: 1, Medium: 1.3, Hard: 1.6 };
+                const prioW = { Low: 1, Medium: 1.3, High: 1.6 };
+                const subjects = state.subjects
+                    .filter(s => s.name.trim() && s.hours > 0)
+                    .map(s => ({
+                        name: s.name.trim(),
+                        diff: s.difficulty,
+                        prio: s.priority,
+                        targetMin: s.hours * 60,
+                        weight: diffW[s.difficulty] * prioW[s.priority]
+                    }));
+
+                if (subjects.length === 0) {
+                    renderAlerts([{ type: 'danger', msg: 'Please enter at least one subject with a name and weekly hours.' }]);
+                    return null;
+                }
+
+                buildColorMap();
+
+                // Distribute target hours across selected days
+                // Each subject gets daily allocation = targetMin / days.length (rounded to session multiples)
+                const sessionsPerDayBySubject = {};
+                subjects.forEach(s => {
+                    const dailyTarget = s.targetMin / days.length;
+                    const sessions = Math.max(1, Math.round(dailyTarget / sessionMin));
+                    sessionsPerDayBySubject[s.name] = sessions;
+                });
+
+                // Build daily plan: list of subjects (with repetition) per day, with rotation so same subject isn't back-to-back every slot
+                const timetable = [];
+                const totalStudyMins = maxDailyMins;
+                const revisionMins = Math.round(totalStudyMins * revisionPct);
+                const studyMins = totalStudyMins - revisionMins;
+
+                // number of sessions per day
+                const blockMin = sessionMin + breakMin;
+                const studySessionsPerDay = Math.max(1, Math.floor(studyMins / sessionMin));
+                const revisionSessionsPerDay = Math.floor(revisionMins / sessionMin);
+
+                days.forEach((day, dayIdx) => {
+                    let cursor = window.start;
+                    const dayPlan = [];
+
+                    // Build a rotation order of subjects for this day (shift starting index per day to vary)
+                    // Sort subjects by weighted target descending, then rotate
+                    const orderedSubjects = [...subjects].sort((a, b) => {
+                        const wa = a.weight * sessionsPerDayBySubject[a.name];
+                        const wb = b.weight * sessionsPerDayBySubject[b.name];
+                        return wb - wa;
+                    });
+
+                    const totalSubjectSessions = orderedSubjects.reduce((a, s) => a + sessionsPerDayBySubject[s.name], 0);
+                    // Normalize to studySessionsPerDay
+                    let daySessions = [];
+                    if (totalSubjectSessions > 0) {
+                        for (let i = 0; i < studySessionsPerDay; i++) {
+                            // pick subject using round-robin weighted rotation
+                            const subj = orderedSubjects[(i + dayIdx) % orderedSubjects.length];
+                            daySessions.push({ type: 'Study', subject: subj.name });
+                        }
+                        // Try to alternate subjects so same name doesn't repeat back-to-back
+                        daySessions = alternateSubjects(daySessions);
+                    }
+
+                    // Insert revision session (after ~half of the study sessions)
+                    const finalPlan = [];
+                    const half = Math.floor(daySessions.length / 2);
+                    daySessions.forEach((s, i) => {
+                        finalPlan.push(s);
+                        if (i === half && revisionSessionsPerDay > 0) {
+                            for (let r = 0; r < revisionSessionsPerDay; r++) {
+                                finalPlan.push({ type: 'Revision', subject: 'Revision' });
+                            }
+                        }
+                    });
+
+                    // Mock test: if enabled, add once per week on a specific day
+                    if (mockEnabled && dayIdx === Math.floor(days.length / 2)) {
+                        // replace last session with mock test or append if room
+                        if (finalPlan.length > 0 && (cursor + finalPlan.length * blockMin + sessionMin) <= window.start + totalStudyMins + sessionMin) {
+                            finalPlan.push({ type: 'Mock Test', subject: 'Mock Test' });
+                        }
+                    }
+
+                    // Time-block the plan
+                    finalPlan.forEach((item, i) => {
+                        const start = cursor;
+                        let end = start + sessionMin;
+                        if (end > window.start + totalStudyMins + revisionMins + sessionMin) end = window.start + totalStudyMins + revisionMins + sessionMin;
+                        if (end > window.end) end = window.end;
+                        if (end <= start) return;
+                        timetable.push({
+                            day, start, end,
+                            subject: item.subject,
+                            type: item.type,
+                            notes: ''
+                        });
+                        // add break after, except last
+                        cursor = end + breakMin;
+                        if (cursor >= window.end) return;
+                    });
+                });
+
+                // Save meta
+                state.timetableMeta = {
+                    studentName, examGoal, examDate,
+                    dailyHours, sessionMin, breakMin, revisionPct, mockEnabled,
+                    days, window,
+                    generatedAt: new Date().toISOString()
+                };
+
+                state.timetable = timetable;
+                renderAlerts(alerts);
+                return timetable;
+            }
+
+            function alternateSubjects(arr) {
+                if (arr.length < 3) return arr;
+                const result = [arr[0]];
+                for (let i = 1; i < arr.length; i++) {
+                    const prev = result[result.length - 1].subject;
+                    // find next item with different subject
+                    let chosenIdx = -1;
+                    for (let j = i; j < arr.length; j++) {
+                        if (arr[j].subject !== prev) { chosenIdx = j; break; }
+                    }
+                    if (chosenIdx === -1) {
+                        // no different subject, just push current
+                        result.push(arr[i]);
+                    } else {
+                        // swap
+                        const tmp = arr[i]; arr[i] = arr[chosenIdx]; arr[chosenIdx] = tmp;
+                        result.push(arr[i]);
+                    }
+                }
+                return result;
+            }
+
+            // ---------- Render: alerts ----------
+            function renderAlerts(alerts) {
+                const c = $('#stgAlerts');
+                if (!alerts || alerts.length === 0) { c.innerHTML = ''; return; }
+                c.innerHTML = alerts.map(a => `<div class="stg-alert ${a.type}">${escapeHtml(a.msg)}</div>`).join('');
+            }
+
+            // ---------- Render: timetable ----------
+            function renderTimetable() {
+                const empty = $('#stgTtEmpty');
+                const content = $('#stgTtContent');
+                if (!state.timetable || state.timetable.length === 0) {
+                    empty.style.display = 'block';
+                    content.style.display = 'none';
+                    return;
+                }
+                empty.style.display = 'none';
+                content.style.display = 'block';
+
+                // Meta
+                const meta = state.timetableMeta;
+                const daysLeft = meta.examDate ? daysUntil(meta.examDate) : null;
+                $('#stgTtMeta').innerHTML = `
+      <div>👤 <b>Student:</b> ${escapeHtml(meta.studentName)}</div>
+      <div>🎯 <b>Goal:</b> ${escapeHtml(meta.examGoal)}</div>
+      ${meta.examDate ? `<div>📅 <b>Exam Date:</b> ${escapeHtml(meta.examDate)}</div>` : ''}
+      ${daysLeft !== null ? `<div>⏳ <b>Days Remaining:</b> ${daysLeft}</div>` : ''}
+    `;
+
+                // Legend
+                const legendItems = Object.entries(state.subjectColorMap).map(([name, idx]) => {
+                    return `<span class="stg-legend-item"><span class="stg-color-dot stg-c-${idx}"></span> ${escapeHtml(name)}</span>`;
+                });
+                if (state.timetable.some(s => s.type === 'Revision')) legendItems.push(`<span class="stg-legend-item"><span class="stg-color-dot stg-c-revision"></span> Revision</span>`);
+                if (state.timetable.some(s => s.type === 'Mock Test')) legendItems.push(`<span class="stg-legend-item"><span class="stg-color-dot stg-c-mock"></span> Mock Test</span>`);
+                if (state.timetable.some(s => s.type === 'Break')) legendItems.push(`<span class="stg-legend-item"><span class="stg-color-dot stg-c-break"></span> Break</span>`);
+                $('#stgLegend').innerHTML = legendItems.join('');
+
+                // Day view (default)
+                if (state.view === 'day') {
+                    $('#stgDayView').style.display = 'block';
+                    $('#stgWeekScroll').style.display = 'none';
+                    $('#stgDayNav').style.display = 'flex';
+                    renderDayView();
+                } else {
+                    $('#stgDayView').style.display = 'none';
+                    $('#stgWeekScroll').style.display = 'block';
+                    $('#stgDayNav').style.display = window.innerWidth <= 760 ? 'flex' : 'none';
+                    renderWeekView();
+                }
+
+                // Summary
+                renderSummary();
+            }
+
+            function daysUntil(dateStr) {
+                const target = new Date(dateStr + 'T00:00:00');
+                const today = new Date(); today.setHours(0, 0, 0, 0);
+                return Math.max(0, Math.ceil((target - today) / (1000 * 60 * 60 * 24)));
+            }
+
+            // ---------- Day View ----------
+            function renderDayView() {
+                const day = state.activeDay;
+                const daySessions = state.timetable.filter(t => t.day === day).sort((a, b) => a.start - b.start);
+                const container = $('#stgDayView');
+                const dayName = DAY_NAMES[day];
+                if (daySessions.length === 0) {
+                    container.innerHTML = `<div class="stg-day-block"><div class="stg-empty"><h3>No sessions on ${dayName}</h3><p>This day is not part of your study schedule.</p></div></div>`;
+                    return;
+                }
+                let html = `<div class="stg-day-block">`;
+                html += `<div style="font-weight:800;font-size:16px;margin-bottom:6px;color:var(--stg-text)">${dayName}</div>`;
+                daySessions.forEach((s, i) => {
+                    const cls = colorClassFor(s.subject, s.type);
+                    html += `
+        <div class="stg-day-row" data-idx="${getIndexInTimetable(s)}" tabindex="0" role="button" aria-label="${s.subject} ${minToTime(s.start)} to ${minToTime(s.end)}">
+          <div class="stg-day-time">${minToTime(s.start)}<br/>${minToTime(s.end)}</div>
+          <div class="stg-day-content">
+            <div class="stg-cell-subj"><span class="stg-color-dot ${cls}"></span> ${escapeHtml(s.subject)}</div>
+            <span class="stg-cell-type">${s.type}${s.notes ? ' • ' + escapeHtml(s.notes) : ''}</span>
+          </div>
+        </div>
+      `;
+                });
+                html += `</div>`;
+                container.innerHTML = html;
+                // wire click
+                $$('.stg-day-row', container).forEach(el => {
+                    el.addEventListener('click', () => openEditModal(parseInt(el.dataset.idx)));
+                    el.addEventListener('keypress', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openEditModal(parseInt(el.dataset.idx)); } });
+                });
+            }
+
+            function getIndexInTimetable(s) {
+                return state.timetable.findIndex(t => t === s);
+            }
+
+            // ---------- Week View ----------
+            function renderWeekView() {
+                const daysSelected = state.timetableMeta.days.slice().sort((a, b) => a - b);
+                // Build columns: ensure 7-day grid if user wants overview
+                const cols = [1, 2, 3, 4, 5, 6, 0]; // Mon-Sun
+                // Time slots: collect all unique start times
+                const slots = [];
+                const slotSet = new Set();
+                state.timetable.forEach(t => {
+                    const key = t.start;
+                    if (!slotSet.has(key)) { slotSet.add(key); slots.push(key); }
+                });
+                slots.sort((a, b) => a - b);
+                // ensure 1-hour grid for cleaner display
+                const minT = state.timetableMeta.window.start;
+                const maxT = state.timetableMeta.window.end;
+                const hourSlots = [];
+                for (let t = minT; t < maxT; t += 60) { hourSlots.push(t); }
+
+                const table = $('#stgWeekTable');
+                let html = `<thead><tr><th>Time</th>`;
+                cols.forEach(d => { html += `<th>${DAY_SHORT[d]}</th>`; });
+                html += `</tr></thead><tbody>`;
+
+                // group timetable by day
+                const byDay = {};
+                cols.forEach(d => { byDay[d] = []; });
+                state.timetable.forEach(t => {
+                    if (byDay[t.day]) byDay[t.day].push(t);
+                });
+                Object.keys(byDay).forEach(d => byDay[d].sort((a, b) => a.start - b.start));
+
+                // Build rows by hour slot, but show actual sessions within that hour
+                hourSlots.forEach(slot => {
+                    html += `<tr><td class="stg-time-col">${formatHourLabel(slot)}</td>`;
+                    cols.forEach(d => {
+                        // find sessions overlapping this hour
+                        const sessions = byDay[d].filter(s => s.start < slot + 60 && s.end > slot);
+                        if (sessions.length === 0) {
+                            html += `<td><div class="stg-cell empty">—</div></td>`;
+                        } else {
+                            // For each session that overlaps this hour, render a mini block
+                            const blocks = sessions.map(s => {
+                                const cls = colorClassFor(s.subject, s.type);
+                                const idx = getIndexInTimetable(s);
+                                return `<div class="stg-cell ${cls}" data-idx="${idx}" tabindex="0" role="button" aria-label="${s.subject} at ${minToTime(s.start)}">
+              <span class="stg-cell-time">${minToTime(s.start)}–${minToTime(s.end)}</span>
+              <span class="stg-cell-subj">${escapeHtml(s.subject)}</span>
+              <span class="stg-cell-type">${s.type}</span>
+            </div>`;
+                            }).join('');
+                            html += `<td>${blocks}</td>`;
+                        }
+                    });
+                    html += `</tr>`;
+                });
+                html += `</tbody>`;
+                table.innerHTML = html;
+
+                // wire clicks
+                $$('.stg-cell[data-idx]', table).forEach(el => {
+                    el.addEventListener('click', () => openEditModal(parseInt(el.dataset.idx)));
+                    el.addEventListener('keypress', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openEditModal(parseInt(el.dataset.idx)); } });
+                });
+            }
+
+            // ---------- Summary ----------
+            function renderSummary() {
+                const tt = state.timetable;
+                const totalMins = tt.reduce((a, s) => a + (s.end - s.start), 0);
+                const studyMins = tt.filter(s => s.type === 'Study').reduce((a, s) => a + (s.end - s.start), 0);
+                const revMins = tt.filter(s => s.type === 'Revision').reduce((a, s) => a + (s.end - s.start), 0);
+                const mockMins = tt.filter(s => s.type === 'Mock Test').reduce((a, s) => a + (s.end - s.start), 0);
+                const sessionCount = tt.length;
+                const subjectsCovered = new Set(tt.filter(s => s.type === 'Study').map(s => s.subject)).size;
+
+                // Today's summary (today's day-of-week)
+                const today = new Date().getDay();
+                const todaySessions = tt.filter(s => s.day === today);
+                const todayMins = todaySessions.reduce((a, s) => a + (s.end - s.start), 0);
+                const todayStudy = todaySessions.filter(s => s.type === 'Study').reduce((a, s) => a + (s.end - s.start), 0);
+                const todayRev = todaySessions.filter(s => s.type === 'Revision').reduce((a, s) => a + (s.end - s.start), 0);
+                const todayMock = todaySessions.filter(s => s.type === 'Mock Test').length;
+
+                $('#stgSummary').innerHTML = `
+      <div class="stg-summary-card"><div class="lbl">Today's Study</div><div class="val">${fmtDur(todayStudy)}</div></div>
+      <div class="stg-summary-card"><div class="lbl">Today's Subjects</div><div class="val">${new Set(todaySessions.filter(s => s.type === 'Study').map(s => s.subject)).size}</div></div>
+      <div class="stg-summary-card"><div class="lbl">Today's Revision</div><div class="val">${fmtDur(todayRev)}</div></div>
+      <div class="stg-summary-card"><div class="lbl">Today's Mock Tests</div><div class="val">${todayMock}</div></div>
+      <div class="stg-summary-card"><div class="lbl">Weekly Study Hours</div><div class="val">${fmtDur(studyMins)}</div></div>
+      <div class="stg-summary-card"><div class="lbl">Weekly Revision</div><div class="val">${fmtDur(revMins)}</div></div>
+      <div class="stg-summary-card"><div class="lbl">Sessions</div><div class="val">${sessionCount}</div></div>
+      <div class="stg-summary-card"><div class="lbl">Subjects Covered</div><div class="val">${subjectsCovered}</div></div>
+    `;
+
+                // Subject hours
+                const subjHours = {};
+                tt.filter(s => s.type === 'Study').forEach(s => {
+                    subjHours[s.subject] = (subjHours[s.subject] || 0) + (s.end - s.start);
+                });
+                const shHtml = Object.entries(subjHours).map(([name, mins]) => {
+                    const idx = state.subjectColorMap[name];
+                    return `<span class="item"><span class="stg-color-dot stg-c-${idx === undefined ? 0 : idx}"></span> ${escapeHtml(name)}: ${fmtDur(mins)}</span>`;
+                }).join('');
+                $('#stgSubjHours').innerHTML = shHtml;
+            }
+
+            function fmtDur(mins) {
+                const h = Math.floor(mins / 60);
+                const m = mins % 60;
+                if (h === 0) return `${m}m`;
+                if (m === 0) return `${h}h`;
+                return `${h}h ${m}m`;
+            }
+
+            // ---------- View toggle ----------
+            $('#stgViewDay').addEventListener('click', () => switchView('day'));
+            $('#stgViewWeek').addEventListener('click', () => switchView('week'));
+            function switchView(v) {
+                state.view = v;
+                $('#stgViewDay').classList.toggle('active', v === 'day');
+                $('#stgViewWeek').classList.toggle('active', v === 'week');
+                renderTimetable();
+            }
+
+            // ---------- Day navigation ----------
+            $('#stgPrevDay').addEventListener('click', () => { state.activeDay = (state.activeDay + 6) % 7; renderDayView(); });
+            $('#stgNextDay').addEventListener('click', () => { state.activeDay = (state.activeDay + 1) % 7; renderDayView(); });
+            $('#stgToday').addEventListener('click', () => { state.activeDay = new Date().getDay(); renderDayView(); });
+
+            // ---------- Edit Modal ----------
+            function openEditModal(idx) {
+                const s = state.timetable[idx];
+                if (!s) return;
+                $('#stgModalTitle').textContent = 'Edit Session';
+                $('#stgModalIndex').value = idx;
+                $('#stgModalSubject').value = s.subject;
+                $('#stgModalType').value = s.type;
+                $('#stgModalDay').value = s.day;
+                $('#stgModalStart').value = minToTime(s.start);
+                $('#stgModalEnd').value = minToTime(s.end);
+                $('#stgModalNotes').value = s.notes || '';
+                // populate datalist
+                const dl = $('#stgModalSubjectList');
+                dl.innerHTML = state.subjects.map(sub => `<option value="${escapeHtml(sub.name)}">`).join('');
+                $('#stgModalOverlay').classList.add('open');
+            }
+            function closeEditModal() { $('#stgModalOverlay').classList.remove('open'); }
+            $('#stgModalCancel').addEventListener('click', closeEditModal);
+            $('#stgModalOverlay').addEventListener('click', e => { if (e.target.id === 'stgModalOverlay') closeEditModal(); });
+
+            $('#stgModalSave').addEventListener('click', () => {
+                const idx = parseInt($('#stgModalIndex').value);
+                if (isNaN(idx) || !state.timetable[idx]) return closeEditModal();
+                const start = timeStrToMin($('#stgModalStart').value);
+                const end = timeStrToMin($('#stgModalEnd').value);
+                if (end <= start) { alert('End time must be after start time.'); return; }
+                state.timetable[idx] = {
+                    ...state.timetable[idx],
+                    subject: $('#stgModalSubject').value.trim() || 'Study',
+                    type: $('#stgModalType').value,
+                    day: parseInt($('#stgModalDay').value),
+                    start, end,
+                    notes: $('#stgModalNotes').value.trim()
+                };
+                // re-register subject name in color map if new
+                if (!state.subjectColorMap[state.timetable[idx].subject] && state.timetable[idx].type === 'Study') {
+                    const idx2 = Object.keys(state.subjectColorMap).length % 12;
+                    state.subjectColorMap[state.timetable[idx].subject] = idx2;
+                }
+                closeEditModal();
+                renderTimetable();
+                checkConflicts();
+            });
+
+            $('#stgModalDelete').addEventListener('click', () => {
+                const idx = parseInt($('#stgModalIndex').value);
+                if (!isNaN(idx)) {
+                    state.timetable.splice(idx, 1);
+                    closeEditModal();
+                    renderTimetable();
+                }
+            });
+
+            // ---------- Add Session ----------
+            $('#stgAddSession').addEventListener('click', () => {
+                const last = state.timetable[state.timetable.length - 1];
+                const start = last ? last.end + getBreakMin() : state.timetableMeta.window.start;
+                const end = Math.min(start + getSessionMin(), state.timetableMeta.window.end);
+                state.timetable.push({
+                    day: state.activeDay,
+                    start, end,
+                    subject: state.subjects[0]?.name || 'Study',
+                    type: 'Study',
+                    notes: ''
+                });
+                renderTimetable();
+            });
+
+            // ---------- Conflict detection ----------
+            function checkConflicts() {
+                const alerts = [];
+                const w = state.timetableMeta.window;
+                const byDay = {};
+                state.timetable.forEach(t => {
+                    (byDay[t.day] = byDay[t.day] || []).push(t);
+                });
+                Object.entries(byDay).forEach(([day, sessions]) => {
+                    sessions.sort((a, b) => a.start - b.start);
+                    for (let i = 0; i < sessions.length; i++) {
+                        const s = sessions[i];
+                        if (s.start < w.start || s.end > w.end) {
+                            alerts.push({ type: 'warn', msg: `Session "${s.subject}" on ${DAY_NAMES[day]} is outside your preferred study window (${minToTime(w.start)}–${minToTime(w.end)}).` });
+                        }
+                        if (s.end <= s.start) {
+                            alerts.push({ type: 'danger', msg: `Invalid time range for "${s.subject}" on ${DAY_NAMES[day]}.` });
+                        }
+                        if (i > 0) {
+                            const prev = sessions[i - 1];
+                            if (s.start < prev.end) {
+                                alerts.push({ type: 'danger', msg: `Overlap on ${DAY_NAMES[day]}: "${prev.subject}" and "${s.subject}" overlap at ${minToTime(s.start)}.` });
+                            }
+                        }
+                    }
+                });
+                // keep existing generation alerts? we replace
+                const existing = $('#stgAlerts').innerHTML;
+                const extraHtml = alerts.map(a => `<div class="stg-alert ${a.type}">${escapeHtml(a.msg)}</div>`).join('');
+                // Only append conflict alerts (don't lose original generation alerts)
+                // We'll append after existing
+                $('#stgAlerts').innerHTML = existing + extraHtml;
+            }
+
+            // ---------- Edit Settings / Regenerate / Reset ----------
+            $('#stgEditSettings').addEventListener('click', () => {
+                window.scrollTo({ top: $('.stg-hero').offsetTop - 20, behavior: 'smooth' });
+            });
+            $('#stgRegenerate').addEventListener('click', () => {
+                if (generateTimetable()) {
+                    renderTimetable();
+                    saveLocal();
+                    window.scrollTo({ top: $('#stgTtCard').offsetTop - 20, behavior: 'smooth' });
+                }
+            });
+            $('#stgReset').addEventListener('click', () => {
+                if (!confirm('Reset timetable and subjects to defaults?')) return;
+                state.timetable = [];
+                state.timetableMeta = null;
+                applyPresetDefaults('Class 12 Board');
+                $('#stgTtEmpty').style.display = 'block';
+                $('#stgTtContent').style.display = 'none';
+                $('#stgAlerts').innerHTML = '';
+                localStorage.removeItem('stg-timetable');
+                renderSubjects();
+            });
+
+            // ---------- Generate ----------
+            $('#stgGenerate').addEventListener('click', () => {
+                if (generateTimetable()) {
+                    renderTimetable();
+                    saveLocal();
+                    window.scrollTo({ top: $('#stgTtCard').offsetTop - 20, behavior: 'smooth' });
+                }
+            });
+
+            // ---------- LocalStorage save ----------
+            function saveLocal() {
+                try {
+                    localStorage.setItem('stg-timetable', JSON.stringify({
+                        timetable: state.timetable,
+                        meta: state.timetableMeta,
+                        colorMap: state.subjectColorMap,
+                        subjects: state.subjects,
+                        studentName: $('#stgStudentName').value,
+                        title: $('#stgTtTitle').value,
+                        examGoal: $('#stgExamGoal').value,
+                        examDate: $('#stgExamDate').value,
+                        class: $('#stgClass').value
+                    }));
+                } catch (e) { }
+            }
+
+            // ---------- Export: CSV ----------
+            $('#stgDlCSV').addEventListener('click', () => {
+                if (!state.timetable.length) { alert('Generate a timetable first.'); return; }
+                const rows = [['Day', 'Start Time', 'End Time', 'Subject', 'Type', 'Notes']];
+                state.timetable.sort((a, b) => {
+                    if (a.day !== b.day) return a.day - b.day;
+                    return a.start - b.start;
+                }).forEach(s => {
+                    rows.push([
+                        DAY_NAMES[s.day],
+                        minToTime(s.start),
+                        minToTime(s.end),
+                        s.subject,
+                        s.type,
+                        s.notes || ''
+                    ]);
+                });
+                const csv = rows.map(r => r.map(f => `"${(f || '').replace(/"/g, '""')}"`).join(',')).join('\n');
+                const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `tools24-timetable-${Date.now()}.csv`;
+                document.body.appendChild(a); a.click(); a.remove();
+                URL.revokeObjectURL(url);
+            });
+
+            // ---------- Export: PNG ----------
+            $('#stgDlPNG').addEventListener('click', async () => {
+                if (!state.timetable.length) { alert('Generate a timetable first.'); return; }
+                if (typeof html2canvas === 'undefined') { alert('PNG library still loading, please try again in a moment.'); return; }
+                const target = $('#stgTtCard');
+                const btn = $('#stgDlPNG');
+                const orig = btn.textContent;
+                btn.textContent('Rendering PNG…'); btn.disabled = true;
+                try {
+                    const canvas = await html2canvas(target, {
+                        backgroundColor: document.documentElement.getAttribute('data-theme') === 'dark' ? '#0b1020' : '#ffffff',
+                        scale: 2,
+                        useCORS: true,
+                        logging: false
+                    });
+                    const url = canvas.toDataURL('image/png');
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `tools24-timetable-${Date.now()}.png`;
+                    document.body.appendChild(a); a.click(); a.remove();
+                } catch (e) {
+                    alert('Could not generate PNG. Please try again.');
+                    console.error(e);
+                } finally {
+                    btn.textContent = orig; btn.disabled = false;
+                }
+            });
+            // Fix: assign handlers properly (textContent issue above)
+            $('#stgDlPNG').onclick = null;
+            $('#stgDlPNG').addEventListener('click', async (e) => {
+                const btn = e.currentTarget;
+                if (!state.timetable.length) { alert('Generate a timetable first.'); return; }
+                if (typeof html2canvas === 'undefined') { alert('PNG library still loading, please try again in a moment.'); return; }
+                const target = $('#stgTtCard');
+                const orig = btn.innerHTML;
+                btn.innerHTML = 'Rendering…'; btn.disabled = true;
+                try {
+                    const canvas = await html2canvas(target, {
+                        backgroundColor: document.documentElement.getAttribute('data-theme') === 'dark' ? '#0b1020' : '#ffffff',
+                        scale: 2, useCORS: true, logging: false
+                    });
+                    const url = canvas.toDataURL('image/png');
+                    const a = document.createElement('a');
+                    a.href = url; a.download = `tools24-timetable-${Date.now()}.png`;
+                    document.body.appendChild(a); a.click(); a.remove();
+                } catch (err) { alert('Could not generate PNG.'); console.error(err); }
+                finally { btn.innerHTML = orig; btn.disabled = false; }
+            });
+
+            // ---------- Export: PDF ----------
+            $('#stgDlPDF').addEventListener('click', async (e) => {
+                const btn = e.currentTarget;
+                if (!state.timetable.length) { alert('Generate a timetable first.'); return; }
+                if (typeof window.jspdf === 'undefined' || !window.jspdf.jsPDF) { alert('PDF library still loading, please try again in a moment.'); return; }
+                const { jsPDF } = window.jspdf;
+                const orig = btn.innerHTML;
+                btn.innerHTML = 'Generating PDF…'; btn.disabled = true;
+
+                try {
+                    const meta = state.timetableMeta;
+                    const doc = new jsPDF({ orientation: 'landscape', unit: 'pt', format: 'a4' });
+                    const pageW = doc.internal.pageSize.getWidth();
+                    const pageH = doc.internal.pageSize.getHeight();
+
+                    // Header
+                    doc.setFillColor(124, 58, 237);
+                    doc.rect(0, 0, pageW, 60, 'F');
+                    doc.setTextColor(255, 255, 255);
+                    doc.setFont('helvetica', 'bold'); doc.setFontSize(20);
+                    doc.text('Tools24 — Study Timetable', 40, 38);
+                    doc.setFontSize(10); doc.setFont('helvetica', 'normal');
+                    doc.text('Created with Tools24  •  https://tools24.si', pageW - 280, 38);
+
+                    // Student info
+                    let y = 90;
+                    doc.setTextColor(30, 30, 30);
+                    doc.setFont('helvetica', 'bold'); doc.setFontSize(13);
+                    doc.text($('#stgTtTitle').value || 'Study Timetable', 40, y);
+                    y += 20;
+                    doc.setFont('helvetica', 'normal'); doc.setFontSize(11);
+                    doc.setTextColor(60, 60, 60);
+                    doc.text(`Student: ${meta.studentName}`, 40, y);
+                    doc.text(`Goal: ${meta.examGoal}`, 220, y);
+                    if (meta.examDate) doc.text(`Exam Date: ${meta.examDate}`, 380, y);
+                    const daysLeft = meta.examDate ? daysUntil(meta.examDate) : null;
+                    if (daysLeft !== null) doc.text(`Days Remaining: ${daysLeft}`, 540, y);
+                    y += 14;
+                    doc.text(`Daily Hours: ${meta.dailyHours}  •  Session: ${meta.sessionMin}m  •  Break: ${meta.breakMin}m  •  Revision: ${Math.round(meta.revisionPct * 100)}%`, 40, y);
+                    y += 20;
+
+                    // Timetable table
+                    const cols = [1, 2, 3, 4, 5, 6, 0];
+                    const colLabels = ['Time', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+                    const cellW = (pageW - 80) / 8;
+                    const headerH = 22;
+                    const rowH = 26;
+
+                    // Header row
+                    doc.setFillColor(124, 58, 237); doc.rect(40, y, pageW - 80, headerH, 'F');
+                    doc.setTextColor(255, 255, 255); doc.setFont('helvetica', 'bold'); doc.setFontSize(9);
+                    colLabels.forEach((lbl, i) => {
+                        doc.text(lbl, 40 + i * cellW + 6, y + 15);
+                    });
+                    y += headerH;
+
+                    // Hour slots
+                    const hourSlots = [];
+                    for (let t = meta.window.start; t < meta.window.end; t += 60) hourSlots.push(t);
+                    doc.setFontSize(8);
+                    doc.setFont('helvetica', 'normal');
+
+                    // group by day
+                    const byDay = {};
+                    cols.forEach(d => { byDay[d] = []; });
+                    state.timetable.forEach(t => { if (byDay[t.day]) byDay[t.day].push(t); });
+                    Object.keys(byDay).forEach(d => byDay[d].sort((a, b) => a.start - b.start));
+
+                    hourSlots.forEach((slot, rowIdx) => {
+                        if (y > pageH - 80) { doc.addPage(); y = 60; }
+                        // zebra
+                        if (rowIdx % 2 === 0) { doc.setFillColor(245, 243, 255); doc.rect(40, y, pageW - 80, rowH, 'F'); }
+                        doc.setTextColor(60, 60, 60);
+                        doc.text(formatHourLabel(slot), 46, y + 15);
+
+                        cols.forEach((d, colIdx) => {
+                            const x = 40 + (colIdx + 1) * cellW;
+                            const sessions = byDay[d].filter(s => s.start < slot + 60 && s.end > slot);
+                            if (sessions.length === 0) {
+                                doc.setTextColor(180, 180, 180);
+                                doc.text('—', x + cellW / 2 - 3, y + 15);
+                            } else {
+                                const s = sessions[0];
+                                const colorIdx = state.subjectColorMap[s.subject];
+                                const fills = [
+                                    [221, 214, 252], [214, 234, 254], [251, 207, 232], [209, 250, 229], [254, 230, 138],
+                                    [207, 250, 254], [232, 222, 254], [254, 202, 202], [214, 218, 255], [207, 250, 254], [245, 208, 254], [220, 252, 231]
+                                ];
+                                const fill = fills[colorIdx === undefined ? 0 : colorIdx % 12];
+                                if (s.type === 'Break') { doc.setFillColor(226, 232, 240); }
+                                else if (s.type === 'Revision') { doc.setFillColor(254, 230, 138); }
+                                else if (s.type === 'Mock Test') { doc.setFillColor(251, 207, 232); }
+                                else { doc.setFillColor(fill[0], fill[1], fill[2]); }
+                                doc.rect(x + 2, y + 2, cellW - 4, rowH - 4, 'F');
+                                doc.setTextColor(30, 30, 30);
+                                const txt = s.subject.length > 14 ? s.subject.slice(0, 12) + '…' : s.subject;
+                                doc.text(txt, x + 6, y + 12);
+                                doc.setFontSize(7);
+                                doc.setTextColor(80, 80, 80);
+                                doc.text(s.type, x + 6, y + 20);
+                                doc.setFontSize(8);
+                            }
+                        });
+                        y += rowH;
+                    });
+
+                    // Summary
+                    y += 10;
+                    if (y > pageH - 120) { doc.addPage(); y = 60; }
+                    doc.setFillColor(124, 58, 237); doc.setTextColor(255, 255, 255);
+                    doc.setFont('helvetica', 'bold'); doc.setFontSize(12);
+                    doc.rect(40, y, pageW - 80, 24, 'F');
+                    doc.text('Weekly Summary', 50, y + 16);
+                    y += 34;
+
+                    const totalMins = state.timetable.reduce((a, s) => a + (s.end - s.start), 0);
+                    const studyMins = state.timetable.filter(s => s.type === 'Study').reduce((a, s) => a + (s.end - s.start), 0);
+                    const revMins = state.timetable.filter(s => s.type === 'Revision').reduce((a, s) => a + (s.end - s.start), 0);
+                    const sessions = state.timetable.length;
+                    const subjCov = new Set(state.timetable.filter(s => s.type === 'Study').map(s => s.subject)).size;
+
+                    doc.setTextColor(40, 40, 40); doc.setFont('helvetica', 'normal'); doc.setFontSize(10);
+                    doc.text(`Total Study: ${fmtDur(studyMins)}`, 40, y);
+                    doc.text(`Revision: ${fmtDur(revMins)}`, 200, y);
+                    doc.text(`Sessions: ${sessions}`, 340, y);
+                    doc.text(`Subjects Covered: ${subjCov}`, 460, y);
+                    y += 20;
+
+                    // Subject hours legend
+                    doc.setFont('helvetica', 'bold'); doc.setFontSize(11);
+                    doc.text('Subject Hours', 40, y); y += 16;
+                    doc.setFont('helvetica', 'normal'); doc.setFontSize(10);
+                    const subjHours = {};
+                    state.timetable.filter(s => s.type === 'Study').forEach(s => { subjHours[s.subject] = (subjHours[s.subject] || 0) + (s.end - s.start); });
+                    Object.entries(subjHours).forEach(([name, mins]) => {
+                        if (y > pageH - 40) { doc.addPage(); y = 60; }
+                        const idx = state.subjectColorMap[name];
+                        const fills = [[124, 58, 237], [59, 130, 246], [236, 72, 153], [16, 185, 129], [245, 158, 11], [6, 182, 212], [168, 85, 247], [239, 68, 68], [99, 102, 241], [14, 165, 233], [217, 70, 239], [34, 197, 94]];
+                        const c = fills[idx === undefined ? 0 : idx % 12];
+                        doc.setFillColor(c[0], c[1], c[2]);
+                        doc.rect(40, y - 9, 10, 10, 'F');
+                        doc.setTextColor(40, 40, 40);
+                        doc.text(`${name}: ${fmtDur(mins)}`, 56, y);
+                        y += 16;
+                    });
+
+                    // Footer
+                    doc.setFontSize(9); doc.setTextColor(120, 120, 120);
+                    doc.text('Created with Tools24 — https://tools24.si', 40, pageH - 20);
+
+                    doc.save(`tools24-timetable-${Date.now()}.pdf`);
+                } catch (err) {
+                    alert('Could not generate PDF.');
+                    console.error(err);
+                } finally {
+                    btn.innerHTML = orig; btn.disabled = false;
+                }
+            });
+
+            // ---------- Print ----------
+            $('#stgPrint').addEventListener('click', () => {
+                if (!state.timetable.length) { alert('Generate a timetable first.'); return; }
+                // ensure week view for print
+                const prevView = state.view;
+                if (window.innerWidth > 760) {
+                    switchView('week');
+                }
+                setTimeout(() => { window.print(); }, 200);
+            });
+
+            // ---------- FAQ ----------
+            const faqData = [
+                { q: 'What is a study timetable generator?', a: 'A study timetable generator is a tool that creates a personalized weekly study schedule based on your subjects, difficulty, priority, available time and exam date — so you can focus on studying instead of planning.' },
+                { q: 'Can I create a timetable for board exams?', a: 'Yes. Use the Class 10 Board or Class 12 Board preset, set your exam date, and the generator will distribute your subjects across your available study days.' },
+                { q: 'Can I create a college study timetable?', a: 'Absolutely. Choose the College Semester preset, add your course subjects, set their difficulty and priority, then generate your weekly schedule.' },
+                { q: 'Can I download my timetable?', a: 'Yes. You can download your timetable as PDF, PNG or CSV, and print it directly from your browser. PDF and PNG downloads are fully functional.' },
+                { q: 'Can I edit my generated timetable?', a: 'Yes. Click any timetable block to edit it, delete sessions, add custom sessions, or regenerate the entire timetable with new settings.' },
+                { q: 'Does the timetable work on mobile?', a: 'Yes. The timetable is mobile-first with a dedicated Day View and a horizontally scrollable Week View that stays inside the timetable container only — the page itself never scrolls horizontally.' }
+            ];
+            const faqContainer = $('#stgFaq');
+            faqContainer.innerHTML = faqData.map((f, i) => `
+    <div class="stg-faq-item" id="stg-faq-${i}">
+      <button class="stg-faq-q" aria-expanded="false" aria-controls="stg-faq-a-${i}">
+        <span>${escapeHtml(f.q)}</span>
+        <span class="chev" aria-hidden="true">▾</span>
+      </button>
+      <div class="stg-faq-a" id="stg-faq-a-${i}" role="region">
+        <div class="stg-faq-a-inner">${escapeHtml(f.a)}</div>
+      </div>
+    </div>
+  `).join('');
+            $$('.stg-faq-item').forEach(item => {
+                const btn = item.querySelector('.stg-faq-q');
+                btn.addEventListener('click', () => {
+                    const open = item.classList.toggle('open');
+                    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+                });
+            });
+
+            // ---------- Resize handling for view toggle ----------
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    if (state.timetable.length) renderTimetable();
+                }, 200);
+            });
+
+            // ---------- Restore from localStorage ----------
+            function restoreLocal() {
+                try {
+                    const saved = JSON.parse(localStorage.getItem('stg-timetable') || 'null');
+                    if (saved && saved.timetable && saved.timetable.length) {
+                        state.timetable = saved.timetable;
+                        state.timetableMeta = saved.meta;
+                        state.subjectColorMap = saved.colorMap || {};
+                        if (saved.subjects) { state.subjects = saved.subjects; renderSubjects(); }
+                        if (saved.studentName) $('#stgStudentName').value = saved.studentName;
+                        if (saved.title) $('#stgTtTitle').value = saved.title;
+                        if (saved.examGoal) $('#stgExamGoal').value = saved.examGoal;
+                        if (saved.examDate) $('#stgExamDate').value = saved.examDate;
+                        if (saved.class) $('#stgClass').value = saved.class;
+                        renderTimetable();
+                    }
+                } catch (e) { }
+            }
+
+            // ---------- Init ----------
+            initTheme();
+            renderSubjects();
+            restoreLocal();
+
+        })();
+    </script>
+</body>
+
+</html>

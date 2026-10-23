@@ -1,0 +1,4398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PDF to Text Converter — Extract Text from PDF Online Free | Tools24</title>
+    <meta name="description"
+        content="Convert PDF to Text online for free. Extract clean, editable text from PDF files in seconds — right in your browser. Built-in OCR for scanned PDFs, no registration, 100% private.">
+    <meta name="keywords"
+        content="pdf to text, pdf to text converter, extract text from pdf, pdf text extractor, ocr pdf, scanned pdf to text, convert pdf to txt">
+    <link rel="canonical" href="https://tools24.app/pdf-to-text">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PDF to Text Converter — Extract Text from PDF Online | Tools24">
+    <meta property="og:description"
+        content="Extract clean, editable text from any PDF in seconds. Browser-based, private, with OCR support for scanned documents.">
+    <meta property="og:url" content="https://tools24.app/pdf-to-text">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PDF to Text Converter | Tools24">
+    <meta name="twitter:description"
+        content="Extract clean, editable text from any PDF in seconds. 100% browser-based with OCR support.">
+    <meta name="theme-color" content="#f7f5fd">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237c3aed'/%3E%3Cpath d='M11 7h7l4 4v14H11z' fill='white' opacity='.92'/%3E%3Cpath d='M14 16h7M14 19.5h7M14 23h4.5' stroke='%237c3aed' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <script>
+        /* Apply saved theme before first paint to avoid a flash */
+        (function () { try { var t = localStorage.getItem('tools24-theme'); if (!t) t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; document.documentElement.dataset.theme = t; } catch (e) { document.documentElement.dataset.theme = 'light'; } })();
+    </script>
+    <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"PDF to Text Converter","applicationCategory":"UtilityApplication","operatingSystem":"Any","url":"https://tools24.app/pdf-to-text","description":"Free online PDF to Text converter. Extract clean, editable text from PDF files in your browser, with OCR support for scanned documents.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+    <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is a PDF to Text converter?","acceptedAnswer":{"@type":"Answer","text":"A PDF to Text converter pulls the written content out of a PDF document and turns it into plain, editable .txt text without images or formatting, so you can reuse it anywhere."}},
+{"@type":"Question","name":"How do I extract text from a PDF?","acceptedAnswer":{"@type":"Answer","text":"Drop your PDF into the converter or click Browse PDF, press Extract Text, and the content appears in the editor within seconds. Then download it as a .txt file."}},
+{"@type":"Question","name":"Can I convert scanned PDFs?","acceptedAnswer":{"@type":"Answer","text":"Yes. Enable the OCR for scanned PDF option before extracting — every page is read as an image and converted into editable text."}},
+{"@type":"Question","name":"Is OCR supported?","acceptedAnswer":{"@type":"Answer","text":"Yes. The built-in OCR recognises English plus several Indian languages including Hindi, Bengali, Tamil, Telugu, Marathi, Gujarati, Kannada, Malayalam and Urdu."}},
+{"@type":"Question","name":"Are my files uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"No. Extraction and OCR run entirely inside your browser. Your PDF never leaves your device, which makes the tool safe for confidential documents."}},
+{"@type":"Question","name":"Where does the TXT file get saved?","acceptedAnswer":{"@type":"Answer","text":"It goes to your browser's default Downloads folder. On Chrome and Edge you can also use Save as… to choose an exact folder and file name."}},
+{"@type":"Question","name":"Can I use this tool on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes. The converter is fully responsive and touch-friendly on Android and iOS, with the same features as on desktop."}},
+{"@type":"Question","name":"Is the PDF to Text converter free?","acceptedAnswer":{"@type":"Answer","text":"Completely free, with no registration, no watermarks and no daily limits — just a generous 50 MB per-file limit."}}]}
+</script>
+    <style>
+        /* ============ TOKENS ============ */
+        :root {
+            --font-d: 'Bricolage Grotesque', Georgia, serif;
+            --font-b: 'Instrument Sans', -apple-system, 'Segoe UI', sans-serif;
+            --font-m: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+            --r-sm: 10px;
+            --r-md: 14px;
+            --r-lg: 20px;
+            --r-xl: 26px;
+            --grad-brand: linear-gradient(135deg, #7c3aed 0%, #a21cba 55%, #db2777 100%);
+            --sh-btn: 0 10px 24px -10px rgba(147, 51, 234, .55);
+            --header-h: 72px;
+        }
+
+        :root[data-theme="light"] {
+            --bg: #f7f5fd;
+            --bg2: #f1ecfc;
+            --card: #ffffff;
+            --surface: #ffffff;
+            --surface2: #faf8ff;
+            --panel: #fbfaff;
+            --glass: rgba(255, 255, 255, .82);
+            --ink: #1a1235;
+            --ink2: #514a78;
+            --ink3: #817aa4;
+            --line: rgba(93, 63, 211, .13);
+            --line2: rgba(93, 63, 211, .28);
+            --brand: #7c3aed;
+            --brand-ink: #6d28d9;
+            --pink: #db2777;
+            --gold: #d97706;
+            --ok: #0a8a5f;
+            --err: #e11d48;
+            --tint: rgba(124, 58, 237, .08);
+            --tint2: rgba(124, 58, 237, .15);
+            --tint-ok: rgba(10, 138, 95, .1);
+            --tint-err: rgba(225, 29, 72, .08);
+            --grad-text: linear-gradient(96deg, #6d28d9 5%, #a21caf 48%, #db2777 78%, #e2720c 104%);
+            --ring: rgba(139, 92, 246, .35);
+            --amb1: rgba(139, 92, 246, .16);
+            --amb2: rgba(236, 72, 153, .11);
+            --amb3: rgba(245, 158, 11, .1);
+            --sh-card: 0 30px 70px -30px rgba(64, 28, 140, .28), 0 4px 14px -6px rgba(64, 28, 140, .1);
+            --sh-pop: 0 18px 50px -20px rgba(40, 20, 100, .3);
+            --mark: rgba(245, 158, 11, .38);
+            --mark-on: rgba(219, 39, 119, .42);
+            --foot-bg: #150d28;
+            --foot-ink: #cdc5e8;
+            --foot-ink2: #9a90c2;
+        }
+
+        :root[data-theme="dark"] {
+            --bg: #0b0716;
+            --bg2: #0e091d;
+            --card: #140e28;
+            --surface: #181131;
+            --surface2: #1b1440;
+            --panel: #120c24;
+            --glass: rgba(21, 15, 42, .78);
+            --ink: #f0ecfb;
+            --ink2: #b6add8;
+            --ink3: #857ca8;
+            --line: rgba(167, 139, 250, .17);
+            --line2: rgba(167, 139, 250, .36);
+            --brand: #8b5cf6;
+            --brand-ink: #a78bfa;
+            --pink: #f472b6;
+            --gold: #fbbf24;
+            --ok: #34d399;
+            --err: #fb7185;
+            --tint: rgba(139, 92, 246, .13);
+            --tint2: rgba(139, 92, 246, .22);
+            --tint-ok: rgba(52, 211, 153, .12);
+            --tint-err: rgba(251, 113, 133, .12);
+            --grad-text: linear-gradient(96deg, #a78bfa 5%, #d946ef 50%, #f472b6 80%, #fbbf24 106%);
+            --ring: rgba(167, 139, 250, .4);
+            --amb1: rgba(139, 92, 246, .2);
+            --amb2: rgba(236, 72, 153, .14);
+            --amb3: rgba(245, 158, 11, .08);
+            --sh-card: 0 30px 80px -30px rgba(0, 0, 0, .75), 0 0 0 1px rgba(167, 139, 250, .06);
+            --sh-pop: 0 24px 60px -20px rgba(0, 0, 0, .7);
+            --mark: rgba(245, 158, 11, .32);
+            --mark-on: rgba(244, 114, 182, .45);
+            --foot-bg: #0d0819;
+            --foot-ink: #c6bde4;
+            --foot-ink2: #8d84b4;
+        }
+
+        /* ============ BASE ============ */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        html,
+        body {
+            overflow-x: clip
+        }
+
+        body {
+            font: 400 16px/1.6 var(--font-b);
+            color: var(--ink);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background:
+                radial-gradient(900px 620px at 10% -10%, var(--amb1), transparent 62%),
+                radial-gradient(820px 560px at 102% 8%, var(--amb2), transparent 62%),
+                radial-gradient(760px 520px at 50% 118%, var(--amb3), transparent 62%),
+                var(--bg);
+        }
+
+        body.lock {
+            overflow: hidden
+        }
+
+        [hidden] {
+            display: none !important
+        }
+
+        ::selection {
+            background: rgba(124, 58, 237, .24)
+        }
+
+        img,
+        svg,
+        canvas {
+            display: block;
+            max-width: 100%
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        button {
+            font: inherit;
+            color: inherit;
+            background: none;
+            border: 0;
+            cursor: pointer
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--brand);
+            outline-offset: 2px;
+            border-radius: 6px
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            clip-path: inset(50%);
+            overflow: hidden;
+            white-space: nowrap
+        }
+
+        .wrap {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 24px
+        }
+
+        .ic {
+            width: 1em;
+            height: 1em;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--line2);
+            border-radius: 99px;
+            border: 3px solid transparent;
+            background-clip: content-box
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent
+        }
+
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: var(--line2) transparent
+        }
+
+        /* ============ BUTTONS / CHIPS ============ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            white-space: nowrap;
+            font: 600 14.5px/1 var(--font-b);
+            height: 42px;
+            padding: 0 18px;
+            border-radius: 12px;
+            border: 1px solid transparent;
+            transition: transform .18s, box-shadow .18s, background .18s, border-color .18s, color .18s, filter .18s
+        }
+
+        .btn svg {
+            width: 17px;
+            height: 17px;
+            flex: none
+        }
+
+        .btn-lg {
+            height: 52px;
+            padding: 0 28px;
+            border-radius: 14px;
+            font-size: 15.5px
+        }
+
+        .btn-lg svg {
+            width: 19px;
+            height: 19px
+        }
+
+        .btn-sm {
+            height: 36px;
+            padding: 0 13px;
+            border-radius: 10px;
+            font-size: 13.5px
+        }
+
+        .btn-sm svg {
+            width: 15px;
+            height: 15px
+        }
+
+        .btn-primary {
+            background: var(--grad-brand);
+            color: #fff;
+            box-shadow: var(--sh-btn)
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 16px 32px -12px rgba(147, 51, 234, .65);
+            filter: saturate(1.1) brightness(1.05)
+        }
+
+        .btn-primary:active {
+            transform: translateY(0) scale(.985)
+        }
+
+        .btn-primary:disabled,
+        .btn:disabled {
+            opacity: .45;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+            filter: none
+        }
+
+        .btn-ghost {
+            background: var(--surface);
+            border-color: var(--line2);
+            color: var(--ink2)
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--brand);
+            color: var(--ink);
+            background: var(--tint)
+        }
+
+        .btn-soft {
+            background: var(--tint);
+            color: var(--brand-ink)
+        }
+
+        .btn-soft:hover {
+            background: var(--tint2)
+        }
+
+        .btn.danger:hover {
+            border-color: var(--err);
+            color: var(--err);
+            background: var(--tint-err)
+        }
+
+        .btn.done {
+            background: var(--tint-ok) !important;
+            color: var(--ok) !important;
+            border-color: transparent !important;
+            box-shadow: none !important
+        }
+
+        .icon-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 11px;
+            border: 1px solid var(--line);
+            background: var(--glass);
+            color: var(--ink2);
+            transition: .18s;
+            position: relative
+        }
+
+        .icon-btn:hover {
+            color: var(--ink);
+            border-color: var(--line2);
+            background: var(--tint)
+        }
+
+        .icon-btn svg {
+            width: 18px;
+            height: 18px
+        }
+
+        .icon-btn-sm {
+            width: 34px;
+            height: 34px;
+            border-radius: 9px;
+            border: 1px solid var(--line);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--ink3);
+            background: transparent;
+            transition: .15s
+        }
+
+        .icon-btn-sm:hover:not(:disabled) {
+            color: var(--ink);
+            background: var(--tint);
+            border-color: var(--line2)
+        }
+
+        .icon-btn-sm:disabled {
+            opacity: .35;
+            cursor: not-allowed
+        }
+
+        .icon-btn-sm svg {
+            width: 16px;
+            height: 16px
+        }
+
+        kbd {
+            font: 600 10.5px/1 var(--font-b);
+            letter-spacing: .04em;
+            color: var(--ink3);
+            border: 1px solid var(--line2);
+            border-bottom-width: 2px;
+            border-radius: 5px;
+            padding: 3px 5px;
+            background: var(--surface)
+        }
+
+        .chip-ok {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font: 600 12px/1 var(--font-b);
+            color: var(--ok);
+            background: var(--tint-ok);
+            border: 1px solid transparent;
+            border-radius: 99px;
+            padding: 6px 11px
+        }
+
+        .chip-ok svg {
+            width: 13px;
+            height: 13px
+        }
+
+        /* ============ HEADER ============ */
+        .site-header {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 70;
+            background: var(--glass);
+            backdrop-filter: blur(16px) saturate(1.5);
+            -webkit-backdrop-filter: blur(16px) saturate(1.5);
+            border-bottom: 1px solid transparent;
+            transition: border-color .25s, box-shadow .25s
+        }
+
+        .site-header.scrolled {
+            border-bottom-color: var(--line);
+            box-shadow: 0 12px 32px -22px rgba(30, 15, 90, .35)
+        }
+
+        .header-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+            height: var(--header-h);
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: height .25s
+        }
+
+        .site-header.scrolled .header-inner {
+            height: 60px
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font: 700 19px/1 var(--font-d);
+            letter-spacing: -.02em;
+            margin-right: auto
+        }
+
+        .brand-mark {
+            width: 32px;
+            height: 32px;
+            border-radius: 9px;
+            background: var(--grad-brand);
+            display: grid;
+            place-items: center;
+            box-shadow: 0 6px 14px -6px rgba(147, 51, 234, .6)
+        }
+
+        .brand-mark svg {
+            width: 17px;
+            height: 17px;
+            stroke: #fff;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round
+        }
+
+        .brand em {
+            font-style: normal;
+            background: var(--grad-text);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 2px
+        }
+
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font: 600 14px/1 var(--font-b);
+            color: var(--ink2);
+            padding: 9px 12px;
+            border-radius: 9px;
+            transition: .15s
+        }
+
+        .nav-link:hover {
+            color: var(--ink);
+            background: var(--tint)
+        }
+
+        .nav-link svg {
+            width: 13px;
+            height: 13px;
+            transition: transform .2s
+        }
+
+        .nav-dd {
+            position: relative
+        }
+
+        .nav-dd.open .dd-btn svg {
+            transform: rotate(180deg)
+        }
+
+        .dd-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            min-width: 230px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--r-md);
+            box-shadow: var(--sh-pop);
+            padding: 6px;
+            opacity: 0;
+            transform: translateY(-6px) scale(.98);
+            pointer-events: none;
+            transition: .18s;
+            z-index: 80
+        }
+
+        .nav-dd.open .dd-menu {
+            opacity: 1;
+            transform: none;
+            pointer-events: auto
+        }
+
+        .dd-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            text-align: left;
+            font: 500 13.5px/1.3 var(--font-b);
+            color: var(--ink2);
+            padding: 10px 11px;
+            border-radius: 9px;
+            transition: .13s
+        }
+
+        .dd-item:hover {
+            background: var(--tint);
+            color: var(--ink)
+        }
+
+        .dd-item svg {
+            width: 16px;
+            height: 16px;
+            color: var(--brand);
+            flex: none
+        }
+
+        .dd-item .tag {
+            margin-left: auto;
+            font: 600 10px/1 var(--font-b);
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            color: var(--ink3);
+            border: 1px solid var(--line2);
+            border-radius: 99px;
+            padding: 3px 7px
+        }
+
+        .dd-item .tag.live {
+            color: var(--ok);
+            border-color: transparent;
+            background: var(--tint-ok)
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        #searchBtn kbd {
+            margin-left: 6px
+        }
+
+        #searchBtn {
+            width: auto;
+            padding: 0 10px;
+            gap: 2px
+        }
+
+        #menuBtn {
+            display: none
+        }
+
+        @media(max-width:1020px) {
+
+            .main-nav,
+            #searchBtn kbd,
+            #loginBtn {
+                display: none
+            }
+
+            #menuBtn {
+                display: inline-flex
+            }
+
+            :root {
+                --header-h: 62px
+            }
+        }
+
+        /* ============ DRAWER ============ */
+        .scrim {
+            position: fixed;
+            inset: 0;
+            z-index: 80;
+            background: rgba(12, 6, 30, .5);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .25s;
+            backdrop-filter: blur(2px)
+        }
+
+        .scrim.show {
+            opacity: 1;
+            pointer-events: auto
+        }
+
+        .drawer {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 90;
+            width: min(320px, 86vw);
+            background: var(--card);
+            border-left: 1px solid var(--line);
+            transform: translateX(105%);
+            transition: transform .3s cubic-bezier(.3, .9, .3, 1);
+            display: flex;
+            flex-direction: column;
+            padding: 18px;
+            box-shadow: var(--sh-pop)
+        }
+
+        .drawer.open {
+            transform: none
+        }
+
+        .drawer-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px
+        }
+
+        .drawer-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            flex: 1
+        }
+
+        .drawer-nav a,
+        .drawer-nav button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-align: left;
+            font: 600 15px/1 var(--font-b);
+            color: var(--ink2);
+            padding: 13px 12px;
+            border-radius: 11px;
+            transition: .15s
+        }
+
+        .drawer-nav a:hover,
+        .drawer-nav button:hover {
+            background: var(--tint);
+            color: var(--ink)
+        }
+
+        .drawer-note {
+            font: 400 12.5px/1.5 var(--font-b);
+            color: var(--ink3);
+            margin-top: 12px;
+            text-align: center
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            position: relative;
+            padding: calc(var(--header-h) + 64px) 0 40px;
+            text-align: center;
+            overflow: clip
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image: radial-gradient(var(--line2) 1px, transparent 1.4px);
+            background-size: 26px 26px;
+            opacity: .35;
+            -webkit-mask-image: radial-gradient(560px 340px at 50% 8%, #000 20%, transparent 75%);
+            mask-image: radial-gradient(560px 340px at 50% 8%, #000 20%, transparent 75%)
+        }
+
+        .hero-deco {
+            position: absolute;
+            inset: 0;
+            pointer-events: none
+        }
+
+        .shape {
+            position: absolute;
+            display: block
+        }
+
+        .shape.sq {
+            width: 26px;
+            height: 26px;
+            border: 1.5px solid var(--brand);
+            opacity: .35;
+            border-radius: 7px;
+            transform: rotate(24deg);
+            left: 9%;
+            top: 26%;
+            animation: float 11s ease-in-out infinite alternate
+        }
+
+        .shape.ring {
+            width: 34px;
+            height: 34px;
+            border: 1.5px solid var(--pink);
+            opacity: .35;
+            border-radius: 50%;
+            right: 11%;
+            top: 20%;
+            animation: float 13s .8s ease-in-out infinite alternate
+        }
+
+        .shape.dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--grad-brand);
+            opacity: .4;
+            right: 20%;
+            bottom: 12%;
+            animation: float 9s .4s ease-in-out infinite alternate
+        }
+
+        .shape.pill {
+            width: 34px;
+            height: 14px;
+            border: 1.5px solid var(--gold);
+            opacity: .4;
+            border-radius: 99px;
+            left: 16%;
+            bottom: 16%;
+            transform: rotate(-18deg);
+            animation: float 12s 1.2s ease-in-out infinite alternate
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(-8px) rotate(var(--rot, 0deg))
+            }
+
+            to {
+                transform: translateY(10px) rotate(var(--rot, 0deg))
+            }
+        }
+
+        .shape.sq {
+            --rot: 24deg
+        }
+
+        .shape.pill {
+            --rot: -18deg
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font: 700 11.5px/1 var(--font-b);
+            letter-spacing: .14em;
+            color: var(--ink2);
+            border: 1px solid var(--line2);
+            border-radius: 99px;
+            padding: 9px 16px;
+            background: var(--glass);
+            backdrop-filter: blur(8px)
+        }
+
+        .badge b {
+            color: var(--gold);
+            font-weight: 400;
+            font-size: 13px
+        }
+
+        .hero-title {
+            font: 800 clamp(46px, 7.4vw, 80px)/1.02 var(--font-d);
+            letter-spacing: -.035em;
+            margin: 22px 0 0
+        }
+
+        .grad-text {
+            background: var(--grad-text);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent
+        }
+
+        .title-tail {
+            display: block;
+            font-size: .4em;
+            font-weight: 600;
+            letter-spacing: .34em;
+            text-transform: uppercase;
+            color: var(--ink3);
+            margin-top: 12px
+        }
+
+        .hero-sub {
+            font: 500 clamp(16px, 2.2vw, 19.5px)/1.55 var(--font-b);
+            color: var(--ink2);
+            max-width: 600px;
+            margin: 20px auto 0
+        }
+
+        .hero-sub2 {
+            font: 400 14.5px/1.6 var(--font-b);
+            color: var(--ink3);
+            margin-top: 8px
+        }
+
+        .pills {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 26px 0 0
+        }
+
+        .pills li {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font: 600 13px/1 var(--font-b);
+            color: var(--ink2);
+            background: var(--glass);
+            border: 1px solid var(--line);
+            border-radius: 99px;
+            padding: 9px 14px;
+            backdrop-filter: blur(8px)
+        }
+
+        .pills svg {
+            width: 14px;
+            height: 14px;
+            color: var(--ok)
+        }
+
+        /* ============ CONVERTER CARD ============ */
+        .converter {
+            position: relative;
+            padding: 26px 0 0
+        }
+
+        .conv-glow {
+            position: absolute;
+            inset: -70px -90px;
+            pointer-events: none;
+            background:
+                radial-gradient(540px 340px at 16% 22%, var(--amb1), transparent 66%),
+                radial-gradient(460px 320px at 86% 30%, var(--amb2), transparent 66%),
+                radial-gradient(460px 280px at 55% 100%, var(--amb3), transparent 66%)
+        }
+
+        .conv-frame {
+            position: relative;
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 1px;
+            border-radius: 28px;
+            background: linear-gradient(140deg, rgba(124, 58, 237, .55), rgba(219, 39, 119, .35) 50%, rgba(245, 158, 11, .32));
+            box-shadow: var(--sh-card)
+        }
+
+        .conv-card {
+            border-radius: 27px;
+            background: var(--card);
+            min-height: 480px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .conv-card::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto;
+            height: 120px;
+            pointer-events: none;
+            background: linear-gradient(180deg, var(--tint), transparent)
+        }
+
+        .stage {
+            display: none;
+            padding: 34px
+        }
+
+        .stage.active {
+            display: block;
+            animation: rise .45s cubic-bezier(.22, .9, .3, 1)
+        }
+
+        @keyframes rise {
+            from {
+                opacity: 0;
+                transform: translateY(12px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        @media(max-width:640px) {
+            .stage {
+                padding: 20px 16px
+            }
+        }
+
+        /* --- Dropzone --- */
+        .dropzone {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 6px;
+            border: 1.5px dashed var(--line2);
+            border-radius: var(--r-lg);
+            padding: 52px 28px 44px;
+            cursor: pointer;
+            transition: .22s;
+            background: linear-gradient(180deg, var(--tint), transparent 55%)
+        }
+
+        .dropzone:hover {
+            border-color: var(--brand);
+            background: linear-gradient(180deg, var(--tint), var(--tint) 10%, transparent 70%)
+        }
+
+        .dropzone:hover .dz-art {
+            transform: translateY(-5px)
+        }
+
+        .dropzone.drag {
+            border-color: transparent;
+            background: linear-gradient(var(--card), var(--card)) padding-box, var(--grad-brand) border-box;
+            box-shadow: 0 0 0 6px var(--ring), 0 24px 60px -24px rgba(124, 58, 237, .45)
+        }
+
+        .dropzone.drag .dz-art {
+            animation: bounce 1s ease-in-out infinite
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-9px)
+            }
+        }
+
+        .dropzone.shake {
+            animation: shake .4s
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0)
+            }
+
+            25% {
+                transform: translateX(-7px)
+            }
+
+            55% {
+                transform: translateX(6px)
+            }
+
+            80% {
+                transform: translateX(-3px)
+            }
+        }
+
+        .dz-art {
+            width: 170px;
+            margin-bottom: 14px;
+            transition: transform .25s
+        }
+
+        .dz-title {
+            font: 700 clamp(21px, 3vw, 26px)/1.2 var(--font-d);
+            letter-spacing: -.02em
+        }
+
+        .dz-sub {
+            font: 400 14.5px/1.5 var(--font-b);
+            color: var(--ink3)
+        }
+
+        .dz-cta {
+            margin-top: 20px
+        }
+
+        .dz-meta {
+            font: 500 13px/1 var(--font-b);
+            color: var(--ink3);
+            margin-top: 16px
+        }
+
+        .dz-secure {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font: 500 12.5px/1 var(--font-b);
+            color: var(--ink3);
+            margin-top: 12px;
+            border: 1px solid var(--line);
+            background: var(--surface2);
+            border-radius: 99px;
+            padding: 7px 13px
+        }
+
+        .dz-secure svg {
+            width: 13px;
+            height: 13px;
+            color: var(--brand)
+        }
+
+        .dz-error {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            max-width: 440px;
+            margin-top: 16px;
+            font: 600 13.5px/1.45 var(--font-b);
+            color: var(--err);
+            background: var(--tint-err);
+            border: 1px solid transparent;
+            border-radius: 12px;
+            padding: 11px 15px;
+            text-align: left
+        }
+
+        .dz-error svg {
+            width: 16px;
+            height: 16px;
+            flex: none
+        }
+
+        .art-file-a {
+            fill: var(--tint2);
+            stroke: var(--brand)
+        }
+
+        .art-file-b {
+            fill: var(--surface);
+            stroke: var(--pink)
+        }
+
+        .art-line {
+            stroke: var(--ink3);
+            stroke-width: 2.4;
+            stroke-linecap: round;
+            opacity: .5
+        }
+
+        .art-line-b {
+            stroke: var(--brand);
+            opacity: .65
+        }
+
+        .art-arrow {
+            stroke: url(#dzGrad);
+            stroke-width: 2.6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none
+        }
+
+        .art-label {
+            font: 800 9.5px var(--font-b);
+            letter-spacing: .06em
+        }
+
+        .art-pdf {
+            fill: var(--brand)
+        }
+
+        .art-txt {
+            fill: var(--pink)
+        }
+
+        /* --- File ready --- */
+        .stage-ready-inner {
+            max-width: 660px;
+            margin: 0 auto
+        }
+
+        .eyebrow {
+            font: 700 11px/1 var(--font-b);
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--ink3);
+            margin-bottom: 12px
+        }
+
+        .file-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--surface2);
+            border: 1px solid var(--line);
+            border-radius: var(--r-lg);
+            padding: 18px 20px;
+            transition: .2s
+        }
+
+        .file-card:hover {
+            border-color: var(--line2);
+            box-shadow: 0 14px 34px -22px rgba(60, 30, 140, .4)
+        }
+
+        .fc-icon {
+            width: 52px;
+            height: 52px;
+            flex: none;
+            border-radius: 14px;
+            background: var(--tint);
+            display: grid;
+            place-items: center;
+            color: var(--brand)
+        }
+
+        .fc-icon svg {
+            width: 26px;
+            height: 26px
+        }
+
+        .fc-info {
+            flex: 1;
+            min-width: 0
+        }
+
+        .fc-name {
+            font: 700 15.5px/1.3 var(--font-b);
+            word-break: break-all
+        }
+
+        .fc-meta {
+            font: 500 13px/1 var(--font-m);
+            color: var(--ink3);
+            margin-top: 5px
+        }
+
+        .fc-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font: 600 12px/1 var(--font-b);
+            color: var(--ok);
+            background: var(--tint-ok);
+            border-radius: 99px;
+            padding: 5px 10px;
+            margin-top: 9px
+        }
+
+        .fc-status svg {
+            width: 12px;
+            height: 12px
+        }
+
+        .fc-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: none
+        }
+
+        @media(max-width:560px) {
+            .file-card {
+                flex-wrap: wrap
+            }
+
+            .fc-actions {
+                flex-direction: row;
+                width: 100%
+            }
+
+            .fc-actions .btn {
+                flex: 1
+            }
+        }
+
+        .opts {
+            margin-top: 22px
+        }
+
+        .opts-label {
+            font: 700 11px/1 var(--font-b);
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--ink3);
+            margin-bottom: 6px
+        }
+
+        .opt-line {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 4px;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .opt-text {
+            flex: 1
+        }
+
+        .opt-text strong {
+            display: block;
+            font: 600 14.5px/1.3 var(--font-b)
+        }
+
+        .opt-text span {
+            font: 400 13px/1.5 var(--font-b);
+            color: var(--ink3)
+        }
+
+        .switch {
+            width: 44px;
+            height: 25px;
+            flex: none;
+            border-radius: 99px;
+            background: var(--surface2);
+            border: 1px solid var(--line2);
+            position: relative;
+            transition: .22s
+        }
+
+        .switch .knob {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 19px;
+            height: 19px;
+            border-radius: 50%;
+            background: var(--ink3);
+            transition: .22s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, .2)
+        }
+
+        .switch.on {
+            background: var(--grad-brand);
+            border-color: transparent
+        }
+
+        .switch.on .knob {
+            background: #fff;
+            transform: translateX(19px)
+        }
+
+        .opt-lang {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 13px 4px 2px
+        }
+
+        .opt-lang>label {
+            font: 600 13px/1 var(--font-b);
+            color: var(--ink2)
+        }
+
+        .only-ocr {
+            display: none !important
+        }
+
+        body.ocr-on .only-ocr {
+            display: inline-flex !important
+        }
+
+        .select {
+            position: relative;
+            display: inline-flex;
+            align-items: center
+        }
+
+        .select select {
+            appearance: none;
+            -webkit-appearance: none;
+            font: 600 13px/1 var(--font-b);
+            color: var(--ink);
+            background: var(--surface);
+            border: 1px solid var(--line2);
+            border-radius: 10px;
+            padding: 9px 32px 9px 12px;
+            cursor: pointer;
+            transition: .15s
+        }
+
+        .select select:hover {
+            border-color: var(--brand)
+        }
+
+        .select>svg {
+            position: absolute;
+            right: 10px;
+            width: 14px;
+            height: 14px;
+            color: var(--ink3);
+            pointer-events: none
+        }
+
+        .ready-cta {
+            display: flex;
+            justify-content: center;
+            margin-top: 26px
+        }
+
+        /* --- Progress --- */
+        .prog {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 26px 6px
+        }
+
+        .prog-icon {
+            position: relative;
+            width: 66px;
+            height: 66px;
+            margin: 0 auto 20px;
+            display: grid;
+            place-items: center
+        }
+
+        .prog-icon .ring {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 3px solid var(--line);
+            border-top-color: var(--brand);
+            animation: spin 1s linear infinite
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        .prog-icon svg {
+            width: 26px;
+            height: 26px
+        }
+
+        .pi-file {
+            color: var(--brand)
+        }
+
+        .pi-ok,
+        .pi-err {
+            display: none
+        }
+
+        .pi-ok {
+            color: var(--ok)
+        }
+
+        .pi-err {
+            color: var(--err)
+        }
+
+        .prog.done .ring {
+            display: none
+        }
+
+        .prog.done .pi-file {
+            display: none
+        }
+
+        .prog.done .pi-ok {
+            display: block;
+            animation: pop .45s cubic-bezier(.3, 1.6, .5, 1)
+        }
+
+        .prog.error .ring {
+            display: none
+        }
+
+        .prog.error .pi-file {
+            display: none
+        }
+
+        .prog.error .pi-err {
+            display: block
+        }
+
+        @keyframes pop {
+            from {
+                transform: scale(.4);
+                opacity: 0
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1
+            }
+        }
+
+        .prog h3 {
+            font: 700 22px/1.25 var(--font-d);
+            letter-spacing: -.01em
+        }
+
+        .prog.done h3 {
+            color: var(--ok)
+        }
+
+        .prog.error h3 {
+            color: var(--err)
+        }
+
+        .prog-sub {
+            font: 500 13.5px/1.5 var(--font-m);
+            color: var(--ink3);
+            margin-top: 8px;
+            min-height: 20px
+        }
+
+        .prog-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 20px
+        }
+
+        .prog-bar {
+            flex: 1;
+            height: 10px;
+            border-radius: 99px;
+            background: var(--surface2);
+            border: 1px solid var(--line);
+            overflow: hidden
+        }
+
+        .prog-fill {
+            position: relative;
+            height: 100%;
+            width: 0;
+            border-radius: 99px;
+            background: var(--grad-brand);
+            transition: width .3s ease
+        }
+
+        .prog-fill::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 99px;
+            background: linear-gradient(100deg, transparent 20%, rgba(255, 255, 255, .45) 50%, transparent 80%);
+            transform: translateX(-100%);
+            animation: sweep 1.6s linear infinite
+        }
+
+        @keyframes sweep {
+            to {
+                transform: translateX(100%)
+            }
+        }
+
+        .prog.done .prog-fill {
+            background: linear-gradient(90deg, #059669, #34d399)
+        }
+
+        .prog.done .prog-fill::after {
+            animation: none;
+            display: none
+        }
+
+        .prog.error .prog-fill {
+            background: var(--err)
+        }
+
+        .prog-pct {
+            font: 700 13px/1 var(--font-m);
+            color: var(--brand-ink);
+            min-width: 42px;
+            text-align: right
+        }
+
+        .prog.done .prog-pct {
+            color: var(--ok)
+        }
+
+        .prog-note {
+            font: 400 13px/1.5 var(--font-b);
+            color: var(--gold);
+            background: var(--tint);
+            border-radius: 10px;
+            padding: 10px 14px;
+            margin-top: 16px
+        }
+
+        .prog-foot {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 22px
+        }
+
+        .prog-file {
+            font: 500 12.5px/1.3 var(--font-m);
+            color: var(--ink3);
+            word-break: break-all
+        }
+
+        /* ============ WORKSPACE ============ */
+        .stage-work {
+            padding: 18px
+        }
+
+        .work-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 14px
+        }
+
+        .wt-file {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            min-width: 0;
+            flex: 1
+        }
+
+        .wt-file svg {
+            width: 17px;
+            height: 17px;
+            color: var(--brand);
+            flex: none
+        }
+
+        .wt-name {
+            font: 700 14px/1.2 var(--font-b);
+            word-break: break-all
+        }
+
+        .wt-meta {
+            font: 500 12px/1 var(--font-m);
+            color: var(--ink3);
+            flex: none
+        }
+
+        .wt-actions {
+            display: flex;
+            gap: 8px
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: minmax(320px, 5fr) 7fr;
+            gap: 16px;
+            height: clamp(560px, calc(100vh - 220px), 840px)
+        }
+
+        .panel {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            min-height: 0;
+            border: 1px solid var(--line);
+            border-radius: var(--r-lg);
+            background: var(--panel);
+            box-shadow: 0 12px 30px -24px rgba(40, 20, 100, .4)
+        }
+
+        .panel-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 11px 14px;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .panel-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font: 700 13.5px/1 var(--font-b);
+            letter-spacing: .02em;
+            color: var(--ink2);
+            margin-right: auto
+        }
+
+        .panel-title svg {
+            width: 16px;
+            height: 16px;
+            color: var(--brand)
+        }
+
+        .panel-pdf {
+            min-height: 0
+        }
+
+        .panel-pdf:fullscreen {
+            background: var(--bg);
+            border-radius: 0;
+            padding: 10px
+        }
+
+        .pages-chip {
+            font: 600 11.5px/1 var(--font-m);
+            color: var(--ink3);
+            border: 1px solid var(--line);
+            border-radius: 99px;
+            padding: 5px 9px
+        }
+
+        .thumb-strip {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--line);
+            flex: none
+        }
+
+        .thumb {
+            flex: none;
+            width: 66px;
+            border: 1.5px solid var(--line);
+            border-radius: 9px;
+            background: #fff;
+            padding: 0;
+            overflow: hidden;
+            transition: .15s
+        }
+
+        .thumb:hover {
+            border-color: var(--line2)
+        }
+
+        .thumb.active {
+            border-color: var(--brand);
+            box-shadow: 0 0 0 2px var(--ring)
+        }
+
+        .thumb canvas {
+            width: 64px !important
+        }
+
+        .thumb-num {
+            display: block;
+            font: 500 10.5px/1 var(--font-m);
+            text-align: center;
+            padding: 4px 0;
+            color: var(--ink3);
+            background: var(--surface2)
+        }
+
+        .pdf-canvas-wrap {
+            flex: 1;
+            min-height: 0;
+            overflow: auto;
+            padding: 18px;
+            display: flex;
+            border-radius: 0 0 18px 18px
+        }
+
+        .pdf-canvas-wrap canvas {
+            margin: auto;
+            background: #fff;
+            border-radius: 6px;
+            box-shadow: 0 14px 36px -16px rgba(20, 10, 60, .4)
+        }
+
+        .pdf-controls {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+            padding: 9px 12px;
+            border-top: 1px solid var(--line);
+            flex: none
+        }
+
+        .page-label {
+            font: 600 12.5px/1 var(--font-m);
+            color: var(--ink2);
+            min-width: 62px;
+            text-align: center
+        }
+
+        .zoom-label {
+            font: 600 12px/1 var(--font-m);
+            color: var(--ink3);
+            min-width: 42px;
+            text-align: center
+        }
+
+        .ctrl-sep {
+            flex: 1
+        }
+
+        /* --- text panel --- */
+        .toolbar {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--line);
+            flex: none
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            background: var(--surface);
+            border: 1px solid var(--line2);
+            border-radius: 12px;
+            padding: 0 10px;
+            height: 42px;
+            transition: .15s
+        }
+
+        .search-box:focus-within {
+            border-color: var(--brand);
+            box-shadow: 0 0 0 3px var(--ring)
+        }
+
+        .search-box>svg {
+            width: 16px;
+            height: 16px;
+            color: var(--ink3);
+            flex: none
+        }
+
+        .search-box input {
+            flex: 1;
+            min-width: 0;
+            border: 0;
+            outline: 0;
+            background: transparent;
+            font: 500 14px/1 var(--font-b);
+            color: var(--ink)
+        }
+
+        .search-box input::placeholder {
+            color: var(--ink3)
+        }
+
+        .match-info {
+            font: 600 11.5px/1 var(--font-m);
+            color: var(--brand-ink);
+            background: var(--tint);
+            border-radius: 99px;
+            padding: 5px 9px;
+            white-space: nowrap
+        }
+
+        .match-nav {
+            display: flex;
+            gap: 2px
+        }
+
+        .opt-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            padding: 9px 12px;
+            border-bottom: 1px solid var(--line);
+            flex: none
+        }
+
+        .opt-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font: 600 12.5px/1 var(--font-b);
+            color: var(--ink2);
+            border: 1px solid var(--line);
+            border-radius: 99px;
+            padding: 6px 12px 6px 7px;
+            transition: .15s
+        }
+
+        .opt-chip:hover {
+            border-color: var(--line2)
+        }
+
+        .mini-switch {
+            width: 30px;
+            height: 17px;
+            flex: none;
+            border-radius: 99px;
+            background: var(--surface2);
+            border: 1px solid var(--line2);
+            position: relative;
+            transition: .2s
+        }
+
+        .mini-switch span {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: var(--ink3);
+            transition: .2s
+        }
+
+        .opt-chip.on .mini-switch {
+            background: var(--grad-brand);
+            border-color: transparent
+        }
+
+        .opt-chip.on .mini-switch span {
+            background: #fff;
+            transform: translateX(13px)
+        }
+
+        .opt-chip.on {
+            color: var(--ink);
+            border-color: var(--line2)
+        }
+
+        .opt-spacer {
+            flex: 1
+        }
+
+        .banner-warn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 12px 12px 0;
+            padding: 12px 14px;
+            background: var(--tint);
+            border: 1px solid transparent;
+            border-radius: 14px;
+            font: 500 13.5px/1.5 var(--font-b);
+            color: var(--ink2)
+        }
+
+        .banner-warn svg {
+            width: 18px;
+            height: 18px;
+            color: var(--gold);
+            flex: none
+        }
+
+        .banner-warn p {
+            flex: 1;
+            min-width: 180px
+        }
+
+        .editor-shell {
+            --edfs: 14px;
+            --edlh: 1.8;
+            --edpt: 18px;
+            --edpl: 18px;
+            --edpr: 20px;
+            --edpb: 120px;
+            flex: 1;
+            min-height: 0;
+            display: flex;
+            position: relative;
+            background: var(--surface);
+            border-radius: 0 0 0 0
+        }
+
+        .editor-shell:focus-within {
+            box-shadow: inset 0 0 0 2px var(--ring)
+        }
+
+        .gutter {
+            flex: none;
+            width: 3.8rem;
+            overflow: hidden;
+            position: relative;
+            background: var(--surface2);
+            border-right: 1px solid var(--line);
+            border-radius: 18px 0 0 0;
+            user-select: none
+        }
+
+        .gutter-inner {
+            white-space: pre;
+            text-align: right;
+            padding: var(--edpt) 10px 40px;
+            font: 500 var(--edfs)/var(--edlh) var(--font-m);
+            color: var(--ink3);
+            opacity: .75;
+            will-change: transform
+        }
+
+        .editor-stack {
+            position: relative;
+            flex: 1;
+            min-width: 0;
+            border-radius: 0 18px 0 0;
+            overflow: hidden
+        }
+
+        .editor-backdrop {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none
+        }
+
+        .bd-inner {
+            white-space: pre-wrap;
+            overflow-wrap: break-word;
+            padding: var(--edpt) var(--edpr) var(--edpb) var(--edpl);
+            font: 500 var(--edfs)/var(--edlh) var(--font-m);
+            color: transparent;
+            will-change: transform
+        }
+
+        .bd-inner mark {
+            background: var(--mark);
+            color: transparent;
+            border-radius: 3px;
+            padding: 1px 0
+        }
+
+        .bd-inner mark.active {
+            background: var(--mark-on);
+            box-shadow: 0 0 0 2px var(--mark-on)
+        }
+
+        textarea.editor {
+            position: relative;
+            z-index: 1;
+            display: block;
+            width: 100%;
+            height: 100%;
+            resize: none;
+            border: 0;
+            outline: 0;
+            background: transparent;
+            color: var(--ink);
+            caret-color: var(--brand);
+            padding: var(--edpt) var(--edpr) var(--edpb) var(--edpl);
+            font: 500 var(--edfs)/var(--edlh) var(--font-m);
+            white-space: pre-wrap;
+            overflow-wrap: break-word;
+            overflow-y: scroll;
+            scrollbar-gutter: stable
+        }
+
+        textarea.editor::placeholder {
+            color: var(--ink3)
+        }
+
+        textarea.editor::selection {
+            background: rgba(124, 58, 237, .26)
+        }
+
+        .editor-foot {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            padding: 9px 14px;
+            border-top: 1px solid var(--line);
+            font: 500 12.5px/1 var(--font-b);
+            color: var(--ink3);
+            flex: none
+        }
+
+        .editor-foot b {
+            color: var(--ink2);
+            font-weight: 700;
+            font-family: var(--font-m)
+        }
+
+        .dot-sep {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: var(--line2)
+        }
+
+        .foot-right {
+            margin-left: auto;
+            font-family: var(--font-m);
+            font-size: 11.5px
+        }
+
+        .editor-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            padding: 12px;
+            border-top: 1px solid var(--line);
+            flex: none
+        }
+
+        .act-primary {
+            display: flex;
+            gap: 8px;
+            margin-left: auto
+        }
+
+        @media(max-width:900px) {
+            .work-grid {
+                display: flex;
+                flex-direction: column;
+                height: auto
+            }
+
+            .pdf-canvas-wrap {
+                height: 52vh;
+                flex: none
+            }
+
+            .editor-shell {
+                height: 48vh;
+                flex: none
+            }
+
+            .editor-shell {
+                --edfs: 16px
+            }
+
+            .search-box input {
+                font-size: 16px
+            }
+
+            .panel-text .toolbar {
+                position: sticky;
+                top: 60px;
+                z-index: 7;
+                background: var(--glass);
+                backdrop-filter: blur(14px);
+                -webkit-backdrop-filter: blur(14px)
+            }
+
+            .panel-text .opt-row {
+                position: sticky;
+                top: 112px;
+                z-index: 6;
+                background: var(--glass);
+                backdrop-filter: blur(14px);
+                -webkit-backdrop-filter: blur(14px)
+            }
+
+            .editor-actions {
+                position: sticky;
+                bottom: 0;
+                z-index: 7;
+                background: var(--glass);
+                backdrop-filter: blur(14px);
+                -webkit-backdrop-filter: blur(14px);
+                padding-bottom: calc(12px + env(safe-area-inset-bottom))
+            }
+
+            .act-primary {
+                margin-left: 0;
+                width: 100%
+            }
+
+            .act-primary .btn-download {
+                flex: 1;
+                min-height: 48px
+            }
+
+            .wt-actions .btn span {
+                display: none
+            }
+        }
+
+        /* ============ TRUST STRIP ============ */
+        .trust {
+            padding: 64px 0 8px
+        }
+
+        .trust-inner {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-block: 1px solid var(--line)
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 26px 22px;
+            border-left: 1px solid var(--line)
+        }
+
+        .trust-item:first-child {
+            border-left: 0
+        }
+
+        .trust-item svg {
+            width: 22px;
+            height: 22px;
+            color: var(--brand);
+            flex: none
+        }
+
+        .trust-item strong {
+            display: block;
+            font: 700 14.5px/1.25 var(--font-b);
+            letter-spacing: -.01em
+        }
+
+        .trust-item span {
+            font: 400 12.5px/1.4 var(--font-b);
+            color: var(--ink3)
+        }
+
+        @media(max-width:860px) {
+            .trust-inner {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .trust-item:nth-child(3) {
+                border-left: 0
+            }
+
+            .trust-item {
+                padding: 20px 16px
+            }
+        }
+
+        @media(max-width:420px) {
+            .trust-inner {
+                grid-template-columns: 1fr
+            }
+
+            .trust-item {
+                border-left: 0;
+                border-top: 1px solid var(--line)
+            }
+
+            .trust-item:first-child {
+                border-top: 0
+            }
+        }
+
+        /* ============ SECTIONS ============ */
+        .section {
+            padding: 88px 0
+        }
+
+        .section-head {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto 48px
+        }
+
+        .section-eyebrow {
+            font: 700 11px/1 var(--font-b);
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--brand-ink);
+            margin-bottom: 14px
+        }
+
+        .section h2 {
+            font: 700 clamp(27px, 4vw, 40px)/1.15 var(--font-d);
+            letter-spacing: -.025em
+        }
+
+        .section-sub {
+            font: 400 15.5px/1.65 var(--font-b);
+            color: var(--ink2);
+            margin-top: 14px
+        }
+
+        /* features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px
+        }
+
+        .f-card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--r-lg);
+            padding: 26px 22px;
+            transition: .25s
+        }
+
+        .f-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--line2);
+            box-shadow: var(--sh-pop)
+        }
+
+        .f-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            margin-bottom: 18px;
+            box-shadow: 0 8px 18px -8px rgba(80, 30, 160, .5)
+        }
+
+        .f-icon svg {
+            width: 22px;
+            height: 22px
+        }
+
+        .f-icon.v {
+            background: linear-gradient(135deg, #7c3aed, #9333ea)
+        }
+
+        .f-icon.p {
+            background: linear-gradient(135deg, #db2777, #c026d3)
+        }
+
+        .f-icon.g {
+            background: linear-gradient(135deg, #f59e0b, #ea7c0c)
+        }
+
+        .f-icon.i {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed)
+        }
+
+        .f-card h3 {
+            font: 700 17px/1.3 var(--font-d);
+            letter-spacing: -.01em;
+            margin-bottom: 7px
+        }
+
+        .f-card p {
+            font: 400 14px/1.6 var(--font-b);
+            color: var(--ink2)
+        }
+
+        @media(max-width:1000px) {
+            .features-grid {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+
+        @media(max-width:520px) {
+            .features-grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        /* about / steps */
+        .about-body {
+            max-width: 760px;
+            margin: 0 auto;
+            text-align: center
+        }
+
+        .about-body p {
+            font: 400 15.5px/1.75 var(--font-b);
+            color: var(--ink2);
+            margin-top: 16px
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 44px
+        }
+
+        .step {
+            position: relative;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--r-lg);
+            padding: 26px 22px 24px;
+            overflow: hidden
+        }
+
+        .step::before {
+            content: attr(data-n);
+            position: absolute;
+            top: 6px;
+            right: 14px;
+            font: 800 56px/1 var(--font-d);
+            background: var(--grad-text);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            opacity: .14
+        }
+
+        .step h3 {
+            font: 700 15.5px/1.3 var(--font-b);
+            margin-bottom: 6px
+        }
+
+        .step p {
+            font: 400 13.5px/1.6 var(--font-b);
+            color: var(--ink2)
+        }
+
+        @media(max-width:760px) {
+            .steps {
+                grid-template-columns: 1fr
+            }
+        }
+
+        /* faq */
+        .faq-list {
+            max-width: 760px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px
+        }
+
+        .faq-item {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            transition: border-color .2s, box-shadow .2s
+        }
+
+        .faq-item.open {
+            border-color: var(--line2);
+            box-shadow: 0 14px 36px -26px rgba(60, 30, 140, .5)
+        }
+
+        .faq-q {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            width: 100%;
+            text-align: left;
+            font: 600 15.5px/1.4 var(--font-b);
+            color: var(--ink);
+            padding: 18px 20px
+        }
+
+        .faq-q svg {
+            width: 17px;
+            height: 17px;
+            flex: none;
+            color: var(--brand);
+            transition: transform .3s;
+            margin-left: auto
+        }
+
+        .faq-item.open .faq-q svg {
+            transform: rotate(180deg)
+        }
+
+        .faq-a {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows .35s cubic-bezier(.3, .8, .3, 1)
+        }
+
+        .faq-item.open .faq-a {
+            grid-template-rows: 1fr
+        }
+
+        .faq-a>div {
+            overflow: hidden
+        }
+
+        .faq-a p {
+            font: 400 14.5px/1.7 var(--font-b);
+            color: var(--ink2);
+            padding: 0 20px 20px;
+            max-width: 660px
+        }
+
+        /* ============ FOOTER ============ */
+        .site-footer {
+            background: var(--foot-bg);
+            color: var(--foot-ink);
+            margin-top: 40px
+        }
+
+        .footer-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 64px 24px 0;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 1fr;
+            gap: 36px
+        }
+
+        .f-brand .brand {
+            color: #fff;
+            margin: 0 0 14px
+        }
+
+        .f-tag {
+            font: 500 14.5px/1.5 var(--font-b);
+            color: var(--foot-ink2);
+            max-width: 260px
+        }
+
+        .f-social {
+            display: flex;
+            gap: 8px;
+            margin-top: 20px
+        }
+
+        .f-social a,
+        .f-social button {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, .14);
+            display: grid;
+            place-items: center;
+            color: var(--foot-ink);
+            transition: .18s
+        }
+
+        .f-social a:hover,
+        .f-social button:hover {
+            background: rgba(255, 255, 255, .08);
+            border-color: rgba(255, 255, 255, .3);
+            transform: translateY(-2px)
+        }
+
+        .f-social svg {
+            width: 17px;
+            height: 17px
+        }
+
+        .f-col h4 {
+            font: 700 12px/1 var(--font-b);
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 18px
+        }
+
+        .f-col a,
+        .f-col button {
+            display: block;
+            font: 500 14px/1 var(--font-b);
+            color: var(--foot-ink2);
+            padding: 7px 0;
+            transition: .15s;
+            text-align: left
+        }
+
+        .f-col a:hover,
+        .f-col button:hover {
+            color: #fff
+        }
+
+        .footer-bottom {
+            max-width: 1180px;
+            margin: 48px auto 0;
+            padding: 22px 24px;
+            border-top: 1px solid rgba(255, 255, 255, .09);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+            font: 500 13px/1.5 var(--font-b);
+            color: var(--foot-ink2)
+        }
+
+        @media(max-width:860px) {
+            .footer-inner {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+
+        @media(max-width:480px) {
+            .footer-inner {
+                grid-template-columns: 1fr
+            }
+        }
+
+        /* ============ TOASTS ============ */
+        .toasts {
+            position: fixed;
+            bottom: 22px;
+            right: 22px;
+            z-index: 120;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            pointer-events: none
+        }
+
+        .toast {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            max-width: min(380px, calc(100vw - 44px));
+            background: var(--card);
+            border: 1px solid var(--line2);
+            border-radius: 14px;
+            padding: 13px 17px;
+            font: 600 13.5px/1.45 var(--font-b);
+            color: var(--ink);
+            box-shadow: var(--sh-pop);
+            opacity: 0;
+            transform: translateY(14px) scale(.97);
+            transition: .3s cubic-bezier(.3, .9, .3, 1)
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: none
+        }
+
+        .toast svg {
+            width: 18px;
+            height: 18px;
+            flex: none
+        }
+
+        .toast.ok svg {
+            color: var(--ok)
+        }
+
+        .toast.info svg {
+            color: var(--brand)
+        }
+
+        @media(max-width:640px) {
+            .toasts {
+                left: 22px;
+                right: 22px;
+                align-items: center
+            }
+
+            .toast {
+                width: 100%
+            }
+        }
+
+        /* ============ COMMAND PALETTE ============ */
+        .palette-wrap {
+            position: fixed;
+            inset: 0;
+            z-index: 110;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 14vh 20px 20px
+        }
+
+        .pal-scrim {
+            position: absolute;
+            inset: 0;
+            background: rgba(10, 5, 28, .55);
+            backdrop-filter: blur(4px)
+        }
+
+        .palette {
+            position: relative;
+            width: min(560px, 100%);
+            background: var(--card);
+            border: 1px solid var(--line2);
+            border-radius: 18px;
+            box-shadow: var(--sh-pop);
+            overflow: hidden;
+            animation: rise .25s cubic-bezier(.22, .9, .3, 1)
+        }
+
+        .pal-head {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            padding: 15px 16px;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .pal-head svg {
+            width: 17px;
+            height: 17px;
+            color: var(--ink3)
+        }
+
+        .pal-head input {
+            flex: 1;
+            border: 0;
+            outline: 0;
+            background: transparent;
+            font: 500 15px/1 var(--font-b);
+            color: var(--ink)
+        }
+
+        .pal-list {
+            list-style: none;
+            max-height: 320px;
+            overflow-y: auto;
+            padding: 8px
+        }
+
+        .pal-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            text-align: left;
+            padding: 11px 12px;
+            border-radius: 11px;
+            transition: .12s
+        }
+
+        .pal-item svg {
+            width: 17px;
+            height: 17px;
+            color: var(--brand);
+            flex: none
+        }
+
+        .pal-item .pal-label {
+            font: 600 14px/1.2 var(--font-b);
+            color: var(--ink)
+        }
+
+        .pal-item .pal-hint {
+            margin-left: auto;
+            font: 400 12px/1.2 var(--font-b);
+            color: var(--ink3);
+            white-space: nowrap
+        }
+
+        .pal-item.active {
+            background: var(--tint)
+        }
+
+        .pal-empty {
+            padding: 22px;
+            text-align: center;
+            font: 500 13.5px/1 var(--font-b);
+            color: var(--ink3)
+        }
+
+        .pal-foot {
+            display: flex;
+            gap: 14px;
+            padding: 10px 16px;
+            border-top: 1px solid var(--line);
+            font: 500 11.5px/1 var(--font-b);
+            color: var(--ink3)
+        }
+
+        /* ============ MODAL ============ */
+        .modal-wrap {
+            position: fixed;
+            inset: 0;
+            z-index: 115;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px
+        }
+
+        .modal-scrim {
+            position: absolute;
+            inset: 0;
+            background: rgba(10, 5, 28, .55);
+            backdrop-filter: blur(4px)
+        }
+
+        .modal {
+            position: relative;
+            width: min(560px, 100%);
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            background: var(--card);
+            border: 1px solid var(--line2);
+            border-radius: 20px;
+            box-shadow: var(--sh-pop);
+            animation: rise .28s cubic-bezier(.22, .9, .3, 1)
+        }
+
+        .modal-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 20px;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .modal-head h3 {
+            font: 700 18px/1.2 var(--font-d)
+        }
+
+        .modal-body {
+            padding: 20px;
+            overflow-y: auto;
+            font: 400 14.5px/1.7 var(--font-b);
+            color: var(--ink2)
+        }
+
+        .modal-body h4 {
+            font: 700 14.5px/1.3 var(--font-b);
+            color: var(--ink);
+            margin: 18px 0 6px
+        }
+
+        .modal-body h4:first-child {
+            margin-top: 0
+        }
+
+        /* ============ REDUCED MOTION ============ */
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important
+            }
+
+            html {
+                scroll-behavior: auto
+            }
+
+            .prog-fill::after {
+                display: none
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="site-header" id="siteHeader">
+        <div class="header-inner">
+            <a class="brand" href="#home" aria-label="Tools24 home">
+                <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24">
+                        <path d="M7 3h7l4 4v14H7z" />
+                        <path d="M14 3v4h4M10.5 12h6M10.5 15.5h6M10.5 19h3.5" />
+                    </svg></span>
+                Tools<em>24</em>
+            </a>
+            <nav class="main-nav" aria-label="Primary">
+                <a class="nav-link" href="#home">Home</a>
+                <button class="nav-link" type="button" data-toast="The full Tools24 library is coming soon.">All
+                    Tools</button>
+                <div class="nav-dd">
+                    <button class="nav-link dd-btn" type="button" aria-expanded="false">PDF Tools <svg
+                            viewBox="0 0 24 24" class="ic">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg></button>
+                    <div class="dd-menu">
+                        <button class="dd-item" type="button" data-goto="#converter"><svg viewBox="0 0 24 24"
+                                class="ic">
+                                <path d="M7 3h7l4 4v14H7z" />
+                                <path d="M14 3v4h4M10.5 13h6M10.5 16.5h6" />
+                            </svg><span>PDF to Text</span><span class="tag live">Live</span></button>
+                        <button class="dd-item" type="button" data-toast="PDF to Word is coming soon to Tools24."><svg
+                                viewBox="0 0 24 24" class="ic">
+                                <path d="M7 3h7l4 4v14H7z" />
+                                <path d="M14 3v4h4" />
+                            </svg><span>PDF to Word</span><span class="tag">Soon</span></button>
+                        <button class="dd-item" type="button" data-toast="Merge PDF is coming soon to Tools24."><svg
+                                viewBox="0 0 24 24" class="ic">
+                                <path d="M12 3 3 8l9 5 9-5-9-5z" />
+                                <path d="M3 13l9 5 9-5" />
+                            </svg><span>Merge PDF</span><span class="tag">Soon</span></button>
+                        <button class="dd-item" type="button" data-toast="Split PDF is coming soon to Tools24."><svg
+                                viewBox="0 0 24 24" class="ic">
+                                <path d="M4 8V5h3M20 8V5h-3M4 16v3h3M20 16v3h-3M3 12h18" />
+                            </svg><span>Split PDF</span><span class="tag">Soon</span></button>
+                    </div>
+                </div>
+                <button class="nav-link" type="button"
+                    data-toast="Image tools are cooking — coming soon to Tools24.">Image Tools</button>
+                <div class="nav-dd">
+                    <button class="nav-link dd-btn" type="button" aria-expanded="false">More Tools <svg
+                            viewBox="0 0 24 24" class="ic">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg></button>
+                    <div class="dd-menu">
+                        <button class="dd-item" type="button" data-toast="Image to Text is coming soon to Tools24."><svg
+                                viewBox="0 0 24 24" class="ic">
+                                <rect x="4" y="5" width="16" height="14" rx="3" />
+                                <circle cx="9.5" cy="10" r="1.6" />
+                                <path d="M4 17l5-4 4 3 3-2.5 4 3.5" />
+                            </svg><span>Image to Text</span><span class="tag">Soon</span></button>
+                        <button class="dd-item" type="button"
+                            data-toast="Image Compressor is coming soon to Tools24."><svg viewBox="0 0 24 24"
+                                class="ic">
+                                <path d="M12 3v5m0 8v5M9 6l3-3 3 3M9 18l3 3 3-3M5 12h14" />
+                            </svg><span>Image Compressor</span><span class="tag">Soon</span></button>
+                        <button class="dd-item" type="button" data-toast="Word Counter is coming soon to Tools24."><svg
+                                viewBox="0 0 24 24" class="ic">
+                                <path d="M4 6h16M4 11h16M4 16h9" />
+                            </svg><span>Word Counter</span><span class="tag">Soon</span></button>
+                    </div>
+                </div>
+                <button class="nav-link" type="button" data-toast="The Tools24 blog launches soon.">Blog</button>
+            </nav>
+            <div class="header-actions">
+                <button class="icon-btn" id="searchBtn" type="button" aria-label="Search quick actions">
+                    <svg viewBox="0 0 24 24" class="ic">
+                        <circle cx="11" cy="11" r="7" />
+                        <path d="M16.5 16.5 21 21" />
+                    </svg><kbd>Ctrl K</kbd>
+                </button>
+                <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle dark / light theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" class="ic">
+                        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+                    </svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" class="ic" style="display:none">
+                        <circle cx="12" cy="12" r="4" />
+                        <path
+                            d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8" />
+                    </svg>
+                </button>
+                <button class="btn btn-ghost btn-sm" id="loginBtn" type="button">Login</button>
+                <button class="icon-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" class="ic">
+                        <path d="M4 7h16M4 12h16M4 17h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- mobile drawer -->
+    <aside class="drawer" id="drawer" aria-label="Mobile menu">
+        <div class="drawer-head">
+            <a class="brand" href="#home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24">
+                        <path d="M7 3h7l4 4v14H7z" />
+                        <path d="M14 3v4h4M10.5 12h6M10.5 15.5h6M10.5 19h3.5" />
+                    </svg></span>Tools<em>24</em></a>
+            <button class="icon-btn" id="drawerClose" type="button" aria-label="Close menu"><svg viewBox="0 0 24 24"
+                    class="ic">
+                    <path d="M6 6l12 12M18 6 6 18" />
+                </svg></button>
+        </div>
+        <nav class="drawer-nav">
+            <a href="#home">Home</a>
+            <a href="#converter">PDF to Text</a>
+            <a href="#features">Features</a>
+            <a href="#faq">FAQ</a>
+            <button type="button" data-toast="The full Tools24 library is coming soon.">All Tools</button>
+            <button type="button" data-toast="Image tools are cooking — coming soon to Tools24.">Image Tools</button>
+            <button type="button" data-toast="The Tools24 blog launches soon.">Blog</button>
+            <button type="button" data-toast="No account needed — Tools24 works right in your browser.">Login</button>
+        </nav>
+        <p class="drawer-note">No account needed — everything runs in your browser.</p>
+    </aside>
+    <div class="scrim" id="scrim"></div>
+
+    <main id="home">
+        <!-- ================= HERO ================= -->
+        <section class="hero">
+            <div class="hero-deco" aria-hidden="true">
+                <span class="shape sq"></span><span class="shape ring"></span><span class="shape dot"></span><span
+                    class="shape pill"></span>
+            </div>
+            <div class="wrap">
+                <span class="badge"><b>✦</b> PDF TOOLS • FAST • SECURE</span>
+                <h1 class="hero-title"><span class="grad-text">PDF to Text</span><span
+                        class="title-tail">Converter</span></h1>
+                <p class="hero-sub">Extract clean, editable text from your PDF files in seconds.</p>
+                <p class="hero-sub2">Fast browser-based extraction with OCR support for scanned PDFs.</p>
+                <ul class="pills">
+                    <li><svg viewBox="0 0 24 24" class="ic">
+                            <path d="M4 12.5l5 5L20 6.5" />
+                        </svg>No Registration</li>
+                    <li><svg viewBox="0 0 24 24" class="ic">
+                            <path d="M4 12.5l5 5L20 6.5" />
+                        </svg>100% Private</li>
+                    <li><svg viewBox="0 0 24 24" class="ic">
+                            <path d="M4 12.5l5 5L20 6.5" />
+                        </svg>High Accuracy</li>
+                    <li><svg viewBox="0 0 24 24" class="ic">
+                            <path d="M4 12.5l5 5L20 6.5" />
+                        </svg>Works on All Devices</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ================= CONVERTER ================= -->
+        <section class="converter" id="converter" aria-label="PDF to Text converter">
+            <div class="conv-glow" aria-hidden="true"></div>
+            <div class="wrap">
+                <div class="conv-frame">
+                    <div class="conv-card" id="convCard">
+
+                        <noscript>
+                            <p style="padding:32px;text-align:center;font-weight:600">This tool needs JavaScript to
+                                extract text locally in your browser. Please enable JavaScript and reload.</p>
+                        </noscript>
+
+                        <!-- STAGE: upload -->
+                        <div class="stage active" id="stageIdle">
+                            <div class="dropzone" id="dropzone" role="button" tabindex="0"
+                                aria-label="Upload a PDF file by clicking or dropping it here">
+                                <svg class="dz-art" viewBox="0 0 176 104" aria-hidden="true">
+                                    <defs>
+                                        <linearGradient id="dzGrad" x1="0" y1="0" x2="1" y2="1">
+                                            <stop offset="0" stop-color="#7c3aed" />
+                                            <stop offset="1" stop-color="#db2777" />
+                                        </linearGradient>
+                                    </defs>
+                                    <g>
+                                        <rect x="12" y="14" width="50" height="64" rx="9" class="art-file-a"
+                                            stroke-width="2" />
+                                        <path d="M25 32h24M25 41h24M25 50h15" class="art-line" />
+                                        <text x="37" y="70" text-anchor="middle" class="art-label art-pdf">PDF</text>
+                                        <path d="M74 46h22m0 0-6-6m6 6-6 6" class="art-arrow" />
+                                        <path d="M85 36v-4m0 28v-4" class="art-line" style="opacity:.3" />
+                                        <rect x="106" y="14" width="50" height="64" rx="9" class="art-file-b"
+                                            stroke-width="2" />
+                                        <path d="M119 32h24M119 41h24M119 50h15" class="art-line art-line-b" />
+                                        <text x="131" y="70" text-anchor="middle" class="art-label art-txt">TXT</text>
+                                        <circle cx="70" cy="16" r="2.6" fill="#7c3aed" opacity=".55" />
+                                        <circle cx="103" cy="88" r="2.6" fill="#db2777" opacity=".5" />
+                                        <circle cx="168" cy="24" r="2" fill="#f59e0b" opacity=".6" />
+                                    </g>
+                                </svg>
+                                <h2 class="dz-title">Drop your PDF here</h2>
+                                <p class="dz-sub" id="dzSub">or browse files from your device</p>
+                                <div class="dz-cta">
+                                    <button class="btn btn-primary btn-lg" id="browseBtn" type="button">
+                                        <svg viewBox="0 0 24 24" class="ic">
+                                            <path d="M12 16V4m0 0 4.5 4.5M12 4 7.5 8.5" />
+                                            <path d="M4 16.5v2A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5v-2" />
+                                        </svg>
+                                        Browse PDF
+                                    </button>
+                                </div>
+                                <p class="dz-meta">PDF files • Up to 50 MB</p>
+                                <p class="dz-secure"><svg viewBox="0 0 24 24" class="ic">
+                                        <rect x="5" y="11" width="14" height="9" rx="2.5" />
+                                        <path d="M8 11V8a4 4 0 0 1 8 0v3" />
+                                    </svg>Files are processed securely</p>
+                                <p class="dz-error" id="dzError" hidden><svg viewBox="0 0 24 24" class="ic">
+                                        <circle cx="12" cy="12" r="9" />
+                                        <path d="M12 8v5M12 16.5v.5" />
+                                    </svg><span></span></p>
+                            </div>
+                            <input type="file" id="fileInput" accept="application/pdf,.pdf" hidden>
+                        </div>
+
+                        <!-- STAGE: file ready -->
+                        <div class="stage" id="stageReady">
+                            <div class="stage-ready-inner">
+                                <p class="eyebrow">Selected file</p>
+                                <div class="file-card">
+                                    <div class="fc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" class="ic">
+                                            <path d="M7 3h7l4 4v14H7z" />
+                                            <path d="M14 3v4h4M10.5 13h6M10.5 16.5h6" />
+                                        </svg></div>
+                                    <div class="fc-info">
+                                        <div class="fc-name" id="fcName">document.pdf</div>
+                                        <div class="fc-meta" id="fcMeta">—</div>
+                                        <span class="fc-status"><svg viewBox="0 0 24 24" class="ic">
+                                                <path d="M4 12.5l5 5L20 6.5" />
+                                            </svg>Ready to extract</span>
+                                    </div>
+                                    <div class="fc-actions">
+                                        <button class="btn btn-ghost btn-sm" id="replaceBtn" type="button"><svg
+                                                viewBox="0 0 24 24" class="ic">
+                                                <path d="M20 11a8 8 0 1 0-2.3 6.3M20 5v6h-6" />
+                                            </svg><span>Replace PDF</span></button>
+                                        <button class="btn btn-ghost btn-sm danger" id="removeBtn" type="button"><svg
+                                                viewBox="0 0 24 24" class="ic">
+                                                <path d="M4 7h16M9.5 7V5h5v2M6.5 7l1 13h9l1-13M10 11v5M14 11v5" />
+                                            </svg><span>Remove</span></button>
+                                    </div>
+                                </div>
+                                <div class="opts">
+                                    <p class="opts-label">Extraction options</p>
+                                    <div class="opt-line">
+                                        <div class="opt-text"><strong>Preserve layout</strong><span>Rebuild line breaks
+                                                and spacing from the page layout.</span></div>
+                                        <button class="switch on" data-opt="layout" role="switch" aria-checked="true"
+                                            aria-label="Preserve layout"><span class="knob"></span></button>
+                                    </div>
+                                    <div class="opt-line">
+                                        <div class="opt-text"><strong>OCR for scanned PDF</strong><span>Use OCR when
+                                                your PDF contains scanned pages or images.</span></div>
+                                        <button class="switch" data-opt="ocr" role="switch" aria-checked="false"
+                                            aria-label="OCR for scanned PDF"><span class="knob"></span></button>
+                                    </div>
+                                    <div class="opt-lang only-ocr">
+                                        <label for="langSel">OCR language</label>
+                                        <span class="select">
+                                            <select id="langSel" class="lang-select">
+                                                <option value="eng">English</option>
+                                                <option value="hin">Hindi</option>
+                                                <option value="ben">Bengali</option>
+                                                <option value="tam">Tamil</option>
+                                                <option value="tel">Telugu</option>
+                                                <option value="mar">Marathi</option>
+                                                <option value="guj">Gujarati</option>
+                                                <option value="kan">Kannada</option>
+                                                <option value="mal">Malayalam</option>
+                                                <option value="urd">Urdu</option>
+                                            </select>
+                                            <svg viewBox="0 0 24 24" class="ic">
+                                                <path d="M6 9l6 6 6-6" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="ready-cta">
+                                    <button class="btn btn-primary btn-lg" id="extractBtn" type="button">
+                                        <svg viewBox="0 0 24 24" class="ic">
+                                            <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z" />
+                                            <path d="M19 16.5v3M17.5 18h3" />
+                                        </svg>
+                                        <span id="extractLabel">Extract Text</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- STAGE: progress -->
+                        <div class="stage" id="stageProgress">
+                            <div class="prog" id="progBox">
+                                <div class="prog-icon" aria-hidden="true">
+                                    <span class="ring"></span>
+                                    <svg class="pi-file" viewBox="0 0 24 24" class="ic">
+                                        <path d="M7 3h7l4 4v14H7z" />
+                                        <path d="M14 3v4h4M10.5 13h6M10.5 16.5h6" />
+                                    </svg>
+                                    <svg class="pi-ok" viewBox="0 0 24 24" class="ic">
+                                        <circle cx="12" cy="12" r="9" />
+                                        <path d="M8 12.5l2.8 2.8L16.5 9" />
+                                    </svg>
+                                    <svg class="pi-err" viewBox="0 0 24 24" class="ic">
+                                        <circle cx="12" cy="12" r="9" />
+                                        <path d="M12 8v5M12 16.5v.5" />
+                                    </svg>
+                                </div>
+                                <h3 id="progTitle">Extracting text from PDF…</h3>
+                                <p class="prog-sub" id="progSub" aria-live="polite">Preparing…</p>
+                                <div class="prog-row">
+                                    <div class="prog-bar">
+                                        <div class="prog-fill" id="progFill"></div>
+                                    </div>
+                                    <span class="prog-pct" id="progPct">0%</span>
+                                </div>
+                                <p class="prog-note" id="ocrNote" hidden>OCR reads each page as an image — larger scans
+                                    can take a little longer.</p>
+                                <div class="prog-foot">
+                                    <span class="prog-file" id="progFile"></span>
+                                    <button class="btn btn-ghost btn-sm" id="cancelBtn" type="button">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- STAGE: workspace -->
+                        <div class="stage" id="stageWork">
+                            <div class="work-top">
+                                <div class="wt-file">
+                                    <svg viewBox="0 0 24 24" class="ic">
+                                        <path d="M7 3h7l4 4v14H7z" />
+                                        <path d="M14 3v4h4M10.5 13h6M10.5 16.5h6" />
+                                    </svg>
+                                    <span class="wt-name" id="wtName">document.pdf</span>
+                                    <span class="wt-meta" id="wtMeta"></span>
+                                </div>
+                                <div class="wt-actions">
+                                    <button class="btn btn-ghost btn-sm" id="wtReplace" type="button"><svg
+                                            viewBox="0 0 24 24" class="ic">
+                                            <path d="M20 11a8 8 0 1 0-2.3 6.3M20 5v6h-6" />
+                                        </svg><span>Replace PDF</span></button>
+                                    <button class="btn btn-ghost btn-sm danger" id="wtRemove" type="button"><svg
+                                            viewBox="0 0 24 24" class="ic">
+                                            <path d="M4 7h16M9.5 7V5h5v2M6.5 7l1 13h9l1-13M10 11v5M14 11v5" />
+                                        </svg><span>Remove</span></button>
+                                </div>
+                            </div>
+                            <div class="work-grid">
+                                <!-- LEFT: preview -->
+                                <section class="panel panel-pdf" id="pdfPanel" aria-label="PDF preview">
+                                    <header class="panel-head">
+                                        <h3 class="panel-title"><svg viewBox="0 0 24 24" class="ic">
+                                                <path d="M7 3h7l4 4v14H7z" />
+                                                <path d="M14 3v4h4" />
+                                            </svg>PDF Preview</h3>
+                                        <span class="pages-chip" id="pagesChip">0 pages</span>
+                                    </header>
+                                    <div class="thumb-strip" id="thumbStrip" aria-label="Page thumbnails"></div>
+                                    <div class="pdf-canvas-wrap" id="canvasWrap"><canvas id="pdfCanvas"></canvas></div>
+                                    <div class="pdf-controls">
+                                        <button class="icon-btn-sm" id="prevBtn" type="button"
+                                            aria-label="Previous page"><svg viewBox="0 0 24 24" class="ic">
+                                                <path d="M15 6l-6 6 6 6" />
+                                            </svg></button>
+                                        <span class="page-label" id="pageLabel">1 / 1</span>
+                                        <button class="icon-btn-sm" id="nextBtn" type="button"
+                                            aria-label="Next page"><svg viewBox="0 0 24 24" class="ic">
+                                                <path d="M9 6l6 6-6 6" />
+                                            </svg></button>
+                                        <span class="ctrl-sep"></span>
+                                        <button class="icon-btn-sm" id="zoomOutBtn" type="button"
+                                            aria-label="Zoom out"><svg viewBox="0 0 24 24" class="ic">
+                                                <circle cx="11" cy="11" r="7" />
+                                                <path d="M16.5 16.5 21 21M8.5 11h5" />
+                                            </svg></button>
+                                        <span class="zoom-label" id="zoomLabel">Fit</span>
+                                        <button class="icon-btn-sm" id="zoomInBtn" type="button"
+                                            aria-label="Zoom in"><svg viewBox="0 0 24 24" class="ic">
+                                                <circle cx="11" cy="11" r="7" />
+                                                <path d="M16.5 16.5 21 21M8.5 11h5M11 8.5v5" />
+                                            </svg></button>
+                                        <span class="ctrl-sep"></span>
+                                        <button class="icon-btn-sm" id="fsBtn" type="button"
+                                            aria-label="Toggle fullscreen preview"><svg viewBox="0 0 24 24" class="ic">
+                                                <path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" />
+                                            </svg></button>
+                                    </div>
+                                </section>
+                                <!-- RIGHT: editor -->
+                                <section class="panel panel-text" aria-label="Extracted text">
+                                    <header class="panel-head">
+                                        <h3 class="panel-title"><svg viewBox="0 0 24 24" class="ic">
+                                                <path d="M7 3h7l4 4v14H7z" />
+                                                <path d="M14 3v4h4M10.5 13h6M10.5 16.5h6" />
+                                            </svg>Extracted Text</h3>
+                                        <span class="chip-ok" id="successChip" hidden><svg viewBox="0 0 24 24"
+                                                class="ic">
+                                                <path d="M4 12.5l5 5L20 6.5" />
+                                            </svg><span id="successChipText"></span></span>
+                                    </header>
+                                    <div class="toolbar">
+                                        <div class="search-box">
+                                            <svg viewBox="0 0 24 24" class="ic">
+                                                <circle cx="11" cy="11" r="7" />
+                                                <path d="M16.5 16.5 21 21" />
+                                            </svg>
+                                            <input id="searchInput" type="text" placeholder="Search in extracted text…"
+                                                aria-label="Search in extracted text">
+                                            <span class="match-info" id="matchInfo" hidden></span>
+                                            <span class="match-nav" id="matchNav" hidden>
+                                                <button class="icon-btn-sm" id="matchPrev" type="button"
+                                                    aria-label="Previous match"><svg viewBox="0 0 24 24" class="ic">
+                                                        <path d="M6 15l6-6 6 6" />
+                                                    </svg></button>
+                                                <button class="icon-btn-sm" id="matchNext" type="button"
+                                                    aria-label="Next match"><svg viewBox="0 0 24 24" class="ic">
+                                                        <path d="M6 9l6 6 6-6" />
+                                                    </svg></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="opt-row">
+                                        <button class="opt-chip on" data-opt="layout" role="switch" aria-checked="true"
+                                            type="button"><span class="mini-switch"><span></span></span>Preserve
+                                            layout</button>
+                                        <button class="opt-chip" data-opt="ocr" role="switch" aria-checked="false"
+                                            type="button"><span class="mini-switch"><span></span></span>OCR</button>
+                                        <span class="select only-ocr">
+                                            <select class="lang-select" aria-label="OCR language">
+                                                <option value="eng">English</option>
+                                                <option value="hin">Hindi</option>
+                                                <option value="ben">Bengali</option>
+                                                <option value="tam">Tamil</option>
+                                                <option value="tel">Telugu</option>
+                                                <option value="mar">Marathi</option>
+                                                <option value="guj">Gujarati</option>
+                                                <option value="kan">Kannada</option>
+                                                <option value="mal">Malayalam</option>
+                                                <option value="urd">Urdu</option>
+                                            </select>
+                                            <svg viewBox="0 0 24 24" class="ic">
+                                                <path d="M6 9l6 6 6-6" />
+                                            </svg>
+                                        </span>
+                                        <span class="opt-spacer"></span>
+                                        <button class="btn btn-ghost btn-sm" id="reExtractBtn" type="button"><svg
+                                                viewBox="0 0 24 24" class="ic">
+                                                <path d="M20 11a8 8 0 1 0-2.3 6.3M20 5v6h-6" />
+                                            </svg>Re-extract</button>
+                                    </div>
+                                    <div class="banner-warn" id="noTextBanner" hidden>
+                                        <svg viewBox="0 0 24 24" class="ic">
+                                            <circle cx="12" cy="12" r="9" />
+                                            <path d="M12 8v5M12 16.5v.5" />
+                                        </svg>
+                                        <p id="bannerMsg">No selectable text found — this PDF looks scanned.</p>
+                                        <button class="btn btn-soft btn-sm" id="bannerBtn" type="button">Enable OCR
+                                            &amp; extract again</button>
+                                    </div>
+                                    <div class="editor-shell">
+                                        <div class="gutter" id="gutter" aria-hidden="true">
+                                            <div class="gutter-inner" id="gutterInner">1</div>
+                                        </div>
+                                        <div class="editor-stack">
+                                            <div class="editor-backdrop" aria-hidden="true">
+                                                <div class="bd-inner" id="bdInner"></div>
+                                            </div>
+                                            <label class="sr-only" for="editor">Extracted text editor</label>
+                                            <textarea class="editor" id="editor" spellcheck="false" autocomplete="off"
+                                                placeholder="Extracted text will appear here…"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="editor-foot">
+                                        <span><b id="wcCount">0</b> words</span>
+                                        <span class="dot-sep"></span>
+                                        <span><b id="ccCount">0</b> characters</span>
+                                        <span class="foot-right">Plain text · UTF-8</span>
+                                    </div>
+                                    <div class="editor-actions">
+                                        <button class="btn btn-soft" id="copyBtn" type="button"><svg viewBox="0 0 24 24"
+                                                class="ic">
+                                                <rect x="9" y="9" width="11" height="11" rx="2.5" />
+                                                <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+                                            </svg>Copy Text</button>
+                                        <button class="btn btn-ghost danger" id="clearBtn" type="button"><svg
+                                                viewBox="0 0 24 24" class="ic">
+                                                <path d="M4 7h16M9.5 7V5h5v2M6.5 7l1 13h9l1-13" />
+                                            </svg>Clear</button>
+                                        <button class="btn btn-ghost" id="saveBtn" type="button" hidden><svg
+                                                viewBox="0 0 24 24" class="ic">
+                                                <path d="M12 16V4m0 0 4.5 4.5M12 4 7.5 8.5" />
+                                                <path d="M4 16.5v2A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5v-2" />
+                                            </svg>Save as…</button>
+                                        <span class="act-primary">
+                                            <button class="btn btn-primary btn-lg btn-download" id="downloadBtn"
+                                                type="button"><svg viewBox="0 0 24 24" class="ic">
+                                                    <path d="M12 4v12m0 0 4.5-4.5M12 16l-4.5-4.5" />
+                                                    <path
+                                                        d="M4 16.5v2A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5v-2" />
+                                                </svg>Download TXT</button>
+                                        </span>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TRUST ================= -->
+        <section class="trust" aria-label="Capabilities">
+            <div class="wrap">
+                <div class="trust-inner">
+                    <div class="trust-item"><svg viewBox="0 0 24 24" class="ic">
+                            <circle cx="12" cy="12" r="9" />
+                            <path d="M3 12h18M12 3c2.7 2.6 4 5.8 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.8-4-9s1.3-6.4 4-9z" />
+                        </svg>
+                        <div><strong>100% Browser Based</strong><span>Your files never leave your device</span></div>
+                    </div>
+                    <div class="trust-item"><svg viewBox="0 0 24 24" class="ic">
+                            <path d="M7 3h7l4 4v14H7z" />
+                            <path d="M14 3v4h4M12 11v6M9.5 14.5h5" />
+                        </svg>
+                        <div><strong>50 MB Max File</strong><span>Generous limit for large documents</span></div>
+                    </div>
+                    <div class="trust-item"><svg viewBox="0 0 24 24" class="ic">
+                            <path d="M12 3 3 8l9 5 9-5-9-5z" />
+                            <path d="M3 13l9 5 9-5M3 18l9 5 9-5" opacity=".45" />
+                        </svg>
+                        <div><strong>Multi-Page Support</strong><span>Extract every page in one go</span></div>
+                    </div>
+                    <div class="trust-item"><svg viewBox="0 0 24 24" class="ic">
+                            <path d="M4 8V5h3M20 8V5h-3M4 16v3h3M20 16v3h-3M7 12h10" />
+                        </svg>
+                        <div><strong>OCR Ready</strong><span>Reads scanned documents too</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= FEATURES ================= -->
+        <section class="section" id="features">
+            <div class="wrap">
+                <div class="section-head">
+                    <p class="section-eyebrow">Why Tools24</p>
+                    <h2>Why Choose Our PDF to Text Converter?</h2>
+                    <p class="section-sub">A focused utility built to do one job exceptionally well — turn your PDFs
+                        into clean, usable text.</p>
+                </div>
+                <div class="features-grid">
+                    <article class="f-card">
+                        <div class="f-icon v"><svg viewBox="0 0 24 24" class="ic">
+                                <path d="M13 2 4 14h6.5L10 22l9-12h-6.5L13 2z" />
+                            </svg></div>
+                        <h3>Fast &amp; Easy</h3>
+                        <p>Extract text from PDFs quickly. Drop a file, press one button and your text is ready —
+                            usually in seconds.</p>
+                    </article>
+                    <article class="f-card">
+                        <div class="f-icon p"><svg viewBox="0 0 24 24" class="ic">
+                                <circle cx="12" cy="12" r="9" />
+                                <circle cx="12" cy="12" r="4.5" />
+                                <circle cx="12" cy="12" r=".8" />
+                            </svg></div>
+                        <h3>High Accuracy</h3>
+                        <p>Reliable extraction with OCR support. Layout-aware parsing keeps paragraphs and line breaks
+                            readable.</p>
+                    </article>
+                    <article class="f-card">
+                        <div class="f-icon g"><svg viewBox="0 0 24 24" class="ic">
+                                <path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z" />
+                                <path d="M8.8 12l2.2 2.2 4.2-4.4" />
+                            </svg></div>
+                        <h3>Secure &amp; Private</h3>
+                        <p>Process files locally whenever possible. Nothing is uploaded to a server — your documents
+                            stay yours.</p>
+                    </article>
+                    <article class="f-card">
+                        <div class="f-icon i"><svg viewBox="0 0 24 24" class="ic">
+                                <rect x="7" y="2.5" width="10" height="19" rx="3" />
+                                <path d="M11 18.5h2" />
+                            </svg></div>
+                        <h3>Mobile Friendly</h3>
+                        <p>Works beautifully across devices. The full workflow — preview, edit, download — fits right in
+                            your pocket.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SEO / ABOUT ================= -->
+        <section class="section" id="about">
+            <div class="wrap">
+                <div class="about-body">
+                    <p class="section-eyebrow">Free · Online · No sign-up</p>
+                    <h2>Extract Text from PDF Online</h2>
+                    <p>Turn any PDF into clean, editable plain text without installing software. This free PDF to Text
+                        converter runs entirely in your browser: drop in a document and, within seconds, every page is
+                        converted into text you can search, edit, copy or download as a <strong>.txt</strong> file.
+                        Because nothing is uploaded to a server, it's a safe choice for contracts, research papers,
+                        invoices and study material.</p>
+                    <p>Working with a scanned document instead? Enable the built-in OCR mode and the converter reads
+                        photographed or scanned pages too, with support for English, Hindi and other Indian languages.
+                        Preserve Layout keeps paragraphs, line breaks and spacing readable, and the finished TXT file
+                        keeps your original file name so it's easy to find later.</p>
+                </div>
+                <div class="steps">
+                    <div class="step" data-n="1">
+                        <h3>Upload your PDF</h3>
+                        <p>Drag &amp; drop a file into the converter or browse your device — up to 50 MB per document.
+                        </p>
+                    </div>
+                    <div class="step" data-n="2">
+                        <h3>Extract the text</h3>
+                        <p>Read the real text layer page by page, or switch on OCR for scanned and photographed PDFs.
+                        </p>
+                    </div>
+                    <div class="step" data-n="3">
+                        <h3>Edit &amp; download</h3>
+                        <p>Search, fix and polish the text in the editor, then save your TXT with one click.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= FAQ ================= -->
+        <section class="section" id="faq">
+            <div class="wrap">
+                <div class="section-head">
+                    <p class="section-eyebrow">Good to know</p>
+                    <h2>Frequently Asked Questions</h2>
+                </div>
+                <div class="faq-list">
+                    <div class="faq-item open">
+                        <button class="faq-q" type="button" aria-expanded="true">What is a PDF to Text converter?<svg
+                                viewBox="0 0 24 24" class="ic">
+                                <path d="M6 9l6 6 6-6" />
+                            </svg></button>
+                        <div class="faq-a">
+                            <div>
+                                <p>A PDF to Text converter pulls the written content out of a PDF document and turns it
+                                    into plain, editable .txt text — without the images or formatting. You can then
+                                    reuse the text anywhere: notes apps, editors, word processors or code.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" type="button" aria-expanded="false">How do I extract text from a PDF?<svg
+                                viewBox="0 0 24 24" class="ic">
+                                <path d="M6 9l6 6 6-6" />
+                            </svg></button>
+                        <div class="faq-a">
+                            <div>
+                                <p>Drop your PDF into the box above (or click Browse PDF), press Extract Text, and your
+                                    content appears in the editor within seconds. Review or edit it, then download it as
+                                    a .txt file with one click.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" type="button" aria-expanded="false">Can I convert scanned PDFs?<svg
+                                viewBox="0 0 24 24" class="ic">
+                                <path d="M6 9l6 6 6-6" />
+                            </svg></button>
+                        <div class="faq-a">
+                            <div>
+                                <p>Yes. Turn on the OCR for scanned PDF option before extracting — every page is read as
+                                    an image and converted into editable text, so even photo-based scans become usable
+                                    content.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" type="button" aria-expanded="false">Is OCR supported?<svg
+                                viewBox="0 0 24 24" class="ic">
+                                <path d="M6 9l6 6 6-6" />
+                            </svg></button>
+                        <div class="faq-a">
+                            <div>
+                                <p>It is. The built-in OCR recognises English plus several Indian languages, including
+                                    Hindi, Bengali, Tamil, Telugu, Marathi, Gujarati, Kannada, Malayalam and Urdu.
+                                    Scanned pages can take a little longer than normal extraction.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" type="button" aria-expanded="false">Are my files uploaded to a server?<svg
+                                viewBox="0 0 24 24" class="ic">
+                                <path d="M6 9l6 6 6-6" />
+                            </svg></button>
+                        <div class="faq-a">
+                            <div>
+                                <p>No. Extraction and OCR run entirely inside your browser using modern web technology.
+                                    Your PDF never leaves your device, which makes the tool safe for confidential
+                                    documents.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" type="button" aria-expanded="false">Where does the TXT file get saved?<svg
+                                viewBox="0 0 24 24" class="ic">
+                                <path d="M6 9l6 6 6-6" />
+                            </svg></button>
+                        <div class="faq-a">
+                            <div>
+                                <p>It goes straight to your browser's default Downloads folder — for example,
+                                    research-paper.txt. On Chrome and Edge you can also use Save as… to pick an exact
+                                    folder and file name.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" type="button" aria-expanded="false">Can I use this tool on mobile?<svg
+                                viewBox="0 0 24 24" class="ic">
+                                <path d="M6 9l6 6 6-6" />
+                            </svg></button>
+                        <div class="faq-a">
+                            <div>
+                                <p>Absolutely. The converter is fully responsive and touch-friendly, so you can extract,
+                                    edit and download text from Android or iOS exactly as you would on a laptop.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" type="button" aria-expanded="false">Is the PDF to Text converter free?<svg
+                                viewBox="0 0 24 24" class="ic">
+                                <path d="M6 9l6 6 6-6" />
+                            </svg></button>
+                        <div class="faq-a">
+                            <div>
+                                <p>Completely free — no registration, no watermarks and no daily limits. Just a generous
+                                    50 MB per-file limit to keep everything fast for everyone.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="f-brand">
+                <a class="brand" href="#home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24">
+                            <path d="M7 3h7l4 4v14H7z" />
+                            <path d="M14 3v4h4M10.5 12h6M10.5 15.5h6M10.5 19h3.5" />
+                        </svg></span>Tools<em>24</em></a>
+                <p class="f-tag">Smart Tools for a Smarter You</p>
+                <div class="f-social">
+                    <button type="button" data-toast="Our social profiles are launching soon."
+                        aria-label="X (Twitter)"><svg viewBox="0 0 24 24" class="ic">
+                            <path d="M4 4l16 16M20 4 4 20" />
+                        </svg></button>
+                    <button type="button" data-toast="Our social profiles are launching soon."
+                        aria-label="Instagram"><svg viewBox="0 0 24 24" class="ic">
+                            <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
+                            <circle cx="12" cy="12" r="4" />
+                            <circle cx="17.2" cy="6.8" r=".9" />
+                        </svg></button>
+                    <button type="button" data-toast="Our social profiles are launching soon." aria-label="YouTube"><svg
+                            viewBox="0 0 24 24" class="ic">
+                            <rect x="2.5" y="5.5" width="19" height="13" rx="4" />
+                            <path d="M10.5 9.5v5l4.5-2.5-4.5-2.5z" />
+                        </svg></button>
+                    <a href="mailto:hello@tools24.app" aria-label="Email Tools24"><svg viewBox="0 0 24 24" class="ic">
+                            <rect x="3" y="5" width="18" height="14" rx="3" />
+                            <path d="M3.5 7.5 12 13.5l8.5-6" />
+                        </svg></a>
+                </div>
+            </div>
+            <div class="f-col">
+                <h4>Tools</h4>
+                <button type="button" data-toast="The full Tools24 library is coming soon.">All Tools</button>
+                <button type="button" data-goto="#converter">PDF Tools</button>
+                <button type="button" data-toast="Image tools are cooking — coming soon to Tools24.">Image
+                    Tools</button>
+                <button type="button" data-toast="More utilities are coming soon to Tools24.">More Tools</button>
+            </div>
+            <div class="f-col">
+                <h4>Company</h4>
+                <button type="button" data-toast="The Tools24 blog launches soon.">Blog</button>
+                <a href="mailto:hello@tools24.app">Contact</a>
+                <button type="button" data-toast="The sitemap is on its way.">Sitemap</button>
+            </div>
+            <div class="f-col">
+                <h4>Legal</h4>
+                <button type="button" data-page="privacy">Privacy</button>
+                <button type="button" data-page="terms">Terms</button>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Tools24. Made with ❤️ in India 🇮🇳</span>
+            <span>PDF to Text Converter · Runs 100% in your browser</span>
+        </div>
+    </footer>
+
+    <!-- toasts / palette / modal -->
+    <div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+
+    <div class="palette-wrap" id="palette" hidden>
+        <div class="pal-scrim" data-pal-close></div>
+        <div class="palette" role="dialog" aria-modal="true" aria-label="Quick actions">
+            <div class="pal-head">
+                <svg viewBox="0 0 24 24" class="ic">
+                    <circle cx="11" cy="11" r="7" />
+                    <path d="M16.5 16.5 21 21" />
+                </svg>
+                <input id="palInput" type="text" placeholder="Search actions…" aria-label="Search actions">
+                <kbd>Esc</kbd>
+            </div>
+            <ul class="pal-list" id="palList"></ul>
+            <div class="pal-foot"><span>↑↓ navigate</span><span>↵ run</span><span>Esc close</span></div>
+        </div>
+    </div>
+
+    <div class="modal-wrap" id="modal" hidden>
+        <div class="modal-scrim" data-modal-close></div>
+        <div class="modal" role="dialog" aria-modal="true">
+            <div class="modal-head">
+                <h3 id="modalTitle"></h3>
+                <button class="icon-btn" id="modalClose" type="button" aria-label="Close"><svg viewBox="0 0 24 24"
+                        class="ic">
+                        <path d="M6 6l12 12M18 6 6 18" />
+                    </svg></button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        'use strict';
+        /* ================= helpers ================= */
+        const $ = (s, r = document) => r.querySelector(s);
+        const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+        const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+        const wait = ms => new Promise(r => setTimeout(r, ms));
+        const raf = () => new Promise(r => requestAnimationFrame(r));
+        const fmt = n => n.toLocaleString('en-IN');
+        const esc = s => s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+        const countWords = t => (t.trim().match(/\S+/g) || []).length;
+        const ICON = {
+            check: '<svg viewBox="0 0 24 24" class="ic"><path d="M4 12.5l5 5L20 6.5"/></svg>',
+            info: '<svg viewBox="0 0 24 24" class="ic"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.5v.5"/></svg>',
+            file: '<svg viewBox="0 0 24 24" class="ic"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/></svg>',
+            upload: '<svg viewBox="0 0 24 24" class="ic"><path d="M12 16V4m0 0 4.5 4.5M12 4 7.5 8.5"/><path d="M4 16.5v2A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5v-2"/></svg>',
+            wand: '<svg viewBox="0 0 24 24" class="ic"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z"/><path d="M19 16.5v3M17.5 18h3"/></svg>',
+            download: '<svg viewBox="0 0 24 24" class="ic"><path d="M12 4v12m0 0 4.5-4.5M12 16l-4.5-4.5"/><path d="M4 16.5v2A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5v-2"/></svg>',
+            copy: '<svg viewBox="0 0 24 24" class="ic"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg>',
+            moon: '<svg viewBox="0 0 24 24" class="ic"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>',
+            target: '<svg viewBox="0 0 24 24" class="ic"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/></svg>',
+            shield: '<svg viewBox="0 0 24 24" class="ic"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/></svg>'
+        };
+
+        /* ================= theme ================= */
+        const root = document.documentElement;
+        const themeBtn = $('#themeBtn');
+        function setTheme(t) {
+            root.dataset.theme = t;
+            try { localStorage.setItem('tools24-theme', t) } catch (e) { }
+            const mc = $('meta[name="theme-color"]'); if (mc) mc.content = t === 'dark' ? '#0b0716' : '#f7f5fd';
+            $('.icon-moon', themeBtn).style.display = t === 'dark' ? 'none' : 'block';
+            $('.icon-sun', themeBtn).style.display = t === 'dark' ? 'block' : 'none';
+        }
+        setTheme(root.dataset.theme || 'light');
+        themeBtn.addEventListener('click', () => setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+
+        /* ================= header / drawer ================= */
+        const header = $('#siteHeader');
+        const onScroll = () => header.classList.toggle('scrolled', scrollY > 10);
+        addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+        const drawer = $('#drawer'), scrim = $('#scrim'), menuBtn = $('#menuBtn');
+        function openDrawer() { drawer.classList.add('open'); scrim.classList.add('show'); document.body.classList.add('lock'); menuBtn.setAttribute('aria-expanded', 'true') }
+        function closeDrawer() { drawer.classList.remove('open'); scrim.classList.remove('show'); document.body.classList.remove('lock'); menuBtn.setAttribute('aria-expanded', 'false') }
+        menuBtn.addEventListener('click', () => drawer.classList.contains('open') ? closeDrawer() : openDrawer());
+        $('#drawerClose').addEventListener('click', closeDrawer);
+        scrim.addEventListener('click', closeDrawer);
+        $$('.drawer-nav a').forEach(a => a.addEventListener('click', closeDrawer));
+
+        /* dropdowns */
+        $$('.dd-btn').forEach(btn => btn.addEventListener('click', e => {
+            e.stopPropagation();
+            const p = btn.parentElement, was = p.classList.contains('open');
+            $$('.nav-dd.open').forEach(d => d.classList.remove('open'));
+            if (!was) { p.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+        }));
+        document.addEventListener('click', () => $$('.nav-dd.open').forEach(d => { d.classList.remove('open'); const b = $('.dd-btn', d); if (b) b.setAttribute('aria-expanded', 'false'); }));
+
+        function scrollToSel(sel) { const el = $(sel); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+
+        /* ================= toasts ================= */
+        const toasts = $('#toasts');
+        function toast(msg, type = 'ok') {
+            const t = document.createElement('div');
+            t.className = 'toast ' + type;
+            t.innerHTML = (type === 'ok' ? ICON.check : ICON.info) + '<span>' + esc(msg) + '</span>';
+            toasts.appendChild(t);
+            requestAnimationFrame(() => t.classList.add('show'));
+            setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 400); }, 2800);
+        }
+
+        /* data-toast / data-goto / data-page delegation */
+        document.addEventListener('click', e => {
+            const t = e.target.closest('[data-toast]');
+            if (t) { e.preventDefault(); toast(t.dataset.toast, 'info'); closeDrawer(); }
+            const g = e.target.closest('[data-goto]');
+            if (g) { e.preventDefault(); scrollToSel(g.dataset.goto); closeDrawer(); }
+            const p = e.target.closest('[data-page]');
+            if (p) { e.preventDefault(); openModal(p.dataset.page); closeDrawer(); }
+        });
+
+        /* ================= FAQ accordion ================= */
+        $$('.faq-item').forEach(item => {
+            $('.faq-q', item).addEventListener('click', () => {
+                const open = item.classList.contains('open');
+                $$('.faq-item.open').forEach(o => { o.classList.remove('open'); $('.faq-q', o).setAttribute('aria-expanded', 'false'); });
+                if (!open) { item.classList.add('open'); $('.faq-q', item).setAttribute('aria-expanded', 'true'); }
+            });
+        });
+
+        /* ================= modal ================= */
+        const MODALS = {
+            privacy: { t: 'Privacy Policy', h: `<h4>Your files stay yours</h4><p>Tools24 converts PDF to Text entirely inside your browser. Your document is never uploaded, stored or shared — extraction happens on your own device using modern web technology.</p><h4>What we store</h4><p>Nothing about your documents. The only thing saved locally is your theme preference (light or dark) in your browser's storage.</p><h4>Third-party libraries</h4><p>PDF rendering and OCR run via open-source libraries loaded from a public CDN. They process your file locally and do not transmit its contents anywhere.</p>` },
+            terms: { t: 'Terms of Use', h: `<h4>Use of the tool</h4><p>PDF to Text is provided free of charge for personal and professional use. Please only upload documents you own or have permission to process.</p><h4>No warranty</h4><p>While extraction is highly accurate, complex layouts, handwriting and very low-quality scans can affect results. Always review important output before relying on it.</p><h4>Fair use</h4><p>The 50 MB per-file limit keeps the tool fast for everyone. Automated bulk scraping of this page is not permitted.</p>` }
+        };
+        const modal = $('#modal');
+        function openModal(k) { const d = MODALS[k]; if (!d) return; $('#modalTitle').textContent = d.t; $('#modalBody').innerHTML = d.h; modal.hidden = false; document.body.classList.add('lock'); }
+        function closeModal() { modal.hidden = true; document.body.classList.remove('lock'); }
+        $('#modalClose').addEventListener('click', closeModal);
+        modal.addEventListener('click', e => { if (e.target.hasAttribute('data-modal-close')) closeModal(); });
+
+        /* ================= app state ================= */
+        const MAX_MB = 50;
+        const state = { stage: 'idle', busy: false, cancelled: false, opts: { layout: true, ocr: false, lang: 'eng' } };
+        let pdfDoc = null, fileName = '', fileSize = 0, totalPages = 0, currentPage = 1, zoomF = 1;
+        let renderTask = null, thumbIO = null;
+        let matchRanges = [], matchIdx = 0, progMode = 'run';
+
+        const convCard = $('#convCard');
+        const stages = { idle: $('#stageIdle'), ready: $('#stageReady'), progress: $('#stageProgress'), work: $('#stageWork') };
+        function showStage(name) {
+            state.stage = name;
+            for (const k in stages) stages[k].classList.toggle('active', k === name);
+            convCard.dataset.stage = name;
+        }
+        function fmtSize(b) {
+            if (b < 1048576) return Math.max(1, Math.round(b / 1024)) + ' KB';
+            const mb = b / 1048576; return (mb >= 10 ? mb.toFixed(0) : mb.toFixed(1)) + ' MB';
+        }
+
+        /* ================= PDF.js setup ================= */
+        if (window.pdfjsLib) {
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+        }
+
+        /* ================= dropzone / file input ================= */
+        const zone = $('#dropzone'), dzSub = $('#dzSub'), fileInput = $('#fileInput');
+        const subDefault = 'or browse files from your device';
+        let dragDepth = 0;
+        ['dragenter', 'dragover'].forEach(ev => zone.addEventListener(ev, e => {
+            e.preventDefault();
+            if (ev === 'dragenter') { dragDepth++; zone.classList.add('drag'); dzSub.textContent = 'Release to start extracting'; }
+        }));
+        zone.addEventListener('dragleave', () => { if (--dragDepth <= 0) { dragDepth = 0; zone.classList.remove('drag'); dzSub.textContent = subDefault; } });
+        zone.addEventListener('drop', e => {
+            e.preventDefault(); dragDepth = 0; zone.classList.remove('drag'); dzSub.textContent = subDefault;
+            const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+            if (f) handleFile(f);
+        });
+        addEventListener('dragover', e => e.preventDefault());
+        addEventListener('drop', e => e.preventDefault());
+        zone.addEventListener('click', e => { if (!e.target.closest('#browseBtn')) fileInput.click(); });
+        zone.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); } });
+        $('#browseBtn').addEventListener('click', e => { e.stopPropagation(); fileInput.click(); });
+        fileInput.addEventListener('change', () => { const f = fileInput.files[0]; if (f) handleFile(f); fileInput.value = ''; });
+
+        function dzError(msg) {
+            const el = $('#dzError'); el.hidden = false; $('span', el).textContent = msg;
+            zone.classList.remove('shake'); void zone.offsetWidth; zone.classList.add('shake');
+            setTimeout(() => { el.hidden = true; }, 5000);
+        }
+
+        async function handleFile(file) {
+            if (!file) return;
+            if (!window.pdfjsLib) { toast('The PDF engine failed to load — check your connection and refresh.', 'info'); return; }
+            const isPdf = file.type === 'application/pdf' || /\.pdf$/i.test(file.name);
+            if (!isPdf) { dzError('That doesn\u2019t look like a PDF. Please choose a .pdf file.'); return; }
+            if (file.size > MAX_MB * 1024 * 1024) { dzError('File is larger than ' + MAX_MB + ' MB — please choose a smaller PDF.'); return; }
+            $('#dzError').hidden = true;
+            /* enter ready stage immediately with a "reading" placeholder */
+            fileName = file.name; fileSize = file.size;
+            $('#fcName').textContent = fileName;
+            $('#fcMeta').textContent = 'Reading file…';
+            showStage('ready');
+            try {
+                const buf = await file.arrayBuffer();
+                const doc = await pdfjsLib.getDocument({
+                    data: new Uint8Array(buf),
+                    cMapUrl: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/cmaps/', cMapPacked: true,
+                    standardFontDataUrl: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/standard_fonts/'
+                }).promise;
+                if (pdfDoc) { try { pdfDoc.destroy() } catch (e) { } }
+                pdfDoc = doc; totalPages = doc.numPages;
+                $('#fcMeta').textContent = fmtSize(fileSize) + ' • ' + totalPages + (totalPages === 1 ? ' page' : ' pages');
+                $('#pagesChip').textContent = totalPages + (totalPages === 1 ? ' page' : ' pages');
+                resetWorkspaceState();
+            } catch (err) {
+                if (err && err.name === 'PasswordException') dzError('This PDF is password-protected — remove the password and try again.');
+                else dzError('This file couldn\u2019t be opened as a PDF.');
+                showStage('idle');
+            }
+        }
+
+        /* ================= options (shared switches) ================= */
+        $$('[data-opt]').forEach(el => el.addEventListener('click', () => {
+            const k = el.dataset.opt; state.opts[k] = !state.opts[k]; reflectOpts();
+        }));
+        $$('.lang-select').forEach(s => s.addEventListener('change', () => { state.opts.lang = s.value; reflectOpts(); }));
+        function reflectOpts() {
+            for (const k of ['layout', 'ocr']) {
+                $$('[data-opt="' + k + '"]').forEach(el => {
+                    el.classList.toggle('on', state.opts[k]);
+                    el.setAttribute('aria-checked', String(state.opts[k]));
+                });
+            }
+            document.body.classList.toggle('ocr-on', state.opts.ocr);
+            $$('.lang-select').forEach(s => { if (s.value !== state.opts.lang) s.value = state.opts.lang; });
+            $('#extractLabel').textContent = state.opts.ocr ? 'Extract with OCR' : 'Extract Text';
+        }
+        reflectOpts();
+
+        /* ================= text building ================= */
+        function buildPlain(tc) {
+            const items = tc.items; let s = '';
+            for (let i = 0; i < items.length; i++) {
+                const it = items[i];
+                if (typeof it.str === 'string') s += it.str;
+                if (it.hasEOL) { s += '\n'; continue; }
+                const nx = items[i + 1];
+                if (!nx || !it.str || /\s$/.test(it.str) || !nx.transform) continue;
+                const gap = nx.transform[4] - (it.transform[4] + (it.width || 0));
+                const dy = it.transform[5] - nx.transform[5];
+                if (dy > 2) s += '\n';
+                else if (gap > 0.8) s += ' ';
+            }
+            return s.replace(/[ \t]{2,}/g, ' ').replace(/ ?\n ?/g, '\n');
+        }
+        function buildLayout(tc) {
+            const items = tc.items.filter(it => it.str && it.str.trim().length);
+            if (!items.length) return '';
+            items.sort((a, b) => (b.transform[5] - a.transform[5]) || (a.transform[4] - b.transform[4]));
+            const rows = []; let cur = null;
+            for (const it of items) {
+                const y = it.transform[5];
+                const h = Math.abs(it.transform[3]) || it.height || 10;
+                if (cur && Math.abs(y - cur.y) <= Math.max(2, h * 0.45)) { cur.items.push(it); cur.h = Math.max(cur.h, h); }
+                else { cur = { y, h, items: [it] }; rows.push(cur); }
+            }
+            const lines = [];
+            for (const r of rows) {
+                r.items.sort((a, b) => a.transform[4] - b.transform[4]);
+                let s = '', end = null;
+                for (const it of r.items) {
+                    const x = it.transform[4], w = it.width || 0;
+                    if (end !== null && x - end > Math.max(1.2, r.h * 0.15)) s += ' ';
+                    s += it.str; end = x + w;
+                }
+                lines.push({ y: r.y, h: r.h, text: s.replace(/\s+$/, '') });
+            }
+            let out = '', prev = null;
+            for (const ln of lines) {
+                if (prev) {
+                    const gap = prev.y - ln.y, avg = ((prev.h + ln.h) / 2) || 10;
+                    if (gap > avg * 1.8) out += '\n\n';
+                }
+                out += ln.text + '\n'; prev = ln;
+            }
+            return out.replace(/\n{3,}/g, '\n\n').replace(/[ \t]+\n/g, '\n').trimEnd();
+        }
+
+        /* ================= editor ================= */
+        const editor = $('#editor'), bdInner = $('#bdInner'), gutterInner = $('#gutterInner');
+        const searchInput = $('#searchInput'), matchInfo = $('#matchInfo'), matchNav = $('#matchNav');
+        const measure = document.createElement('canvas').getContext('2d');
+        let charW = 8.4;
+
+        function syncFont() {
+            const cs = getComputedStyle(editor);
+            measure.font = cs.fontWeight + ' ' + cs.fontSize + ' ' + cs.fontFamily;
+            charW = measure.measureText('0'.repeat(50)).width / 50 || 8.4;
+        }
+        function maxTextWidth() {
+            const sb = editor.offsetWidth - editor.clientWidth; /* classic scrollbar width, 0 on overlay scrollbars */
+            bdInner.style.paddingRight = 'calc(var(--edpr) + ' + sb + 'px)';
+            return Math.max(80, editor.clientWidth - parseFloat(getComputedStyle(editor).paddingLeft) - parseFloat(getComputedStyle(editor).paddingRight));
+        }
+        /* greedy visual-row count for a monospace line (word wrap + hyphen breaks + hard word breaking) */
+        function wrappedRows(line, cap) {
+            if (!line) return 1;
+            if (line.length <= cap) return 1;
+            let rows = 1, col = 0, i = 0; const L = line.length;
+            while (i < L) {
+                const ch = line[i];
+                if (/\s/.test(ch)) {
+                    let j = i; while (j < L && /\s/.test(line[j])) j++;
+                    col += (j - i);
+                    if (col >= cap) { rows++; col = 0; }
+                    i = j; continue;
+                }
+                let j = i;
+                while (j < L && !/\s/.test(line[j])) { j++; if (line[j - 1] === '-') break; }
+                let n = j - i;
+                if (col > 0 && col + n > cap && n < cap) { rows++; col = 0; }
+                if (col + n > cap) {
+                    n -= (cap - col); rows++;
+                    const full = Math.floor(n / cap);
+                    rows += full; col = n - full * cap;
+                } else col += n;
+                i = j;
+            }
+            return rows;
+        }
+        function updateGutter() {
+            syncFont();
+            const cap = Math.max(8, Math.floor(maxTextWidth() / charW));
+            const lines = editor.value.split('\n');
+            const parts = []; let n = 1;
+            for (const ln of lines) {
+                parts.push(String(n++));
+                const ex = wrappedRows(ln, cap) - 1;
+                for (let k = 0; k < ex; k++)parts.push('');
+            }
+            gutterInner.textContent = parts.join('\n');
+        }
+        function updateCounts() {
+            const t = editor.value;
+            $('#wcCount').textContent = fmt(countWords(t));
+            $('#ccCount').textContent = fmt(t.length);
+        }
+        function syncScroll() {
+            const y = editor.scrollTop;
+            bdInner.style.transform = 'translateY(' + (-y) + 'px)';
+            gutterInner.style.transform = 'translateY(' + (-y) + 'px)';
+        }
+        editor.addEventListener('scroll', syncScroll, { passive: true });
+
+        /* search highlighting (backdrop marks under the transparent textarea) */
+        let hlTimer;
+        function refreshHighlight() {
+            const q = searchInput.value.trim();
+            matchRanges = [];
+            if (!q) { bdInner.innerHTML = ''; matchInfo.hidden = true; matchNav.hidden = true; return; }
+            const text = editor.value, low = text.toLowerCase(), ql = q.toLowerCase();
+            let from = 0, pos = 0, count = 0; const parts = [];
+            while (count < 800) {
+                const f = low.indexOf(ql, from);
+                if (f < 0) break;
+                parts.push(esc(text.slice(pos, f)), '<mark>', esc(text.slice(f, f + q.length)), '</mark>');
+                matchRanges.push([f, f + q.length]);
+                pos = f + q.length; from = f + Math.max(1, q.length); count++;
+            }
+            parts.push(esc(text.slice(pos)));
+            bdInner.innerHTML = parts.join('');
+            matchIdx = 0; matchInfo.hidden = false;
+            matchInfo.textContent = count ? (count >= 800 ? '800+ matches' : count + (count > 1 ? ' matches' : ' match')) : 'No matches';
+            matchNav.hidden = !count;
+            if (count) activateMatch(0, true);
+        }
+        function activateMatch(k, scroll) {
+            const marks = bdInner.querySelectorAll('mark');
+            if (!marks.length) return;
+            matchIdx = (k + marks.length) % marks.length;
+            marks.forEach(m => m.classList.remove('active'));
+            const m = marks[matchIdx]; m.classList.add('active');
+            editor.focus({ preventScroll: true });
+            editor.setSelectionRange(matchRanges[matchIdx][0], matchRanges[matchIdx][1]);
+            if (scroll) {
+                editor.scrollTop = Math.max(0, m.offsetTop - editor.clientHeight / 2 + 20);
+                syncScroll();
+            }
+        }
+        $('#matchNext').addEventListener('click', () => activateMatch(matchIdx + 1, true));
+        $('#matchPrev').addEventListener('click', () => activateMatch(matchIdx - 1, true));
+        searchInput.addEventListener('keydown', e => {
+            if (e.key === 'Enter') { e.preventDefault(); if (matchRanges.length) activateMatch(matchIdx + 1, true); }
+        });
+        searchInput.addEventListener('input', () => { clearTimeout(hlTimer); hlTimer = setTimeout(refreshHighlight, 250); });
+
+        function updateActionStates() {
+            const has = !!editor.value.trim();
+            ['copyBtn', 'clearBtn', 'downloadBtn', 'saveBtn'].forEach(id => { const b = $('#' + id); if (b) b.disabled = !has; });
+        }
+        let edT;
+        function editorChanged(immediate) {
+            const run = () => { updateGutter(); updateCounts(); refreshHighlight(); updateActionStates(); };
+            if (immediate) run(); else { clearTimeout(edT); edT = setTimeout(run, 160); }
+        }
+        editor.addEventListener('input', () => editorChanged(false));
+
+        /* ================= copy / clear / download ================= */
+        function flashBtn(btn, html, ms = 1700) {
+            if (btn.dataset.busy) return;
+            btn.dataset.busy = '1';
+            const orig = btn.innerHTML;
+            btn.innerHTML = html; btn.classList.add('done');
+            setTimeout(() => { btn.innerHTML = orig; btn.classList.remove('done'); delete btn.dataset.busy; }, ms);
+        }
+        $('#copyBtn').addEventListener('click', async () => {
+            const t = editor.value; if (!t.trim()) return;
+            let ok = true;
+            try { await navigator.clipboard.writeText(t); }
+            catch (e) {
+                try {
+                    const ta = document.createElement('textarea'); ta.value = t;
+                    ta.style.cssText = 'position:fixed;opacity:0'; document.body.appendChild(ta);
+                    ta.select(); document.execCommand('copy'); ta.remove();
+                } catch (e2) { ok = false; }
+            }
+            if (ok) { toast('Text copied to clipboard'); flashBtn($('#copyBtn'), ICON.check + 'Copied!'); }
+            else toast('Couldn\u2019t access the clipboard', 'info');
+        });
+        $('#clearBtn').addEventListener('click', () => {
+            editor.value = ''; editorChanged(true); syncScroll(); toast('Editor cleared', 'info');
+        });
+        function txtName() { return fileName.replace(/\.pdf$/i, '') + '.txt'; }
+        function downloadTXT() {
+            const t = editor.value; if (!t.trim()) return;
+            const blob = new Blob([t], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url; a.download = txtName();
+            document.body.appendChild(a); a.click(); a.remove();
+            setTimeout(() => URL.revokeObjectURL(url), 5000);
+            toast('TXT downloaded — saved as ' + txtName());
+            flashBtn($('#downloadBtn'), ICON.check + 'Downloaded');
+        }
+        $('#downloadBtn').addEventListener('click', downloadTXT);
+        const saveBtn = $('#saveBtn');
+        if (window.showSaveFilePicker) saveBtn.hidden = false;
+        saveBtn.addEventListener('click', async () => {
+            const t = editor.value; if (!t.trim()) return;
+            if (!window.showSaveFilePicker) { downloadTXT(); return; }
+            try {
+                const h = await showSaveFilePicker({ suggestedName: txtName(), types: [{ description: 'Text document', accept: { 'text/plain': ['.txt'] } }] });
+                const w = await h.createWritable();
+                await w.write(new Blob([t], { type: 'text/plain;charset=utf-8' }));
+                await w.close();
+                toast('Saved ' + txtName() + ' to your chosen location');
+                flashBtn(saveBtn, ICON.check + 'Saved');
+            } catch (e) {
+                if (e && e.name !== 'AbortError') downloadTXT();
+            }
+        });
+
+        /* ================= extraction ================= */
+        const progBox = $('#progBox'), progTitle = $('#progTitle'), progSub = $('#progSub'),
+            progFill = $('#progFill'), progPct = $('#progPct'), ocrNote = $('#ocrNote'),
+            progFile = $('#progFile'), cancelBtn = $('#cancelBtn');
+        const cancelHTML = cancelBtn.innerHTML;
+        function setProgress(f, label) {
+            progFill.style.width = (f * 100).toFixed(1) + '%';
+            progPct.textContent = Math.round(f * 100) + '%';
+            if (label) progSub.textContent = label;
+        }
+        cancelBtn.addEventListener('click', () => {
+            if (progMode === 'error') { removeFile(); }
+            else { state.cancelled = true; cancelBtn.disabled = true; }
+        });
+        $('#extractBtn').addEventListener('click', () => runExtraction());
+        $('#reExtractBtn').addEventListener('click', () => runExtraction());
+        $('#bannerBtn').addEventListener('click', () => {
+            if (!state.opts.ocr) { state.opts.ocr = true; reflectOpts(); }
+            runExtraction();
+        });
+
+        async function textExtract() {
+            let out = '';
+            for (let p = 1; p <= totalPages; p++) {
+                if (state.cancelled) break;
+                const page = await pdfDoc.getPage(p);
+                const tc = await page.getTextContent();
+                const t = (state.opts.layout ? buildLayout(tc) : buildPlain(tc)).trim();
+                if (t) out += (out ? '\n\n' : '') + t;
+                setProgress(p / totalPages, 'Processing page ' + p + ' of ' + totalPages);
+                await raf();
+            }
+            return out;
+        }
+        async function pageToCanvas(p) {
+            const page = await pdfDoc.getPage(p);
+            const base = page.getViewport({ scale: 1 });
+            const s = clamp(1600 / base.width, 1.4, 2.4);
+            const vp = page.getViewport({ scale: s });
+            const c = document.createElement('canvas');
+            c.width = Math.floor(vp.width); c.height = Math.floor(vp.height);
+            await page.render({ canvasContext: c.getContext('2d'), viewport: vp }).promise;
+            return c;
+        }
+        let tessLoading = null;
+        function loadTesseract() {
+            if (window.Tesseract) return Promise.resolve();
+            if (!tessLoading) {
+                tessLoading = new Promise((res, rej) => {
+                    const s = document.createElement('script');
+                    s.src = 'https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js';
+                    s.onload = res;
+                    s.onerror = () => { tessLoading = null; rej(new Error('Couldn\u2019t load the OCR engine — please check your connection.')); };
+                    document.head.appendChild(s);
+                });
+            }
+            return tessLoading;
+        }
+        let ocrPage = 1, ocrProg = 0;
+        function paintOcr() {
+            const f = clamp(((ocrPage - 1) + ocrProg) / totalPages, 0, 1);
+            setProgress(f, 'Reading page ' + ocrPage + ' of ' + totalPages);
+        }
+        async function ocrExtract() {
+            await loadTesseract();
+            setProgress(0.02, 'Loading OCR language…');
+            const worker = await Tesseract.createWorker(state.opts.lang, 1, {
+                logger: m => {
+                    if (m.status === 'recognizing text') { ocrProg = m.progress || 0; paintOcr(); }
+                }
+            });
+            let out = '';
+            try {
+                for (let p = 1; p <= totalPages; p++) {
+                    if (state.cancelled) break;
+                    ocrPage = p; ocrProg = 0;
+                    const cnv = await pageToCanvas(p);
+                    const res = await worker.recognize(cnv);
+                    cnv.width = 0; cnv.height = 0;
+                    const t = ((res && res.data && res.data.text) || '').replace(/\n{3,}/g, '\n\n').trim();
+                    if (t) out += (out ? '\n\n' : '') + t;
+                    ocrProg = 1; paintOcr();
+                }
+            } finally { try { await worker.terminate() } catch (e) { } }
+            return out;
+        }
+        async function runExtraction() {
+            if (state.busy || !pdfDoc) return;
+            state.busy = true; state.cancelled = false; progMode = 'run';
+            cancelBtn.disabled = false; cancelBtn.innerHTML = cancelHTML;
+            progBox.classList.remove('done', 'error');
+            const ocr = state.opts.ocr;
+            progTitle.textContent = ocr ? 'Reading scanned pages…' : 'Extracting text from PDF…';
+            ocrNote.hidden = !ocr;
+            progFile.textContent = fileName + ' • ' + fmtSize(fileSize);
+            setProgress(0.01, ocr ? 'Warming up OCR engine…' : 'Processing page 1 of ' + totalPages);
+            showStage('progress');
+            try {
+                const text = ocr ? await ocrExtract() : await textExtract();
+                if (state.cancelled) throw 'cancel';
+                const words = countWords(text), chars = text.length;
+                progBox.classList.add('done');
+                progTitle.textContent = 'Text extracted successfully';
+                progSub.textContent = totalPages + (totalPages === 1 ? ' page' : ' pages') + ' • ' + fmt(words) + ' words • ' + fmt(chars) + ' characters';
+                setProgress(1, 'Done');
+                await wait(1400);
+                enterWorkspace(text, words, chars);
+            } catch (err) {
+                if (err === 'cancel' || state.cancelled) {
+                    toast('Extraction cancelled', 'info');
+                    showStage(pdfDoc ? 'ready' : 'idle');
+                } else {
+                    console.warn(err);
+                    progBox.classList.add('error');
+                    progTitle.textContent = (err && err.name === 'PasswordException') ? 'This PDF is password-protected' : 'Couldn\u2019t extract text from this PDF';
+                    progSub.textContent = (err && err.message) ? err.message : 'The file may be corrupted or use an unsupported format.';
+                    progMode = 'error';
+                    cancelBtn.innerHTML = ICON.file + ' Try another file';
+                }
+            }
+            state.busy = false;
+        }
+
+        /* ================= workspace / preview ================= */
+        const canvasWrap = $('#canvasWrap'), canvas = $('#pdfCanvas'), thumbStrip = $('#thumbStrip');
+        const prevBtn = $('#prevBtn'), nextBtn = $('#nextBtn'), pageLabel = $('#pageLabel'),
+            zoomInBtn = $('#zoomInBtn'), zoomOutBtn = $('#zoomOutBtn'), zoomLabel = $('#zoomLabel'), fsBtn = $('#fsBtn');
+        const editorShell = $('.editor-shell');
+
+        function resetWorkspaceState() {
+            editor.value = ''; bdInner.innerHTML = '';
+            gutterInner.textContent = '1';
+            bdInner.style.transform = ''; gutterInner.style.transform = '';
+            $('#wcCount').textContent = '0'; $('#ccCount').textContent = '0';
+            $('#successChip').hidden = true; $('#noTextBanner').hidden = true;
+            searchInput.value = ''; matchInfo.hidden = true; matchNav.hidden = true; matchRanges = [];
+            thumbStrip.innerHTML = '';
+            canvas.width = 0; canvas.height = 0;
+            if (renderTask) { try { renderTask.cancel() } catch (e) { } renderTask = null; }
+            updateActionStates();
+        }
+        function enterWorkspace(text, words, chars) {
+            showStage('work');
+            editor.value = text;
+            editorChanged(true); syncScroll();
+            $('#successChip').hidden = !text.trim();
+            $('#successChipText').textContent = totalPages + (totalPages === 1 ? ' page' : ' pages') + ' • ' + fmt(words) + ' words';
+            $('#wtName').textContent = fileName;
+            $('#wtMeta').textContent = fmtSize(fileSize);
+            $('#noTextBanner').hidden = true;
+            if (!text.trim()) {
+                $('#noTextBanner').hidden = false;
+                $('#bannerMsg').textContent = state.opts.ocr
+                    ? 'OCR couldn\u2019t find readable text — try a sharper scan or a different OCR language.'
+                    : 'No selectable text found — this PDF looks scanned.';
+                $('#bannerBtn').textContent = state.opts.ocr ? 'Try again' : 'Enable OCR & extract again';
+            }
+            currentPage = 1; zoomF = 1; zoomLabel.textContent = 'Fit';
+            buildThumbs(); updatePageUI();
+            requestAnimationFrame(() => renderCurrent());
+        }
+        function buildThumbs() {
+            thumbStrip.innerHTML = '';
+            if (thumbIO) thumbIO.disconnect();
+            thumbIO = new IntersectionObserver(es => {
+                for (const en of es) if (en.isIntersecting) { renderThumb(en.target); thumbIO.unobserve(en.target); }
+            }, { root: thumbStrip, rootMargin: '320px' });
+            const frag = document.createDocumentFragment();
+            for (let i = 1; i <= totalPages; i++) {
+                const b = document.createElement('button');
+                b.type = 'button'; b.className = 'thumb'; b.dataset.page = i;
+                b.setAttribute('aria-label', 'Go to page ' + i);
+                const num = document.createElement('span'); num.className = 'thumb-num'; num.textContent = i;
+                b.appendChild(num);
+                b.addEventListener('click', () => goTo(i));
+                frag.appendChild(b);
+            }
+            thumbStrip.appendChild(frag);
+            $$('.thumb', thumbStrip).forEach(t => thumbIO.observe(t));
+        }
+        async function renderThumb(btn) {
+            if (btn.dataset.done || !pdfDoc) return;
+            btn.dataset.done = '1';
+            try {
+                const n = +btn.dataset.page;
+                const page = await pdfDoc.getPage(n);
+                const base = page.getViewport({ scale: 1 });
+                const w = 64, s = w / base.width, dpr = Math.min(devicePixelRatio || 1, 2);
+                const vp = page.getViewport({ scale: s * dpr });
+                const c = document.createElement('canvas');
+                c.width = Math.floor(vp.width); c.height = Math.floor(vp.height);
+                c.style.width = w + 'px'; c.style.height = Math.round(base.height * s) + 'px';
+                await page.render({ canvasContext: c.getContext('2d'), viewport: vp }).promise;
+                btn.insertBefore(c, btn.firstChild);
+            } catch (e) { }
+        }
+        async function renderCurrent() {
+            if (!pdfDoc || state.stage !== 'work') return;
+            try {
+                const page = await pdfDoc.getPage(currentPage);
+                const base = page.getViewport({ scale: 1 });
+                const availW = Math.max(120, canvasWrap.clientWidth - 36);
+                const availH = Math.max(120, canvasWrap.clientHeight - 36);
+                const fit = Math.min(availW / base.width, availH / base.height);
+                const scale = clamp(fit * zoomF, 0.1, 4);
+                const dpr = Math.min(devicePixelRatio || 1, 2);
+                const vp = page.getViewport({ scale });
+                canvas.width = Math.floor(vp.width * dpr); canvas.height = Math.floor(vp.height * dpr);
+                canvas.style.width = Math.floor(vp.width) + 'px'; canvas.style.height = Math.floor(vp.height) + 'px';
+                if (renderTask) { try { renderTask.cancel() } catch (e) { } }
+                const task = page.render({ canvasContext: canvas.getContext('2d'), viewport: page.getViewport({ scale: scale * dpr }) });
+                renderTask = task;
+                try { await task.promise } catch (e) { }
+                if (renderTask === task) renderTask = null;
+            } catch (e) { console.warn(e); }
+        }
+        function updatePageUI() {
+            pageLabel.textContent = currentPage + ' / ' + totalPages;
+            prevBtn.disabled = currentPage <= 1;
+            nextBtn.disabled = currentPage >= totalPages;
+            $$('.thumb', thumbStrip).forEach(t => t.classList.toggle('active', +t.dataset.page === currentPage));
+            const act = $('.thumb.active', thumbStrip);
+            if (act) act.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' });
+        }
+        function goTo(n) {
+            if (!pdfDoc) return;
+            const p = clamp(n, 1, totalPages);
+            currentPage = p;
+            canvasWrap.scrollTop = 0; canvasWrap.scrollLeft = 0;
+            updatePageUI(); renderCurrent();
+        }
+        prevBtn.addEventListener('click', () => goTo(currentPage - 1));
+        nextBtn.addEventListener('click', () => goTo(currentPage + 1));
+        zoomInBtn.addEventListener('click', () => { zoomF = clamp(+(zoomF + 0.25).toFixed(2), 0.5, 3); zoomLabel.textContent = zoomF === 1 ? 'Fit' : Math.round(zoomF * 100) + '%'; renderCurrent(); });
+        zoomOutBtn.addEventListener('click', () => { zoomF = clamp(+(zoomF - 0.25).toFixed(2), 0.5, 3); zoomLabel.textContent = zoomF === 1 ? 'Fit' : Math.round(zoomF * 100) + '%'; renderCurrent(); });
+        fsBtn.addEventListener('click', () => {
+            const el = $('#pdfPanel');
+            if (document.fullscreenElement) document.exitFullscreen();
+            else if (el.requestFullscreen) el.requestFullscreen().catch(() => toast('Fullscreen was blocked by the browser', 'info'));
+            else toast('Fullscreen isn\u2019t supported on this device', 'info');
+        });
+        document.addEventListener('fullscreenchange', () => setTimeout(renderCurrent, 90));
+
+        /* replace / remove */
+        $('#replaceBtn').addEventListener('click', () => fileInput.click());
+        $('#wtReplace').addEventListener('click', () => fileInput.click());
+        $('#removeBtn').addEventListener('click', removeFile);
+        $('#wtRemove').addEventListener('click', removeFile);
+        function removeFile() {
+            if (pdfDoc) { try { pdfDoc.destroy() } catch (e) { } pdfDoc = null; }
+            fileName = ''; fileSize = 0; totalPages = 0; currentPage = 1; zoomF = 1;
+            resetWorkspaceState();
+            showStage('idle');
+            toast('PDF removed', 'info');
+        }
+
+        /* resize */
+        let rzT;
+        addEventListener('resize', () => {
+            clearTimeout(rzT);
+            rzT = setTimeout(() => { if (state.stage === 'work') { renderCurrent(); editorChanged(true); } }, 200);
+        });
+
+        /* ================= command palette ================= */
+        const palette = $('#palette'), palInput = $('#palInput'), palList = $('#palList');
+        let palOpen = false, palCmds = [], palIdx = 0;
+        function buildCommands() {
+            const canPick = (state.stage === 'idle' || state.stage === 'ready') && !state.busy;
+            const hasText = state.stage === 'work' && !!editor.value.trim();
+            return [
+                { ic: ICON.upload, l: 'Browse for a PDF', h: 'Open the file picker', k: 'upload open file convert', on: canPick, run: () => fileInput.click() },
+                { ic: ICON.wand, l: state.opts.ocr ? 'Extract text with OCR' : 'Extract text from PDF', h: 'Start extraction', k: 'extract run ocr start', on: state.stage === 'ready' && !state.busy, run: () => runExtraction() },
+                { ic: ICON.download, l: 'Download TXT', h: hasText ? txtName() : 'Extract text first', k: 'download save txt export', on: hasText, run: downloadTXT },
+                { ic: ICON.copy, l: 'Copy extracted text', h: 'Copy the editor contents', k: 'copy clipboard', on: hasText, run: () => $('#copyBtn').click() },
+                { ic: ICON.moon, l: 'Toggle dark / light theme', h: 'Switch appearance', k: 'theme dark light mode appearance', on: true, run: () => themeBtn.click() },
+                { ic: ICON.file, l: 'Go to the converter', h: 'PDF to Text', k: 'tool converter jump top', on: true, run: () => scrollToSel('#converter') },
+                { ic: ICON.target, l: 'Go to features', h: 'Why Tools24', k: 'features why', on: true, run: () => scrollToSel('#features') },
+                { ic: ICON.info, l: 'Go to FAQ', h: 'Frequently asked questions', k: 'faq help questions', on: true, run: () => scrollToSel('#faq') },
+                { ic: ICON.shield, l: 'Read the privacy policy', h: 'Your files stay local', k: 'privacy policy', on: true, run: () => openModal('privacy') }
+            ];
+        }
+        function renderPal(q) {
+            palCmds = buildCommands().filter(c => c.on && (!q || (c.l + ' ' + c.h + ' ' + c.k).toLowerCase().includes(q.toLowerCase())));
+            palIdx = 0;
+            palList.innerHTML = palCmds.length
+                ? palCmds.map((c, i) => '<li><button type="button" class="pal-item' + (i === 0 ? ' active' : '') + '" data-i="' + i + '">' + c.ic + '<span class="pal-label">' + esc(c.l) + '</span><span class="pal-hint">' + esc(c.h) + '</span></button></li>').join('')
+                : '<li class="pal-empty">No matching actions</li>';
+        }
+        function openPalette() { palette.hidden = false; palOpen = true; palInput.value = ''; renderPal(''); setTimeout(() => palInput.focus(), 30); }
+        function closePalette() { palette.hidden = true; palOpen = false; }
+        $('#searchBtn').addEventListener('click', openPalette);
+        palette.addEventListener('click', e => { if (e.target.hasAttribute('data-pal-close')) closePalette(); });
+        palInput.addEventListener('input', () => renderPal(palInput.value));
+        palInput.addEventListener('keydown', e => {
+            const items = $$('.pal-item', palList);
+            if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (!items.length) return;
+                palIdx = (palIdx + (e.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length;
+                items.forEach((el, i) => el.classList.toggle('active', i === palIdx));
+                items[palIdx].scrollIntoView({ block: 'nearest' });
+            } else if (e.key === 'Enter') {
+                e.preventDefault();
+                const c = palCmds[palIdx];
+                closePalette();
+                if (c) setTimeout(c.run, 30);
+            }
+        });
+        palList.addEventListener('click', e => {
+            const b = e.target.closest('.pal-item');
+            if (!b) return;
+            const c = palCmds[+b.dataset.i];
+            closePalette();
+            if (c) setTimeout(c.run, 30);
+        });
+
+        /* ================= global keys ================= */
+        addEventListener('keydown', e => {
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); openPalette(); }
+            if (e.key === 'Escape') {
+                if (palOpen) closePalette();
+                if (!modal.hidden) closeModal();
+                closeDrawer();
+                $$('.nav-dd.open').forEach(d => d.classList.remove('open'));
+            }
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'f' && state.stage === 'work' && !e.shiftKey) {
+                e.preventDefault(); searchInput.focus(); searchInput.select();
+            }
+        });
+
+        /* init */
+        editorChanged(true);
+    </script>
+</body>
+
+</html>

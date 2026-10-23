@@ -1,0 +1,3326 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="color-scheme" content="light dark">
+
+    <!-- ============ SEO ============ -->
+    <title>Word Counter Online – Free Word &amp; Character Counter | Tools24</title>
+    <meta name="description"
+        content="Count words, characters, sentences, paragraphs and reading time instantly with the free Tools24 Word Counter.">
+    <!-- Update canonical + OG URLs to your real domain -->
+    <link rel="canonical" href="https://tools24.si/word-counter">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Tools24">
+    <meta property="og:title" content="Word Counter Online – Free Word & Character Counter | Tools24">
+    <meta property="og:description"
+        content="Count words, characters, sentences, paragraphs and reading time instantly with the free Tools24 Word Counter.">
+    <meta property="og:url" content="https://tools24.si/word-counter">
+    <meta property="og:image" content="https://tools24.si/assets/og/word-counter.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Word Counter Online – Free Word & Character Counter | Tools24">
+    <meta name="twitter:description"
+        content="Count words, characters, sentences, paragraphs and reading time instantly with the free Tools24 Word Counter.">
+    <meta name="twitter:image" content="https://tools24.si/assets/og/word-counter.png">
+    <meta name="theme-color" content="#f4f2fb" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0d0b17" media="(prefers-color-scheme: dark)">
+
+    <!-- Theme is applied before first paint to avoid a flash -->
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('t24-theme');
+                if (!t) t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { }
+        })();
+    </script>
+
+    <!-- Fonts: Sora (display/numbers) · Manrope (UI/body) · Noto Sans Devanagari (Hindi) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Tools24 Word Counter","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Count words, characters, sentences, paragraphs and reading time instantly with the free Tools24 Word Counter."}
+</script>
+    <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is a word counter?","acceptedAnswer":{"@type":"Answer","text":"A word counter is a tool that counts the words, characters, sentences and paragraphs in a piece of text in real time as you type or paste it."}},
+{"@type":"Question","name":"How accurate is the Tools24 word counter?","acceptedAnswer":{"@type":"Answer","text":"It uses Unicode-aware tokenisation similar to major word processors: hyphenated words and contractions count as one word, stray punctuation is ignored, and Hindi, emojis and other scripts are measured correctly."}},
+{"@type":"Question","name":"Does it count Hindi words?","acceptedAnswer":{"@type":"Answer","text":"Yes. Devanagari text including matras and conjuncts is tokenised correctly, and Hindi danda (।) and double danda (॥) are treated as sentence endings."}},
+{"@type":"Question","name":"Does it count characters?","acceptedAnswer":{"@type":"Answer","text":"Yes, both with and without spaces. Counting is grapheme-aware, so a multi-part emoji such as a family counts as a single character."}},
+{"@type":"Question","name":"Can I download my text?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can export your exact text as TXT, DOCX or PDF. All files are generated locally in your browser and preserve line breaks, Hindi, Unicode and emojis."}},
+{"@type":"Question","name":"Is my text uploaded?","acceptedAnswer":{"@type":"Answer","text":"No. Every count, analysis and export happens entirely in your browser. Nothing is sent to any server."}},
+{"@type":"Question","name":"Can I use it on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes. The layout is mobile-first and works smoothly on screens from 320px wide up to large desktops."}},
+{"@type":"Question","name":"Can I calculate reading time?","acceptedAnswer":{"@type":"Answer","text":"Yes. Reading time is estimated at 200 words per minute and speaking time at 130 words per minute, shown as minutes and seconds."}}
+]}
+</script>
+
+    <style>
+        /* ==================================================================
+   Tools24 design tokens — mirror these into your existing stylesheet
+   ================================================================== */
+        :root {
+            --bg: #f4f2fb;
+            --card-solid: rgba(255, 255, 255, .88);
+            --surface: rgba(255, 255, 255, .66);
+            --surface-2: rgba(255, 255, 255, .5);
+            --surface-3: rgba(255, 255, 255, .82);
+            --border: rgba(109, 74, 255, .15);
+            --border-strong: rgba(109, 74, 255, .28);
+            --text: #251f3d;
+            --text-2: #5a5378;
+            --text-3: #8b84a8;
+            --brand: #7c3aed;
+            --brand-2: #4f46e5;
+            --pink: #db2777;
+            --ok: #0d9488;
+            --warn: #d97706;
+            --err: #dc2626;
+            --accent-grad: linear-gradient(120deg, #7c3aed, #4f46e5 52%, #db2777);
+            --shadow: 0 10px 34px -14px rgba(76, 45, 158, .20);
+            --shadow-lg: 0 26px 60px -26px rgba(76, 45, 158, .32);
+            --ring: rgba(124, 58, 237, .4);
+            --editor-bg: rgba(255, 255, 255, .78);
+            --track: rgba(109, 74, 255, .12);
+            --radius: 24px;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0d0b17;
+            --card-solid: rgba(26, 22, 44, .86);
+            --surface: rgba(255, 255, 255, .045);
+            --surface-2: rgba(255, 255, 255, .03);
+            --surface-3: rgba(255, 255, 255, .07);
+            --border: rgba(255, 255, 255, .09);
+            --border-strong: rgba(167, 139, 250, .32);
+            --text: #f0edfc;
+            --text-2: #bcb6d8;
+            --text-3: #948db6;
+            --brand: #a78bfa;
+            --brand-2: #818cf8;
+            --pink: #f472b6;
+            --accent-grad: linear-gradient(120deg, #8b5cf6, #6366f1 52%, #ec4899);
+            --shadow: 0 12px 34px -14px rgba(0, 0, 0, .55);
+            --shadow-lg: 0 30px 70px -28px rgba(0, 0, 0, .7);
+            --ring: rgba(167, 139, 250, .5);
+            --editor-bg: rgba(16, 13, 30, .62);
+            --track: rgba(255, 255, 255, .09);
+        }
+
+        /* ================= Base ================= */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: "Manrope", "Noto Sans Devanagari", -apple-system, "Segoe UI", sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -webkit-tap-highlight-color: transparent;
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: background .3s ease, color .3s ease;
+        }
+
+        /* Ambient brand atmosphere */
+        .atmosphere {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+            overflow: hidden
+        }
+
+        .atmosphere::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(52rem 34rem at 8% -6%, rgba(139, 92, 246, .16), transparent 60%),
+                radial-gradient(44rem 30rem at 96% 12%, rgba(236, 72, 153, .12), transparent 60%),
+                radial-gradient(50rem 36rem at 50% 108%, rgba(79, 70, 229, .12), transparent 60%);
+        }
+
+        [data-theme="dark"] .atmosphere::before {
+            background: radial-gradient(52rem 34rem at 8% -6%, rgba(139, 92, 246, .20), transparent 60%),
+                radial-gradient(44rem 30rem at 96% 12%, rgba(236, 72, 153, .13), transparent 60%),
+                radial-gradient(50rem 36rem at 50% 108%, rgba(79, 70, 229, .20), transparent 60%);
+        }
+
+        .atmosphere::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: .035;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding-inline: clamp(16px, 4vw, 32px)
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+            border: 0
+        }
+
+        .ic {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex: none
+        }
+
+        .grad-text {
+            background: var(--accent-grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent
+        }
+
+        a {
+            color: var(--brand);
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--brand);
+            outline-offset: 2px;
+            border-radius: 6px
+        }
+
+        ::selection {
+            background: rgba(139, 92, 246, .28)
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer
+        }
+
+        input,
+        textarea {
+            font-family: inherit
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                transition-duration: .01ms !important;
+                scroll-behavior: auto !important
+            }
+        }
+
+        /* ================= Header ================= */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 60;
+            transition: background .25s ease, box-shadow .25s ease, border-color .25s ease;
+            background: transparent;
+            border-bottom: 1px solid transparent
+        }
+
+        .site-header.scrolled {
+            background: var(--card-solid);
+            backdrop-filter: blur(18px) saturate(1.4);
+            -webkit-backdrop-filter: blur(18px) saturate(1.4);
+            border-bottom-color: var(--border);
+            box-shadow: 0 6px 24px -16px rgba(76, 45, 158, .25)
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-height: 66px;
+            position: relative
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none !important;
+            color: var(--text)
+        }
+
+        .brand-mark {
+            width: 38px;
+            height: 38px;
+            border-radius: 11px;
+            box-shadow: 0 6px 16px -6px rgba(124, 58, 237, .55);
+            display: grid;
+            place-items: center;
+            flex: none
+        }
+
+        .brand-mark svg {
+            width: 38px;
+            height: 38px;
+            display: block
+        }
+
+        .brand-name {
+            font-family: "Sora", sans-serif;
+            font-weight: 800;
+            font-size: 1.22rem;
+            letter-spacing: -.02em
+        }
+
+        .main-nav {
+            display: none;
+            margin-left: auto;
+            gap: 4px
+        }
+
+        .main-nav a {
+            color: var(--text-2);
+            font-weight: 600;
+            font-size: .94rem;
+            padding: 9px 14px;
+            border-radius: 999px;
+            transition: color .2s, background .2s
+        }
+
+        .main-nav a:hover {
+            color: var(--text);
+            background: var(--surface-3);
+            text-decoration: none
+        }
+
+        .header-actions {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .icon-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: var(--surface-3);
+            border: 1px solid var(--border);
+            color: var(--text-2);
+            transition: all .2s ease
+        }
+
+        .icon-btn:hover {
+            color: var(--text);
+            border-color: var(--border-strong);
+            transform: translateY(-1px)
+        }
+
+        [data-theme="light"] .ic-sun {
+            display: none
+        }
+
+        [data-theme="dark"] .ic-moon {
+            display: none
+        }
+
+        @media (max-width:859px) {
+            .main-nav.open {
+                display: flex;
+                position: absolute;
+                top: calc(100% + 10px);
+                right: 0;
+                left: 0;
+                flex-direction: column;
+                background: var(--card-solid);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border: 1px solid var(--border);
+                border-radius: 18px;
+                padding: 10px;
+                box-shadow: var(--shadow-lg);
+                margin: 0;
+                z-index: 70
+            }
+        }
+
+        @media (min-width:860px) {
+            .main-nav {
+                display: flex
+            }
+
+            .nav-burger {
+                display: none
+            }
+
+            .header-actions {
+                margin-left: 8px
+            }
+        }
+
+        /* ================= Cards & buttons ================= */
+        .card {
+            background: var(--surface);
+            backdrop-filter: blur(18px) saturate(1.35);
+            -webkit-backdrop-filter: blur(18px) saturate(1.35);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: box-shadow .25s ease, transform .25s ease, border-color .25s ease
+        }
+
+        .card-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 20px 22px 0
+        }
+
+        .card-ic {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            flex: none;
+            background: linear-gradient(135deg, rgba(124, 58, 237, .14), rgba(219, 39, 119, .10));
+            color: var(--brand);
+            border: 1px solid var(--border)
+        }
+
+        .card-title {
+            font-family: "Sora", sans-serif;
+            font-size: 1.06rem;
+            font-weight: 700;
+            letter-spacing: -.01em;
+            margin: 0
+        }
+
+        .card-sub {
+            font-size: .8rem;
+            color: var(--text-3);
+            margin: 1px 0 0
+        }
+
+        .card-body {
+            padding: 18px 22px 22px
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 46px;
+            padding: 10px 20px;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: .92rem;
+            border: 1px solid transparent;
+            transition: transform .18s ease, box-shadow .18s ease, filter .18s ease, background .18s ease
+        }
+
+        .btn:active {
+            transform: scale(.97)
+        }
+
+        .btn:disabled {
+            opacity: .45;
+            cursor: not-allowed;
+            pointer-events: none
+        }
+
+        .btn-primary {
+            background: var(--accent-grad);
+            color: #fff;
+            box-shadow: 0 10px 22px -10px rgba(124, 58, 237, .6)
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            filter: brightness(1.06)
+        }
+
+        .btn-ghost {
+            background: var(--surface-3);
+            border-color: var(--border);
+            color: var(--text-2)
+        }
+
+        .btn-ghost:hover {
+            color: var(--text);
+            border-color: var(--border-strong);
+            transform: translateY(-1px)
+        }
+
+        @media (pointer:coarse) {
+
+            .btn,
+            .tb-btn {
+                min-height: 46px
+            }
+        }
+
+        /* ================= Hero ================= */
+        .hero {
+            text-align: center;
+            padding: clamp(34px, 6vw, 64px) 0 clamp(22px, 3.5vw, 36px)
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: .78rem;
+            font-weight: 700;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            color: var(--text-2);
+            background: var(--surface-3);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 7px 15px
+        }
+
+        .hero-badge .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent-grad);
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, .15)
+        }
+
+        .hero-title {
+            font-family: "Sora", sans-serif;
+            font-size: clamp(1.9rem, 5.4vw, 3.2rem);
+            font-weight: 800;
+            letter-spacing: -.03em;
+            line-height: 1.12;
+            margin: 18px auto 12px;
+            max-width: 16ch
+        }
+
+        .hero-sub {
+            color: var(--text-2);
+            font-size: clamp(.98rem, 2.4vw, 1.12rem);
+            max-width: 52ch;
+            margin: 0 auto
+        }
+
+        .hero-ticks {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 20px;
+            margin-top: 20px
+        }
+
+        .tick {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-size: .85rem;
+            font-weight: 600;
+            color: var(--text-2)
+        }
+
+        .tick .ic {
+            width: 15px;
+            height: 15px;
+            color: var(--ok)
+        }
+
+        /* ================= Editor ================= */
+        .editor-card {
+            overflow: hidden
+        }
+
+        .editor-card.typing {
+            border-color: var(--border-strong);
+            box-shadow: var(--shadow-lg), 0 0 0 4px rgba(124, 58, 237, .10)
+        }
+
+        .editor-toolbar {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 12px;
+            border-bottom: 1px solid var(--border);
+            overflow-x: auto;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+            mask-image: linear-gradient(90deg, #000 94%, transparent);
+            -webkit-mask-image: linear-gradient(90deg, #000 94%, transparent)
+        }
+
+        .editor-toolbar::-webkit-scrollbar {
+            display: none
+        }
+
+        @media (min-width:768px) {
+            .editor-toolbar {
+                mask-image: none;
+                -webkit-mask-image: none
+            }
+        }
+
+        .tb-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 9px 13px;
+            border-radius: 11px;
+            border: 1px solid transparent;
+            background: transparent;
+            color: var(--text-2);
+            font-weight: 600;
+            font-size: .85rem;
+            white-space: nowrap;
+            min-height: 42px;
+            transition: all .18s ease
+        }
+
+        .tb-btn:hover {
+            background: var(--surface-3);
+            border-color: var(--border);
+            color: var(--text)
+        }
+
+        .tb-btn:active {
+            transform: scale(.95)
+        }
+
+        .tb-btn:disabled {
+            opacity: .4;
+            cursor: not-allowed;
+            pointer-events: none
+        }
+
+        .tb-btn .ic {
+            width: 16px;
+            height: 16px
+        }
+
+        .tb-sep {
+            width: 1px;
+            height: 24px;
+            background: var(--border);
+            margin: 0 6px;
+            flex: none
+        }
+
+        .tb-spacer {
+            flex: 1;
+            min-width: 8px
+        }
+
+        .editor-area {
+            display: block;
+            width: 100%;
+            min-height: 300px;
+            border: 0;
+            outline: none;
+            background: var(--editor-bg);
+            color: var(--text);
+            padding: clamp(18px, 3vw, 28px) clamp(18px, 3.5vw, 32px);
+            font-size: 16.5px;
+            line-height: 1.75;
+            overflow-y: auto;
+            resize: none
+        }
+
+        @media (min-width:768px) {
+            .editor-area {
+                min-height: 420px;
+                font-size: 17px
+            }
+        }
+
+        .editor-area::placeholder {
+            color: var(--text-3)
+        }
+
+        .editor-area::-webkit-scrollbar {
+            width: 10px
+        }
+
+        .editor-area::-webkit-scrollbar-thumb {
+            background: rgba(124, 58, 237, .25);
+            border-radius: 99px;
+            border: 2px solid transparent;
+            background-clip: content-box
+        }
+
+        .editor-status {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px 18px;
+            padding: 12px 18px;
+            border-top: 1px solid var(--border);
+            font-size: .82rem;
+            color: var(--text-2)
+        }
+
+        .status-counts {
+            font-weight: 700;
+            font-variant-numeric: tabular-nums
+        }
+
+        .privacy-note {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-3);
+            margin-left: auto
+        }
+
+        .privacy-note .ic {
+            width: 14px;
+            height: 14px;
+            color: var(--ok)
+        }
+
+        /* ================= Statistics ================= */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-top: 22px
+        }
+
+        .stats-grid>* {
+            min-width: 0
+        }
+
+        .stat-card {
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            transition: transform .22s ease, box-shadow .22s ease
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg)
+        }
+
+        .stat-ic {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            background: var(--surface-3);
+            border: 1px solid var(--border);
+            color: var(--brand);
+            margin-bottom: 4px
+        }
+
+        .stat-val {
+            font-family: "Sora", sans-serif;
+            font-weight: 800;
+            font-size: clamp(1.5rem, 4.5vw, 1.9rem);
+            letter-spacing: -.02em;
+            font-variant-numeric: tabular-nums;
+            line-height: 1.1;
+            overflow-wrap: anywhere
+        }
+
+        .stat-lb {
+            font-size: .8rem;
+            font-weight: 600;
+            color: var(--text-3);
+            letter-spacing: .02em
+        }
+
+        .stat-primary {
+            border: 1px solid transparent;
+            background: linear-gradient(var(--card-solid), var(--card-solid)) padding-box,
+                linear-gradient(135deg, rgba(139, 92, 246, .65), rgba(99, 102, 241, .45), rgba(236, 72, 153, .55)) border-box
+        }
+
+        .stat-primary .stat-ic {
+            background: var(--accent-grad);
+            color: #fff;
+            border: 0
+        }
+
+        .stat-primary .stat-val {
+            font-size: clamp(1.9rem, 6vw, 2.5rem)
+        }
+
+        @media (min-width:640px) {
+            .stats-grid {
+                grid-template-columns: repeat(3, 1fr)
+            }
+        }
+
+        @media (min-width:1100px) {
+            .stats-grid {
+                grid-template-columns: repeat(6, 1fr)
+            }
+        }
+
+        .metrics-strip {
+            margin-top: 14px;
+            padding: 8px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2px
+        }
+
+        .metric {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            min-width: 0
+        }
+
+        .metric-ic {
+            width: 38px;
+            height: 38px;
+            border-radius: 11px;
+            display: grid;
+            place-items: center;
+            flex: none;
+            background: linear-gradient(135deg, rgba(79, 70, 229, .12), rgba(219, 39, 119, .08));
+            color: var(--brand-2);
+            border: 1px solid var(--border)
+        }
+
+        .metric-val {
+            font-family: "Sora", sans-serif;
+            font-weight: 700;
+            font-size: 1.02rem;
+            font-variant-numeric: tabular-nums;
+            line-height: 1.2
+        }
+
+        .metric-lb {
+            font-size: .76rem;
+            color: var(--text-3);
+            font-weight: 600
+        }
+
+        @media (min-width:760px) {
+            .metrics-strip {
+                grid-template-columns: repeat(4, 1fr)
+            }
+
+            .metric+.metric {
+                border-left: 1px solid var(--border)
+            }
+        }
+
+        /* ================= Two-column rows ================= */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+            margin-top: 14px
+        }
+
+        .two-col>* {
+            min-width: 0
+        }
+
+        @media (min-width:960px) {
+            .two-col {
+                grid-template-columns: 1fr 1fr;
+                align-items: start
+            }
+        }
+
+        .row-gap {
+            margin-top: 14px
+        }
+
+        /* ================= Goal ================= */
+        .segmented {
+            display: inline-flex;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 4px;
+            gap: 4px
+        }
+
+        .seg {
+            border: 0;
+            background: transparent;
+            color: var(--text-2);
+            font-weight: 700;
+            font-size: .85rem;
+            padding: 8px 18px;
+            border-radius: 999px;
+            transition: all .2s ease;
+            min-height: 40px
+        }
+
+        .seg.active {
+            background: var(--accent-grad);
+            color: #fff;
+            box-shadow: 0 6px 14px -6px rgba(124, 58, 237, .55)
+        }
+
+        .goal-form {
+            display: flex;
+            gap: 10px;
+            margin-top: 14px;
+            flex-wrap: wrap
+        }
+
+        .goal-form input {
+            flex: 1;
+            min-width: 150px;
+            min-height: 46px;
+            border-radius: 13px;
+            border: 1px solid var(--border);
+            background: var(--surface-3);
+            color: var(--text);
+            padding: 10px 16px;
+            font-size: 16px;
+            font-weight: 600
+        }
+
+        .goal-form input:focus {
+            outline: 2px solid var(--ring);
+            outline-offset: 1px;
+            border-color: transparent
+        }
+
+        .goal-num {
+            font-family: "Sora", sans-serif;
+            font-size: clamp(1.4rem, 4vw, 1.8rem);
+            font-weight: 800;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: -.02em
+        }
+
+        .goal-num small {
+            font-size: .55em;
+            color: var(--text-3);
+            font-weight: 700
+        }
+
+        .progress {
+            height: 12px;
+            border-radius: 99px;
+            background: var(--track);
+            overflow: hidden;
+            margin: 14px 0 10px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, .08)
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            border-radius: 99px;
+            background: var(--accent-grad);
+            transition: width .5s cubic-bezier(.22, 1, .36, 1)
+        }
+
+        .goal-done .progress-fill {
+            background: linear-gradient(90deg, #0d9488, #10b981)
+        }
+
+        .goal-meta {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            font-size: .85rem;
+            font-weight: 700;
+            color: var(--text-2);
+            flex-wrap: wrap
+        }
+
+        .goal-meta .done {
+            color: var(--ok)
+        }
+
+        .goal-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px
+        }
+
+        .hint {
+            font-size: .8rem;
+            color: var(--text-3);
+            margin: 14px 0 0
+        }
+
+        /* ================= Collapse (Text Analysis) ================= */
+        .collapse-head {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 20px 22px 0;
+            background: none;
+            border: 0;
+            text-align: left;
+            color: inherit;
+            padding-bottom: 0
+        }
+
+        .collapse-head .chev {
+            margin-left: auto;
+            color: var(--text-3);
+            transition: transform .25s ease
+        }
+
+        .collapse-head[aria-expanded="false"] .chev {
+            transform: rotate(-90deg)
+        }
+
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2px;
+            margin-top: 6px
+        }
+
+        @media (min-width:520px) {
+            .analysis-grid {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+
+        .an-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: var(--surface-2);
+            min-width: 0
+        }
+
+        .an-k {
+            font-size: .82rem;
+            color: var(--text-3);
+            font-weight: 600
+        }
+
+        .an-v {
+            font-family: "Sora", sans-serif;
+            font-weight: 700;
+            font-size: .95rem;
+            font-variant-numeric: tabular-nums;
+            overflow-wrap: anywhere;
+            text-align: right
+        }
+
+        .mu-title {
+            font-size: .8rem;
+            font-weight: 800;
+            letter-spacing: .05em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            margin: 18px 0 8px
+        }
+
+        .mu-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 12px;
+            border-radius: 10px;
+            font-size: .9rem
+        }
+
+        .mu-row:nth-child(odd) {
+            background: var(--surface-2)
+        }
+
+        .mu-word {
+            font-weight: 700;
+            overflow-wrap: anywhere;
+            min-width: 0
+        }
+
+        .mu-n {
+            margin-left: auto;
+            color: var(--text-2);
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+            font-size: .85rem
+        }
+
+        /* ================= Readability ================= */
+        .read-notice {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            background: var(--surface-2);
+            border: 1px dashed var(--border-strong);
+            border-radius: 16px;
+            padding: 16px;
+            color: var(--text-2);
+            font-size: .92rem
+        }
+
+        .read-notice .ic {
+            color: var(--brand);
+            margin-top: 2px
+        }
+
+        .read-score-row {
+            display: flex;
+            align-items: baseline;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-bottom: 6px
+        }
+
+        .read-score {
+            font-family: "Sora", sans-serif;
+            font-size: clamp(2rem, 6vw, 2.6rem);
+            font-weight: 800;
+            letter-spacing: -.02em;
+            font-variant-numeric: tabular-nums
+        }
+
+        .read-label {
+            font-weight: 800;
+            font-size: .85rem;
+            padding: 5px 13px;
+            border-radius: 999px;
+            border: 1px solid
+        }
+
+        .read-label.ok {
+            color: var(--ok);
+            border-color: rgba(13, 148, 136, .4);
+            background: rgba(13, 148, 136, .08)
+        }
+
+        .read-label.good {
+            color: var(--brand-2);
+            border-color: rgba(79, 70, 229, .4);
+            background: rgba(79, 70, 229, .08)
+        }
+
+        .read-label.warn {
+            color: var(--warn);
+            border-color: rgba(217, 119, 6, .4);
+            background: rgba(217, 119, 6, .08)
+        }
+
+        .gauge {
+            margin: 16px 0 6px
+        }
+
+        .gauge-track {
+            position: relative;
+            height: 10px;
+            border-radius: 99px;
+            background: linear-gradient(90deg, #f43f5e, #f59e0b 32%, #8b5cf6 62%, #10b981)
+        }
+
+        .gauge-marker {
+            position: absolute;
+            top: -5px;
+            width: 6px;
+            height: 20px;
+            border-radius: 4px;
+            background: var(--text);
+            box-shadow: 0 0 0 3px var(--bg), 0 2px 8px rgba(0, 0, 0, .3);
+            transform: translateX(-50%);
+            transition: left .5s cubic-bezier(.22, 1, .36, 1)
+        }
+
+        .gauge-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: .72rem;
+            font-weight: 700;
+            color: var(--text-3);
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: .05em
+        }
+
+        .read-grid {
+            margin-top: 16px
+        }
+
+        /* ================= Keywords ================= */
+        .kw-row {
+            display: grid;
+            grid-template-columns: 26px minmax(0, 1fr) 90px auto;
+            align-items: center;
+            gap: 10px;
+            padding: 7px 12px;
+            border-radius: 10px;
+            font-size: .9rem
+        }
+
+        .kw-row:nth-child(odd) {
+            background: var(--surface-2)
+        }
+
+        .kw-rank {
+            font-size: .75rem;
+            font-weight: 800;
+            color: var(--text-3);
+            font-variant-numeric: tabular-nums
+        }
+
+        .kw-word {
+            font-weight: 700;
+            overflow-wrap: anywhere
+        }
+
+        .kw-bar {
+            height: 5px;
+            border-radius: 99px;
+            background: var(--track);
+            overflow: hidden
+        }
+
+        .kw-bar i {
+            display: block;
+            height: 100%;
+            border-radius: 99px;
+            background: var(--accent-grad)
+        }
+
+        .kw-n {
+            font-variant-numeric: tabular-nums;
+            color: var(--text-2);
+            font-size: .8rem;
+            white-space: nowrap
+        }
+
+        @media (max-width:420px) {
+            .kw-row {
+                grid-template-columns: 20px minmax(0, 1fr) 56px auto;
+                gap: 8px
+            }
+        }
+
+        /* ================= Formatting ================= */
+        .fmt-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px
+        }
+
+        @media (min-width:560px) {
+            .fmt-grid {
+                grid-template-columns: repeat(4, 1fr)
+            }
+        }
+
+        .fmt-btn {
+            min-height: 46px;
+            border-radius: 13px;
+            border: 1px solid var(--border);
+            background: var(--surface-3);
+            color: var(--text-2);
+            font-weight: 700;
+            font-size: .82rem;
+            padding: 8px 6px;
+            transition: all .18s ease
+        }
+
+        .fmt-btn:hover {
+            color: var(--text);
+            border-color: var(--border-strong);
+            transform: translateY(-1px)
+        }
+
+        .fmt-btn:active {
+            transform: scale(.96)
+        }
+
+        .fmt-btn:disabled {
+            opacity: .4;
+            cursor: not-allowed;
+            pointer-events: none
+        }
+
+        /* ================= Find & Replace ================= */
+        .fr-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px
+        }
+
+        @media (min-width:640px) {
+            .fr-grid {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+
+        .field label {
+            display: block;
+            font-size: .8rem;
+            font-weight: 700;
+            color: var(--text-3);
+            margin-bottom: 6px;
+            letter-spacing: .03em
+        }
+
+        .field input {
+            width: 100%;
+            min-height: 46px;
+            border-radius: 13px;
+            border: 1px solid var(--border);
+            background: var(--surface-3);
+            color: var(--text);
+            padding: 10px 14px;
+            font-size: 16px
+        }
+
+        .field input:focus {
+            outline: 2px solid var(--ring);
+            outline-offset: 1px;
+            border-color: transparent
+        }
+
+        .input-wrap {
+            position: relative
+        }
+
+        .match-count {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: .74rem;
+            font-weight: 800;
+            color: var(--brand);
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 99px;
+            padding: 2px 9px;
+            pointer-events: none;
+            white-space: nowrap
+        }
+
+        .chips {
+            display: flex;
+            gap: 10px;
+            margin: 14px 0;
+            flex-wrap: wrap
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 8px 14px;
+            cursor: pointer;
+            font-size: .85rem;
+            font-weight: 700;
+            color: var(--text-2);
+            user-select: none;
+            transition: all .18s ease
+        }
+
+        .chip input {
+            position: absolute;
+            opacity: 0;
+            width: 1px;
+            height: 1px
+        }
+
+        .chip-box {
+            width: 18px;
+            height: 18px;
+            border-radius: 6px;
+            border: 1.5px solid var(--border-strong);
+            display: grid;
+            place-items: center;
+            color: #fff;
+            background: var(--surface-2)
+        }
+
+        .chip-box .ic {
+            width: 12px;
+            height: 12px;
+            opacity: 0
+        }
+
+        .chip input:checked~.chip-box {
+            background: var(--accent-grad);
+            border-color: transparent
+        }
+
+        .chip input:checked~.chip-box .ic {
+            opacity: 1
+        }
+
+        .chip input:focus-visible~.chip-box {
+            outline: 2px solid var(--ring);
+            outline-offset: 2px
+        }
+
+        .chip:has(input:checked) {
+            border-color: var(--border-strong);
+            color: var(--text)
+        }
+
+        .fr-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        /* ================= Download & Export ================= */
+        .dl-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px
+        }
+
+        @media (min-width:640px) {
+            .dl-grid {
+                grid-template-columns: repeat(3, 1fr)
+            }
+        }
+
+        .dl-btn {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-height: 64px;
+            padding: 12px 16px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            background: var(--surface-3);
+            color: var(--text);
+            text-align: left;
+            transition: all .2s ease
+        }
+
+        .dl-btn:hover {
+            border-color: var(--border-strong);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow)
+        }
+
+        .dl-btn:active {
+            transform: scale(.98)
+        }
+
+        .dl-btn:disabled {
+            opacity: .45;
+            cursor: not-allowed;
+            pointer-events: none;
+            transform: none
+        }
+
+        .dl-badge {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            flex: none;
+            font-family: "Sora", sans-serif;
+            font-weight: 800;
+            font-size: .72rem;
+            color: #fff;
+            letter-spacing: .02em
+        }
+
+        .dl-badge.b-txt {
+            background: linear-gradient(135deg, #7c3aed, #6366f1)
+        }
+
+        .dl-badge.b-doc {
+            background: linear-gradient(135deg, #4f46e5, #db2777)
+        }
+
+        .dl-badge.b-pdf {
+            background: linear-gradient(135deg, #db2777, #9333ea)
+        }
+
+        .dl-name {
+            font-weight: 800;
+            font-size: .95rem;
+            line-height: 1.2
+        }
+
+        .dl-desc {
+            font-size: .78rem;
+            color: var(--text-3);
+            font-weight: 600
+        }
+
+        .spin {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, .35);
+            border-top-color: #fff;
+            animation: spin .7s linear infinite;
+            display: inline-block
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        @keyframes cardFlash {
+            0% {
+                box-shadow: 0 0 0 0 rgba(139, 92, 246, .55), var(--shadow)
+            }
+
+            100% {
+                box-shadow: 0 0 0 20px rgba(139, 92, 246, 0), var(--shadow)
+            }
+        }
+
+        .flash {
+            animation: cardFlash .9s ease 2
+        }
+
+        /* ================= SEO content ================= */
+        .seo {
+            margin-top: 34px
+        }
+
+        .seo-block {
+            padding: clamp(20px, 3vw, 30px);
+            margin-top: 14px
+        }
+
+        .seo h2 {
+            font-family: "Sora", sans-serif;
+            font-size: clamp(1.15rem, 3vw, 1.45rem);
+            letter-spacing: -.02em;
+            margin: 0 0 10px
+        }
+
+        .seo h3 {
+            font-size: 1.02rem;
+            margin: 18px 0 6px
+        }
+
+        .seo p {
+            color: var(--text-2);
+            margin: 0 0 12px;
+            max-width: 78ch
+        }
+
+        .seo ul {
+            color: var(--text-2);
+            margin: 0 0 12px;
+            padding-left: 22px;
+            max-width: 78ch
+        }
+
+        .seo li {
+            margin: 4px 0
+        }
+
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .9rem;
+            margin: 8px 0;
+            min-width: 0
+        }
+
+        .compare-table th,
+        .compare-table td {
+            text-align: left;
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--border)
+        }
+
+        .compare-table th {
+            font-size: .76rem;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            color: var(--text-3)
+        }
+
+        .compare-table td:first-child {
+            font-weight: 700;
+            white-space: nowrap
+        }
+
+        .table-scroll {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 12px
+        }
+
+        /* ================= FAQ ================= */
+        .faq-item {
+            border-top: 1px solid var(--border)
+        }
+
+        .faq-item:first-of-type {
+            border-top: 0
+        }
+
+        .faq-item summary {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 17px 4px;
+            font-weight: 700;
+            font-size: .98rem;
+            cursor: pointer
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none
+        }
+
+        .faq-item summary .chev {
+            margin-left: auto;
+            color: var(--text-3);
+            transition: transform .25s ease
+        }
+
+        .faq-item[open] summary .chev {
+            transform: rotate(180deg)
+        }
+
+        .faq-item p {
+            color: var(--text-2);
+            margin: 0;
+            padding: 0 4px 18px;
+            max-width: 80ch
+        }
+
+        /* ================= Footer ================= */
+        .site-footer {
+            margin-top: 44px;
+            border-top: 1px solid var(--border);
+            background: var(--surface-2);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px)
+        }
+
+        .footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px 28px;
+            align-items: center;
+            padding: 26px 0;
+            font-size: .88rem;
+            color: var(--text-2)
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            font-weight: 800;
+            color: var(--text)
+        }
+
+        .footer-brand .brand-mark {
+            width: 30px;
+            height: 30px;
+            border-radius: 9px
+        }
+
+        .footer-brand .brand-mark svg {
+            width: 30px;
+            height: 30px
+        }
+
+        .footer-nav {
+            display: flex;
+            gap: 2px;
+            flex-wrap: wrap
+        }
+
+        .footer-nav a {
+            color: var(--text-2);
+            font-weight: 600;
+            padding: 6px 10px;
+            border-radius: 9px
+        }
+
+        .footer-nav a:hover {
+            color: var(--text);
+            background: var(--surface-3);
+            text-decoration: none
+        }
+
+        .footer-copy {
+            margin-left: auto;
+            font-size: .8rem;
+            color: var(--text-3)
+        }
+
+        /* ================= Toasts ================= */
+        .toast-stack {
+            position: fixed;
+            bottom: 18px;
+            left: 16px;
+            right: 16px;
+            z-index: 120;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            pointer-events: none
+        }
+
+        @media (min-width:640px) {
+            .toast-stack {
+                left: auto;
+                right: 22px;
+                bottom: 22px;
+                align-items: flex-end
+            }
+        }
+
+        .toast {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            max-width: 100%;
+            padding: 12px 18px;
+            border-radius: 14px;
+            background: var(--card-solid);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-strong);
+            box-shadow: var(--shadow-lg);
+            font-weight: 700;
+            font-size: .88rem;
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity .3s ease, transform .3s ease
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0)
+        }
+
+        .toast .t-ic {
+            width: 17px;
+            height: 17px
+        }
+
+        .t-success .t-ic {
+            color: var(--ok)
+        }
+
+        .t-error .t-ic {
+            color: var(--err)
+        }
+
+        .t-info .t-ic {
+            color: var(--brand)
+        }
+
+        /* Entrance */
+        @keyframes rise {
+            from {
+                opacity: 0;
+                transform: translateY(14px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        .hero>* {
+            animation: rise .55s cubic-bezier(.22, 1, .36, 1) both
+        }
+
+        .hero>*:nth-child(2) {
+            animation-delay: .06s
+        }
+
+        .hero>*:nth-child(3) {
+            animation-delay: .12s
+        }
+
+        .hero>*:nth-child(4) {
+            animation-delay: .18s
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= Icon sprite (inline, stroke-based) ================= -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="i-new" viewBox="0 0 24 24">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+            <path d="M14 2v6h6" />
+            <path d="M12 18v-6" />
+            <path d="M9 15h6" />
+        </symbol>
+        <symbol id="i-paste" viewBox="0 0 24 24">
+            <rect x="8" y="2" width="8" height="4" rx="1" />
+            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+        </symbol>
+        <symbol id="i-copy" viewBox="0 0 24 24">
+            <rect x="9" y="9" width="13" height="13" rx="2" />
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+        </symbol>
+        <symbol id="i-clear" viewBox="0 0 24 24">
+            <path d="m7 21-4.3-4.3a2.4 2.4 0 0 1 0-3.4l9.6-9.6a2.4 2.4 0 0 1 3.4 0l5.6 5.6a2.4 2.4 0 0 1 0 3.4L13 21" />
+            <path d="M22 21H7" />
+            <path d="m5 11 9 9" />
+        </symbol>
+        <symbol id="i-undo" viewBox="0 0 24 24">
+            <path d="M3 7v6h6" />
+            <path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13" />
+        </symbol>
+        <symbol id="i-redo" viewBox="0 0 24 24">
+            <path d="M21 7v6h-6" />
+            <path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3L21 13" />
+        </symbol>
+        <symbol id="i-download" viewBox="0 0 24 24">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <path d="m7 10 5 5 5-5" />
+            <path d="M12 15V3" />
+        </symbol>
+        <symbol id="i-export" viewBox="0 0 24 24">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <path d="m17 8-5-5-5 5" />
+            <path d="M12 3v12" />
+        </symbol>
+        <symbol id="i-sun" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="4" />
+            <path
+                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+        </symbol>
+        <symbol id="i-moon" viewBox="0 0 24 24">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+        </symbol>
+        <symbol id="i-menu" viewBox="0 0 24 24">
+            <path d="M4 6h16M4 12h16M4 18h16" />
+        </symbol>
+        <symbol id="i-x" viewBox="0 0 24 24">
+            <path d="M18 6 6 18M6 6l12 12" />
+        </symbol>
+        <symbol id="i-target" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" />
+            <circle cx="12" cy="12" r="6" />
+            <circle cx="12" cy="12" r="2" />
+        </symbol>
+        <symbol id="i-chart" viewBox="0 0 24 24">
+            <path d="M3 3v18h18" />
+            <path d="M18 17V9M13 17V5M8 17v-3" />
+        </symbol>
+        <symbol id="i-book" viewBox="0 0 24 24">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+        </symbol>
+        <symbol id="i-tag" viewBox="0 0 24 24">
+            <path
+                d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z" />
+            <circle cx="7.5" cy="7.5" r=".5" fill="currentColor" />
+        </symbol>
+        <symbol id="i-type" viewBox="0 0 24 24">
+            <path d="M4 7V4h16v3" />
+            <path d="M9 20h6" />
+            <path d="M12 4v16" />
+        </symbol>
+        <symbol id="i-search" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+        </symbol>
+        <symbol id="i-clock" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 6v6l4 2" />
+        </symbol>
+        <symbol id="i-mic" viewBox="0 0 24 24">
+            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+            <path d="M12 19v3" />
+        </symbol>
+        <symbol id="i-cpu" viewBox="0 0 24 24">
+            <rect x="4" y="4" width="16" height="16" rx="2" />
+            <rect x="9" y="9" width="6" height="6" />
+            <path d="M15 2v2M9 2v2M15 20v2M9 20v2M2 15h2M2 9h2M20 15h2M20 9h2" />
+        </symbol>
+        <symbol id="i-shield" viewBox="0 0 24 24">
+            <path
+                d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+            <path d="m9 12 2 2 4-4" />
+        </symbol>
+        <symbol id="i-check" viewBox="0 0 24 24">
+            <path d="M20 6 9 17l-5-5" />
+        </symbol>
+        <symbol id="i-alert" viewBox="0 0 24 24">
+            <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+            <path d="M12 9v4M12 17h.01" />
+        </symbol>
+        <symbol id="i-info" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 16v-4M12 8h.01" />
+        </symbol>
+        <symbol id="i-chevron" viewBox="0 0 24 24">
+            <path d="m6 9 6 6 6-6" />
+        </symbol>
+        <symbol id="i-hash" viewBox="0 0 24 24">
+            <path d="M4 9h16M4 15h16M10 3 8 21M16 3l-2 18" />
+        </symbol>
+        <symbol id="i-msg" viewBox="0 0 24 24">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+        </symbol>
+        <symbol id="i-align" viewBox="0 0 24 24">
+            <path d="M21 6H3M15 12H3M17 18H3" />
+        </symbol>
+        <symbol id="i-minusbox" viewBox="0 0 24 24">
+            <rect x="3" y="3" width="18" height="18" rx="3" />
+            <path d="M8 12h8" />
+        </symbol>
+        <symbol id="i-aa" viewBox="0 0 24 24">
+            <path d="M3 17 7.5 7l4.5 10" />
+            <path d="M4.8 13.8h5.4" />
+            <path d="M20.5 17v-5.5a2.5 2.5 0 0 0-5 0V17" />
+            <path d="M15.5 14h5" />
+        </symbol>
+        <symbol id="i-edit" viewBox="0 0 24 24">
+            <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z" />
+            <path d="m15 5 4 4" />
+        </symbol>
+        <symbol id="i-reset" viewBox="0 0 24 24">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+            <path d="M3 3v5h5" />
+        </symbol>
+    </svg>
+
+    <div class="atmosphere" aria-hidden="true"></div>
+
+    <!-- ================= Header (reuses the Tools24 shell) ================= -->
+    <header class="site-header" id="siteHeader">
+        <div class="container header-inner">
+            <a class="brand" href="/" aria-label="Tools24 home">
+                <span class="brand-mark" aria-hidden="true">
+                    <svg viewBox="0 0 38 38">
+                        <defs>
+                            <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0" stop-color="#7c3aed" />
+                                <stop offset=".55" stop-color="#4f46e5" />
+                                <stop offset="1" stop-color="#db2777" />
+                            </linearGradient>
+                        </defs>
+                        <rect width="38" height="38" rx="11" fill="url(#lg)" />
+                        <path d="M11 12h16M19 12v14" stroke="#fff" stroke-width="2.6" stroke-linecap="round" />
+                        <path d="M13 26h6" stroke="#fff" stroke-width="2.6" stroke-linecap="round" opacity=".55" />
+                    </svg>
+                </span>
+                <span class="brand-name">Tools<span class="grad-text">24</span></span>
+            </a>
+            <!-- Replace hrefs with your existing routes -->
+            <nav class="main-nav" id="mainNav" aria-label="Primary">
+                <a href="/">Home</a><a href="/about">About</a><a href="/privacy">Privacy</a><a
+                    href="/contact">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button class="icon-btn" id="themeToggle" aria-label="Switch theme" title="Toggle light / dark">
+                    <svg class="ic ic-moon">
+                        <use href="#i-moon" />
+                    </svg>
+                    <svg class="ic ic-sun">
+                        <use href="#i-sun" />
+                    </svg>
+                </button>
+                <button class="icon-btn nav-burger" id="menuToggle" aria-label="Open menu" aria-expanded="false"
+                    aria-controls="mainNav">
+                    <svg class="ic">
+                        <use href="#i-menu" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="sr-only" id="liveStatus" aria-live="polite"></div>
+
+        <!-- ================= Hero ================= -->
+        <section class="hero">
+            <span class="hero-badge"><span class="dot"></span>Tools24 • Writing Tool</span>
+            <h1 class="hero-title">Professional <span class="grad-text">Word Counter</span></h1>
+            <p class="hero-sub">Count words, characters, sentences, paragraphs and analyze your text instantly.</p>
+            <div class="hero-ticks">
+                <span class="tick"><svg class="ic">
+                        <use href="#i-check" />
+                    </svg>Runs 100% in your browser</span>
+                <span class="tick"><svg class="ic">
+                        <use href="#i-check" />
+                    </svg>Unicode, Hindi &amp; emoji ready</span>
+                <span class="tick"><svg class="ic">
+                        <use href="#i-check" />
+                    </svg>TXT · DOCX · PDF export</span>
+            </div>
+        </section>
+
+        <!-- ================= Editor ================= -->
+        <section class="card editor-card" id="editorCard" aria-label="Text editor">
+            <div class="editor-toolbar" role="toolbar" aria-label="Editor actions">
+                <button class="tb-btn" id="btnNew" type="button" title="New document"><svg class="ic">
+                        <use href="#i-new" />
+                    </svg>New</button>
+                <button class="tb-btn" id="btnPaste" type="button" title="Paste from clipboard"><svg class="ic">
+                        <use href="#i-paste" />
+                    </svg>Paste</button>
+                <button class="tb-btn" id="btnCopy" type="button" title="Copy all text (Ctrl+C)"><svg class="ic">
+                        <use href="#i-copy" />
+                    </svg>Copy</button>
+                <button class="tb-btn" id="btnClear" type="button" title="Clear the editor"><svg class="ic">
+                        <use href="#i-clear" />
+                    </svg>Clear</button>
+                <span class="tb-sep" aria-hidden="true"></span>
+                <button class="tb-btn" id="btnUndo" type="button" title="Undo (Ctrl+Z)"><svg class="ic">
+                        <use href="#i-undo" />
+                    </svg>Undo</button>
+                <button class="tb-btn" id="btnRedo" type="button" title="Redo (Ctrl+Y)"><svg class="ic">
+                        <use href="#i-redo" />
+                    </svg>Redo</button>
+                <span class="tb-spacer" aria-hidden="true"></span>
+                <button class="tb-btn" id="btnDownload" type="button" title="Download as .txt"><svg class="ic">
+                        <use href="#i-download" />
+                    </svg>Download</button>
+                <button class="tb-btn" id="btnExport" type="button" title="Open export options"><svg class="ic">
+                        <use href="#i-export" />
+                    </svg>Export</button>
+            </div>
+            <label class="sr-only" for="editor">Your text — counts update live as you type</label>
+            <textarea class="editor-area" id="editor" placeholder="Start typing or paste your text here..."
+                spellcheck="true" autocomplete="off"></textarea>
+            <div class="editor-status">
+                <span class="status-counts" id="statusCounts">0 words · 0 characters</span>
+                <span class="privacy-note"><svg class="ic">
+                        <use href="#i-shield" />
+                    </svg>Your text stays in your browser. Nothing is uploaded just to count your words.</span>
+            </div>
+        </section>
+
+        <!-- ================= Statistics ================= -->
+        <section class="stats-grid" aria-label="Live statistics">
+            <article class="card stat-card stat-primary">
+                <div class="stat-ic"><svg class="ic">
+                        <use href="#i-type" />
+                    </svg></div>
+                <div class="stat-val" id="stWords">0</div>
+                <div class="stat-lb">Words</div>
+            </article>
+            <article class="card stat-card">
+                <div class="stat-ic"><svg class="ic">
+                        <use href="#i-hash" />
+                    </svg></div>
+                <div class="stat-val" id="stChars">0</div>
+                <div class="stat-lb">Characters</div>
+            </article>
+            <article class="card stat-card">
+                <div class="stat-ic"><svg class="ic">
+                        <use href="#i-minusbox" />
+                    </svg></div>
+                <div class="stat-val" id="stCharsNs">0</div>
+                <div class="stat-lb">Chars (no spaces)</div>
+            </article>
+            <article class="card stat-card">
+                <div class="stat-ic"><svg class="ic">
+                        <use href="#i-msg" />
+                    </svg></div>
+                <div class="stat-val" id="stSent">0</div>
+                <div class="stat-lb">Sentences</div>
+            </article>
+            <article class="card stat-card">
+                <div class="stat-ic"><svg class="ic">
+                        <use href="#i-align" />
+                    </svg></div>
+                <div class="stat-val" id="stPara">0</div>
+                <div class="stat-lb">Paragraphs</div>
+            </article>
+            <article class="card stat-card">
+                <div class="stat-ic"><svg class="ic">
+                        <use href="#i-menu" />
+                    </svg></div>
+                <div class="stat-val" id="stLines">0</div>
+                <div class="stat-lb">Lines</div>
+            </article>
+        </section>
+
+        <section class="card metrics-strip" aria-label="Additional metrics">
+            <div class="metric">
+                <div class="metric-ic"><svg class="ic">
+                        <use href="#i-book" />
+                    </svg></div>
+                <div>
+                    <div class="metric-val" id="mRead">—</div>
+                    <div class="metric-lb">Reading time · 200 wpm</div>
+                </div>
+            </div>
+            <div class="metric">
+                <div class="metric-ic"><svg class="ic">
+                        <use href="#i-mic" />
+                    </svg></div>
+                <div>
+                    <div class="metric-val" id="mSpeak">—</div>
+                    <div class="metric-lb">Speaking time · 130 wpm</div>
+                </div>
+            </div>
+            <div class="metric">
+                <div class="metric-ic"><svg class="ic">
+                        <use href="#i-aa" />
+                    </svg></div>
+                <div>
+                    <div class="metric-val" id="mAvgLen">—</div>
+                    <div class="metric-lb">Avg word length</div>
+                </div>
+            </div>
+            <div class="metric">
+                <div class="metric-ic"><svg class="ic">
+                        <use href="#i-cpu" />
+                    </svg></div>
+                <div>
+                    <div class="metric-val" id="mTokens">0</div>
+                    <div class="metric-lb">Estimated tokens</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= Goal + Analysis ================= -->
+        <div class="two-col">
+            <section class="card" aria-labelledby="goalTitle">
+                <div class="card-head">
+                    <div class="card-ic"><svg class="ic">
+                            <use href="#i-target" />
+                        </svg></div>
+                    <div>
+                        <h2 class="card-title" id="goalTitle">Writing Goal</h2>
+                        <p class="card-sub">Track progress toward a word or character target</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="goalSetup">
+                        <div class="segmented" role="radiogroup" aria-label="Goal type">
+                            <button type="button" class="seg active" data-type="words" role="radio"
+                                aria-checked="true">Words</button>
+                            <button type="button" class="seg" data-type="chars" role="radio"
+                                aria-checked="false">Characters</button>
+                        </div>
+                        <form class="goal-form" id="goalForm">
+                            <label class="sr-only" for="goalInput">Target amount</label>
+                            <input id="goalInput" type="number" min="1" step="1" inputmode="numeric"
+                                placeholder="e.g. 1000">
+                            <button class="btn btn-primary" type="submit" id="goalSet"><svg class="ic">
+                                    <use href="#i-target" />
+                                </svg>Set Goal</button>
+                        </form>
+                        <p class="hint">Progress, remaining count and milestones update live and are saved on this
+                            device only.</p>
+                    </div>
+                    <div id="goalActive" hidden>
+                        <div class="goal-num"><span id="goalCurrent">0</span> <small>/ <span id="goalTarget">0</span>
+                                <span id="goalUnit">words</span></small></div>
+                        <div class="progress">
+                            <div class="progress-fill" id="goalFill"></div>
+                        </div>
+                        <div class="goal-meta"><span id="goalPct">0%</span><span id="goalRemain"></span></div>
+                        <div class="goal-actions">
+                            <button class="btn btn-ghost" id="goalEdit" type="button"><svg class="ic">
+                                    <use href="#i-edit" />
+                                </svg>Edit Goal</button>
+                            <button class="btn btn-ghost" id="goalReset" type="button"><svg class="ic">
+                                    <use href="#i-reset" />
+                                </svg>Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card" aria-labelledby="analysisTitle">
+                <button class="collapse-head" id="analysisToggle" aria-expanded="true" aria-controls="analysisBody">
+                    <div class="card-ic"><svg class="ic">
+                            <use href="#i-chart" />
+                        </svg></div>
+                    <div>
+                        <h2 class="card-title" id="analysisTitle">Text Analysis</h2>
+                        <p class="card-sub">Insights computed locally as you write</p>
+                    </div>
+                    <svg class="ic chev">
+                        <use href="#i-chevron" />
+                    </svg>
+                </button>
+                <div class="card-body" id="analysisBody">
+                    <div class="analysis-grid" id="analysisGrid">
+                        <div class="an-item"><span class="an-k">Average word length</span><span class="an-v"
+                                id="aAvgLen">—</span></div>
+                        <div class="an-item"><span class="an-k">Unique words</span><span class="an-v"
+                                id="aUnique">—</span></div>
+                        <div class="an-item"><span class="an-k">Longest word</span><span class="an-v"
+                                id="aLongest">—</span></div>
+                        <div class="an-item"><span class="an-k">Repeated words</span><span class="an-v"
+                                id="aRepeated">—</span></div>
+                        <div class="an-item"><span class="an-k">Shortest word</span><span class="an-v"
+                                id="aShortest">—</span></div>
+                        <div class="an-item"><span class="an-k">Avg sentence length</span><span class="an-v"
+                                id="aAvgSent">—</span></div>
+                    </div>
+                    <div id="analysisEmpty" hidden>
+                        <div class="read-notice"><svg class="ic">
+                                <use href="#i-info" />
+                            </svg><span>Start writing to see average lengths, unique and repeated words, keyword density
+                                and more — all calculated inside your browser.</span></div>
+                    </div>
+                    <div id="analysisExtra">
+                        <p class="mu-title">Most used words &amp; keyword density</p>
+                        <div id="mostUsed"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= Readability + Keywords ================= -->
+        <div class="two-col row-gap">
+            <section class="card" aria-labelledby="readTitle">
+                <div class="card-head">
+                    <div class="card-ic"><svg class="ic">
+                            <use href="#i-book" />
+                        </svg></div>
+                    <div>
+                        <h2 class="card-title" id="readTitle">Readability Analysis</h2>
+                        <p class="card-sub">Flesch formulas for English text</p>
+                    </div>
+                </div>
+                <div class="card-body" id="readContent"></div>
+            </section>
+
+            <section class="card" aria-labelledby="kwTitle">
+                <div class="card-head">
+                    <div class="card-ic"><svg class="ic">
+                            <use href="#i-tag" />
+                        </svg></div>
+                    <div>
+                        <h2 class="card-title" id="kwTitle">Top Keywords</h2>
+                        <p class="card-sub">Top 10 meaningful words — stop words filtered</p>
+                    </div>
+                </div>
+                <div class="card-body" id="kwContent"></div>
+            </section>
+        </div>
+
+        <!-- ================= Formatting + Find & Replace ================= -->
+        <div class="two-col row-gap">
+            <section class="card" aria-labelledby="fmtTitle">
+                <div class="card-head">
+                    <div class="card-ic"><svg class="ic">
+                            <use href="#i-type" />
+                        </svg></div>
+                    <div>
+                        <h2 class="card-title" id="fmtTitle">Text Formatting</h2>
+                        <p class="card-sub">One-click transforms — every change is undoable</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="fmt-grid" id="fmtGrid">
+                        <button class="fmt-btn" type="button" data-action="upper">UPPERCASE</button>
+                        <button class="fmt-btn" type="button" data-action="lower">lowercase</button>
+                        <button class="fmt-btn" type="button" data-action="title">Title Case</button>
+                        <button class="fmt-btn" type="button" data-action="sentence">Sentence case</button>
+                        <button class="fmt-btn" type="button" data-action="capitalize">Capitalize</button>
+                        <button class="fmt-btn" type="button" data-action="spaces">Remove Extra Spaces</button>
+                        <button class="fmt-btn" type="button" data-action="emptylines">Remove Empty Lines</button>
+                        <button class="fmt-btn" type="button" data-action="trim">Trim Text</button>
+                    </div>
+                    <p class="hint">Made a mistake? Press <strong>Ctrl+Z</strong> (or <strong>⌘Z</strong>) to step back.
+                    </p>
+                </div>
+            </section>
+
+            <section class="card" aria-labelledby="frTitle">
+                <div class="card-head">
+                    <div class="card-ic"><svg class="ic">
+                            <use href="#i-search" />
+                        </svg></div>
+                    <div>
+                        <h2 class="card-title" id="frTitle">Find &amp; Replace</h2>
+                        <p class="card-sub">Fast on text of any size</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="fr-grid">
+                        <div class="field">
+                            <label for="findInput">Find</label>
+                            <div class="input-wrap">
+                                <input id="findInput" type="text" placeholder="Search text…" autocomplete="off">
+                                <span class="match-count" id="matchCount" hidden></span>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="replaceInput">Replace with</label>
+                            <input id="replaceInput" type="text" placeholder="Replacement…" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="chips">
+                        <label class="chip"><input type="checkbox" id="optCase"><span class="chip-box"><svg class="ic">
+                                    <use href="#i-check" />
+                                </svg></span>Match case</label>
+                        <label class="chip"><input type="checkbox" id="optWhole"><span class="chip-box"><svg class="ic">
+                                    <use href="#i-check" />
+                                </svg></span>Whole words only</label>
+                    </div>
+                    <div class="fr-actions">
+                        <button class="btn btn-ghost" id="btnFind" type="button"><svg class="ic">
+                                <use href="#i-search" />
+                            </svg>Find</button>
+                        <button class="btn btn-ghost" id="btnReplace" type="button"><svg class="ic">
+                                <use href="#i-edit" />
+                            </svg>Replace</button>
+                        <button class="btn btn-primary" id="btnReplaceAll" type="button">Replace All</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= Download & Export ================= -->
+        <section class="card row-gap" id="exportCard" aria-labelledby="dlTitle">
+            <div class="card-head">
+                <div class="card-ic"><svg class="ic">
+                        <use href="#i-download" />
+                    </svg></div>
+                <div>
+                    <h2 class="card-title" id="dlTitle">Download &amp; Export</h2>
+                    <p class="card-sub">Files are generated on your device — your exact current text</p>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="dl-grid">
+                    <button class="dl-btn" id="dlTxt" type="button"><span class="dl-badge b-txt">TXT</span><span><span
+                                class="dl-name">Plain text</span><br><span class="dl-desc">Preserves line breaks, Hindi,
+                                Unicode &amp; emojis</span></span></button>
+                    <button class="dl-btn" id="dlDocx" type="button"><span class="dl-badge b-doc">DOCX</span><span><span
+                                class="dl-name">Word document</span><br><span class="dl-desc">Opens in Word, Google Docs
+                                &amp; LibreOffice</span></span></button>
+                    <button class="dl-btn" id="dlPdf" type="button"><span class="dl-badge b-pdf">PDF</span><span><span
+                                class="dl-name">PDF document</span><br><span class="dl-desc">Multi-page A4, rendered
+                                locally</span></span></button>
+                </div>
+                <p class="hint">Filenames: Tools24-Word-Counter.txt / .docx / .pdf — nothing leaves your browser during
+                    export.</p>
+            </div>
+        </section>
+
+        <!-- ================= SEO content ================= -->
+        <div class="seo">
+            <section class="card seo-block">
+                <h2>What is a Word Counter?</h2>
+                <p>A word counter is a writing utility that measures a piece of text as you type or paste it. Beyond the
+                    headline word count, a good counter tells you how many characters (with and without spaces),
+                    sentences and paragraphs you have written, how long the text takes to read or deliver aloud, and how
+                    the vocabulary is distributed. Writers use these numbers to hit assignment limits, editors use them
+                    to enforce briefs, and marketers watch character counts to fit meta descriptions, ad copy and social
+                    posts.</p>
+            </section>
+            <section class="card seo-block">
+                <h2>How to Count Words Online?</h2>
+                <ul>
+                    <li>Click into the editor and type, or press the <strong>Paste</strong> button to bring in text from
+                        your clipboard.</li>
+                    <li>All six core counters update instantly — words, characters, characters without spaces,
+                        sentences, paragraphs and lines.</li>
+                    <li>Optionally set a <strong>Writing Goal</strong> (for example, 1,000 words) and watch the live
+                        progress bar fill up.</li>
+                    <li>Open <strong>Text Analysis</strong> and <strong>Readability</strong> to polish vocabulary and
+                        sentence structure.</li>
+                    <li>When you are done, export the exact text as TXT, DOCX or PDF — generated entirely on your
+                        device.</li>
+                </ul>
+            </section>
+            <section class="card seo-block">
+                <h2>Who Can Use This Word Counter?</h2>
+                <p>Students checking essay limits, blog and book writers tracking daily output, translators billing per
+                    word, legal and academic professionals working inside strict length rules, social media managers
+                    fitting posts into platform character caps, and teachers preparing reading-time estimates for
+                    handouts. Because the tool understands Devanagari and other Unicode scripts, it is just as accurate
+                    for Hindi composition as it is for English.</p>
+            </section>
+            <section class="card seo-block">
+                <h2>Word Count vs Character Count</h2>
+                <p>Word count measures how many words a text contains; character count measures every individual letter,
+                    digit, punctuation mark and space. Universities and publishers usually specify words, while
+                    platforms with hard input limits — tweets, SMS, meta titles and descriptions — specify characters.
+                </p>
+                <div class="table-scroll">
+                    <table class="compare-table">
+                        <thead>
+                            <tr>
+                                <th>Where it matters</th>
+                                <th>Usual limit</th>
+                                <th>Measured in</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Essays &amp; assignments</td>
+                                <td>250 – 5,000</td>
+                                <td>Words</td>
+                            </tr>
+                            <tr>
+                                <td>Blog &amp; SEO articles</td>
+                                <td>800 – 3,000</td>
+                                <td>Words</td>
+                            </tr>
+                            <tr>
+                                <td>Meta description</td>
+                                <td>~155</td>
+                                <td>Characters</td>
+                            </tr>
+                            <tr>
+                                <td>Social posts</td>
+                                <td>280 – 2,200</td>
+                                <td>Characters</td>
+                            </tr>
+                            <tr>
+                                <td>Text message (SMS)</td>
+                                <td>160</td>
+                                <td>Characters</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="card seo-block">
+                <h2>Frequently Asked Questions</h2>
+                <details class="faq-item">
+                    <summary>What is a word counter?<svg class="ic chev">
+                            <use href="#i-chevron" />
+                        </svg></summary>
+                    <p>A word counter is a tool that counts the words, characters, sentences and paragraphs in your text
+                        in real time as you type or paste it, so you never have to count manually.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>How accurate is the Tools24 word counter?<svg class="ic chev">
+                            <use href="#i-chevron" />
+                        </svg></summary>
+                    <p>It uses Unicode-aware tokenisation similar to major word processors: hyphenated words and
+                        contractions like “state-of-the-art” or “don’t” count as one word, stray punctuation is ignored,
+                        and numbers attached to words (like Tools24) stay part of the same word.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Does it count Hindi words?<svg class="ic chev">
+                            <use href="#i-chevron" />
+                        </svg></summary>
+                    <p>Yes. Devanagari text — including matras and conjuncts — is tokenised correctly, and the Hindi
+                        danda (।) and double danda (॥) are treated as sentence endings just like a full stop.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Does it count characters?<svg class="ic chev">
+                            <use href="#i-chevron" />
+                        </svg></summary>
+                    <p>Yes, both including and excluding spaces. Counting is grapheme-aware, so a multi-part emoji such
+                        as a family counts as a single character rather than several broken code units.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Can I download my text?<svg class="ic chev">
+                            <use href="#i-chevron" />
+                        </svg></summary>
+                    <p>Yes — export your exact current text as TXT, DOCX or PDF. Every file is generated locally in your
+                        browser and preserves line breaks, Hindi, Unicode and emojis.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Is my text uploaded?<svg class="ic chev">
+                            <use href="#i-chevron" />
+                        </svg></summary>
+                    <p>No. Counting, analysis and file generation all happen on your device. Your text stays in your
+                        browser and is never sent to a server just to count words.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Can I use it on mobile?<svg class="ic chev">
+                            <use href="#i-chevron" />
+                        </svg></summary>
+                    <p>Absolutely. The layout is mobile-first and works comfortably on screens from 320 px wide up to
+                        large desktop monitors, with touch-friendly buttons throughout.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Can I calculate reading time?<svg class="ic chev">
+                            <use href="#i-chevron" />
+                        </svg></summary>
+                    <p>Yes. Reading time is estimated at 200 words per minute and speaking time at 130 words per minute
+                        — shown as “Less than 1 min” or minutes and seconds, never decimals.</p>
+                </details>
+            </section>
+        </div>
+    </main>
+
+    <!-- ================= Footer ================= -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <span class="footer-brand"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 38 38">
+                        <rect width="38" height="38" rx="11" fill="url(#lg)" />
+                        <path d="M11 12h16M19 12v14" stroke="#fff" stroke-width="2.6" stroke-linecap="round" />
+                        <path d="M13 26h6" stroke="#fff" stroke-width="2.6" stroke-linecap="round" opacity=".55" />
+                    </svg></span>Tools<span class="grad-text">24</span></span>
+            <nav class="footer-nav" aria-label="Footer"><!-- match your existing routes -->
+                <a href="/">Home</a><a href="/about">About</a><a href="/privacy">Privacy</a><a
+                    href="/contact">Contact</a>
+            </nav>
+            <span class="footer-copy">© <span id="year"></span> Tools24 · Tools24 — all counting happens locally in
+                your browser.</span>
+        </div>
+    </footer>
+
+    <div class="toast-stack" id="toastStack" role="status" aria-live="polite"></div>
+    <noscript>
+        <p style="text-align:center;padding:20px">The Tools24 Word Counter needs JavaScript to run — please enable it.
+        </p>
+    </noscript>
+
+    <script>
+        (function () {
+            'use strict';
+
+            /* ==================== Utilities ==================== */
+            const $ = id => document.getElementById(id);
+            const fmt = n => n.toLocaleString('en-US');
+            const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+            const trunc = (s, n) => { const a = [...s]; return a.length > n ? a.slice(0, n).join('') + '…' : s; };
+            const cpLen = w => { let n = 0; for (const _ of w) n++; return n; };
+            function toast(msg, type) {
+                type = type || 'info';
+                const t = document.createElement('div');
+                t.className = 'toast t-' + type;
+                const ic = type === 'success' ? 'i-check' : type === 'error' ? 'i-alert' : 'i-info';
+                t.innerHTML = '<svg class="ic t-ic"><use href="#' + ic + '"/></svg><span></span>';
+                t.querySelector('span').textContent = msg;
+                $('toastStack').appendChild(t);
+                requestAnimationFrame(() => t.classList.add('show'));
+                setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 320); }, 3400);
+            }
+            function downloadBlob(blob, filename) {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url; a.download = filename;
+                document.body.appendChild(a); a.click(); a.remove();
+                setTimeout(() => URL.revokeObjectURL(url), 5000);
+            }
+            function concatBytes(list) {
+                let len = 0; for (const c of list) len += c.length;
+                const out = new Uint8Array(len); let o = 0;
+                for (const c of list) { out.set(c, o); o += c.length; }
+                return out;
+            }
+
+            /* ==================== Theme ==================== */
+            $('themeToggle').addEventListener('click', () => {
+                const root = document.documentElement;
+                const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                root.setAttribute('data-theme', next);
+                try { localStorage.setItem('t24-theme', next); } catch (e) { }
+                $('themeToggle').setAttribute('aria-label', next === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+            });
+            $('themeToggle').setAttribute('aria-label',
+                document.documentElement.getAttribute('data-theme') === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+
+            /* ==================== Mobile menu ==================== */
+            const menuBtn = $('menuToggle'), nav = $('mainNav');
+            function closeMenu() { nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); }
+            menuBtn.addEventListener('click', e => {
+                e.stopPropagation();
+                const open = nav.classList.toggle('open');
+                menuBtn.setAttribute('aria-expanded', String(open));
+            });
+            document.addEventListener('click', e => { if (nav.classList.contains('open') && !nav.contains(e.target)) closeMenu(); });
+            document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+            nav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+            const header = $('siteHeader');
+            addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 8), { passive: true });
+
+            /* ==================== Unicode-aware counting engine ==================== */
+            // Word tokens: letter/number/combining-mark runs (incl. ZWJ/ZWNJ for Hindi),
+            // glued by apostrophes/dashes so "don't" and "state-of-the-art" stay one word.
+            const RE_TOKEN = /[\p{L}\p{N}\p{M}\u200C\u200D]+(?:[\u0027\u2019\u2010\u2011\u2012\u2013\u2014][\p{L}\p{N}\p{M}\u200C\u200D]+)*/gu;
+            // CJK scripts have no spaces — each ideograph counts as one word (Word-compatible)
+            const RE_CJK = /[\u3040-\u30FF\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF\uAC00-\uD7AF\u3005\u3006]/gu;
+            function getTokens(text) {
+                const cjk = text.match(RE_CJK);
+                const rest = text.replace(RE_CJK, ' ');
+                const words = rest.match(RE_TOKEN) || [];
+                return cjk ? words.concat(cjk) : words;
+            }
+            const seg = (typeof Intl !== 'undefined' && Intl.Segmenter)
+                ? new Intl.Segmenter(undefined, { granularity: 'grapheme' }) : null;
+            function countGraphemes(text) {
+                if (seg) { let n = 0; for (const _ of seg.segment(text)) n++; return n; }
+                return cpLen(text); // code points fallback
+            }
+            function countGraphemesNoSpaces(text) {
+                if (seg) { let n = 0; for (const s of seg.segment(text)) { if (!/^\s+$/.test(s.segment)) n++; } return n; }
+                let n = 0; for (const c of text) { if (!/\s/.test(c)) n++; } return n;
+            }
+            const TERM = '.?!।॥…', CLOSERS = '"\'\u201D\u2019)\]»';
+            const ABBR_RE = /(?:^|[\s(\["'\u201C\u2018])(?:mr|mrs|ms|dr|prof|sr|jr|st|vs|etc|inc|ltd|co|corp|dept|est|approx|fig|no|vol|ed|al|e\.g|i\.e|a\.m|p\.m|u\.s|u\.k)$/i;
+            const INITIAL_RE = /(?:^|[\s(\["'\u201C\u2018])[A-Za-z]$/;
+            const HAS_CHAR = /[\p{L}\p{N}]/u;
+            function splitSentences(text) {
+                const out = []; const n = text.length; let start = 0;
+                for (let i = 0; i < n; i++) {
+                    const ch = text[i];
+                    if (TERM.includes(ch)) {
+                        let j = i + 1;
+                        while (j < n && TERM.includes(text[j])) j++;           // “…?!” runs count once
+                        while (j < n && CLOSERS.includes(text[j])) j++;        // trailing quote/bracket
+                        const next = j + 1 <= n ? text.slice(j, j + 2) : '';
+                        if (j >= n || /^\s/.test(next)) {
+                            const core = text.slice(start, i);
+                            if (ABBR_RE.test(core) || INITIAL_RE.test(core)) continue; // “Dr.”, “J.” — not a boundary
+                            const s = text.slice(start, j);
+                            if (HAS_CHAR.test(s)) out.push(s.trim());
+                            start = j; i = j - 1;
+                        }
+                    }
+                }
+                const tail = text.slice(start);
+                if (HAS_CHAR.test(tail)) out.push(tail.trim());
+                return out;
+            }
+            function countParagraphs(text) {
+                const t = text.trim(); if (!t) return 0;
+                let n = 0; for (const b of t.split(/\n\s*\n+/)) if (b.trim()) n++;
+                return n;
+            }
+            function countLines(text) {
+                if (!text.trim()) return 0;
+                let n = 0; for (const l of text.split(/\r\n|\r|\n/)) if (l.trim()) n++;
+                return n;
+            }
+            function formatDuration(words, wpm) {
+                if (words <= 0) return '—';
+                const total = Math.round(words / wpm * 60);
+                if (total < 60) return 'Less than 1 min';
+                const m = Math.floor(total / 60), s = total % 60;
+                return s ? m + ' min ' + s + ' sec' : m + ' min';
+            }
+
+            /* ==================== DOM refs ==================== */
+            const editor = $('editor');
+            const el = {
+                words: $('stWords'), chars: $('stChars'), charsNs: $('stCharsNs'), sent: $('stSent'), para: $('stPara'), lines: $('stLines'),
+                read: $('mRead'), speak: $('mSpeak'), avgLen: $('mAvgLen'), tokens: $('mTokens'),
+                status: $('statusCounts'), live: $('liveStatus'),
+                aAvgLen: $('aAvgLen'), aUnique: $('aUnique'), aLongest: $('aLongest'), aRepeated: $('aRepeated'), aShortest: $('aShortest'), aAvgSent: $('aAvgSent'),
+                analysisGrid: $('analysisGrid'), analysisEmpty: $('analysisEmpty'), analysisExtra: $('analysisExtra'), mostUsed: $('mostUsed'),
+                readContent: $('readContent'), kwContent: $('kwContent'),
+                goalSetup: $('goalSetup'), goalActive: $('goalActive'), goalInput: $('goalInput'),
+                goalCurrent: $('goalCurrent'), goalTarget: $('goalTarget'), goalUnit: $('goalUnit'),
+                goalFill: $('goalFill'), goalPct: $('goalPct'), goalRemain: $('goalRemain'),
+                findInput: $('findInput'), replaceInput: $('replaceInput'), matchCount: $('matchCount'),
+                optCase: $('optCase'), optWhole: $('optWhole')
+            };
+
+            /* ==================== History (undo / redo) ==================== */
+            let histStack = [{ v: '', s: 0, e: 0, t: 0 }], histIndex = 0, histTimer = 0;
+            function snapshot() {
+                const v = editor.value;
+                if (histStack[histIndex].v === v) return;
+                histStack = histStack.slice(0, histIndex + 1);
+                histStack.push({ v, s: editor.selectionStart || 0, e: editor.selectionEnd || 0, t: editor.scrollTop });
+                if (histStack.length > 250) histStack.shift();
+                histIndex = histStack.length - 1;
+                updateHistBtns();
+            }
+            function debouncedSnapshot() { clearTimeout(histTimer); histTimer = setTimeout(snapshot, 400); }
+            function restore(i) {
+                histIndex = i;
+                const s = histStack[i];
+                editor.value = s.v;
+                try { editor.setSelectionRange(s.s, s.e); } catch (e) { }
+                editor.scrollTop = s.t;
+                afterTextEdit();
+            }
+            function undo() { if (histIndex > 0) restore(histIndex - 1); }
+            function redo() { if (histIndex < histStack.length - 1) restore(histIndex + 1); }
+            function updateHistBtns() {
+                $('btnUndo').disabled = histIndex <= 0;
+                $('btnRedo').disabled = histIndex >= histStack.length - 1;
+            }
+            editor.addEventListener('keydown', e => {
+                if (!(e.ctrlKey || e.metaKey)) return;
+                const k = e.key.toLowerCase();
+                if (k === 'z' && !e.shiftKey) { e.preventDefault(); undo(); }
+                else if (k === 'y' || (k === 'z' && e.shiftKey)) { e.preventDefault(); redo(); }
+            });
+
+            /* ==================== Stats pipeline (instant + heavy) ==================== */
+            let rafId = 0, heavyTimer = 0, liveTimer = 0, lastStats = { words: 0, chars: 0, sentences: 0, lines: 0 };
+            function computeStats(text) {
+                const tokens = getTokens(text);
+                const big = text.length > 120000; // degrade to code points on extreme inputs to stay responsive
+                const chars = big ? cpLen(text) : countGraphemes(text);
+                const charsNs = big ? (() => { let n = 0; for (const c of text) { if (!/\s/.test(c)) n++; } return n; })() : countGraphemesNoSpaces(text);
+                return {
+                    tokens, words: tokens.length, chars, charsNs,
+                    sentences: splitSentences(text).length, paragraphs: countParagraphs(text), lines: countLines(text)
+                };
+            }
+            function renderBasic(st) {
+                setTextIf(el.words, fmt(st.words));
+                setTextIf(el.chars, fmt(st.chars));
+                setTextIf(el.charsNs, fmt(st.charsNs));
+                setTextIf(el.sent, fmt(st.sentences));
+                setTextIf(el.para, fmt(st.paragraphs));
+                setTextIf(el.lines, fmt(st.lines));
+                el.status.textContent = fmt(st.words) + ' words · ' + fmt(st.chars) + ' characters';
+                el.read.textContent = formatDuration(st.words, 200);
+                el.speak.textContent = formatDuration(st.words, 130);
+                el.avgLen.textContent = st.words ? (avgWordLen(st.tokens)).toFixed(1) : '—';
+                el.tokens.textContent = fmt(Math.ceil(st.chars / 4)); // ≈4 chars per token heuristic
+                lastStats = st;
+                updateGoalUI(st);
+            }
+            function setTextIf(node, v) { if (node.textContent !== v) node.textContent = v; }
+            function avgWordLen(tokens) {
+                if (!tokens.length) return 0;
+                let sum = 0; for (const w of tokens) sum += cpLen(w);
+                return sum / tokens.length;
+            }
+            function runBasic() {
+                renderBasic(computeStats(editor.value));
+            }
+            function scheduleStats() {
+                if (rafId) cancelAnimationFrame(rafId);
+                rafId = requestAnimationFrame(() => { rafId = 0; runBasic(); });
+                clearTimeout(heavyTimer);
+                heavyTimer = setTimeout(runHeavy, 220);
+                clearTimeout(liveTimer);
+                liveTimer = setTimeout(() => {
+                    const st = lastStats;
+                    el.live.textContent = fmt(st.words) + ' words, ' + fmt(st.chars) + ' characters, ' + fmt(st.sentences) + ' sentences.';
+                    refreshMatchCount();
+                }, 1100);
+            }
+            function runHeavy() {
+                const text = editor.value;
+                const st = computeStats(text);
+                renderAnalysis(st);
+                renderReadability(st);
+                renderKeywords(st);
+            }
+
+            /* ==================== Text analysis ==================== */
+            const STOP = new Set(('a,an,the,and,or,but,nor,for,so,yet,as,at,by,in,of,on,to,up,off,is,am,are,was,were,be,been,being,it,its,' +
+                'this,that,these,those,he,she,they,them,his,her,their,we,us,our,you,your,i,me,my,with,from,into,onto,over,than,then,there,here,' +
+                'if,not,no,do,does,did,done,has,have,had,will,would,can,could,should,shall,may,might,must,about,after,before,between,during,' +
+                'और,का,की,के,है,हैं,में,यह,वह,एक,पर,को,से,भी,जो,कि,था,थी,थे,हूँ,हो,ने,कोई,ये,वे,तो,ही,तक').split(','));
+            function renderAnalysis(st) {
+                const empty = st.words === 0;
+                el.analysisGrid.hidden = empty; el.analysisEmpty.hidden = !empty; el.analysisExtra.hidden = empty;
+                if (empty) return;
+                let longest = '', shortest = null, uniq = new Set();
+                const freq = new Map();
+                for (const w of st.tokens) {
+                    const len = cpLen(w);
+                    if (len > cpLen(longest)) longest = w;
+                    if (shortest === null || len < cpLen(shortest)) shortest = w;
+                    const k = w.toLowerCase();
+                    uniq.add(k);
+                    freq.set(k, (freq.get(k) || 0) + 1);
+                }
+                let repeated = 0; for (const c of freq.values()) if (c > 1) repeated++;
+                el.aAvgLen.textContent = avgWordLen(st.tokens).toFixed(1);
+                el.aUnique.textContent = fmt(uniq.size);
+                el.aLongest.textContent = trunc(longest, 24);
+                el.aLongest.title = longest;
+                el.aShortest.textContent = trunc(shortest || '', 24);
+                el.aRepeated.textContent = fmt(repeated);
+                el.aAvgSent.textContent = st.sentences ? (st.words / st.sentences).toFixed(1) + ' words' : '—';
+                const top = [...freq.entries()].sort((a, b) => b[1] - a[1]).slice(0, 5);
+                el.mostUsed.innerHTML = top.map(([w, c]) =>
+                    '<div class="mu-row"><span class="mu-word">' + esc(trunc(w, 26)) + '</span><span class="mu-n">×' + c + ' · ' + ((c / st.words) * 100).toFixed(1) + '%</span></div>'
+                ).join('');
+            }
+            function renderKeywords(st) {
+                if (st.words === 0) {
+                    el.kwContent.innerHTML = '<div class="read-notice"><svg class="ic"><use href="#i-tag"/></svg><span>Start writing to discover your most frequent words. Common stop words such as “the”, “is” or Hindi “और”, “है” are filtered automatically — Hindi keywords are analysed in full.</span></div>';
+                    return;
+                }
+                const freq = new Map();
+                for (const w of st.tokens) {
+                    const k = w.toLowerCase();
+                    if (k.length < 2 && !/[\u3040-\u30FF\u4E00-\u9FFF\uAC00-\uD7AF]/.test(k)) continue;
+                    if (STOP.has(k)) continue;
+                    freq.set(k, (freq.get(k) || 0) + 1);
+                }
+                const top = [...freq.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 10);
+                if (!top.length) {
+                    el.kwContent.innerHTML = '<div class="read-notice"><svg class="ic"><use href="#i-info"/></svg><span>No significant keywords yet — write a little more and meaningful words will appear here.</span></div>';
+                    return;
+                }
+                const max = top[0][1];
+                el.kwContent.innerHTML = top.map(([w, c], i) =>
+                    '<div class="kw-row"><span class="kw-rank">' + (i + 1) + '</span><span class="kw-word" title="' + esc(w) + '">' + esc(trunc(w, 22)) +
+                    '</span><span class="kw-bar"><i style="width:' + Math.max(6, Math.round(c / max * 100)) + '%"></i></span><span class="kw-n">' + c + ' · ' + ((c / st.words) * 100).toFixed(1) + '%</span></div>'
+                ).join('');
+            }
+
+            /* ==================== Readability (Flesch, English-gated) ==================== */
+            function syllablesEN(word) {
+                const w = word.toLowerCase().replace(/[^a-z]/g, '');
+                if (!w) return 1;
+                const t = w.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '').replace(/^y/, '');
+                const m = t.match(/[aeiouy]{1,2}/g);
+                return Math.max(1, m ? m.length : 1);
+            }
+            const LATIN_OK = /^[\p{Script=Latin}\p{N}\u0027\u2019-]+$/u;
+            function renderReadability(st) {
+                if (st.words === 0) { renderReadNotice('Readability scores appear here once you write. Flesch formulas need English text — Hindi and other scripts keep counting normally but are gracefully excluded from these scores.'); return; }
+                const latin = st.tokens.filter(w => LATIN_OK.test(w));
+                const ratioOk = latin.length / st.words >= 0.6;
+                if (!ratioOk) { renderReadNotice('Readability formulas apply to English text. Your text is primarily in another script (such as Hindi), so all counts continue normally while these scores stay disabled.'); return; }
+                if (latin.length < 30 || st.sentences < 2) { renderReadNotice('Not enough English text for reliable readability analysis.'); return; }
+                let syl = 0; for (const w of latin) syl += syllablesEN(w);
+                const wps = latin.length / st.sentences, spw = syl / latin.length;
+                const ease = Math.max(0, Math.min(100, 206.835 - 1.015 * wps - 84.6 * spw));
+                const grade = Math.max(1, 0.39 * wps + 11.8 * spw - 15.59);
+                const lbl = ease >= 90 ? ['Very Easy', 'ok'] : ease >= 80 ? ['Easy', 'ok'] : ease >= 70 ? ['Fairly Easy', 'ok'] : ease >= 60 ? ['Plain English', 'good'] : ease >= 50 ? ['Fairly Difficult', 'warn'] : ease >= 30 ? ['Difficult', 'warn'] : ['Very Difficult', 'warn'];
+                el.readContent.innerHTML =
+                    '<div class="read-score-row"><span class="read-score">' + ease.toFixed(0) + '</span><span class="read-label ' + lbl[1] + '">' + lbl[0] + ' · Reading Ease</span></div>' +
+                    '<div class="gauge"><div class="gauge-track"><div class="gauge-marker" style="left:' + ease.toFixed(1) + '%"></div></div>' +
+                    '<div class="gauge-labels"><span>Hard</span><span>Moderate</span><span>Easy</span></div></div>' +
+                    '<div class="analysis-grid read-grid">' +
+                    '<div class="an-item"><span class="an-k">Grade level (Flesch–Kincaid)</span><span class="an-v">' + grade.toFixed(1) + '</span></div>' +
+                    '<div class="an-item"><span class="an-k">Avg sentence length</span><span class="an-v">' + wps.toFixed(1) + ' words</span></div>' +
+                    '<div class="an-item"><span class="an-k">Avg word length</span><span class="an-v">' + avgWordLen(st.tokens).toFixed(1) + ' chars</span></div>' +
+                    '<div class="an-item"><span class="an-k">Syllables per word</span><span class="an-v">' + spw.toFixed(2) + '</span></div>' +
+                    '</div>';
+            }
+            function renderReadNotice(msg) {
+                el.readContent.innerHTML = '<div class="read-notice"><svg class="ic"><use href="#i-info"/></svg><span>' + esc(msg) + '</span></div>';
+            }
+
+            /* ==================== Writing goal ==================== */
+            let goal = null;
+            try { const g = JSON.parse(localStorage.getItem('t24-goal') || 'null'); if (g && (g.type === 'words' || g.type === 'chars') && g.target > 0) goal = g; } catch (e) { }
+            document.querySelectorAll('.seg').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.seg').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-checked', 'false'); });
+                    btn.classList.add('active'); btn.setAttribute('aria-checked', 'true');
+                });
+            });
+            $('goalForm').addEventListener('submit', e => {
+                e.preventDefault();
+                const target = parseInt(el.goalInput.value, 10);
+                if (!target || target < 1) { toast('Enter a valid target (1 or more).', 'error'); el.goalInput.focus(); return; }
+                const type = document.querySelector('.seg.active').dataset.type;
+                goal = { type, target };
+                try { localStorage.setItem('t24-goal', JSON.stringify(goal)); } catch (e2) { }
+                renderGoal();
+                toast('Goal set: ' + fmt(target) + ' ' + type + ' — saved on this device.', 'success');
+            });
+            $('goalEdit').addEventListener('click', () => {
+                el.goalInput.value = goal ? goal.target : '';
+                el.goalSetup.hidden = false; el.goalActive.hidden = true;
+                el.goalInput.focus();
+            });
+            $('goalReset').addEventListener('click', () => {
+                goal = null;
+                try { localStorage.removeItem('t24-goal'); } catch (e) { }
+                el.goalSetup.hidden = false; el.goalActive.hidden = true;
+                el.goalInput.value = '';
+                toast('Goal cleared.', 'info');
+            });
+            function renderGoal() {
+                if (!goal) { el.goalSetup.hidden = false; el.goalActive.hidden = true; return; }
+                el.goalSetup.hidden = true; el.goalActive.hidden = false;
+                el.goalTarget.textContent = fmt(goal.target);
+                el.goalUnit.textContent = goal.type;
+                updateGoalUI(lastStats);
+            }
+            function updateGoalUI(st) {
+                if (!goal || el.goalActive.hidden) return;
+                const cur = goal.type === 'words' ? st.words : st.chars;
+                const pct = Math.min(100, cur / goal.target * 100);
+                const remain = Math.max(0, goal.target - cur);
+                el.goalCurrent.textContent = fmt(cur);
+                el.goalFill.style.width = pct.toFixed(1) + '%';
+                el.goalPct.textContent = Math.floor(pct) + '%';
+                const done = cur >= goal.target;
+                el.goalActive.classList.toggle('goal-done', done);
+                el.goalPct.classList.toggle('done', done);
+                el.goalRemain.innerHTML = done
+                    ? '<span class="done">Target reached — great writing!</span>'
+                    : fmt(remain) + ' ' + goal.type.slice(0, 4 === 'word' ? 4 : 4) + (goal.type === 'words' ? 's' : '') + ' remaining';
+            }
+
+            /* ==================== Editor plumbing ==================== */
+            function autoResize() {
+                editor.style.height = 'auto';
+                const min = parseInt(getComputedStyle(editor).minHeight, 10) || 300;
+                const max = innerWidth > 768 ? 860 : 560;
+                editor.style.height = Math.min(Math.max(editor.scrollHeight, min), max) + 'px';
+            }
+            function updateActionStates() {
+                const has = editor.value.length > 0;
+                $('btnCopy').disabled = !has;
+                $('btnClear').disabled = !has;
+                $('btnDownload').disabled = !has;
+                $('dlTxt').disabled = !has; $('dlDocx').disabled = !has; $('dlPdf').disabled = !has;
+                document.querySelectorAll('.fmt-btn').forEach(b => b.disabled = !has);
+            }
+            let typingTimer = 0;
+            function afterTextEdit(focus) {
+                if (focus !== false) editor.focus();
+                autoResize(); scheduleStats(); updateActionStates(); updateHistBtns();
+            }
+            editor.addEventListener('input', () => {
+                debouncedSnapshot();
+                scheduleStats();
+                updateActionStates();
+                autoResize();
+                editorCard.classList.add('typing');
+                clearTimeout(typingTimer);
+                typingTimer = setTimeout(() => editorCard.classList.remove('typing'), 900);
+            });
+            const editorCard = $('editorCard');
+            function setText(v, msg) {
+                snapshot();
+                editor.value = v;
+                snapshot();
+                afterTextEdit();
+                if (msg) toast(msg, 'success');
+            }
+            $('btnNew').addEventListener('click', () => {
+                setText('', 'New document started — press Ctrl+Z to restore the previous text.');
+            });
+            $('btnClear').addEventListener('click', () => {
+                if (!editor.value.trim()) { toast('The editor is already empty.', 'info'); return; }
+                setText('', 'Cleared — press Ctrl+Z to bring it back.');
+            });
+            $('btnUndo').addEventListener('click', undo);
+            $('btnRedo').addEventListener('click', redo);
+            $('btnExport').addEventListener('click', () => {
+                const card = $('exportCard');
+                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                card.classList.remove('flash'); void card.offsetWidth; card.classList.add('flash');
+            });
+
+            /* ==================== Clipboard ==================== */
+            function fallbackCopy(v) {
+                try {
+                    const ta = document.createElement('textarea');
+                    ta.value = v; ta.style.position = 'fixed'; ta.style.opacity = '0';
+                    document.body.appendChild(ta); ta.select();
+                    const ok = document.execCommand('copy'); ta.remove(); return ok;
+                } catch (e) { return false; }
+            }
+            $('btnCopy').addEventListener('click', async () => {
+                const v = editor.value;
+                if (!v) { toast('Nothing to copy yet.', 'info'); return; }
+                try {
+                    if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(v); }
+                    else if (!fallbackCopy(v)) throw new Error('no-fallback');
+                    toast('Copied! The full text is on your clipboard.', 'success');
+                } catch (e) {
+                    toast(fallbackCopy(v) ? 'Copied!' : 'Copy failed — click in the editor, press Ctrl+A then Ctrl+C.', fallbackCopy(v) ? 'success' : 'error');
+                }
+            });
+            function insertAtCursor(t) {
+                snapshot();
+                const s = editor.selectionStart || 0, e = editor.selectionEnd || 0;
+                const v = editor.value;
+                editor.value = v.slice(0, s) + t + v.slice(e);
+                snapshot();
+                afterTextEdit();
+                try { editor.setSelectionRange(s + t.length, s + t.length); } catch (err) { }
+            }
+            $('btnPaste').addEventListener('click', async () => {
+                try {
+                    if (!(navigator.clipboard && navigator.clipboard.readText)) throw new Error('unsupported');
+                    const t = await navigator.clipboard.readText();
+                    if (!t) { toast('Your clipboard appears to be empty.', 'info'); return; }
+                    insertAtCursor(t);
+                    toast('Pasted from clipboard.', 'success');
+                } catch (e) {
+                    editor.focus();
+                    toast('Clipboard access is blocked here — click in the editor and press Ctrl+V (or ⌘V).', 'info');
+                }
+            });
+
+            /* ==================== Formatting tools ==================== */
+            const SMALL = new Set('a,an,the,and,but,or,nor,for,yet,so,as,at,by,in,of,on,to,up,off,via,with,from,into,onto,over,per,than'.split(','));
+            const TRANSFORMS = {
+                upper: v => v.toUpperCase(),
+                lower: v => v.toLowerCase(),
+                title: v => {
+                    const parts = v.split(/(\s+)/);
+                    const wordIdx = parts.map((p, i) => /\p{L}/u.test(p) ? i : -1).filter(i => i >= 0);
+                    if (!wordIdx.length) return v;
+                    return parts.map((p, i) => {
+                        if (!/\p{L}/u.test(p)) return p;
+                        const lower = p.toLowerCase();
+                        if (i !== wordIdx[0] && i !== wordIdx[wordIdx.length - 1] && SMALL.has(lower)) return lower;
+                        return lower.replace(/^(\P{L}*)(\p{L})/u, (m, pre, c) => pre + c.toUpperCase());
+                    }).join('');
+                },
+                sentence: v => v.toLowerCase().replace(/(^|[.!?।॥…]["')\]\u201D\u2019]*\s+|\n+)([\p{L}])/gu, (m, p, c) => p + c.toUpperCase()),
+                capitalize: v => v.replace(/(^|\P{L}*)(\p{L})/gu, (m, pre, c) => pre + c.toUpperCase()),
+                spaces: v => v.replace(/[^\S\n]+/g, ' ').replace(/ ?\n ?/g, '\n').replace(/^ +| +$/g, ''),
+                emptylines: v => v.split('\n').filter(l => l.trim() !== '').join('\n'),
+                trim: v => v.split('\n').map(l => l.replace(/\s+$/, '')).join('\n').replace(/^\s+|\s+$/g, '')
+            };
+            const FMT_LABEL = { upper: 'Converted to UPPERCASE.', lower: 'Converted to lowercase.', title: 'Applied Title Case.', sentence: 'Applied sentence case.', capitalize: 'Capitalized each word.', spaces: 'Removed extra spaces.', emptylines: 'Removed empty lines.', trim: 'Trimmed the text.' };
+            document.querySelectorAll('.fmt-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if (!editor.value.trim()) { toast('Nothing to format — the editor is empty.', 'info'); return; }
+                    const pos = editor.selectionStart || 0;
+                    snapshot();
+                    const out = TRANSFORMS[btn.dataset.action](editor.value);
+                    if (out === editor.value) { toast('Already formatted — nothing to change.', 'info'); return; }
+                    editor.value = out;
+                    snapshot();
+                    try { editor.setSelectionRange(Math.min(pos, out.length), Math.min(pos, out.length)); } catch (e) { }
+                    afterTextEdit();
+                    toast(FMT_LABEL[btn.dataset.action], 'success');
+                });
+            });
+
+            /* ==================== Find & Replace ==================== */
+            function escapeRegExp(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+            let findCursor = 0;
+            function buildFindRegex() {
+                const term = el.findInput.value;
+                if (!term) return null;
+                let flags = 'g' + (el.optCase.checked ? '' : 'i');
+                let src = escapeRegExp(term);
+                if (el.optWhole.checked) {
+                    try { src = '(?<![\\p{L}\\p{N}_])' + src + '(?![\\p{L}\\p{N}_])'; flags += 'u'; }
+                    catch (e) { src = '\\b' + src + '\\b'; }
+                }
+                try { return new RegExp(src, flags); } catch (e) { return null; }
+            }
+            function refreshMatchCount() {
+                const term = el.findInput.value;
+                if (!term) { el.matchCount.hidden = true; return; }
+                const re = buildFindRegex();
+                const n = re ? ((editor.value.match(re) || []).length) : 0;
+                el.matchCount.hidden = false;
+                el.matchCount.textContent = n ? fmt(n) + (n === 1 ? ' match' : ' matches') : 'No matches';
+            }
+            let mcTimer = 0;
+            function debounceCount() { clearTimeout(mcTimer); mcTimer = setTimeout(refreshMatchCount, 150); }
+            el.findInput.addEventListener('input', debounceCount);
+            el.optCase.addEventListener('change', debounceCount);
+            el.optWhole.addEventListener('change', debounceCount);
+            function lineHeight() { return parseFloat(getComputedStyle(editor).lineHeight) || 29; }
+            function selectRange(start, end) {
+                editor.focus();
+                try { editor.setSelectionRange(start, end); } catch (e) { }
+                const line = editor.value.slice(0, start).split('\n').length - 1;
+                editor.scrollTop = Math.max(0, line * lineHeight() - editor.clientHeight / 2);
+            }
+            function collectMatches() {
+                const re = buildFindRegex(); if (!re) return [];
+                const text = editor.value, out = []; let m, guard = 0;
+                while ((m = re.exec(text)) && guard < 50000) {
+                    out.push([m.index, m.index + m[0].length]);
+                    if (m.index === re.lastIndex) re.lastIndex++;
+                    guard++;
+                }
+                return out;
+            }
+            $('btnFind').addEventListener('click', findNext);
+            el.findInput.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); findNext(); } });
+            function findNext() {
+                if (!el.findInput.value) { toast('Type something to find first.', 'info'); el.findInput.focus(); return; }
+                const ms = collectMatches();
+                refreshMatchCount();
+                if (!ms.length) { toast('No matches found.', 'info'); return; }
+                const pos = editor.selectionStart || 0;
+                let idx = ms.findIndex(m => m[0] >= pos);
+                if (idx === -1) idx = 0;
+                findCursor = idx;
+                selectRange(ms[idx][0], ms[idx][1]);
+            }
+            el.replaceInput.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); replaceOne(); } });
+            $('btnReplace').addEventListener('click', replaceOne);
+            function replaceOne() {
+                const term = el.findInput.value;
+                if (!term) { toast('Type something to find first.', 'info'); return; }
+                const rv = el.replaceInput.value;
+                const text = editor.value;
+                const s = editor.selectionStart || 0, e = editor.selectionEnd || 0;
+                // If current selection is exactly a match, replace it directly
+                if (e > s) {
+                    const re = buildFindRegex(); re.lastIndex = 0; let m;
+                    while ((m = re.exec(text))) { if (m.index === s && m[0].length === e - s) break; if (m.index === re.lastIndex) re.lastIndex++; }
+                    if (m && m.index === s) {
+                        snapshot();
+                        editor.value = text.slice(0, s) + rv + text.slice(e);
+                        snapshot(); afterTextEdit();
+                        selectRange(s + rv.length, s + rv.length);
+                        refreshMatchCount();
+                        toast('1 replacement made.', 'success');
+                        return;
+                    }
+                }
+                const re = buildFindRegex(); re.lastIndex = s;
+                let target = null, m;
+                while ((m = re.exec(text))) { if (m[0].length) { target = m; break; } re.lastIndex++; }
+                if (!target) { re.lastIndex = 0; while ((m = re.exec(text)) && m.index < s) { if (m[0].length) { target = m; break; } re.lastIndex++; } }
+                if (!target) { toast('No matches found.', 'info'); return; }
+                snapshot();
+                editor.value = text.slice(0, target.index) + rv + text.slice(target.index + target[0].length);
+                snapshot(); afterTextEdit();
+                selectRange(target.index + rv.length, target.index + rv.length);
+                refreshMatchCount();
+                toast('1 replacement made.', 'success');
+            }
+            $('btnReplaceAll').addEventListener('click', () => {
+                const term = el.findInput.value;
+                if (!term) { toast('Type something to find first.', 'info'); return; }
+                const re = buildFindRegex();
+                const count = (editor.value.match(re) || []).length;
+                if (!count) { toast('No matches found.', 'info'); refreshMatchCount(); return; }
+                const rv = el.replaceInput.value;
+                snapshot();
+                editor.value = editor.value.replace(re, () => rv);
+                snapshot(); afterTextEdit();
+                refreshMatchCount();
+                toast(count + ' replacement' + (count === 1 ? '' : 's') + ' made.', 'success');
+            });
+
+            /* ==================== Analysis panel toggle ==================== */
+            $('analysisToggle').addEventListener('click', () => {
+                const open = $('analysisToggle').getAttribute('aria-expanded') === 'true';
+                $('analysisToggle').setAttribute('aria-expanded', String(!open));
+                $('analysisBody').hidden = open;
+            });
+
+            /* ==================== Downloads ==================== */
+            function requireText() {
+                if (!editor.value.trim()) { toast('The editor is empty — nothing to download.', 'error'); return false; }
+                return true;
+            }
+            $('btnDownload').addEventListener('click', downloadTxt);
+            $('dlTxt').addEventListener('click', downloadTxt);
+            function downloadTxt() {
+                if (!requireText()) return;
+                try {
+                    // BOM keeps Hindi/emojis intact in Windows Notepad too
+                    downloadBlob(new Blob(['\uFEFF' + editor.value], { type: 'text/plain;charset=utf-8' }), 'Tools24-Word-Counter.txt');
+                    toast('TXT downloaded — Tools24-Word-Counter.txt', 'success');
+                } catch (e) { toast('Download failed. Please try again.', 'error'); }
+            }
+
+            /* ---- Minimal ZIP (stored entries) → real .docx, no libraries ---- */
+            const CRC_TABLE = (() => {
+                const t = new Uint32Array(256);
+                for (let i = 0; i < 256; i++) { let c = i; for (let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; t[i] = c >>> 0; }
+                return t;
+            })();
+            function crc32(u8) { let c = 0xFFFFFFFF; for (let i = 0; i < u8.length; i++) c = CRC_TABLE[(c ^ u8[i]) & 0xFF] ^ (c >>> 8); return (c ^ 0xFFFFFFFF) >>> 0; }
+            const te = new TextEncoder();
+            const u16 = v => new Uint8Array([v & 255, (v >>> 8) & 255]);
+            const u32 = v => new Uint8Array([v & 255, (v >>> 8) & 255, (v >>> 16) & 255, (v >>> 24) & 255]);
+            function buildZip(entries) {
+                const chunks = [], central = []; let offset = 0;
+                const now = new Date();
+                const dosTime = (now.getHours() << 11) | (now.getMinutes() << 5) | (now.getSeconds() >> 1);
+                const dosDate = ((now.getFullYear() - 1980) << 9) | ((now.getMonth() + 1) << 5) | now.getDate();
+                for (const e of entries) {
+                    const nameB = te.encode(e.name), data = te.encode(e.data);
+                    const crc = crc32(data), sz = data.length;
+                    const local = concatBytes([u32(0x04034b50), u16(20), u16(0x0800), u16(0), u16(dosTime), u16(dosDate), u32(crc), u32(sz), u32(sz), u16(nameB.length), u16(0), nameB]);
+                    chunks.push(local, data);
+                    central.push({ nameB, crc, sz, offset });
+                    offset += local.length + sz;
+                }
+                const cdStart = offset; let cdSize = 0;
+                for (const c of central) {
+                    const rec = concatBytes([u32(0x02014b50), u16(20), u16(20), u16(0x0800), u16(0), u16(dosTime), u16(dosDate), u32(c.crc), u32(c.sz), u32(c.sz), u16(c.nameB.length), u16(0), u16(0), u16(0), u16(0), u32(0), u32(c.offset), c.nameB]);
+                    chunks.push(rec); cdSize += rec.length;
+                }
+                chunks.push(concatBytes([u32(0x06054b50), u16(0), u16(0), u16(central.length), u16(central.length), u32(cdSize), u32(cdStart), u16(0)]));
+                return concatBytes(chunks);
+            }
+            $('dlDocx').addEventListener('click', () => {
+                if (!requireText()) return;
+                try {
+                    const xmlEsc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]))
+                        .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, '');
+                    const paras = editor.value.split('\n').map(line => {
+                        if (!line.trim()) return '<w:p/>';
+                        return '<w:p><w:r><w:rPr><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri" w:cs="Mangal"/><w:sz w:val="24"/></w:rPr><w:t xml:space="preserve">' + xmlEsc(line) + '</w:t></w:r></w:p>';
+                    }).join('');
+                    const contentTypes = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/></Types>';
+                    const rootRels = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>';
+                    const docRels = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"/>';
+                    const documentXml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body>' + paras + '<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1440" w:right="1440" w:bottom="1440" w:left="1440" w:header="720" w:footer="720"/></w:sectPr></w:body></w:document>';
+                    const zip = buildZip([
+                        { name: '[Content_Types].xml', data: contentTypes },
+                        { name: '_rels/.rels', data: rootRels },
+                        { name: 'word/_rels/document.xml.rels', data: docRels },
+                        { name: 'word/document.xml', data: documentXml }
+                    ]);
+                    downloadBlob(new Blob([zip], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' }), 'Tools24-Word-Counter.docx');
+                    toast('DOCX downloaded — Tools24-Word-Counter.docx', 'success');
+                } catch (e) { toast('DOCX generation failed. Your text is safe — please try again.', 'error'); }
+            });
+
+            /* ---- PDF: pages rendered on canvas → JPEG embedded via /DCTDecode.
+                   Browser text rendering guarantees perfect Hindi/Unicode/emoji output. ---- */
+            function renderTextToCanvases(text) {
+                const W = 1190, H = 1684, M = 100, FONT = 26, LH = 42, FOOT = 72;
+                const maxW = W - 2 * M;
+                const meas = document.createElement('canvas').getContext('2d');
+                const fontSpec = FONT + 'px "Manrope","Noto Sans Devanagari",Arial,sans-serif';
+                meas.font = fontSpec;
+                const lines = [];
+                const hardSplit = s => { let chunk = ''; for (const ch of s) { if (meas.measureText(chunk + ch).width > maxW && chunk) { lines.push(chunk); chunk = ch; } else chunk += ch; } if (chunk) lines.push(chunk); };
+                for (const raw of text.split('\n')) {
+                    if (!raw.trim()) { lines.push(''); continue; }
+                    let cur = '';
+                    for (const u of raw.split(/(\s+)/)) {
+                        const test = cur + u;
+                        if (meas.measureText(test).width > maxW && cur.trim()) {
+                            lines.push(cur.replace(/\s+$/, ''));
+                            const uT = u.replace(/^\s+/, '');
+                            if (meas.measureText(uT).width > maxW) { hardSplit(uT); cur = ''; }
+                            else cur = uT;
+                        } else {
+                            cur = test;
+                            if (meas.measureText(cur).width > maxW) { hardSplit(cur); cur = ''; }
+                        }
+                    }
+                    if (cur.trim()) lines.push(cur.replace(/\s+$/, ''));
+                }
+                const perPage = Math.max(1, Math.floor((H - M - FOOT - M * 0.6) / LH));
+                const pages = [];
+                for (let i = 0; i < lines.length; i += perPage) pages.push(lines.slice(i, i + perPage));
+                if (!pages.length) pages.push(['']);
+                return pages.map((pageLines, pi) => {
+                    const cv = document.createElement('canvas'); cv.width = W; cv.height = H;
+                    const ctx = cv.getContext('2d');
+                    ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, W, H);
+                    ctx.fillStyle = '#251f3d'; ctx.font = fontSpec; ctx.textBaseline = 'top';
+                    let y = M;
+                    for (const l of pageLines) { if (l) ctx.fillText(l, M, y); y += LH; }
+                    ctx.strokeStyle = 'rgba(124,58,237,.28)'; ctx.lineWidth = 2;
+                    ctx.beginPath(); ctx.moveTo(M, H - FOOT + 10); ctx.lineTo(W - M, H - FOOT + 10); ctx.stroke();
+                    ctx.fillStyle = '#8b84a8'; ctx.font = '19px "Manrope",Arial,sans-serif';
+                    ctx.fillText('Tools24 · Word Counter', M, H - FOOT + 26);
+                    const pl = 'Page ' + (pi + 1) + ' of ' + pages.length;
+                    ctx.fillText(pl, W - M - meas.measureText(pl).width, H - FOOT + 26);
+                    return cv;
+                });
+            }
+            async function buildPdf(canvases) {
+                const chunks = []; let length = 0; const offsets = [];
+                const push = d => { const b = typeof d === 'string' ? te.encode(d) : d; chunks.push(b); length += b.length; };
+                const n = canvases.length;
+                push(new Uint8Array([0x25, 0x50, 0x44, 0x46, 0x2D, 0x31, 0x2E, 0x34, 0x0A, 0x25, 0xE2, 0xE3, 0xCF, 0xD3, 0x0A])); // %PDF-1.4 + binary comment
+                function obj(num, body) {
+                    offsets[num] = length;
+                    push(num + ' 0 obj\n' + body + '\nendobj\n');
+                }
+                obj(1, '<< /Type /Catalog /Pages 2 0 R >>');
+                const kids = canvases.map((_, i) => (4 + i * 3) + ' 0 R').join(' ');
+                obj(2, '<< /Type /Pages /Kids [' + kids + '] /Count ' + n + ' >>');
+                const jpgs = [];
+                for (const c of canvases) {
+                    const blob = await new Promise((res, rej) => c.toBlob(b => b ? res(b) : rej(new Error('Page image encoding failed')), 'image/jpeg', 0.9));
+                    jpgs.push(new Uint8Array(await blob.arrayBuffer()));
+                }
+                for (let i = 0; i < n; i++) {
+                    const img = 3 + i * 3, page = 4 + i * 3, content = 5 + i * 3;
+                    obj(img, '<< /Type /XObject /Subtype /Image /Width ' + canvases[i].width + ' /Height ' + canvases[i].height +
+                        ' /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ' + jpgs[i].length + ' >>\nstream\n');
+                    push(jpgs[i]); push('\nendstream\nendobj\n');
+                    obj(page, '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /XObject << /Im' + i + ' ' + img + ' 0 R >> >> /Contents ' + content + ' 0 R >>');
+                    const cs = 'q\n595.28 0 0 841.89 0 0 cm\n/Im' + i + ' Do\nQ';
+                    obj(content, '<< /Length ' + cs.length + ' >>\nstream\n' + cs + '\nendstream');
+                }
+                const xrefPos = length;
+                const maxNum = 2 + 3 * n;
+                let xref = 'xref\n0 ' + (maxNum + 1) + '\n0000000000 65535 f \n';
+                for (let i = 1; i <= maxNum; i++) xref += String(offsets[i]).padStart(10, '0') + ' 00000 n \n';
+                push(xref);
+                push('trailer\n<< /Size ' + (maxNum + 1) + ' /Root 1 0 R >>\nstartxref\n' + xrefPos + '\n%%EOF');
+                return concatBytes(chunks);
+            }
+            $('dlPdf').addEventListener('click', async () => {
+                if (!requireText()) return;
+                const btn = $('dlPdf'), old = btn.querySelector('.dl-name').textContent;
+                btn.disabled = true;
+                btn.querySelector('.dl-name').textContent = 'Preparing…';
+                try {
+                    try { if (document.fonts && document.fonts.ready) await document.fonts.ready; } catch (e) { }
+                    const canvases = renderTextToCanvases(editor.value);
+                    const bytes = await buildPdf(canvases);
+                    downloadBlob(new Blob([bytes], { type: 'application/pdf' }), 'Tools24-Word-Counter.pdf');
+                    toast('PDF downloaded — ' + canvases.length + ' page' + (canvases.length === 1 ? '' : 's') + '.', 'success');
+                } catch (e) {
+                    toast('PDF generation failed on this browser. TXT and DOCX exports remain available.', 'error');
+                } finally {
+                    btn.disabled = false;
+                    btn.querySelector('.dl-name').textContent = old;
+                }
+            });
+
+            /* ==================== Init ==================== */
+            $('year').textContent = new Date().getFullYear();
+            renderGoal();
+            autoResize();
+            runBasic();
+            runHeavy();
+            updateActionStates();
+            updateHistBtns();
+            renderReadNotice('Readability scores appear here once you write. Flesch formulas need English text — Hindi and other scripts keep counting normally but are gracefully excluded from these scores.');
+            renderKeywords(lastStats);
+        })();
+    </script>
+</body>
+
+</html>

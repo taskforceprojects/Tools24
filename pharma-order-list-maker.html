@@ -1,0 +1,4138 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Pharma Order Sheet Maker – Create & Download Medicine Purchase Orders | Tools24</title>
+    <meta name="description"
+        content="Create professional pharma purchase order sheets online. Add medicines, GST, company details, calculate totals and download PDF order sheets instantly.">
+    <link rel="canonical" href="https://tools24.example/pharma-order-sheet-maker">
+    <meta name="theme-color" content="#eef3ff">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Pharma Order Sheet Maker – Create & Download Medicine Purchase Orders | Tools24">
+    <meta property="og:description"
+        content="Create professional pharma purchase order sheets online. Add medicines, GST, company details, calculate totals and download PDF order sheets instantly.">
+    <meta property="og:url" content="https://tools24.example/pharma-order-sheet-maker">
+    <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Pharma Order Sheet Maker","applicationCategory":"BusinessApplication","operatingSystem":"Any","url":"https://tools24.example/pharma-order-sheet-maker","description":"Create professional pharma purchase order sheets online.","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}
+</script>
+    <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is a Pharma Order Sheet Maker?","acceptedAnswer":{"@type":"Answer","text":"A free online tool that creates professional medicine purchase order sheets with GST calculations and PDF output for Indian pharmacies."}},
+{"@type":"Question","name":"How to create a medicine purchase order?","acceptedAnswer":{"@type":"Answer","text":"Fill pharmacy details, add medicines with qty, rate, discount and GST, pick a tax mode, then download the PDF or print."}},
+{"@type":"Question","name":"Can I download a pharma order as PDF?","acceptedAnswer":{"@type":"Answer","text":"Yes — a genuine multi-page A4 PDF with logo, itemised table, tax breakup and signature area."}},
+{"@type":"Question","name":"Can I import medicine data from CSV?","acceptedAnswer":{"@type":"Answer","text":"Yes. CSV, XLSX and JSON files are parsed locally with auto column mapping."}},
+{"@type":"Question","name":"Is my order data stored online?","acceptedAnswer":{"@type":"Answer","text":"No. Everything is processed and saved locally in your browser."}}]}
+</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ================= Tokens ================= */
+        :root {
+            --bg1: #e7f0ff;
+            --bg2: #f2ebff;
+            --bg3: #ffebf4;
+            --ink: #20233c;
+            --muted: #5d6480;
+            --faint: #8b90a8;
+            --card: rgba(255, 255, 255, .74);
+            --solid: #fff;
+            --thbg: #f4f5fb;
+            --line: rgba(94, 84, 178, .16);
+            --line2: rgba(94, 84, 178, .30);
+            --acc: #5a51e6;
+            --acc-soft: rgba(90, 81, 230, .10);
+            --pink: #d84f96;
+            --ok: #0d9668;
+            --ok-soft: rgba(13, 150, 104, .12);
+            --err: #d6295e;
+            --err-soft: rgba(214, 41, 94, .10);
+            --shadow: 0 14px 44px -16px rgba(70, 58, 160, .28);
+            --shadow-sm: 0 4px 18px -8px rgba(70, 58, 160, .25);
+            --r: 20px;
+        }
+
+        [data-theme="dark"] {
+            --bg1: #0b0f22;
+            --bg2: #150f31;
+            --bg3: #200f2b;
+            --ink: #eceefb;
+            --muted: #a8aed0;
+            --faint: #767ca0;
+            --card: rgba(24, 27, 54, .66);
+            --solid: #181b38;
+            --thbg: #1e2244;
+            --line: rgba(151, 140, 255, .17);
+            --line2: rgba(151, 140, 255, .34);
+            --acc: #8d85ff;
+            --acc-soft: rgba(141, 133, 255, .13);
+            --pink: #f078b8;
+            --ok: #34c48e;
+            --ok-soft: rgba(52, 196, 142, .14);
+            --err: #ff6d97;
+            --err-soft: rgba(255, 109, 151, .12);
+            --shadow: 0 16px 48px -16px rgba(0, 0, 0, .6);
+            --shadow-sm: 0 6px 20px -10px rgba(0, 0, 0, .5);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            color: var(--ink);
+            line-height: 1.55;
+            background: #dfe8fb;
+            min-height: 100dvh;
+            position: relative
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background: linear-gradient(140deg, var(--bg1), var(--bg2) 48%, var(--bg3))
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background:
+                radial-gradient(560px 420px at 12% -4%, rgba(120, 140, 255, .20), transparent 70%),
+                radial-gradient(520px 460px at 96% 8%, rgba(236, 120, 190, .16), transparent 70%),
+                radial-gradient(700px 560px at 50% 110%, rgba(140, 110, 255, .14), transparent 70%)
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Sora', sans-serif;
+            line-height: 1.22;
+            letter-spacing: -.015em
+        }
+
+        img,
+        svg,
+        video,
+        canvas {
+            max-width: 100%
+        }
+
+        button {
+            font-family: inherit;
+            color: inherit
+        }
+
+        input,
+        select,
+        textarea {
+            font-family: inherit
+        }
+
+        .sr-only,
+        .skip {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap
+        }
+
+        .skip:focus {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            width: auto;
+            height: auto;
+            clip: auto;
+            z-index: 400;
+            background: var(--solid);
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-weight: 800
+        }
+
+        :focus-visible {
+            outline: 2.5px solid var(--acc);
+            outline-offset: 2px;
+            border-radius: 6px
+        }
+
+        .hidden {
+            display: none !important
+        }
+
+        .wrap {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 22px
+        }
+
+        .ic {
+            width: 18px;
+            height: 18px;
+            flex: none;
+            display: inline-block;
+            vertical-align: -3px
+        }
+
+        .ic svg {
+            width: 100%;
+            height: 100%;
+            display: block
+        }
+
+        [hidden] {
+            display: none !important
+        }
+
+        /* ================= Glass / buttons ================= */
+        .glass {
+            background: var(--card);
+            -webkit-backdrop-filter: blur(18px) saturate(1.5);
+            backdrop-filter: blur(18px) saturate(1.5);
+            border: 1px solid var(--line);
+            border-radius: var(--r);
+            box-shadow: var(--shadow);
+            max-width: 100%
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 12px;
+            border: 1px solid transparent;
+            font-weight: 700;
+            font-size: 13.5px;
+            cursor: pointer;
+            transition: .18s;
+            white-space: nowrap;
+            background: transparent;
+            color: var(--ink);
+            text-decoration: none;
+            line-height: 1.2;
+            max-width: 100%
+        }
+
+        .btn:active {
+            transform: translateY(1px)
+        }
+
+        .btn[disabled] {
+            opacity: .55;
+            pointer-events: none
+        }
+
+        .btn-primary {
+            background: var(--acc);
+            color: #fff;
+            box-shadow: 0 8px 22px -8px var(--acc)
+        }
+
+        .btn-primary:hover {
+            filter: brightness(1.08)
+        }
+
+        .btn-ghost {
+            border-color: var(--line2)
+        }
+
+        .btn-ghost:hover {
+            background: var(--acc-soft);
+            border-color: var(--acc)
+        }
+
+        .btn-danger {
+            color: var(--err);
+            background: var(--err-soft)
+        }
+
+        .btn-danger:hover {
+            border-color: var(--err)
+        }
+
+        .btn-block {
+            width: 100%
+        }
+
+        .icon-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 11px;
+            border: 1px solid transparent;
+            background: transparent;
+            cursor: pointer;
+            transition: .16s;
+            color: var(--muted);
+            flex: none
+        }
+
+        .icon-btn:hover {
+            background: var(--acc-soft);
+            color: var(--acc)
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 11px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            border: 1px solid var(--line);
+            background: var(--card);
+            color: var(--muted)
+        }
+
+        /* ================= Header ================= */
+        .app-header {
+            position: sticky;
+            top: 0;
+            z-index: 60;
+            background: var(--card);
+            -webkit-backdrop-filter: blur(18px) saturate(1.5);
+            backdrop-filter: blur(18px) saturate(1.5);
+            border-bottom: 1px solid var(--line)
+        }
+
+        .hd-in {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            height: 64px
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--ink);
+            font-family: 'Sora';
+            font-weight: 800;
+            font-size: 19px;
+            flex: none
+        }
+
+        .brand .t24 {
+            color: var(--acc)
+        }
+
+        .brand svg {
+            width: 34px;
+            height: 34px
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 4px
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: var(--muted);
+            font-weight: 700;
+            font-size: 13.5px;
+            padding: 8px 13px;
+            border-radius: 10px;
+            white-space: nowrap
+        }
+
+        .main-nav a:hover {
+            color: var(--acc);
+            background: var(--acc-soft)
+        }
+
+        .hd-right {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: none
+        }
+
+        .search-pill {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            padding: 9px 14px;
+            border-radius: 12px;
+            border: 1px solid var(--line);
+            background: var(--solid);
+            color: var(--faint);
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600
+        }
+
+        .search-pill:hover {
+            border-color: var(--acc)
+        }
+
+        .search-pill kbd {
+            margin-left: auto;
+            font-family: inherit;
+            font-size: 11px;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            padding: 1px 6px
+        }
+
+        #navToggle {
+            display: none
+        }
+
+        .mobile-menu {
+            display: none;
+            border-top: 1px solid var(--line);
+            padding: 10px 22px 16px
+        }
+
+        .mobile-menu.open {
+            display: block
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 12px;
+            border-radius: 11px;
+            text-decoration: none;
+            color: var(--ink);
+            font-weight: 700
+        }
+
+        .mobile-menu a:hover {
+            background: var(--acc-soft);
+            color: var(--acc)
+        }
+
+        /* ================= Hero ================= */
+        .hero {
+            text-align: center;
+            padding: 60px 0 36px
+        }
+
+        .hero .kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--acc);
+            background: var(--acc-soft);
+            padding: 7px 15px;
+            border-radius: 999px;
+            margin-bottom: 18px
+        }
+
+        .hero h1 {
+            font-size: clamp(27px, 4.6vw, 50px);
+            font-weight: 800;
+            max-width: 820px;
+            margin: 0 auto 14px;
+            overflow-wrap: break-word
+        }
+
+        .hero h1 .grad {
+            background: linear-gradient(95deg, var(--acc), var(--pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent
+        }
+
+        .hero p.sub {
+            font-size: clamp(15px, 2vw, 18px);
+            color: var(--muted);
+            max-width: 560px;
+            margin: 0 auto 24px;
+            font-weight: 500
+        }
+
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 26px
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 15px;
+            border-radius: 999px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            font-size: 13px;
+            font-weight: 700;
+            box-shadow: var(--shadow-sm)
+        }
+
+        .badge .ic {
+            color: var(--acc)
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap
+        }
+
+        /* ================= Workspace grid ================= */
+        .workspace {
+            display: grid;
+            grid-template-columns: 320px minmax(0, 1fr) 430px;
+            gap: 20px;
+            padding: 10px 0 26px;
+            align-items: start
+        }
+
+        .ws-left,
+        .ws-center,
+        .ws-right {
+            min-width: 0;
+            width: 100%;
+            max-width: 100%
+        }
+
+        .panel-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15.5px;
+            font-weight: 700;
+            padding: 18px 20px 0
+        }
+
+        .panel-title .num {
+            width: 26px;
+            height: 26px;
+            border-radius: 9px;
+            background: var(--acc-soft);
+            color: var(--acc);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 800;
+            flex: none
+        }
+
+        .panel-sub {
+            font-size: 12.5px;
+            color: var(--faint);
+            padding: 2px 20px 0;
+            font-weight: 600
+        }
+
+        .panel-body {
+            padding: 14px 20px 20px
+        }
+
+        .field {
+            margin-bottom: 12px;
+            min-width: 0
+        }
+
+        .field label {
+            display: block;
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--muted);
+            margin-bottom: 5px
+        }
+
+        .inp {
+            width: 100%;
+            max-width: 100%;
+            padding: 10px 13px;
+            border-radius: 11px;
+            border: 1px solid var(--line2);
+            background: var(--solid);
+            color: var(--ink);
+            font-size: 14px;
+            font-weight: 600;
+            transition: .15s
+        }
+
+        .inp::placeholder {
+            color: var(--faint);
+            font-weight: 500
+        }
+
+        .inp:focus {
+            outline: none;
+            border-color: var(--acc);
+            box-shadow: 0 0 0 3.5px var(--acc-soft)
+        }
+
+        textarea.inp {
+            resize: vertical;
+            min-height: 60px
+        }
+
+        select.inp {
+            appearance: none;
+            -webkit-appearance: none;
+            padding-right: 34px;
+            cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23888da8' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center
+        }
+
+        .fhint {
+            display: none;
+            font-size: 11.5px;
+            margin-top: 4px;
+            font-weight: 600;
+            color: var(--err)
+        }
+
+        .inp.bad {
+            border-color: var(--err) !important
+        }
+
+        .inp.bad~.fhint,
+        .inp.bad+.fhint {
+            display: block
+        }
+
+        .row2 {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px
+        }
+
+        .privacy-note {
+            margin-top: 6px;
+            display: flex;
+            gap: 9px;
+            align-items: flex-start;
+            padding: 11px 13px;
+            border-radius: 12px;
+            background: var(--ok-soft);
+            color: var(--ok);
+            font-size: 12px;
+            font-weight: 700
+        }
+
+        /* logo widget */
+        .logo-widget {
+            border: 1.6px dashed var(--line2);
+            border-radius: 14px;
+            padding: 14px;
+            display: flex;
+            gap: 13px;
+            align-items: center;
+            margin-bottom: 14px;
+            transition: .18s
+        }
+
+        .logo-widget.drag {
+            border-color: var(--acc);
+            background: var(--acc-soft)
+        }
+
+        .logo-thumb {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            flex: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--thbg);
+            border: 1px solid var(--line);
+            overflow: hidden
+        }
+
+        .logo-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: none
+        }
+
+        .logo-widget.has img {
+            display: block
+        }
+
+        .logo-widget.has .logo-ph {
+            display: none
+        }
+
+        .logo-ph {
+            font-family: 'Sora';
+            font-weight: 800;
+            color: var(--faint);
+            font-size: 19px
+        }
+
+        .logo-info {
+            min-width: 0;
+            flex: 1
+        }
+
+        .logo-info b {
+            font-size: 13px;
+            display: block
+        }
+
+        .logo-info span {
+            font-size: 11.5px;
+            color: var(--faint);
+            font-weight: 600;
+            overflow-wrap: anywhere
+        }
+
+        .logo-acts {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            flex: none
+        }
+
+        .mini-btn {
+            font-size: 11.5px;
+            font-weight: 800;
+            padding: 6px 11px;
+            border-radius: 9px;
+            cursor: pointer;
+            border: 1px solid var(--line2);
+            background: var(--solid);
+            transition: .15s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px
+        }
+
+        .mini-btn:hover {
+            border-color: var(--acc);
+            color: var(--acc)
+        }
+
+        .mini-btn.warn:hover {
+            border-color: var(--err);
+            color: var(--err)
+        }
+
+        /* ================= Center: toolbar + table ================= */
+        .med-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            padding: 16px 20px
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1 1 180px;
+            min-width: 150px
+        }
+
+        .search-box .ic {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--faint);
+            pointer-events: none
+        }
+
+        .search-box .inp {
+            padding-left: 38px
+        }
+
+        #sortSel {
+            flex: 0 1 auto;
+            width: auto;
+            min-width: 128px
+        }
+
+        .col-toggles {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            padding: 0 20px 14px
+        }
+
+        .ctog {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11.5px;
+            font-weight: 800;
+            color: var(--muted);
+            border: 1px solid var(--line2);
+            border-radius: 999px;
+            padding: 5px 11px;
+            cursor: pointer;
+            user-select: none
+        }
+
+        .ctog input {
+            accent-color: var(--acc);
+            width: 13px;
+            height: 13px
+        }
+
+        .ctog.on {
+            background: var(--acc-soft);
+            border-color: var(--acc);
+            color: var(--acc)
+        }
+
+        .tscroll {
+            overflow: auto;
+            max-height: 520px;
+            border-top: 1px solid var(--line);
+            -webkit-overflow-scrolling: touch
+        }
+
+        table.med-table {
+            width: 100%;
+            min-width: 1080px;
+            border-collapse: collapse;
+            font-size: 13px
+        }
+
+        .med-table th {
+            position: sticky;
+            top: 0;
+            z-index: 3;
+            background: var(--thbg);
+            text-align: left;
+            font-size: 10.5px;
+            text-transform: uppercase;
+            letter-spacing: .07em;
+            color: var(--muted);
+            padding: 11px 10px;
+            border-bottom: 1px solid var(--line2);
+            white-space: nowrap
+        }
+
+        .med-table th.sortable {
+            cursor: pointer;
+            user-select: none
+        }
+
+        .med-table th.sortable:hover {
+            color: var(--acc)
+        }
+
+        .med-table th .sind {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            margin-left: 5px;
+            vertical-align: 1px;
+            opacity: 0
+        }
+
+        .med-table th.asc .sind {
+            border-bottom: 5px solid var(--acc);
+            opacity: 1
+        }
+
+        .med-table th.desc .sind {
+            border-top: 5px solid var(--acc);
+            opacity: 1
+        }
+
+        .med-table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid var(--line);
+            vertical-align: middle
+        }
+
+        .med-table tbody tr:hover {
+            background: var(--acc-soft)
+        }
+
+        .c-idx {
+            color: var(--faint);
+            font-weight: 700;
+            font-size: 12px
+        }
+
+        .cell-name b {
+            display: block;
+            line-height: 1.3
+        }
+
+        .cell-name span {
+            display: block;
+            font-size: 11px;
+            color: var(--faint);
+            font-weight: 600
+        }
+
+        .num-in {
+            width: 64px;
+            max-width: 100%;
+            padding: 6px 8px;
+            border-radius: 8px;
+            border: 1px solid var(--line);
+            background: var(--solid);
+            color: var(--ink);
+            font-size: 13px;
+            font-weight: 700;
+            text-align: center
+        }
+
+        .num-in.w-rate {
+            width: 82px;
+            text-align: right
+        }
+
+        .num-in:focus {
+            outline: none;
+            border-color: var(--acc);
+            box-shadow: 0 0 0 3px var(--acc-soft)
+        }
+
+        input[type=number].num-in::-webkit-outer-spin-button,
+        input[type=number].num-in::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0
+        }
+
+        input[type=number].num-in {
+            -moz-appearance: textfield;
+            appearance: textfield
+        }
+
+        .amt-cell {
+            font-weight: 800;
+            white-space: nowrap
+        }
+
+        .row-acts {
+            display: flex;
+            gap: 3px
+        }
+
+        .row-acts .icon-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px
+        }
+
+        .row-acts .icon-btn .ic {
+            width: 15px;
+            height: 15px
+        }
+
+        .row-acts .del:hover {
+            background: var(--err-soft);
+            color: var(--err)
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 50px 20px
+        }
+
+        .empty-state .es-art {
+            margin: 0 auto 16px;
+            width: 110px;
+            color: var(--faint);
+            opacity: .7
+        }
+
+        .empty-state h3 {
+            font-size: 17px;
+            margin-bottom: 6px
+        }
+
+        .empty-state p {
+            color: var(--faint);
+            font-size: 13.5px;
+            font-weight: 600;
+            margin-bottom: 18px
+        }
+
+        .no-result {
+            padding: 30px;
+            text-align: center;
+            color: var(--faint);
+            font-weight: 700;
+            font-size: 14px
+        }
+
+        .import-strip {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            padding: 12px 20px 16px;
+            border-top: 1px solid var(--line)
+        }
+
+        .import-strip .btn {
+            padding: 8px 13px;
+            font-size: 12.5px
+        }
+
+        .tot-strip {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 14px;
+            align-items: center;
+            justify-content: space-between;
+            padding: 13px 20px;
+            margin: 0;
+            background: var(--acc-soft);
+            border: none;
+            border-top: 1px solid var(--line);
+            cursor: pointer;
+            font-size: 13.5px;
+            font-weight: 800;
+            color: var(--acc);
+            text-align: left
+        }
+
+        .tot-strip b {
+            font-family: 'Sora';
+            font-size: 15px
+        }
+
+        .tot-strip .ic {
+            width: 15px;
+            height: 15px
+        }
+
+        /* ================= OUTER SUMMARY (single source of truth) ================= */
+        .outer-summary {
+            grid-column: 1/-1;
+            padding: 24px 26px 22px
+        }
+
+        .os-head {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px
+        }
+
+        .os-head h2 {
+            font-size: clamp(18px, 2.4vw, 22px)
+        }
+
+        .os-head .chip {
+            margin-left: auto
+        }
+
+        .os-grid {
+            display: grid;
+            grid-template-columns: 260px minmax(0, 1fr);
+            gap: 22px;
+            align-items: start
+        }
+
+        .os-tiles {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            align-content: start
+        }
+
+        .stat {
+            background: var(--thbg);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 14px 15px;
+            min-width: 0
+        }
+
+        .stat b {
+            display: block;
+            font-family: 'Sora';
+            font-size: clamp(18px, 2vw, 23px);
+            line-height: 1.15;
+            overflow-wrap: anywhere
+        }
+
+        .stat span {
+            font-size: 10.5px;
+            font-weight: 800;
+            color: var(--faint);
+            text-transform: uppercase;
+            letter-spacing: .06em
+        }
+
+        .os-rows {
+            min-width: 0
+        }
+
+        .orow {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 8.5px 4px;
+            border-bottom: 1px dashed var(--line);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--muted)
+        }
+
+        .orow b {
+            color: var(--ink);
+            font-weight: 800;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap
+        }
+
+        .ogrand {
+            margin-top: 12px;
+            background: var(--acc);
+            color: #fff;
+            border-radius: 14px;
+            padding: 14px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            font-size: 15px
+        }
+
+        .ogrand b {
+            font-family: 'Sora';
+            font-size: clamp(18px, 2.4vw, 23px);
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap
+        }
+
+        .os-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+            padding-top: 16px;
+            border-top: 1px solid var(--line)
+        }
+
+        .os-actions .spacer {
+            flex: 1
+        }
+
+        @media(max-width:768px) {
+            .os-grid {
+                grid-template-columns: 1fr
+            }
+
+            .os-actions {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr))
+            }
+
+            .os-actions .btn-pdf {
+                grid-column: 1/-1
+            }
+
+            .os-actions .spacer {
+                display: none
+            }
+        }
+
+        /* ================= Preview column ================= */
+        .ws-right {
+            position: sticky;
+            top: 84px;
+            display: flex;
+            flex-direction: column;
+            max-height: calc(100dvh - 100px)
+        }
+
+        .pv-actions {
+            padding: 16px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 9px
+        }
+
+        .pv-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px
+        }
+
+        .pv-row .btn {
+            flex: 1 1 100px;
+            min-width: 0;
+            padding: 8.5px 8px;
+            font-size: 12.5px
+        }
+
+        .pv-tools {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--faint)
+        }
+
+        .zoomctl {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            margin-left: auto
+        }
+
+        .zoomctl .icon-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px
+        }
+
+        #zoomLabel {
+            min-width: 44px;
+            text-align: center;
+            font-variant-numeric: tabular-nums
+        }
+
+        .sheet-wrap {
+            flex: 1;
+            overflow: auto;
+            padding: 16px 18px 20px;
+            -webkit-overflow-scrolling: touch
+        }
+
+        .sheet-holder {
+            margin: 0 auto;
+            position: relative;
+            max-width: 100%
+        }
+
+        /* ---- paper (always light, even in dark mode) ---- */
+        .sheet {
+            width: 794px;
+            background: #fff;
+            color: #23263c;
+            transform-origin: top left;
+            font-family: 'Manrope', sans-serif;
+            box-shadow: 0 22px 60px -18px rgba(30, 20, 80, .45);
+            border-radius: 4px;
+            padding: 34px 38px 0;
+            position: relative;
+            overflow: hidden;
+            transition: opacity .22s
+        }
+
+        .sheet.fade {
+            opacity: .4
+        }
+
+        .sh-brand {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            min-width: 0
+        }
+
+        .sh-logo {
+            width: 62px;
+            height: 62px;
+            border-radius: 12px;
+            flex: none;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e4e6f0;
+            background: #f6f7fc
+        }
+
+        .sh-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain
+        }
+
+        .sh-logo .mono {
+            font-family: 'Sora';
+            font-weight: 800;
+            font-size: 21px;
+            color: var(--sa, #5a51e6)
+        }
+
+        .sh-name {
+            font-size: 19px;
+            font-weight: 800;
+            color: #1c1f33;
+            margin-bottom: 3px;
+            overflow-wrap: anywhere
+        }
+
+        .sh-addr {
+            font-size: 11.5px;
+            color: #4d5268;
+            line-height: 1.5;
+            font-weight: 500;
+            overflow-wrap: anywhere
+        }
+
+        .sh-reg {
+            font-size: 11px;
+            color: #5c6180;
+            margin-top: 4px;
+            font-weight: 600;
+            overflow-wrap: anywhere
+        }
+
+        .sh-reg b,
+        .sh-addr b {
+            color: #2b2f47
+        }
+
+        .sh-po {
+            margin-left: auto;
+            text-align: right;
+            min-width: 200px;
+            max-width: 240px;
+            flex: none
+        }
+
+        .sh-po-title {
+            display: inline-block;
+            font-family: 'Sora';
+            font-weight: 800;
+            font-size: 13px;
+            letter-spacing: .16em;
+            color: var(--sa, #5a51e6);
+            border: 1.6px solid var(--sa, #5a51e6);
+            padding: 6px 14px;
+            border-radius: 8px;
+            margin-bottom: 9px
+        }
+
+        .sh-meta {
+            font-size: 10.5px;
+            color: #4d5268;
+            line-height: 1.7;
+            font-weight: 500;
+            overflow-wrap: anywhere
+        }
+
+        .sh-meta b {
+            color: #2b2f47
+        }
+
+        .sh-head-rule {
+            height: 3px;
+            background: var(--sa, #5a51e6);
+            border-radius: 2px;
+            margin-top: 14px;
+            opacity: .9
+        }
+
+        table.sh-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11.5px;
+            margin-top: 14px
+        }
+
+        .sh-table th {
+            background: var(--sa-soft, #f1f2f9);
+            color: #33374f;
+            text-align: left;
+            padding: 8px;
+            font-weight: 800;
+            font-size: 9.8px;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            border-bottom: 1.5px solid var(--sa, #5a51e6)
+        }
+
+        .sh-table td {
+            padding: 7px 8px;
+            border-bottom: 1px solid #e8eaf2;
+            vertical-align: top;
+            font-weight: 500;
+            color: #3a3f57;
+            overflow-wrap: anywhere
+        }
+
+        .sh-table .num {
+            text-align: right;
+            font-variant-numeric: tabular-nums
+        }
+
+        .sh-table .c {
+            text-align: center
+        }
+
+        .sh-table .sn {
+            font-weight: 700;
+            color: #252941
+        }
+
+        .sh-table .sg {
+            font-size: 10px;
+            color: #8287a0
+        }
+
+        .sh-empty {
+            padding: 24px;
+            text-align: center;
+            color: #9297b0;
+            font-weight: 600;
+            font-size: 12px
+        }
+
+        .sh-sum {
+            display: flex;
+            gap: 24px;
+            margin-top: 16px;
+            align-items: flex-start;
+            flex-wrap: wrap
+        }
+
+        .sh-words {
+            flex: 1.1;
+            min-width: 200px;
+            font-size: 11px;
+            color: #4d5268;
+            font-weight: 600;
+            overflow-wrap: anywhere
+        }
+
+        .sh-words .lbl,
+        .sh-terms .lbl {
+            font-size: 9.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            color: var(--sa, #5a51e6);
+            display: block;
+            margin-bottom: 4px
+        }
+
+        .sh-terms {
+            flex: 1 1 100%;
+            font-size: 10.5px;
+            color: #5c6180;
+            line-height: 1.6;
+            white-space: pre-line;
+            margin-top: 14px
+        }
+
+        table.sh-tot {
+            margin-left: auto;
+            border-collapse: collapse;
+            font-size: 11.5px;
+            min-width: 230px;
+            flex: none
+        }
+
+        .sh-tot td {
+            padding: 5.5px 10px;
+            font-weight: 600;
+            color: #3a3f57
+        }
+
+        .sh-tot td:last-child {
+            text-align: right;
+            font-weight: 800;
+            font-variant-numeric: tabular-nums;
+            color: #252941;
+            min-width: 92px
+        }
+
+        .sh-tot tr.tk td {
+            background: var(--sa-soft, #f4f4fb)
+        }
+
+        .sh-tot tr.gr td {
+            border-top: 1.6px solid var(--sa, #5a51e6);
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--sa, #5a51e6)
+        }
+
+        .sh-sign {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 40px;
+            padding-right: 8px
+        }
+
+        .sh-sign .sg-box {
+            text-align: center;
+            font-size: 11px;
+            color: #4d5268;
+            font-weight: 600
+        }
+
+        .sh-sign .for {
+            font-weight: 800;
+            color: #252941;
+            margin-bottom: 42px
+        }
+
+        .sh-sign .sigline {
+            border-top: 1.4px solid #3a3f57;
+            padding-top: 6px;
+            min-width: 180px
+        }
+
+        .sh-foot {
+            margin: 28px -38px 0;
+            padding: 11px 38px;
+            background: var(--sa-soft, #f5f5fb);
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+            font-size: 9.5px;
+            color: #7a7f9a;
+            font-weight: 600
+        }
+
+        /* template variants */
+        .sheet[data-tpl="classic"] {
+            --sa: #0f766e;
+            --sa-soft: #ecf6f4;
+            border: 1.5px solid #103f3a
+        }
+
+        .sheet[data-tpl="classic"] .sh-name {
+            font-family: Georgia, serif
+        }
+
+        .sheet[data-tpl="classic"] .sh-table th,
+        .sheet[data-tpl="classic"] .sh-table td {
+            border: 1px solid #d6dce6
+        }
+
+        .sheet[data-tpl="classic"] .sh-head-rule {
+            display: none
+        }
+
+        .sheet[data-tpl="classic"] .sh-brand {
+            padding-bottom: 13px;
+            border-bottom: 3px double var(--sa)
+        }
+
+        .sheet[data-tpl="modern"] {
+            --sa: #1d4ed8;
+            --sa-soft: #eef3fe;
+            border-left: 7px solid var(--sa)
+        }
+
+        .sheet[data-tpl="minimal"] {
+            --sa: #1b1e2c;
+            --sa-soft: #f5f5f7;
+            padding: 42px 44px 0
+        }
+
+        .sheet[data-tpl="minimal"] .sh-po-title {
+            border: none;
+            padding: 0;
+            letter-spacing: .24em
+        }
+
+        .sheet[data-tpl="minimal"] .sh-table th {
+            border-bottom: 1.5px solid #1b1e2c;
+            background: transparent
+        }
+
+        .sheet[data-tpl="minimal"] .sh-head-rule {
+            display: none
+        }
+
+        .sheet[data-tpl="minimal"] .sh-brand {
+            border-bottom: 1px solid #d9dae2;
+            padding-bottom: 15px
+        }
+
+        .sheet[data-tpl="minimal"] .sh-foot {
+            background: transparent;
+            border-top: 1px solid #e4e5ec
+        }
+
+        .sheet[data-tpl="gst"] {
+            --sa: #4338ca;
+            --sa-soft: #eef0fd
+        }
+
+        .sheet[data-tpl="gst"] .sh-brand {
+            background: var(--sa-soft);
+            border-radius: 10px;
+            padding: 13px 15px
+        }
+
+        .sheet[data-tpl="distributor"] {
+            --sa: #c2410c;
+            --sa-soft: #fdf1ea;
+            padding: 0
+        }
+
+        .sheet[data-tpl="distributor"] .sh-head-band {
+            background: var(--sa);
+            padding: 20px 34px;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start
+        }
+
+        .sheet[data-tpl="distributor"] .sh-name,
+        .sheet[data-tpl="distributor"] .sh-addr,
+        .sheet[data-tpl="distributor"] .sh-addr b {
+            color: #fff
+        }
+
+        .sheet[data-tpl="distributor"] .sh-addr {
+            color: #ffdfd0
+        }
+
+        .sheet[data-tpl="distributor"] .sh-reg,
+        .sheet[data-tpl="distributor"] .sh-reg b {
+            color: #ffd2bd
+        }
+
+        .sheet[data-tpl="distributor"] .sh-po-title {
+            color: #fff;
+            border-color: rgba(255, 255, 255, .75)
+        }
+
+        .sheet[data-tpl="distributor"] .sh-meta,
+        .sheet[data-tpl="distributor"] .sh-meta b {
+            color: #ffe6da
+        }
+
+        .sheet[data-tpl="distributor"] .sh-logo {
+            border-color: rgba(255, 255, 255, .4);
+            background: rgba(255, 255, 255, .14)
+        }
+
+        .sheet[data-tpl="distributor"] .sh-logo .mono {
+            color: #fff
+        }
+
+        .sheet[data-tpl="distributor"] .sh-table th {
+            background: var(--sa);
+            color: #fff;
+            border-bottom: none
+        }
+
+        .sheet[data-tpl="distributor"] .sh-foot {
+            margin: 28px 0 0;
+            padding: 11px 34px
+        }
+
+        .sheet[data-tpl="pharmacy"] {
+            --sa: #be1244;
+            --sa-soft: #fdedf2
+        }
+
+        .sheet[data-tpl="pharmacy"] .sh-brand {
+            background: var(--sa-soft);
+            border-radius: 14px;
+            padding: 14px 16px
+        }
+
+        #pdfMount {
+            position: fixed;
+            left: -10000px;
+            top: 0;
+            width: 794px;
+            background: #fff;
+            pointer-events: none;
+            z-index: -10
+        }
+
+        #pdfMount .sheet {
+            transform: none !important;
+            box-shadow: none;
+            border-radius: 0
+        }
+
+        /* ================= Templates section ================= */
+        .section {
+            padding: 26px 0
+        }
+
+        .sec-head {
+            margin-bottom: 18px
+        }
+
+        .sec-head .over {
+            font-size: 11.5px;
+            font-weight: 800;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--acc)
+        }
+
+        .sec-head h2 {
+            font-size: clamp(20px, 2.6vw, 26px);
+            margin-top: 4px
+        }
+
+        .tpl-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+            gap: 14px
+        }
+
+        .tpl-card {
+            text-align: left;
+            padding: 14px;
+            border-radius: 16px;
+            border: 1.6px solid var(--line);
+            background: var(--card);
+            cursor: pointer;
+            transition: .18s
+        }
+
+        .tpl-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow)
+        }
+
+        .tpl-card.on {
+            border-color: var(--acc);
+            box-shadow: 0 0 0 3px var(--acc-soft), var(--shadow)
+        }
+
+        .thumb {
+            height: 100px;
+            border-radius: 10px;
+            background: #fff;
+            border: 1px solid #e6e8f2;
+            padding: 9px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-bottom: 10px;
+            overflow: hidden
+        }
+
+        .thumb .tb {
+            border-radius: 2.5px;
+            display: block
+        }
+
+        .thumb .t1 {
+            height: 12px;
+            width: 56%;
+            background: var(--ta)
+        }
+
+        .thumb .t2 {
+            height: 5px;
+            width: 82%;
+            background: #dfe2ee
+        }
+
+        .thumb .t3 {
+            height: 5px;
+            width: 64%;
+            background: #eceef6
+        }
+
+        .thumb .t4 {
+            height: 20px;
+            background: var(--ta);
+            opacity: .16;
+            margin-top: 3px
+        }
+
+        .thumb .t5 {
+            height: 5px;
+            width: 90%;
+            background: #eceef6
+        }
+
+        .thumb .t6 {
+            height: 5px;
+            width: 74%;
+            background: #eceef6
+        }
+
+        .thumb .t7 {
+            height: 9px;
+            width: 40%;
+            background: var(--ta);
+            opacity: .8;
+            margin-top: auto
+        }
+
+        .tpl-card b {
+            font-size: 14px;
+            display: block;
+            font-family: 'Sora'
+        }
+
+        .tpl-card span {
+            font-size: 12px;
+            color: var(--faint);
+            font-weight: 600
+        }
+
+        /* ================= SEO / FAQ / Footer ================= */
+        .seo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px
+        }
+
+        .seo-card {
+            padding: 22px 24px
+        }
+
+        .seo-card h3 {
+            font-size: 16px;
+            margin-bottom: 8px
+        }
+
+        .seo-card p,
+        .seo-card ol {
+            font-size: 14px;
+            color: var(--muted);
+            font-weight: 500
+        }
+
+        .seo-card ol {
+            margin: 8px 0 0 18px
+        }
+
+        .seo-card li {
+            margin-bottom: 5px
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px
+        }
+
+        .faq-list summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 17px 22px;
+            font-weight: 800;
+            font-size: 14.5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            user-select: none
+        }
+
+        .faq-list summary::-webkit-details-marker {
+            display: none
+        }
+
+        .faq-list summary::after {
+            content: "";
+            margin-left: auto;
+            width: 9px;
+            height: 9px;
+            border-right: 2.2px solid var(--acc);
+            border-bottom: 2.2px solid var(--acc);
+            transform: rotate(45deg);
+            transition: .2s;
+            flex: none
+        }
+
+        .faq-list details[open] summary::after {
+            transform: rotate(-135deg)
+        }
+
+        .faq-list .fa-body {
+            padding: 0 22px 18px;
+            font-size: 14px;
+            color: var(--muted);
+            font-weight: 500
+        }
+
+        .site-footer {
+            margin-top: 20px;
+            border-top: 1px solid var(--line);
+            background: var(--card);
+            -webkit-backdrop-filter: blur(18px);
+            backdrop-filter: blur(18px)
+        }
+
+        .ft-in {
+            padding: 32px 22px 26px;
+            max-width: 1440px;
+            margin: 0 auto
+        }
+
+        .ft-top {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px
+        }
+
+        .ft-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Sora';
+            font-weight: 800;
+            font-size: 17px
+        }
+
+        .ft-brand .t24 {
+            color: var(--acc)
+        }
+
+        .ft-brand svg {
+            width: 30px;
+            height: 30px
+        }
+
+        .ft-tag {
+            font-size: 13px;
+            color: var(--muted);
+            font-weight: 600
+        }
+
+        .ft-links {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap
+        }
+
+        .ft-links button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--muted);
+            padding: 7px 11px;
+            border-radius: 9px
+        }
+
+        .ft-links button:hover {
+            color: var(--acc);
+            background: var(--acc-soft)
+        }
+
+        .ft-disc {
+            font-size: 12px;
+            color: var(--faint);
+            font-weight: 500;
+            border-top: 1px solid var(--line);
+            padding-top: 14px;
+            max-width: 860px
+        }
+
+        /* ================= Modals ================= */
+        .scrim {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(24, 20, 60, .45);
+            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+            display: none;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 4vh 16px 16px;
+            overflow: auto
+        }
+
+        .scrim.open {
+            display: flex
+        }
+
+        .dialog {
+            width: 100%;
+            max-width: 640px;
+            background: var(--solid);
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            box-shadow: 0 30px 80px -20px rgba(20, 10, 70, .5);
+            animation: pop .22s cubic-bezier(.2, .9, .3, 1.2)
+        }
+
+        @keyframes pop {
+            from {
+                opacity: 0;
+                transform: translateY(14px) scale(.97)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        .dlg-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 20px 24px 0
+        }
+
+        .dlg-head h3 {
+            font-size: 17px;
+            flex: 1
+        }
+
+        .dlg-body {
+            padding: 18px 24px 8px;
+            max-height: 62dvh;
+            overflow: auto
+        }
+
+        .dlg-foot {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            padding: 14px 24px calc(20px + env(safe-area-inset-bottom));
+            flex-wrap: wrap
+        }
+
+        .dlg-foot .btn {
+            flex: 1 1 auto;
+            min-width: 120px
+        }
+
+        .grid2 {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0 14px
+        }
+
+        .dlg-body.small p {
+            font-size: 14px;
+            color: var(--muted);
+            font-weight: 500;
+            margin-bottom: 10px
+        }
+
+        /* ================= Palette ================= */
+        .pal-panel {
+            width: 100%;
+            max-width: 540px;
+            background: var(--solid);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            box-shadow: 0 30px 80px -20px rgba(20, 10, 70, .5);
+            overflow: hidden;
+            animation: pop .2s cubic-bezier(.2, .9, .3, 1.2)
+        }
+
+        .pal-inp {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            padding: 15px 18px;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .pal-inp .ic {
+            color: var(--acc)
+        }
+
+        .pal-inp input {
+            flex: 1;
+            min-width: 0;
+            border: none;
+            background: transparent;
+            color: var(--ink);
+            font-size: 15.5px;
+            font-weight: 600;
+            outline: none
+        }
+
+        .pal-list {
+            max-height: 320px;
+            overflow: auto;
+            padding: 8px
+        }
+
+        .pal-item {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            width: 100%;
+            text-align: left;
+            padding: 11px 13px;
+            border: none;
+            background: transparent;
+            border-radius: 11px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--ink)
+        }
+
+        .pal-item .ic {
+            color: var(--muted)
+        }
+
+        .pal-item:hover,
+        .pal-item.sel {
+            background: var(--acc-soft);
+            color: var(--acc)
+        }
+
+        .pal-item:hover .ic,
+        .pal-item.sel .ic {
+            color: var(--acc)
+        }
+
+        .pal-empty {
+            padding: 22px;
+            text-align: center;
+            color: var(--faint);
+            font-weight: 700;
+            font-size: 13.5px
+        }
+
+        /* ================= Toasts / Loader / Bar ================= */
+        .toasts {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 200;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: min(400px, calc(100vw - 32px))
+        }
+
+        .toast {
+            display: flex;
+            align-items: flex-start;
+            gap: 11px;
+            padding: 13px 16px;
+            border-radius: 14px;
+            background: var(--solid);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            font-size: 13.5px;
+            font-weight: 700;
+            animation: tin .28s cubic-bezier(.2, .9, .3, 1.25)
+        }
+
+        @keyframes tin {
+            from {
+                opacity: 0;
+                transform: translateY(12px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        .toast.out {
+            opacity: 0;
+            transform: translateY(8px);
+            transition: .25s
+        }
+
+        .toast .ic {
+            margin-top: 1px
+        }
+
+        .toast.success .ic {
+            color: var(--ok)
+        }
+
+        .toast.error .ic {
+            color: var(--err)
+        }
+
+        .toast.info .ic {
+            color: var(--acc)
+        }
+
+        .toast button {
+            border: none;
+            background: var(--acc-soft);
+            color: var(--acc);
+            font-weight: 800;
+            font-size: 12px;
+            padding: 5px 11px;
+            border-radius: 8px;
+            cursor: pointer;
+            flex: none
+        }
+
+        .loader {
+            position: fixed;
+            inset: 0;
+            z-index: 300;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(20, 16, 60, .4);
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px)
+        }
+
+        .loader.open {
+            display: flex
+        }
+
+        .loader-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            padding: 30px 44px
+        }
+
+        .spinner {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 4px solid var(--line);
+            border-top-color: var(--acc);
+            animation: spin .8s linear infinite
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        .loader-card b {
+            font-size: 14.5px
+        }
+
+        .mobile-bar {
+            display: none;
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 80;
+            background: var(--card);
+            -webkit-backdrop-filter: blur(18px) saturate(1.5);
+            backdrop-filter: blur(18px) saturate(1.5);
+            border-top: 1px solid var(--line);
+            padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+            gap: 10px
+        }
+
+        .mobile-bar .btn {
+            flex: 1;
+            min-width: 0;
+            padding: 11px 8px
+        }
+
+        /* ================= Mobile medicine cards ================= */
+        .med-cards {
+            display: none;
+            padding: 14px 16px;
+            grid-template-columns: 1fr;
+            gap: 10px
+        }
+
+        .mcard {
+            background: var(--thbg);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 14px;
+            min-width: 0
+        }
+
+        .mc-top {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            flex-wrap: wrap
+        }
+
+        .mc-idx {
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--faint);
+            flex: none
+        }
+
+        .mc-name {
+            font-size: 14.5px;
+            flex: 1;
+            min-width: 120px;
+            overflow-wrap: anywhere
+        }
+
+        .mc-amt {
+            font-weight: 800;
+            color: var(--acc);
+            font-size: 15px;
+            white-space: nowrap;
+            margin-left: auto
+        }
+
+        .mc-sub {
+            font-size: 11.5px;
+            color: var(--faint);
+            font-weight: 700;
+            margin-top: 2px;
+            overflow-wrap: anywhere
+        }
+
+        .mc-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 14px;
+            margin: 9px 0
+        }
+
+        .mc-meta .mp {
+            font-size: 11.5px;
+            font-weight: 600;
+            color: var(--muted);
+            min-width: 0;
+            overflow-wrap: anywhere
+        }
+
+        .mc-meta .mp i {
+            font-style: normal;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            color: var(--faint);
+            display: block
+        }
+
+        .mc-edit {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 12px;
+            margin: 10px 0 4px
+        }
+
+        .mc-edit label {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            color: var(--faint)
+        }
+
+        .mc-edit .num-in {
+            width: 76px;
+            text-align: center
+        }
+
+        .mc-edit .num-in.w-rate {
+            text-align: right;
+            width: 84px
+        }
+
+        .mc-acts {
+            display: flex;
+            gap: 4px;
+            margin-top: 8px;
+            border-top: 1px dashed var(--line);
+            padding-top: 9px
+        }
+
+        /* ============================================================
+   RESPONSIVE — audited breakpoints
+   ============================================================ */
+        @media(max-width:1280px) {
+            .workspace {
+                grid-template-columns: 300px minmax(0, 1fr)
+            }
+
+            .outer-summary,
+            .ws-right {
+                grid-column: 1/-1
+            }
+
+            .ws-right {
+                position: static;
+                max-height: none
+            }
+
+            .sheet-wrap {
+                max-height: 76dvh
+            }
+        }
+
+        @media(max-width:1000px) {
+            .search-pill {
+                display: none
+            }
+        }
+
+        @media(max-width:900px) {
+            .main-nav {
+                display: none
+            }
+
+            #navToggle {
+                display: inline-flex
+            }
+
+            .workspace {
+                grid-template-columns: 1fr
+            }
+
+            .ws-left {
+                order: 1
+            }
+
+            .ws-center {
+                order: 2
+            }
+
+            .outer-summary {
+                order: 3
+            }
+
+            .ws-right {
+                order: 4
+            }
+
+            .hero {
+                padding: 42px 0 28px
+            }
+
+            .seo-grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        @media(max-width:768px) {
+            .wrap {
+                padding: 0 14px
+            }
+
+            .med-table-wrap {
+                display: none
+            }
+
+            .med-cards {
+                display: grid
+            }
+
+            .mobile-bar {
+                display: flex
+            }
+
+            body {
+                padding-bottom: calc(78px + env(safe-area-inset-bottom))
+            }
+
+            .toasts {
+                bottom: calc(86px + env(safe-area-inset-bottom));
+                left: 14px;
+                right: 14px;
+                max-width: none
+            }
+
+            .scrim {
+                align-items: flex-end;
+                padding: 0
+            }
+
+            .dialog {
+                max-width: 100%;
+                border-radius: 20px 20px 0 0;
+                border-bottom: none;
+                max-height: 94dvh;
+                display: flex;
+                flex-direction: column
+            }
+
+            .dlg-body {
+                max-height: none;
+                flex: 1;
+                overflow: auto;
+                -webkit-overflow-scrolling: touch
+            }
+
+            .grid2,
+            .row2 {
+                grid-template-columns: 1fr
+            }
+
+            .med-toolbar {
+                padding: 14px 14px
+            }
+
+            .col-toggles {
+                padding: 0 14px 12px
+            }
+
+            .import-strip {
+                padding: 12px 14px 14px
+            }
+
+            .panel-body {
+                padding: 14px 16px 18px
+            }
+
+            .outer-summary {
+                padding: 20px 16px
+            }
+
+            .sheet-wrap {
+                padding: 12px 8px 16px
+            }
+
+            .inp,
+            input,
+            select,
+            textarea {
+                font-size: 16px
+            }
+
+            .pv-actions {
+                padding: 14px
+            }
+        }
+
+        @media(min-width:769px) {
+
+            .inp,
+            input,
+            select,
+            textarea {
+                font-size: 14px
+            }
+        }
+
+        /* ================= Print: sheet only ================= */
+        @media print {
+            @page {
+                size: A4;
+                margin: 9mm
+            }
+
+            html,
+            body {
+                overflow: visible;
+                background: #fff !important
+            }
+
+            body::before,
+            body::after {
+                display: none
+            }
+
+            .app-header,
+            .hero,
+            .ws-left,
+            .ws-center,
+            .outer-summary,
+            .section,
+            .site-footer,
+            .toasts,
+            .loader,
+            .scrim,
+            .mobile-bar,
+            .pv-actions,
+            .pv-tools,
+            .skip {
+                display: none !important
+            }
+
+            .workspace {
+                display: block;
+                padding: 0;
+                gap: 0
+            }
+
+            .glass {
+                background: #fff !important;
+                box-shadow: none !important;
+                border: none !important;
+                -webkit-backdrop-filter: none !important;
+                backdrop-filter: none !important;
+                border-radius: 0 !important
+            }
+
+            .sheet-wrap {
+                padding: 0;
+                overflow: visible;
+                max-height: none
+            }
+
+            .sheet-holder {
+                width: auto !important;
+                height: auto !important;
+                margin: 0 !important
+            }
+
+            .sheet {
+                transform: none !important;
+                width: 100% !important;
+                box-shadow: none;
+                border-radius: 0;
+                padding: 0
+            }
+
+            .sh-table thead {
+                display: table-header-group
+            }
+
+            .sh-table tr {
+                break-inside: avoid;
+                page-break-inside: avoid
+            }
+
+            .sh-sign,
+            .sh-sum,
+            .sh-terms {
+                break-inside: avoid;
+                page-break-inside: avoid
+            }
+        }
+    </style>
+</head>
+
+<body id="home">
+    <a class="skip" href="#tool">Skip to tool</a>
+
+    <header class="app-header">
+        <div class="wrap hd-in">
+            <a class="brand" href="#home" aria-label="Tools24 home">
+                <svg viewBox="0 0 40 40" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="lgm" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0" stop-color="#6a5cf0" />
+                            <stop offset=".55" stop-color="#a05ce8" />
+                            <stop offset="1" stop-color="#e8689f" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="40" height="40" rx="11" fill="url(#lgm)" />
+                    <path d="M22.5 7.5 13 22h6.2L17 32.5 27 18h-6.2l1.7-10.5Z" fill="#fff" />
+                </svg>
+                Tools<span class="t24">24</span>
+            </a>
+            <nav class="main-nav" aria-label="Main">
+                <a href="#home">Home</a><a href="#tool">Tools</a><a href="#about">About</a><a href="#faq">Blog</a><a
+                    href="#footer">Contact</a>
+            </nav>
+            <div class="hd-right">
+                <button class="search-pill" id="searchBtn" aria-label="Search actions"><span class="ic"
+                        data-ic="search"></span> Search actions <kbd>Ctrl K</kbd></button>
+                <button class="icon-btn" id="themeBtn" aria-label="Toggle light or dark mode"><span class="ic"
+                        data-ic="sun" id="sunIc"></span><span class="ic" data-ic="moon" id="moonIc"
+                        style="display:none"></span></button>
+                <button class="icon-btn" id="navToggle" aria-label="Open menu" aria-expanded="false"><span class="ic"
+                        data-ic="menu"></span></button>
+            </div>
+        </div>
+        <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
+            <a href="#home">Home</a><a href="#tool">Tools</a><a href="#about">About</a><a href="#faq">Blog</a><a
+                href="#footer">Contact</a>
+            <a href="#" id="mobSearch">Search actions</a>
+        </nav>
+    </header>
+
+    <main class="wrap">
+        <section class="hero">
+            <span class="kicker"><span class="ic" data-ic="file"></span> Free Online Tool</span>
+            <h1>Pharma <span class="grad">Order Sheet</span> Maker</h1>
+            <p class="sub">Create professional medicine purchase order sheets in seconds.</p>
+            <div class="badges">
+                <span class="badge"><span class="ic" data-ic="check"></span> Easy to Use</span>
+                <span class="badge"><span class="ic" data-ic="file"></span> Professional Format</span>
+                <span class="badge"><span class="ic" data-ic="printer"></span> Print &amp; Download</span>
+                <span class="badge"><span class="ic" data-ic="phone"></span> Mobile Friendly</span>
+            </div>
+            <div class="hero-ctas">
+                <a class="btn btn-primary" href="#tool"><span class="ic" data-ic="plus"></span> Create Order Sheet</a>
+                <button class="btn btn-ghost" id="heroImport" type="button"><span class="ic" data-ic="upload"></span>
+                    Import Medicine CSV</button>
+            </div>
+        </section>
+
+        <section class="workspace" id="tool" aria-label="Order sheet workspace">
+            <!-- ============ 1. COMPANY ============ -->
+            <aside class="glass ws-left" aria-labelledby="leftTitle">
+                <h2 class="panel-title" id="leftTitle"><span class="num">1</span> Company &amp; Order Details</h2>
+                <p class="panel-sub">Your pharmacy, supplier and order information.</p>
+                <div class="panel-body">
+                    <div class="logo-widget" id="logoWidget">
+                        <div class="logo-thumb"><span class="logo-ph" id="logoMono">PO</span><img id="logoImg"
+                                alt="Pharmacy logo"></div>
+                        <div class="logo-info"><b>Pharmacy Logo</b><span>PNG, JPG or WebP · stays on your device</span>
+                        </div>
+                        <div class="logo-acts">
+                            <button class="mini-btn" id="btnLogoUpload" type="button"><span class="ic" data-ic="upload"
+                                    style="width:13px;height:13px"></span> Upload</button>
+                            <button class="mini-btn warn" id="btnLogoRemove" type="button"><span class="ic"
+                                    data-ic="trash" style="width:13px;height:13px"></span> Remove</button>
+                        </div>
+                    </div>
+                    <input type="file" id="logoInput" accept=".png,.jpg,.jpeg,.webp,image/png,image/jpeg,image/webp"
+                        hidden>
+
+                    <div class="field"><label for="cName">Pharmacy / Company Name</label><input class="inp" id="cName"
+                            data-k="company.name" placeholder="e.g. Shree Balaji Pharma"></div>
+                    <div class="field"><label for="cAddr">Address</label><textarea class="inp" id="cAddr"
+                            data-k="company.address" rows="2" placeholder="Street, City, State, PIN"></textarea></div>
+                    <div class="row2">
+                        <div class="field"><label for="cPhone">Phone</label><input class="inp" id="cPhone"
+                                data-k="company.phone" inputmode="tel" placeholder="98765 43210"><span
+                                class="fhint">Enter a valid 10-digit phone number.</span></div>
+                        <div class="field"><label for="cEmail">Email</label><input class="inp" id="cEmail"
+                                data-k="company.email" inputmode="email" placeholder="you@pharma.com"><span
+                                class="fhint">Enter a valid email address.</span></div>
+                    </div>
+                    <div class="row2">
+                        <div class="field"><label for="cGst">GSTIN</label><input class="inp" id="cGst"
+                                data-k="company.gstin" placeholder="27ABCDE1234F1Z5" style="text-transform:uppercase">
+                        </div>
+                        <div class="field"><label for="cDl">Drug Licence No.</label><input class="inp" id="cDl"
+                                data-k="company.dl" placeholder="20B / 21B number"></div>
+                    </div>
+                    <div class="row2">
+                        <div class="field"><label for="oDate">Order Date</label><input class="inp" type="date"
+                                id="oDate" data-k="order.date"></div>
+                        <div class="field">
+                            <label for="oNo">Order Number</label>
+                            <div style="display:flex;gap:6px">
+                                <input class="inp" id="oNo" data-k="order.number" placeholder="PO-2026-0001"
+                                    style="min-width:0">
+                                <button class="icon-btn" id="poGen" type="button"
+                                    title="Auto-generate next order number" aria-label="Auto-generate order number"
+                                    style="border:1px solid var(--line2);border-radius:11px;background:var(--solid)"><span
+                                        class="ic" data-ic="refresh"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field"><label for="oSup">Supplier / Company</label><input class="inp" id="oSup"
+                            data-k="order.supplier" placeholder="e.g. Medlink Distributors Pvt Ltd"></div>
+                    <div class="row2">
+                        <div class="field"><label for="oSupGst">Supplier GSTIN</label><input class="inp" id="oSupGst"
+                                data-k="order.supplierGstin" placeholder="Supplier GST"
+                                style="text-transform:uppercase"></div>
+                        <div class="field"><label for="oPay">Payment Terms</label><input class="inp" id="oPay"
+                                data-k="order.payment" list="payList" placeholder="Net 30"><datalist id="payList">
+                                <option>Advance</option>
+                                <option>COD</option>
+                                <option>Net 7</option>
+                                <option>Net 15</option>
+                                <option>Net 30</option>
+                                <option>Credit 45 Days</option>
+                            </datalist></div>
+                    </div>
+                    <div class="field"><label for="oDel">Delivery Address</label><textarea class="inp" id="oDel"
+                            data-k="order.delivery" rows="2" placeholder="Where should stock be delivered?"></textarea>
+                    </div>
+                    <div class="field"><label for="oAuth">Authorized Person Name</label><input class="inp" id="oAuth"
+                            data-k="order.authorized" placeholder="e.g. Rahul Sharma"></div>
+                    <div class="field"><label for="oNotes">Notes</label><textarea class="inp" id="oNotes"
+                            data-k="order.notes" rows="2" placeholder="Terms, special instructions…"></textarea></div>
+                    <div class="privacy-note"><span class="ic" data-ic="shield"></span> Your data stays in your browser.
+                        Nothing is uploaded to any server.</div>
+                </div>
+            </aside>
+
+            <!-- ============ 2. MEDICINES ============ -->
+            <section class="glass ws-center" aria-labelledby="centerTitle">
+                <h2 class="panel-title" id="centerTitle"><span class="num">2</span> Add Medicines</h2>
+                <div class="med-toolbar">
+                    <div class="search-box"><span class="ic" data-ic="search"></span><input class="inp" id="medSearch"
+                            type="search" placeholder="Search name, generic, maker, batch…"
+                            aria-label="Search medicines"></div>
+                    <select class="inp" id="sortSel" aria-label="Sort medicines">
+                        <option value="">Sort: Default</option>
+                        <option value="name|1">Name A→Z</option>
+                        <option value="name|-1">Name Z→A</option>
+                        <option value="qty|1">Qty low→high</option>
+                        <option value="qty|-1">Qty high→low</option>
+                        <option value="rate|1">Rate low→high</option>
+                        <option value="amount|-1">Amount high→low</option>
+                    </select>
+                    <button class="btn btn-danger" id="btnClearAll" type="button"><span class="ic"
+                            data-ic="trash"></span> Clear All</button>
+                    <button class="btn btn-primary" id="btnAdd" type="button"><span class="ic" data-ic="plus"></span>
+                        Add Item</button>
+                </div>
+                <div class="col-toggles" role="group" aria-label="Show or hide columns">
+                    <label class="ctog on"><input type="checkbox" data-col="mfr" checked> Mfr</label>
+                    <label class="ctog on"><input type="checkbox" data-col="batch" checked> Batch</label>
+                    <label class="ctog on"><input type="checkbox" data-col="expiry" checked> Expiry</label>
+                    <label class="ctog on"><input type="checkbox" data-col="disc" checked> Disc%</label>
+                    <label class="ctog on"><input type="checkbox" data-col="gst" checked> GST%</label>
+                </div>
+
+                <div class="tscroll med-table-wrap" id="tableWrap">
+                    <table class="med-table">
+                        <thead id="medHead"></thead>
+                        <tbody id="medBody"></tbody>
+                    </table>
+                </div>
+                <div class="med-cards" id="medCards" aria-label="Medicine list"></div>
+                <div class="no-result" id="noResult" hidden>No medicines found</div>
+
+                <div class="empty-state" id="emptyState" hidden>
+                    <svg class="es-art" viewBox="0 0 140 100" fill="none" aria-hidden="true">
+                        <rect x="28" y="8" width="84" height="84" rx="9" stroke="currentColor" stroke-width="3" />
+                        <path d="M44 30h52M44 44h52M44 58h30" stroke="currentColor" stroke-width="3"
+                            stroke-linecap="round" />
+                        <path d="M96 62v20M86 72h20" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+                    </svg>
+                    <h3>No medicines yet</h3>
+                    <p>Add your first medicine, or import a CSV / Excel list to get started instantly.</p>
+                    <button class="btn btn-primary" id="btnAddEmpty" type="button"><span class="ic"
+                            data-ic="plus"></span> Add First Medicine</button>
+                </div>
+
+                <div class="import-strip">
+                    <button class="btn btn-ghost" id="btnImportCsv" type="button"><span class="ic"
+                            data-ic="file"></span> Import CSV</button>
+                    <button class="btn btn-ghost" id="btnImportExcel" type="button"><span class="ic"
+                            data-ic="grid"></span> Import Excel</button>
+                    <button class="btn btn-ghost" id="btnImportJson" type="button"><span class="ic"
+                            data-ic="code"></span> Import JSON</button>
+                    <span style="font-size:11.5px;color:var(--faint);font-weight:700;align-self:center">Files are parsed
+                        locally in your browser.</span>
+                </div>
+                <input type="file" id="fileImport" accept=".csv,.xlsx,.xls,.json,text/csv" hidden>
+
+                <button class="tot-strip" id="stripTotals" type="button" hidden
+                    aria-label="Jump to order summary"></button>
+            </section>
+
+            <!-- ============ OUTER SUMMARY (live, single source of truth) ============ -->
+            <section class="glass outer-summary" id="outerSummary" aria-labelledby="osTitle" aria-live="polite">
+                <div class="os-head">
+                    <h2 id="osTitle">Order Summary</h2>
+                    <span class="chip" id="osTaxChip">CGST + SGST</span>
+                </div>
+                <div class="os-grid">
+                    <div class="os-tiles">
+                        <div class="stat"><b id="osItems">0</b><span>Total Items</span></div>
+                        <div class="stat"><b id="osQty">0</b><span>Total Quantity</span></div>
+                    </div>
+                    <div class="os-rows">
+                        <div id="osRows"></div>
+                        <div class="ogrand"><span>Grand Total</span><b id="osGrand">₹0.00</b></div>
+                    </div>
+                </div>
+                <div class="os-actions">
+                    <button class="btn btn-primary btn-pdf" id="osPdf" type="button"><span class="ic"
+                            data-ic="download"></span> Generate PDF</button>
+                    <button class="btn btn-ghost" id="osPrint" type="button"><span class="ic" data-ic="printer"></span>
+                        Print</button>
+                    <button class="btn btn-ghost" id="osSave" type="button"><span class="ic" data-ic="save"></span> Save
+                        Draft</button>
+                    <span class="spacer"></span>
+                    <button class="btn btn-ghost" id="osCsv" type="button"><span class="ic" data-ic="grid"></span>
+                        Export CSV</button>
+                </div>
+            </section>
+
+            <!-- ============ 3. LIVE PREVIEW ============ -->
+            <aside class="glass ws-right" aria-labelledby="rightTitle">
+                <h2 class="panel-title" id="rightTitle"><span class="num">3</span> Order Sheet Preview</h2>
+                <div class="pv-actions">
+                    <button class="btn btn-primary btn-block btn-pdf" id="btnPdf" type="button"><span class="ic"
+                            data-ic="download"></span> Download PDF</button>
+                    <div class="pv-row">
+                        <button class="btn btn-ghost" id="btnPrint" type="button"><span class="ic"
+                                data-ic="printer"></span> Print</button>
+                        <button class="btn btn-ghost" id="btnPng" type="button"><span class="ic" data-ic="image"></span>
+                            PNG</button>
+                        <button class="btn btn-ghost" id="btnCsv" type="button"><span class="ic" data-ic="grid"></span>
+                            CSV</button>
+                    </div>
+                    <div class="pv-row">
+                        <button class="btn btn-ghost" id="btnSave" type="button"><span class="ic" data-ic="save"></span>
+                            Save Draft</button>
+                        <button class="btn btn-ghost" id="btnLoad" type="button"><span class="ic"
+                                data-ic="folder"></span> Load Draft</button>
+                        <button class="btn btn-ghost" id="btnJson" type="button"><span class="ic"
+                                data-ic="download"></span> Backup</button>
+                    </div>
+                </div>
+                <div class="pv-tools">
+                    <span class="ic" data-ic="eye" style="width:15px;height:15px"></span> Live A4 preview
+                    <div class="zoomctl">
+                        <button class="icon-btn" id="zoomOut" aria-label="Zoom out"><span class="ic"
+                                data-ic="zoomout"></span></button>
+                        <span id="zoomLabel">100%</span>
+                        <button class="icon-btn" id="zoomIn" aria-label="Zoom in"><span class="ic"
+                                data-ic="zoomin"></span></button>
+                    </div>
+                </div>
+                <div class="sheet-wrap" id="sheetWrap">
+                    <div class="sheet-holder" id="sheetHolder">
+                        <div class="sheet" id="orderSheet" data-tpl="classic"></div>
+                    </div>
+                </div>
+            </aside>
+        </section>
+
+        <section class="section" id="templates" aria-labelledby="tplH">
+            <div class="sec-head"><span class="over">Templates</span>
+                <h2 id="tplH">One click, new look</h2>
+            </div>
+            <div class="tpl-grid" id="tplGrid"></div>
+        </section>
+
+        <section class="section" id="about" aria-labelledby="aboutH">
+            <div class="sec-head"><span class="over">Guide</span>
+                <h2 id="aboutH">Everything you need to know</h2>
+            </div>
+            <div class="seo-grid">
+                <article class="glass seo-card">
+                    <h3>What is a Pharma Order Sheet Maker?</h3>
+                    <p>A free online tool for pharmacies, clinics and distributors in India. Enter your pharmacy
+                        details, add medicines with quantity, rate, discount and GST, and get a clean, print-ready
+                        purchase order with correct tax calculations in Indian Rupees.</p>
+                </article>
+                <article class="glass seo-card">
+                    <h3>How to create a medicine purchase order?</h3>
+                    <ol>
+                        <li>Enter pharmacy name, GSTIN and drug licence details.</li>
+                        <li>Add medicines or import a CSV / Excel list.</li>
+                        <li>Pick GST, IGST or No Tax mode.</li>
+                        <li>Choose a template, then download PDF, print or save a draft.</li>
+                    </ol>
+                </article>
+                <article class="glass seo-card">
+                    <h3>Can I download a pharma order as PDF?</h3>
+                    <p>Yes — a genuine multi-page A4 PDF with your logo, company block, itemised medicine table,
+                        CGST/SGST or IGST breakup, amount in words, notes and signature area. Table headers repeat on
+                        every page.</p>
+                </article>
+                <article class="glass seo-card">
+                    <h3>Can I import medicine data from CSV?</h3>
+                    <p>Yes. Upload CSV, XLSX or JSON with headers like Medicine Name, Qty, Rate, Discount, GST — columns
+                        are auto-detected and parsed entirely in your browser.</p>
+                </article>
+                <article class="glass seo-card">
+                    <h3>Is my order data stored online?</h3>
+                    <p>No. Everything runs locally in your browser and drafts are saved to your own device's local
+                        storage.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="faq" aria-labelledby="faqH">
+            <div class="sec-head"><span class="over">FAQ</span>
+                <h2 id="faqH">Frequently asked questions</h2>
+            </div>
+            <div class="faq-list">
+                <details class="glass">
+                    <summary>What is a Pharma Order Sheet Maker?</summary>
+                    <div class="fa-body">A free browser-based tool that creates professional medicine purchase orders
+                        with GST calculations and instant PDF / print output.</div>
+                </details>
+                <details class="glass">
+                    <summary>How to create a medicine purchase order?</summary>
+                    <div class="fa-body">Fill in pharmacy details, add medicines (or import a CSV), select your tax mode
+                        — the live preview becomes a ready-to-download purchase order.</div>
+                </details>
+                <details class="glass">
+                    <summary>Can I download a pharma order as PDF?</summary>
+                    <div class="fa-body">Yes — a real multi-page PDF generated on your device, with repeated table
+                        headers and page numbers.</div>
+                </details>
+                <details class="glass">
+                    <summary>Can I import medicine data from CSV?</summary>
+                    <div class="fa-body">Yes. CSV, XLSX and JSON are supported with automatic column mapping.</div>
+                </details>
+                <details class="glass">
+                    <summary>Is my order data stored online?</summary>
+                    <div class="fa-body">Never. All processing happens in your browser; drafts live in local storage on
+                        your device.</div>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" id="footer">
+        <div class="ft-in">
+            <div class="ft-top">
+                <div>
+                    <div class="ft-brand"><svg viewBox="0 0 40 40" aria-hidden="true">
+                            <rect width="40" height="40" rx="11" fill="url(#lgm)" />
+                            <path d="M22.5 7.5 13 22h6.2L17 32.5 27 18h-6.2l1.7-10.5Z" fill="#fff" />
+                        </svg>Tools<span class="t24">24</span></div>
+                    <div class="ft-tag">Free Online Tools for a Smarter India</div>
+                </div>
+                <nav class="ft-links" aria-label="Footer">
+                    <button type="button" data-info="privacy">Privacy</button>
+                    <button type="button" data-info="terms">Terms</button>
+                    <button type="button" data-info="contact">Contact</button>
+                </nav>
+            </div>
+            <div class="ft-disc">© 2026 Tools24. This tool is for creating purchase/order documents. Always verify
+                medicine, pricing, tax and supplier information before placing an order.</div>
+        </div>
+    </footer>
+
+    <!-- ============ ITEM MODAL (bottom sheet on mobile) ============ -->
+    <div class="scrim" id="itemModal" role="dialog" aria-modal="true" aria-labelledby="imTitle">
+        <div class="dialog">
+            <div class="dlg-head">
+                <h3 id="imTitle">Add Medicine</h3><button class="icon-btn" id="imX" aria-label="Close dialog"><span
+                        class="ic" data-ic="x"></span></button>
+            </div>
+            <form class="dlg-body" id="itemForm" novalidate>
+                <div class="field"><label for="m_name">Medicine Name *</label><input class="inp" id="m_name"
+                        placeholder="e.g. Paracetamol 650"><span class="fhint">Please enter a medicine name.</span>
+                </div>
+                <div class="grid2">
+                    <div class="field"><label for="m_generic">Generic Name</label><input class="inp" id="m_generic"
+                            placeholder="Acetaminophen"></div>
+                    <div class="field"><label for="m_mfr">Manufacturer</label><input class="inp" id="m_mfr"
+                            placeholder="e.g. Cipla"></div>
+                    <div class="field"><label for="m_pack">Pack Size</label><input class="inp" id="m_pack"
+                            placeholder="10×10 Tablets"></div>
+                    <div class="field"><label for="m_batch">Batch No.</label><input class="inp" id="m_batch"
+                            placeholder="B2409A"></div>
+                    <div class="field"><label for="m_expiry">Expiry Date</label><input class="inp" type="date"
+                            id="m_expiry"></div>
+                    <div class="field"><label for="m_gst">GST (%)</label><input class="inp" type="number" id="m_gst"
+                            inputmode="decimal" min="0" max="100" step="0.01" value="12" list="gstList"><datalist
+                            id="gstList">
+                            <option>0</option>
+                            <option>5</option>
+                            <option>12</option>
+                            <option>18</option>
+                            <option>28</option>
+                        </datalist><span class="fhint">GST must be between 0 and 100.</span></div>
+                    <div class="field"><label for="m_qty">Quantity *</label><input class="inp" type="number" id="m_qty"
+                            inputmode="numeric" min="0" step="1" value="1"><span class="fhint">Quantity must be a number
+                            (0 or more).</span></div>
+                    <div class="field"><label for="m_free">Free Quantity</label><input class="inp" type="number"
+                            id="m_free" inputmode="numeric" min="0" step="1" value="0"><span class="fhint">Free quantity
+                            must be 0 or more.</span></div>
+                    <div class="field"><label for="m_rate">Rate (₹) *</label><input class="inp" type="number"
+                            id="m_rate" inputmode="decimal" min="0" step="0.01" value="0"><span class="fhint">Rate must
+                            be a number (0 or more).</span></div>
+                    <div class="field"><label for="m_disc">Discount (%)</label><input class="inp" type="number"
+                            id="m_disc" inputmode="decimal" min="0" max="100" step="0.01" value="0"><span
+                            class="fhint">Discount must be between 0 and 100.</span></div>
+                </div>
+            </form>
+            <div class="dlg-foot">
+                <button class="btn btn-ghost" id="imCancel" type="button">Cancel</button>
+                <button class="btn btn-primary" id="imSave" type="button"><span class="ic" data-ic="check"></span> <span
+                        id="imSaveTxt">Add Medicine</span></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="scrim" id="confirmModal" role="dialog" aria-modal="true" aria-labelledby="cfTitle">
+        <div class="dialog" style="max-width:420px">
+            <div class="dlg-head">
+                <h3 id="cfTitle">Are you sure?</h3><button class="icon-btn" id="cfX" aria-label="Close dialog"><span
+                        class="ic" data-ic="x"></span></button>
+            </div>
+            <div class="dlg-body small">
+                <p id="cfMsg"></p>
+            </div>
+            <div class="dlg-foot">
+                <button class="btn btn-ghost" id="cfCancel" type="button">Cancel</button>
+                <button class="btn btn-primary" id="cfOk" type="button">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="scrim" id="infoModal" role="dialog" aria-modal="true" aria-labelledby="inTitle">
+        <div class="dialog" style="max-width:520px">
+            <div class="dlg-head">
+                <h3 id="inTitle">Info</h3><button class="icon-btn" id="inX" aria-label="Close dialog"><span class="ic"
+                        data-ic="x"></span></button>
+            </div>
+            <div class="dlg-body small" id="inBody"></div>
+            <div class="dlg-foot"><button class="btn btn-primary" id="inOk" type="button">Got it</button></div>
+        </div>
+    </div>
+
+    <div class="scrim" id="palette" role="dialog" aria-modal="true" aria-label="Quick actions">
+        <div class="pal-panel">
+            <div class="pal-inp"><span class="ic" data-ic="search"></span><input id="palInput" type="text"
+                    placeholder="Type a command or search…" autocomplete="off" aria-label="Search actions"></div>
+            <div class="pal-list" id="palList" role="listbox"></div>
+        </div>
+    </div>
+
+    <div class="toasts" id="toasts" aria-live="polite"></div>
+    <div class="loader" id="loader" role="status">
+        <div class="glass loader-card">
+            <div class="spinner"></div><b id="loaderText">Working…</b>
+        </div>
+    </div>
+    <div id="pdfMount" aria-hidden="true"></div>
+
+    <div class="mobile-bar" role="toolbar" aria-label="Quick actions">
+        <button class="btn btn-ghost" id="mbSave" type="button"><span class="ic" data-ic="save"></span> Save</button>
+        <button class="btn btn-ghost" id="mbPrint" type="button"><span class="ic" data-ic="printer"></span>
+            Print</button>
+        <button class="btn btn-primary btn-pdf" id="mbPdf" type="button"><span class="ic" data-ic="download"></span>
+            PDF</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script>
+        "use strict";
+        /* ================================================================
+           HELPERS
+        ================================================================ */
+        const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+        const esc = v => String(v ?? '').replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
+        const num = v => { const x = parseFloat(String(v ?? '').replace(/[^0-9.\-]/g, '')); return isFinite(x) ? x : 0 };
+        const uid = () => (crypto.randomUUID ? crypto.randomUUID() : Date.now() + '-' + Math.random().toString(36).slice(2));
+        const inrFmt = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const fmt = n => inrFmt.format(+n || 0);                                   /* ₹3,333.50 */
+        const fmtN = n => Number(n || 0).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const fmtQ = n => Number(n || 0).toLocaleString('en-IN');
+        const fmtRs = n => 'Rs. ' + fmtN(n);                                       /* jsPDF core fonts have no ₹ glyph */
+        const fmtDate = s => { if (!s) return '—'; const d = new Date(s + 'T00:00:00'); return isNaN(d) ? String(s) : d.toLocaleDateString('en-IN', { day: '2-digit', month: '2-digit', year: 'numeric' }); };
+        const todayISO = () => { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+        const getDeep = (o, p) => p.split('.').reduce((a, k) => a && a[k], o);
+        const setDeep = (o, p, v) => { const ks = p.split('.'); let c = o; for (let i = 0; i < ks.length - 1; i++)c = c[ks[i]] ??= ({}); c[ks[ks.length - 1]] = v; };
+        const rafThrottle = fn => { let q = false; return (...a) => { if (q) return; q = true; requestAnimationFrame(() => { q = false; fn(...a); }); }; };
+        const fileBase = () => 'Pharma-Order-' + String(S.order.number || 'Sheet').replace(/[^\w\-]/g, '');
+
+        /* ================================================================
+           ICONS
+        ================================================================ */
+        const PATHS = {
+            menu: '<path d="M4 7h16M4 12h16M4 17h16"/>', x: '<path d="M18 6 6 18M6 6l12 12"/>',
+            sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+            moon: '<path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/>',
+            search: '<circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/>',
+            plus: '<path d="M12 5v14M5 12h14"/>',
+            trash: '<path d="M3 6h18M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2M19 6l-1 14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1L5 6"/><path d="M10 11v6M14 11v6"/>',
+            copy: '<rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>',
+            edit: '<path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/>',
+            upload: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>',
+            download: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>',
+            printer: '<path d="M6 9V3h12v6"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="7" rx="1"/>',
+            file: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/>',
+            save: '<path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z"/><path d="M17 21v-8H7v8M7 3v5h8"/>',
+            refresh: '<path d="M21 12a9 9 0 1 1-2.6-6.4"/><path d="M21 3v6h-6"/>',
+            up: '<path d="M12 19V5M5 12l7-7 7 7"/>', down: '<path d="M12 5v14M19 12l-7 7-7-7"/>',
+            image: '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/>',
+            grid: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/>',
+            check: '<path d="M20 6 9 17l-5-5"/>',
+            ok: '<circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 5-5.5"/>',
+            alert: '<path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/>',
+            info: '<circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v6"/>',
+            eye: '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/>',
+            phone: '<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>',
+            folder: '<path d="M3 7V5a2 2 0 0 1 2-2h4l2 3h8a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/>',
+            code: '<path d="m8 6-6 6 6 6M16 6l6 6-6 6"/>',
+            shield: '<path d="M12 22s8-3.6 8-10V5l-8-3-8 3v7c0 6.4 8 10 8 10Z"/>',
+            zoomin: '<circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M8 11h6M11 8v6"/>',
+            zoomout: '<circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M8 11h6"/>'
+        };
+        const ic = n => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + (PATHS[n] || PATHS.info) + '</svg>';
+        const hydrateIcons = r => (r || document).querySelectorAll('.ic[data-ic]').forEach(el => { el.innerHTML = ic(el.dataset.ic); el.removeAttribute('data-ic'); });
+
+        /* ================================================================
+           CENTRAL STATE  (single source of truth)
+        ================================================================ */
+        const DKEY = 'tools24_pharma_draft_v2';
+        const defState = () => ({
+            company: { name: '', address: '', phone: '', email: '', gstin: '', dl: '' },
+            order: { date: todayISO(), number: '', supplier: '', supplierGstin: '', delivery: '', payment: '', notes: '', authorized: '' },
+            logo: null,
+            medicines: [],                       /* {id,name,generic,mfr,pack,batch,expiry,qty,free,rate,disc,gst} */
+            tax: 'gst',                          /* 'gst' | 'igst' | 'none' */
+            template: 'classic',
+            show: { gst: true, batch: true, expiry: true, mfr: true, disc: true }
+        });
+        const ui = { search: '', sort: { key: '', dir: 1 }, zoom: 1 };
+        let S = defState();
+
+        /* ================================================================
+           THE ONE CALCULATION FUNCTION — used by summary, strip, table,
+           preview, PDF, CSV, print and drafts. Never duplicated elsewhere.
+        ================================================================ */
+        function calcItem(m) {
+            const base = num(m.qty) * num(m.rate);
+            const discAmt = base * num(m.disc) / 100;
+            const taxable = base - discAmt;
+            const tax = S.tax === 'none' ? 0 : taxable * num(m.gst) / 100;
+            return { base, discAmt, taxable, tax, total: taxable + tax };
+        }
+        function calculateOrderTotals() {
+            let totalItems = S.medicines.length, totalQuantity = 0, totalFree = 0, subtotal = 0, discount = 0, taxableAmount = 0, taxTotal = 0;
+            for (const m of S.medicines) {
+                const c = calcItem(m);
+                totalQuantity += num(m.qty); totalFree += num(m.free);
+                subtotal += c.base; discount += c.discAmt; taxableAmount += c.taxable; taxTotal += c.tax;
+            }
+            return {
+                totalItems, totalQuantity, totalFree, subtotal, discount, taxableAmount,
+                cgst: S.tax === 'gst' ? taxTotal / 2 : 0,
+                sgst: S.tax === 'gst' ? taxTotal / 2 : 0,
+                igst: S.tax === 'igst' ? taxTotal : 0,
+                taxTotal, grandTotal: taxableAmount + taxTotal
+            };
+        }
+
+        /* Amount in words (Indian lakh/crore system) */
+        const W1 = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+        const W10 = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+        const two = n => n < 20 ? W1[n] : W10[Math.floor(n / 10)] + (n % 10 ? ' ' + W1[n % 10] : '');
+        const three = n => { const h = Math.floor(n / 100), r = n % 100; return (h ? W1[h] + ' Hundred' + (r ? ' ' : '') : '') + (r ? two(r) : ''); };
+        function words(n) {
+            n = Math.floor(Math.abs(n)); if (!n) return 'Zero'; let o = ''; const cr = Math.floor(n / 1e7); n %= 1e7; const lk = Math.floor(n / 1e5); n %= 1e5; const th = Math.floor(n / 1000); n %= 1000;
+            if (cr) o += three(cr) + ' Crore '; if (lk) o += three(lk) + ' Lakh '; if (th) o += three(th) + ' Thousand '; if (n) o += three(n); return o.trim();
+        }
+        function amountWords(v) {
+            let r = Math.floor(v), p = Math.round((v - r) * 100); if (p === 100) { r++; p = 0; }
+            return 'Rupees ' + words(r) + (p ? ' and ' + two(p) + ' Paise' : '') + ' Only';
+        }
+
+        /* ================================================================
+           TOASTS / LOADER / MODALS
+        ================================================================ */
+        function toast(msg, type = 'info', action) {
+            const t = document.createElement('div'); t.className = 'toast ' + type;
+            t.innerHTML = '<span class="ic">' + ic(type === 'success' ? 'ok' : type === 'error' ? 'alert' : 'info') + '</span><span style="flex:1;min-width:0">' + esc(msg) + '</span>' + (action ? '<button type="button">' + esc(action.label) + '</button>' : '');
+            $('#toasts').appendChild(t);
+            const kill = () => { t.classList.add('out'); setTimeout(() => t.remove(), 260); };
+            if (action) t.querySelector('button').addEventListener('click', () => { action.fn(); kill(); });
+            setTimeout(kill, action ? 5200 : 3400);
+        }
+        const showLoader = t => { $('#loaderText').textContent = t; $('#loader').classList.add('open'); };
+        const hideLoader = () => $('#loader').classList.remove('open');
+
+        let lastFocus = null;
+        function openScrim(el) { lastFocus = document.activeElement; el.classList.add('open'); const f = el.querySelector('input,button,select,textarea'); f && f.focus(); }
+        function closeScrim(el) { el.classList.remove('open'); if (lastFocus) try { lastFocus.focus() } catch (e) { } }
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && !e.target.closest('#palInput')) $$('.scrim.open').forEach(closeScrim);
+            if (e.key === 'Tab') {
+                const sc = $$('.scrim.open')[0]; if (!sc) return;
+                const els = [...sc.querySelectorAll('button,input,select,textarea,a[href]')].filter(x => !x.disabled && x.offsetParent !== null);
+                if (!els.length) return; const first = els[0], last = els[els.length - 1];
+                if (e.shiftKey && document.activeElement === first) { last.focus(); e.preventDefault(); }
+                else if (!e.shiftKey && document.activeElement === last) { first.focus(); e.preventDefault(); }
+            }
+        });
+        function confirmDlg(title, msg, okLabel = 'Confirm') {
+            return new Promise(res => {
+                $('#cfTitle').textContent = title; $('#cfMsg').textContent = msg; $('#cfOk').textContent = okLabel;
+                openScrim($('#confirmModal'));
+                const done = v => { closeScrim($('#confirmModal')); res(v); };
+                $('#cfOk').onclick = () => done(true); $('#cfCancel').onclick = () => done(false); $('#cfX').onclick = () => done(false);
+            });
+        }
+        const INFO = {
+            privacy: ['Privacy Policy', '<p><b>Your data stays in your browser.</b> Company details, medicine lists, uploaded logos and imported files never leave your device. Drafts are saved to your browser\'s local storage only.</p>'],
+            terms: ['Terms of Use', '<p>This tool is provided free for creating purchase/order documents. Always verify medicine names, batch details, pricing, GST rates and supplier information before placing an order.</p>'],
+            contact: ['Contact Tools24', '<p>Write to us at <b>hello@tools24.example</b> — we usually reply within two working days.</p>']
+        };
+        $$('.ft-links button').forEach(b => b.addEventListener('click', () => {
+            const [t, c] = INFO[b.dataset.info]; $('#inTitle').textContent = t; $('#inBody').innerHTML = c; openScrim($('#infoModal'));
+        }));
+        ['#inX', '#inOk'].forEach(s => $(s).addEventListener('click', () => closeScrim($('#infoModal'))));
+
+        /* ================================================================
+           THEME + NAV
+        ================================================================ */
+        function applyTheme(t) {
+            document.documentElement.dataset.theme = t; localStorage.setItem('t24_theme', t);
+            $('#sunIc').style.display = t === 'dark' ? 'none' : ''; $('#moonIc').style.display = t === 'dark' ? '' : 'none';
+        }
+        applyTheme(localStorage.getItem('t24_theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+        $('#themeBtn').addEventListener('click', () => { applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'); fitPreview(); });
+        $('#navToggle').addEventListener('click', () => { const o = $('#mobileMenu').classList.toggle('open'); $('#navToggle').setAttribute('aria-expanded', o); });
+        $$('#mobileMenu a').forEach(a => a.addEventListener('click', () => { $('#mobileMenu').classList.remove('open'); $('#navToggle').setAttribute('aria-expanded', 'false'); }));
+
+        /* ================================================================
+           REACTIVE RENDER PIPELINE
+           structural=true  → rebuild table/cards DOM (add, delete, sort…)
+           structural=false → only update amount cells + summaries + preview
+        ================================================================ */
+        function refresh(structural) {
+            if (structural) renderItemsDOM();
+            updateAmountCells();
+            renderSummaries();
+            renderPreview();
+        }
+        const scheduleRefresh = rafThrottle(() => refresh(false));
+
+        /* ================================================================
+           EDITOR TABLE + MOBILE CARDS
+        ================================================================ */
+        const ECOLS = [
+            { k: 'idx', l: '#' },
+            { k: 'name', l: 'Medicine Name', sort: 'name' },
+            { k: 'generic', l: 'Generic' },
+            { k: 'mfr', l: 'Manufacturer', opt: 'mfr' },
+            { k: 'pack', l: 'Pack Size' },
+            { k: 'batch', l: 'Batch No.', opt: 'batch' },
+            { k: 'expiry', l: 'Expiry', opt: 'expiry' },
+            { k: 'qty', l: 'Qty', inl: 'qty' },
+            { k: 'free', l: 'Free Qty', inl: 'free' },
+            { k: 'rate', l: 'Rate (₹)', inl: 'rate', sort: 'rate' },
+            { k: 'disc', l: 'Disc (%)', inl: 'disc', opt: 'disc' },
+            { k: 'gst', l: 'GST (%)', inl: 'gst', opt: 'gst' },
+            { k: 'amt', l: 'Amount (₹)', sort: 'amount' },
+            { k: 'act', l: 'Action' }];
+        const visCols = () => ECOLS.filter(c => !c.opt || S.show[c.opt]);
+
+        function visibleItems() {
+            const q = ui.search.trim().toLowerCase();
+            let arr = S.medicines.map((m, i) => ({ m, i }));
+            if (q) arr = arr.filter(x => [x.m.name, x.m.generic, x.m.mfr, x.m.batch].some(v => String(v || '').toLowerCase().includes(q)));
+            if (ui.sort.key) {
+                const val = x => ui.sort.key === 'amount' ? calcItem(x.m).total : ui.sort.key === 'name' ? String(x.m.name || '').toLowerCase() : num(x.m[ui.sort.key]);
+                arr.sort((a, b) => { const va = val(a), vb = val(b); return (typeof va === 'string' ? va.localeCompare(vb) : va - vb) * ui.sort.dir; });
+            }
+            return arr;
+        }
+        function actBtns(i) {
+            return '<div class="row-acts">'
+                + '<button class="icon-btn" data-act="up" data-i="' + i + '" title="Move up" aria-label="Move item up"><span class="ic">' + ic('up') + '</span></button>'
+                + '<button class="icon-btn" data-act="down" data-i="' + i + '" title="Move down" aria-label="Move item down"><span class="ic">' + ic('down') + '</span></button>'
+                + '<button class="icon-btn" data-act="dup" data-i="' + i + '" title="Duplicate" aria-label="Duplicate item"><span class="ic">' + ic('copy') + '</span></button>'
+                + '<button class="icon-btn" data-act="edit" data-i="' + i + '" title="Edit" aria-label="Edit item"><span class="ic">' + ic('edit') + '</span></button>'
+                + '<button class="icon-btn del" data-act="del" data-i="' + i + '" title="Delete" aria-label="Delete item"><span class="ic">' + ic('trash') + '</span></button></div>';
+        }
+        const inlineInp = (i, f, v) => '<input class="num-in' + (f === 'rate' ? ' w-rate' : '') + '" type="number" inputmode="decimal" data-i="' + i + '" data-f="' + f + '" value="' + esc(v) + '" aria-label="' + f + '">';
+        const mp = (l, v) => '<span class="mp"><i>' + l + '</i>' + esc(v || '—') + '</span>';
+
+        function renderHead() {
+            $('#medHead').innerHTML = '<tr>' + visCols().map(c => {
+                if (!c.sort) return '<th>' + c.l + '</th>';
+                const on = ui.sort.key === c.sort;
+                return '<th class="sortable ' + (on ? (ui.sort.dir === 1 ? 'asc' : 'desc') : '') + '" data-sort="' + c.sort + '" aria-sort="' + (on ? (ui.sort.dir === 1 ? 'ascending' : 'descending') : 'none') + '">' + c.l + '<span class="sind"></span></th>';
+            }).join('') + '</tr>';
+        }
+        function renderItemsDOM() {
+            renderHead();
+            const vis = visibleItems(), has = S.medicines.length > 0;
+            $('#tableWrap').classList.toggle('hidden', !has);
+            $('#medCards').classList.toggle('hidden', !has);
+            $('#emptyState').hidden = has;
+            $('#noResult').hidden = !(has && !vis.length);
+
+            $('#medBody').innerHTML = vis.map(({ m, i }) => {
+                let tds = '';
+                visCols().forEach(c => {
+                    if (c.k === 'idx') tds += '<td class="c-idx">' + (i + 1) + '</td>';
+                    else if (c.k === 'name') tds += '<td class="cell-name"><b>' + esc(m.name) + '</b></td>';
+                    else if (c.k === 'generic') tds += '<td>' + esc(m.generic || '—') + '</td>';
+                    else if (c.k === 'mfr') tds += '<td>' + esc(m.mfr || '—') + '</td>';
+                    else if (c.k === 'pack') tds += '<td>' + esc(m.pack || '—') + '</td>';
+                    else if (c.k === 'batch') tds += '<td>' + esc(m.batch || '—') + '</td>';
+                    else if (c.k === 'expiry') tds += '<td>' + (m.expiry ? fmtDate(m.expiry) : '—') + '</td>';
+                    else if (c.inl) tds += '<td>' + inlineInp(i, c.inl, m[c.inl]) + '</td>';
+                    else if (c.k === 'amt') tds += '<td class="amt-cell" data-amt="' + i + '"></td>';
+                    else if (c.k === 'act') tds += '<td>' + actBtns(i) + '</td>';
+                });
+                return '<tr>' + tds + '</tr>';
+            }).join('');
+
+            $('#medCards').innerHTML = vis.map(({ m, i }) => {
+                const sub = [m.generic, m.mfr].filter(Boolean).join(' · ');
+                return '<div class="mcard">'
+                    + '<div class="mc-top"><span class="mc-idx">#' + (i + 1) + '</span><b class="mc-name">' + esc(m.name) + '</b><span class="mc-amt" data-amt="' + i + '"></span></div>'
+                    + (sub ? '<div class="mc-sub">' + esc(sub) + '</div>' : '')
+                    + '<div class="mc-meta">' + mp('Pack', m.pack)
+                    + (S.show.batch ? mp('Batch', m.batch) : '')
+                    + (S.show.expiry ? mp('Expiry', m.expiry ? fmtDate(m.expiry) : '—') : '') + '</div>'
+                    + '<div class="mc-edit">'
+                    + '<label>Qty ' + inlineInp(i, 'qty', m.qty) + '</label>'
+                    + '<label>Free ' + inlineInp(i, 'free', m.free) + '</label>'
+                    + '<label>Rate ' + inlineInp(i, 'rate', m.rate) + '</label>'
+                    + (S.show.disc ? '<label>Disc% ' + inlineInp(i, 'disc', m.disc) + '</label>' : '')
+                    + (S.show.gst ? '<label>GST% ' + inlineInp(i, 'gst', m.gst) + '</label>' : '')
+                    + '</div>'
+                    + '<div class="mc-acts">' + actBtns(i) + '</div></div>';
+            }).join('');
+            syncSortSel();
+        }
+        /* live amount update without touching inputs (keeps focus) */
+        function updateAmountCells() {
+            visibleItems().forEach(({ m, i }) => {
+                const t = fmt(calcItem(m).total);
+                $$('[data-amt="' + i + '"]').forEach(el => { if (el.textContent !== t) el.textContent = t; });
+            });
+        }
+
+        /* delegated handlers — inputs & actions, table + cards */
+        function medListHandler(e) {
+            const inp = e.target.closest('input[data-f]');
+            if (inp) {
+                const i = +inp.dataset.i; if (!S.medicines[i]) return;
+                S.medicines[i][inp.dataset.f] = inp.value;
+                updateAmountCells(); renderSummaries(); schedulePreview();
+                return;
+            }
+            const btn = e.target.closest('[data-act]');
+            if (!btn) return;
+            const i = +btn.dataset.i, act = btn.dataset.act, m = S.medicines[i];
+            if (!m) return;
+            if (act === 'edit') openItemModal(i);
+            else if (act === 'dup') { S.medicines.splice(i + 1, 0, { ...m, id: uid() }); refresh(true); toast('Medicine duplicated.', 'success'); }
+            else if (act === 'del') {
+                const removed = S.medicines.splice(i, 1)[0]; refresh(true);
+                toast('Removed "' + (removed.name || 'item') + '".', 'info', { label: 'Undo', fn: () => { S.medicines.splice(Math.min(i, S.medicines.length), 0, removed); refresh(true); } });
+            }
+            else if (act === 'up' && i > 0) { [S.medicines[i - 1], S.medicines[i]] = [S.medicines[i], S.medicines[i - 1]]; ui.sort = { key: '', dir: 1 }; refresh(true); }
+            else if (act === 'down' && i < S.medicines.length - 1) { [S.medicines[i + 1], S.medicines[i]] = [S.medicines[i], S.medicines[i + 1]]; ui.sort = { key: '', dir: 1 }; refresh(true); }
+        }
+        $('#medBody').addEventListener('click', medListHandler);
+        $('#medBody').addEventListener('input', medListHandler);
+        $('#medCards').addEventListener('click', medListHandler);
+        $('#medCards').addEventListener('input', medListHandler);
+
+        function syncSortSel() { const v = ui.sort.key ? ui.sort.key + '|' + ui.sort.dir : ''; if ($('#sortSel').value !== v) $('#sortSel').value = v; }
+        $('#medHead').addEventListener('click', e => {
+            const th = e.target.closest('[data-sort]'); if (!th) return;
+            const k = th.dataset.sort;
+            ui.sort = ui.sort.key === k ? { key: k, dir: -ui.sort.dir } : { key: k, dir: 1 };
+            refresh(true);
+        });
+        $('#sortSel').addEventListener('change', e => {
+            const v = e.target.value;
+            ui.sort = v ? (k => ({ key: k[0], dir: +k[1] }))(v.split('|')) : { key: '', dir: 1 };
+            refresh(true);
+        });
+        $('#medSearch').addEventListener('input', e => { ui.search = e.target.value; refresh(true); });
+        $('#medSearch').addEventListener('keydown', e => { if (e.key === 'Escape') { e.target.value = ''; ui.search = ''; refresh(true); } });
+        $$('[data-col]').forEach(cb => cb.addEventListener('change', () => {
+            S.show[cb.dataset.col] = cb.checked;
+            cb.closest('.ctog').classList.toggle('on', cb.checked);
+            refresh(true);
+        }));
+
+        /* ================================================================
+           OUTER SUMMARY + STRIP — fed only by calculateOrderTotals()
+        ================================================================ */
+        function renderSummaries() {
+            const T = calculateOrderTotals();
+            $('#osItems').textContent = fmtQ(T.totalItems);
+            $('#osQty').textContent = fmtQ(T.totalQuantity);
+            $('#osTaxChip').textContent = S.tax === 'gst' ? 'CGST + SGST' : S.tax === 'igst' ? 'IGST' : 'No Tax';
+            const rows = [['Subtotal', fmt(T.subtotal)], ['Discount', '− ' + fmt(T.discount)], ['Taxable Amount', fmt(T.taxableAmount)]];
+            if (S.tax === 'gst') rows.push(['CGST', fmt(T.cgst)], ['SGST', fmt(T.sgst)]);
+            else if (S.tax === 'igst') rows.push(['IGST', fmt(T.igst)]);
+            else rows.push(['Tax (No Tax mode)', fmt(0)]);
+            $('#osRows').innerHTML = rows.map(r => '<div class="orow"><span>' + r[0] + '</span><b>' + r[1] + '</b></div>').join('');
+            $('#osGrand').textContent = fmt(T.grandTotal);
+            const st = $('#stripTotals');
+            st.hidden = !T.totalItems;
+            if (T.totalItems) st.innerHTML = '<span>' + fmtQ(T.totalItems) + ' item' + (T.totalItems > 1 ? 's' : '') + ' · ' + fmtQ(T.totalQuantity) + ' qty' + (T.totalFree ? ' · +' + fmtQ(T.totalFree) + ' free' : '') + '</span><span>Grand Total <b>' + fmt(T.grandTotal) + '</b> <span class="ic">' + ic('down') + '</span></span>';
+        }
+        $('#stripTotals').addEventListener('click', () => $('#outerSummary').scrollIntoView({ behavior: 'smooth', block: 'center' }));
+
+        $$('[data-tax]').forEach(b => b.addEventListener('click', () => { S.tax = b.dataset.tax; syncTaxButtons(); refresh(false); }));
+        function syncTaxButtons() { $$('[data-tax]').forEach(x => x.classList.toggle('on', x.dataset.tax === S.tax)); }
+
+        /* ================================================================
+           COMPANY FORM BINDING + VALIDATION
+        ================================================================ */
+        $$('[data-k]').forEach(el => el.addEventListener('input', () => {
+            setDeep(S, el.dataset.k, el.value);
+            if (el.dataset.k === 'company.name') updateLogoMono();
+            scheduleRefresh();
+        }));
+        $('#cEmail').addEventListener('blur', e => { const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.target.value.trim()) || e.target.value === ''; e.target.classList.toggle('bad', !ok); });
+        $('#cPhone').addEventListener('blur', e => { const d = e.target.value.replace(/\D/g, ''); const ok = d === '' || d.length === 10 || (d.length === 12 && d.startsWith('91')); e.target.classList.toggle('bad', !ok); });
+        $('#oDate').addEventListener('blur', e => { e.target.classList.toggle('bad', !!e.target.value && isNaN(new Date(e.target.value).getTime())); });
+
+        function genOrderNo() { const y = new Date().getFullYear(), k = 't24_po_' + y, n = (parseInt(localStorage.getItem(k) || '0', 10) || 0) + 1; try { localStorage.setItem(k, String(n)) } catch (e) { } return 'PO-' + y + '-' + String(n).padStart(4, '0'); }
+        $('#poGen').addEventListener('click', () => { S.order.number = genOrderNo(); $('#oNo').value = S.order.number; scheduleRefresh(); toast('Order number generated: ' + S.order.number, 'success'); });
+
+        /* ================================================================
+           LOGO UPLOAD — real, local, dataURL (survives into PDF & drafts)
+        ================================================================ */
+        function updateLogoMono() {
+            const nm = (S.company.name || '').trim();
+            $('#logoMono').textContent = nm ? nm.split(/\s+/).slice(0, 2).map(w => w[0] || '').join('').toUpperCase() : 'PO';
+        }
+        function setLogo(d) { S.logo = d; $('#logoWidget').classList.toggle('has', !!d); if (d) $('#logoImg').src = d; scheduleRefresh(); }
+        function readLogo(file) {
+            if (!file) return;
+            if (!/^image\/(png|jpe?g|webp)$/i.test(file.type)) { toast('Invalid logo file. Please use PNG, JPG or WebP.', 'error'); return; }
+            if (file.size > 2 * 1024 * 1024) { toast('Logo is too large — please use an image under 2 MB.', 'error'); return; }
+            const r = new FileReader();
+            r.onload = () => { setLogo(r.result); toast('Logo uploaded successfully.', 'success'); };
+            r.onerror = () => toast('Could not read the logo file.', 'error');
+            r.readAsDataURL(file);
+        }
+        $('#btnLogoUpload').addEventListener('click', () => $('#logoInput').click());
+        $('#logoInput').addEventListener('change', e => { readLogo(e.target.files[0]); e.target.value = ''; });
+        $('#btnLogoRemove').addEventListener('click', () => { if (!S.logo) { toast('No logo uploaded yet.', 'info'); return; } setLogo(null); toast('Logo removed.', 'info'); });
+        ['dragover', 'dragleave', 'drop'].forEach(ev => $('#logoWidget').addEventListener(ev, e => {
+            e.preventDefault(); $('#logoWidget').classList.toggle('drag', ev === 'dragover');
+            if (ev === 'drop') readLogo(e.dataTransfer.files[0]);
+        }));
+
+        /* ================================================================
+           ITEM MODAL (bottom sheet on mobile) + VALIDATION
+        ================================================================ */
+        let editIdx = -1;
+        function openItemModal(i = -1) {
+            editIdx = i;
+            const m = i >= 0 ? S.medicines[i] : { name: '', generic: '', mfr: '', pack: '', batch: '', expiry: '', qty: 1, free: 0, rate: 0, disc: 0, gst: 12 };
+            ['name', 'generic', 'mfr', 'pack', 'batch', 'expiry', 'qty', 'free', 'rate', 'disc', 'gst'].forEach(f => $('#m_' + f).value = m[f] ?? '');
+            ['#m_name', '#m_qty', '#m_rate', '#m_free', '#m_disc', '#m_gst'].forEach(s => $(s).classList.remove('bad'));
+            $('#imTitle').textContent = i >= 0 ? 'Edit Medicine' : 'Add Medicine';
+            $('#imSaveTxt').textContent = i >= 0 ? 'Save Changes' : 'Add Medicine';
+            openScrim($('#itemModal'));
+            setTimeout(() => $('#m_name').focus(), 80);
+        }
+        $('#btnAdd').addEventListener('click', () => openItemModal());
+        $('#btnAddEmpty').addEventListener('click', () => openItemModal());
+        ['#imX', '#imCancel'].forEach(s => $(s).addEventListener('click', () => closeScrim($('#itemModal'))));
+        $('#imSave').addEventListener('click', () => {
+            const g = f => $('#m_' + f).value;
+            let ok = true; const bad = (id, c) => { $(id).classList.toggle('bad', c); if (c) ok = false; };
+            bad('#m_name', !g('name').trim());
+            bad('#m_qty', g('qty') === '' || !(parseFloat(g('qty')) >= 0));
+            bad('#m_rate', g('rate') === '' || !(parseFloat(g('rate')) >= 0));
+            bad('#m_free', g('free') !== '' && !(parseFloat(g('free')) >= 0));
+            const d = parseFloat(g('disc')); bad('#m_disc', g('disc') !== '' && (!(d >= 0) || d > 100));
+            const gs = parseFloat(g('gst')); bad('#m_gst', g('gst') !== '' && (!(gs >= 0) || gs > 100));
+            if (!ok) { toast('Please correct the highlighted fields.', 'error'); return; }
+            const obj = {
+                name: g('name').trim(), generic: g('generic').trim(), mfr: g('mfr').trim(), pack: g('pack').trim(),
+                batch: g('batch').trim(), expiry: g('expiry'), qty: num(g('qty')), free: num(g('free') || 0),
+                rate: num(g('rate')), disc: num(g('disc') || 0), gst: num(g('gst') || 0)
+            };
+            if (editIdx >= 0) { S.medicines[editIdx] = obj; toast('Medicine updated.', 'success'); }
+            else { obj.id = uid(); S.medicines.push(obj); toast('Medicine added.', 'success'); }
+            closeScrim($('#itemModal')); refresh(true);
+        });
+        $('#itemForm').addEventListener('submit', e => { e.preventDefault(); $('#imSave').click(); });
+
+        $('#btnClearAll').addEventListener('click', async () => {
+            if (!S.medicines.length) { toast('The order table is already empty.', 'info'); return; }
+            if (await confirmDlg('Clear all medicines?', 'Are you sure you want to remove all medicines? This cannot be undone.', 'Clear All')) {
+                S.medicines = []; refresh(true); toast('All medicines cleared. All totals reset to zero.', 'info');
+            }
+        });
+
+        /* ================================================================
+           LIVE PREVIEW (A4 paper, always light)
+        ================================================================ */
+        function renderPreview() {
+            const c = S.company, o = S.order, T = calculateOrderTotals(), sheet = $('#orderSheet');
+            sheet.dataset.tpl = S.template;
+            const mono = ($('#logoMono').textContent || 'PO');
+            const logo = S.logo ? '<img src="' + S.logo + '" alt="logo">' : '<span class="mono">' + esc(mono) + '</span>';
+            const headInner =
+                '<div class="sh-logo">' + logo + '</div><div style="min-width:0">'
+                + '<div class="sh-name">' + (esc(c.name) || 'Your Pharmacy Name') + '</div>'
+                + '<div class="sh-addr">' + (esc(c.address) || 'Add your pharmacy address')
+                + (c.phone ? '<br>Phone: <b>' + esc(c.phone) + '</b>' : '') + (c.email ? ' · ' + esc(c.email) : '') + '</div>'
+                + ((c.gstin || c.dl) ? '<div class="sh-reg">' + (c.gstin ? '<b>GSTIN:</b> ' + esc(c.gstin) + ' &nbsp; ' : '') + (c.dl ? '<b>DL No.:</b> ' + esc(c.dl) : '') + '</div>' : '')
+                + '</div>';
+            const poInner = '<span class="sh-po-title">PURCHASE ORDER</span><div class="sh-meta">'
+                + [['Order No.', o.number], ['Order Date', fmtDate(o.date)], ['Supplier', o.supplier], ['Supplier GSTIN', o.supplierGstin], ['Payment', o.payment]]
+                    .filter(x => x[1]).map(x => '<b>' + x[0] + ':</b> ' + esc(x[1])).join('<br>') + '</div>';
+            let cols = '<th class="c">S.No</th><th>Medicine</th><th>Pack</th>';
+            if (S.show.mfr) cols += '<th>Mfr</th>';
+            if (S.show.batch) cols += '<th>Batch</th>';
+            if (S.show.expiry) cols += '<th>Expiry</th>';
+            cols += '<th class="num">Qty</th><th class="num">Rate</th>';
+            if (S.show.disc) cols += '<th class="num">Disc%</th>';
+            if (S.show.gst) cols += '<th class="num">GST%</th>';
+            cols += '<th class="num">Amount</th>';
+            const span = 3 + (S.show.mfr ? 1 : 0) + (S.show.batch ? 1 : 0) + (S.show.expiry ? 1 : 0) + (S.show.disc ? 1 : 0) + (S.show.gst ? 1 : 0);
+            const rows = S.medicines.length ? S.medicines.map((m, i) => {
+                const k = calcItem(m);
+                let t = '<td class="c">' + (i + 1) + '</td><td><div class="sn">' + esc(m.name) + '</div>' + (m.generic ? '<div class="sg">' + esc(m.generic) + '</div>' : '') + '</td><td>' + esc(m.pack || '—') + '</td>';
+                if (S.show.mfr) t += '<td>' + esc(m.mfr || '—') + '</td>';
+                if (S.show.batch) t += '<td>' + esc(m.batch || '—') + '</td>';
+                if (S.show.expiry) t += '<td>' + (m.expiry ? fmtDate(m.expiry) : '—') + '</td>';
+                t += '<td class="num">' + fmtQ(m.qty) + (num(m.free) > 0 ? '<div class="sg">+ ' + fmtQ(m.free) + ' free</div>' : '') + '</td><td class="num">' + fmtN(m.rate) + '</td>';
+                if (S.show.disc) t += '<td class="num">' + fmtN(m.disc) + '</td>';
+                if (S.show.gst) t += '<td class="num">' + fmtN(m.gst) + '</td>';
+                t += '<td class="num"><b>' + fmtN(k.total) + '</b></td>';
+                return '<tr>' + t + '</tr>';
+            }).join('') : '<tr><td class="sh-empty" colspan="' + span + '">No medicines added yet — items will appear here.</td></tr>';
+            const taxRows = S.tax === 'gst'
+                ? '<tr class="tk"><td>CGST</td><td>' + fmtN(T.cgst) + '</td></tr><tr class="tk"><td>SGST</td><td>' + fmtN(T.sgst) + '</td></tr>'
+                : S.tax === 'igst' ? '<tr class="tk"><td>IGST</td><td>' + fmtN(T.igst) + '</td></tr>'
+                    : '<tr class="tk"><td>Tax (None)</td><td>' + fmtN(0) + '</td></tr>';
+            const terms = [o.payment ? 'Payment Terms: ' + o.payment : '', o.notes].filter(Boolean).join('\n');
+            sheet.innerHTML = (S.template === 'distributor'
+                ? '<div class="sh-head-band">' + headInner + '<div class="sh-po">' + poInner + '</div></div>'
+                : '<div class="sh-brand">' + headInner + '<div class="sh-po">' + poInner + '</div></div>')
+                + (o.delivery ? '<div class="sh-reg" style="margin-top:10px"><b>Delivery Address:</b> ' + esc(o.delivery) + '</div>' : '')
+                + '<div class="sh-head-rule"></div>'
+                + '<table class="sh-table"><thead><tr>' + cols + '</tr></thead><tbody>' + rows + '</tbody></table>'
+                + '<div class="sh-sum"><div class="sh-words"><span class="lbl">Amount in Words</span>' + esc(amountWords(T.grandTotal)) + '</div>'
+                + '<table class="sh-tot"><tr><td>Subtotal</td><td>' + fmtN(T.subtotal) + '</td></tr>'
+                + (T.discount ? '<tr><td>Discount</td><td>− ' + fmtN(T.discount) + '</td></tr>' : '')
+                + '<tr><td>Taxable Amount</td><td>' + fmtN(T.taxableAmount) + '</td></tr>' + taxRows
+                + '<tr class="gr"><td>Grand Total</td><td>' + fmtN(T.grandTotal) + '</td></tr></table>'
+                + (terms ? '<div class="sh-terms"><span class="lbl">Terms &amp; Notes</span>' + esc(terms) + '</div>' : '') + '</div>'
+                + '<div class="sh-sign"><div class="sg-box"><div class="for">For ' + (esc(c.name) || '—') + '</div><div class="sigline">' + (esc(o.authorifiedName || o.authorized) || 'Authorised Signatory') + '</div></div></div>'
+                + '<div class="sh-foot"><span>' + (esc(c.name) || 'Pharmacy') + ' · Purchase Order ' + esc(o.number || '') + '</span><span>Generated with Pharma Order Sheet Maker — Tools24</span></div>';
+            scheduleFit();
+        }
+        const schedulePreview = rafThrottle(renderPreview);
+
+        /* fit & zoom */
+        function fitPreview() {
+            const wrap = $('#sheetWrap'), sheet = $('#orderSheet'), holder = $('#sheetHolder');
+            const avail = wrap.clientWidth - 2;
+            if (avail <= 0) return;
+            const s = (avail / 794) * ui.zoom;
+            sheet.style.transform = 'scale(' + s + ')';
+            holder.style.width = (794 * s) + 'px';
+            holder.style.height = (sheet.offsetHeight * s) + 'px';
+        }
+        const scheduleFit = rafThrottle(fitPreview);
+        new ResizeObserver(() => fitPreview()).observe($('#sheetWrap'));
+        addEventListener('resize', fitPreview);
+        $('#zoomIn').addEventListener('click', () => { ui.zoom = Math.min(1.6, ui.zoom + 0.1); $('#zoomLabel').textContent = Math.round(ui.zoom * 100) + '%'; fitPreview(); });
+        $('#zoomOut').addEventListener('click', () => { ui.zoom = Math.max(0.4, ui.zoom - 0.1); $('#zoomLabel').textContent = Math.round(ui.zoom * 100) + '%'; fitPreview(); });
+
+        /* ================================================================
+           TEMPLATES
+        ================================================================ */
+        const TEMPLATES = [
+            { id: 'classic', name: 'Classic Pharma', desc: 'Bordered, formal, serif header', acc: '#0f766e' },
+            { id: 'modern', name: 'Modern Blue', desc: 'Accent bar, clean grid', acc: '#1d4ed8' },
+            { id: 'minimal', name: 'Minimal', desc: 'Hairlines and whitespace', acc: '#1b1e2c' },
+            { id: 'gst', name: 'Professional GST', desc: 'Tax-breakup focused', acc: '#4338ca' },
+            { id: 'distributor', name: 'Distributor', desc: 'Bold header band', acc: '#c2410c' },
+            { id: 'pharmacy', name: 'Pharmacy', desc: 'Soft retail style', acc: '#be1244' }];
+        const TPL_ACCENT = { classic: [15, 118, 110], modern: [29, 78, 216], minimal: [27, 30, 44], gst: [67, 56, 202], distributor: [194, 65, 12], pharmacy: [190, 18, 68] };
+        function renderTplGrid() {
+            $('#tplGrid').innerHTML = TEMPLATES.map(t =>
+                '<button type="button" class="tpl-card' + (S.template === t.id ? ' on' : '') + '" data-tpl="' + t.id + '" aria-pressed="' + (S.template === t.id) + '" style="--ta:' + t.acc + '">'
+                + '<span class="thumb"><span class="tb t1"></span><span class="tb t2"></span><span class="tb t3"></span><span class="tb t4"></span><span class="tb t5"></span><span class="tb t6"></span><span class="tb t7"></span></span>'
+                + '<b>' + t.name + '</b><span>' + t.desc + '</span></button>').join('');
+        }
+        $('#tplGrid').addEventListener('click', e => {
+            const card = e.target.closest('[data-tpl]'); if (!card) return;
+            S.template = card.dataset.tpl; renderTplGrid();
+            $('#orderSheet').classList.add('fade'); renderPreview();
+            setTimeout(() => $('#orderSheet').classList.remove('fade'), 220);
+            toast('Template applied: ' + TEMPLATES.find(t => t.id === S.template).name, 'success');
+        });
+
+        /* ================================================================
+           IMPORT — CSV / XLSX / JSON (all parsed locally)
+        ================================================================ */
+        const normKey = s => String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+        const MAP = {
+            name: ['medicinename', 'medicine', 'medicines', 'name', 'product', 'item', 'itemname', 'productname', 'drug', 'drugname'],
+            generic: ['genericname', 'generic', 'composition', 'salt'],
+            mfr: ['manufacturer', 'company', 'mfg', 'mfgco', 'maker', 'brand', 'firm'],
+            pack: ['packsize', 'pack', 'packing', 'size'],
+            batch: ['batchno', 'batch', 'batchnumber', 'bno', 'batchcode'],
+            expiry: ['expiry', 'expirydate', 'exp', 'expdate', 'ed'],
+            qty: ['qty', 'quantity', 'orderqty'],
+            free: ['freeqty', 'free', 'freequantity', 'bonus'],
+            rate: ['rate', 'price', 'ptr', 'unitprice'],
+            disc: ['discount', 'disc', 'discountpercent', 'discountpercentage', 'discpercent'],
+            gst: ['gst', 'gstrate', 'gstpercent', 'tax', 'taxrate', 'gstpercentage']
+        };
+        function mapRow(obj) {
+            const entries = Object.entries(obj), out = {};
+            for (const [f, al] of Object.entries(MAP))
+                for (const [k, v] of entries) if (al.includes(normKey(k))) { out[f] = v; break; }
+            return out;
+        }
+        function rowsToItems(rows) {
+            const out = [];
+            for (const r of rows) {
+                const m = mapRow(r), name = String(m.name ?? '').trim();
+                if (!name) continue;
+                out.push({
+                    id: uid(), name, generic: String(m.generic ?? '').trim(), mfr: String(m.mfr ?? '').trim(), pack: String(m.pack ?? '').trim(),
+                    batch: String(m.batch ?? '').trim(), expiry: String(m.expiry ?? '').trim(), qty: num(m.qty), free: num(m.free), rate: num(m.rate), disc: num(m.disc), gst: num(m.gst)
+                });
+            }
+            return out;
+        }
+        function parseCSV(text) {
+            const rows = []; let row = [], val = '', q = false;
+            for (let i = 0; i < text.length; i++) {
+                const ch = text[i];
+                if (q) { if (ch === '"') { if (text[i + 1] === '"') { val += '"'; i++; } else q = false; } else val += ch; }
+                else if (ch === '"') q = true;
+                else if (ch === ',') { row.push(val); val = ''; }
+                else if (ch === '\n') { row.push(val); rows.push(row); row = []; val = ''; }
+                else if (ch !== '\r') val += ch;
+            }
+            if (val !== '' || row.length) { row.push(val); rows.push(row); }
+            return rows.filter(r => r.some(c => String(c).trim() !== ''));
+        }
+        const csvToObjects = text => { const rows = parseCSV(text); if (rows.length < 2) return []; const h = rows[0]; return rows.slice(1).map(r => { const o = {}; h.forEach((k, i) => o[k] = r[i] ?? ''); return o; }); };
+        function importItems(items, label) {
+            if (!items.length) { toast('No valid medicine rows found. Check that your file has headers like "Medicine Name", "Qty", "Rate".', 'error'); return; }
+            S.medicines = S.medicines.concat(items);
+            ui.sort = { key: '', dir: 1 }; ui.search = ''; $('#medSearch').value = '';
+            refresh(true);
+            toast(label + ' imported successfully — ' + items.length + ' medicine' + (items.length > 1 ? 's' : '') + ' added.', 'success');
+        }
+        const readFile = (f, as) => new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(r.result); r.onerror = () => rej(new Error('read failed')); r['readAs' + as](f); });
+        async function handleImport(file) {
+            if (!file) return;
+            const ext = (file.name.split('.').pop() || '').toLowerCase();
+            try {
+                if (ext === 'csv') importItems(rowsToItems(csvToObjects(await readFile(file, 'Text'))), 'CSV');
+                else if (ext === 'xlsx' || ext === 'xls') {
+                    if (!window.XLSX) { toast('Excel library could not load. Please check your connection and retry, or use CSV.', 'error'); return; }
+                    const wb = XLSX.read(new Uint8Array(await readFile(file, 'ArrayBuffer')), { type: 'array' });
+                    importItems(rowsToItems(XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { defval: '' })), 'Excel file');
+                }
+                else if (ext === 'json') {
+                    const data = JSON.parse(await readFile(file, 'Text'));
+                    if (data && Array.isArray(data.medicines) && (data.company || data.order)) { applyState(data); toast('Draft backup restored successfully.', 'success'); }
+                    else if (Array.isArray(data)) importItems(rowsToItems(data), 'JSON');
+                    else if (data && Array.isArray(data.items)) importItems(rowsToItems(data.items), 'JSON');
+                    else toast('Unrecognised JSON structure — expected an array of medicines or a Tools24 draft backup.', 'error');
+                }
+                else toast('Unsupported file type ".' + ext + '". Please use CSV, XLSX or JSON.', 'error');
+            } catch (err) { console.error('[Import]', err); toast('Could not read the file — it may be corrupt or in the wrong format.', 'error'); }
+        }
+        $('#fileImport').addEventListener('change', e => { handleImport(e.target.files[0]); e.target.value = ''; });
+        ['#btnImportCsv', '#btnImportExcel', '#btnImportJson'].forEach(s => $(s).addEventListener('click', () => $('#fileImport').click()));
+        $('#heroImport').addEventListener('click', () => { $('#tool').scrollIntoView({ behavior: 'smooth' }); $('#fileImport').click(); });
+
+        /* ================================================================
+           CSV EXPORT
+        ================================================================ */
+        const csvQ = v => { v = String(v ?? ''); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; };
+        function exportCSV() {
+            if (!S.medicines.length) { toast('Add at least one medicine before exporting.', 'error'); return; }
+            const T = calculateOrderTotals();
+            const L = [['S.No', 'Medicine Name', 'Generic Name', 'Manufacturer', 'Pack Size', 'Batch No', 'Expiry', 'Qty', 'Free Qty', 'Rate', 'Discount %', 'GST %', 'Amount'].map(csvQ).join(',')];
+            S.medicines.forEach((m, i) => {
+                const k = calcItem(m);
+                L.push([i + 1, m.name, m.generic, m.mfr, m.pack, m.batch, m.expiry, num(m.qty), num(m.free), num(m.rate), num(m.disc), num(m.gst), k.total.toFixed(2)].map(csvQ).join(','));
+            });
+            L.push('');
+            L.push(['', '', '', '', '', '', '', 'Subtotal', '', '', '', '', T.subtotal.toFixed(2)].map(csvQ).join(','));
+            L.push(['', '', '', '', '', '', '', 'Discount', '', '', '', '', T.discount.toFixed(2)].map(csvQ).join(','));
+            L.push(['', '', '', '', '', '', '', 'Taxable', '', '', '', '', T.taxableAmount.toFixed(2)].map(csvQ).join(','));
+            if (S.tax === 'gst') {
+                L.push(['', '', '', '', '', '', '', 'CGST', '', '', '', '', T.cgst.toFixed(2)].map(csvQ).join(','));
+                L.push(['', '', '', '', '', '', '', 'SGST', '', '', '', '', T.sgst.toFixed(2)].map(csvQ).join(','));
+            }
+            else if (S.tax === 'igst') L.push(['', '', '', '', '', '', '', 'IGST', '', '', '', '', T.igst.toFixed(2)].map(csvQ).join(','));
+            L.push(['', '', '', '', '', '', '', 'Grand Total', '', '', '', '', T.grandTotal.toFixed(2)].map(csvQ).join(','));
+            const blob = new Blob(['\uFEFF' + L.join('\r\n')], { type: 'text/csv;charset=utf-8' });
+            const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = fileBase() + '.csv';
+            document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+            toast('CSV exported successfully.', 'success');
+        }
+
+        /* ================================================================
+           DRAFTS — save / load / backup (everything included)
+        ================================================================ */
+        function collectState() { return { v: 2, company: S.company, order: S.order, logo: S.logo, medicines: S.medicines, tax: S.tax, template: S.template, show: S.show, zoom: ui.zoom }; }
+        function doSaveDraft() {
+            try { localStorage.setItem(DKEY, JSON.stringify(collectState())); toast('Draft saved successfully. You can continue later from this browser.', 'success'); }
+            catch (e) { console.error('[Draft save]', e); toast('Could not save draft — browser storage is full. Try removing the logo or some items.', 'error'); }
+        }
+        function applyState(d) {
+            const base = defState();
+            S = {
+                ...base,
+                company: { ...base.company, ...(d.company || {}) },
+                order: { ...base.order, ...(d.order || {}) },
+                logo: typeof d.logo === 'string' ? d.logo : null,
+                medicines: Array.isArray(d.medicines) ? d.medicines.map(m => ({ id: m.id || uid(), name: String(m.name ?? ''), generic: String(m.generic ?? ''), mfr: String(m.mfr ?? ''), pack: String(m.pack ?? ''), batch: String(m.batch ?? ''), expiry: String(m.expiry ?? ''), qty: num(m.qty), free: num(m.free), rate: num(m.rate), disc: num(m.disc), gst: num(m.gst) })) : [],
+                tax: ['gst', 'igst', 'none'].includes(d.tax) ? d.tax : 'gst',
+                template: TEMPLATES.some(t => t.id === d.template) ? d.template : 'classic',
+                show: { ...base.show, ...(d.show || {}) }
+            };
+            ui.zoom = Math.min(1.6, Math.max(0.4, num(d.zoom) || 1)); $('#zoomLabel').textContent = Math.round(ui.zoom * 100) + '%';
+            syncForm(); refresh(true);
+        }
+        function syncForm() {
+            $$('[data-k]').forEach(el => { el.value = getDeep(S, el.dataset.k) ?? ''; el.classList.remove('bad'); });
+            syncTaxButtons();
+            $$('[data-col]').forEach(cb => { cb.checked = !!S.show[cb.dataset.col]; cb.closest('.ctog').classList.toggle('on', cb.checked); });
+            $('#medSearch').value = ui.search = '';
+            renderTplGrid(); updateLogoMono(); setLogo(S.logo);
+        }
+        async function doLoadDraft() {
+            const raw = localStorage.getItem(DKEY);
+            if (!raw) { toast('No saved draft found in this browser yet.', 'info'); return; }
+            if (S.medicines.length && !(await confirmDlg('Load saved draft?', 'Your current unsaved order will be replaced by the saved draft.', 'Load Draft'))) return;
+            try { applyState(JSON.parse(raw)); toast('Draft loaded successfully — table, summary and preview updated.', 'success'); }
+            catch (e) { console.error('[Draft load]', e); toast('Saved draft appears to be corrupt and could not be loaded.', 'error'); }
+        }
+        function doBackup() {
+            const blob = new Blob([JSON.stringify(collectState(), null, 2)], { type: 'application/json' });
+            const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'tools24-draft-' + fileBase().replace('Pharma-Order-', '') + '.json';
+            document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+            toast('Draft backup downloaded. Import it anytime via Import JSON.', 'success');
+        }
+
+        /* ================================================================
+           PDF — direct jsPDF vector rendering (real PDF, multi-page,
+           repeated table headers, page numbers, logo, per-template accent)
+           NOTE: uses "Rs." because jsPDF core fonts cannot render ₹.
+        ================================================================ */
+        function loadScript(urls) {
+            return new Promise((res, rej) => {
+                let i = 0; const next = () => {
+                    if (i >= urls.length) { rej(new Error('All CDNs failed for ' + (urls[0] || ''))); return; }
+                    const s = document.createElement('script'); s.src = urls[i++]; s.onload = () => res(); s.onerror = next; document.head.appendChild(s);
+                }; next();
+            });
+        }
+        const ensureJsPDF = () => window.jspdf && window.jspdf.jsPDF ? Promise.resolve() : loadScript([
+            'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js',
+            'https://unpkg.com/jspdf@2.5.1/dist/jspdf.umd.min.js',
+            'https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js']);
+        const ensureH2C = () => window.html2canvas ? Promise.resolve() : loadScript([
+            'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js',
+            'https://unpkg.com/html2canvas@1.4.1/dist/html2canvas.min.js',
+            'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js']);
+
+        async function pdfLogo() {
+            if (!S.logo) return null;
+            const img = await new Promise((res, rej) => { const im = new Image(); im.onload = () => res(im); im.onerror = () => rej(new Error('logo image failed to load')); im.src = S.logo; });
+            const mime = (String(S.logo).match(/^data:(image\/[a-z0-9+]+);/) || [])[1] || 'image/png';
+            if (mime === 'image/png' || mime === 'image/jpeg') return { data: S.logo, fmt: mime === 'image/png' ? 'PNG' : 'JPEG', w: img.naturalWidth || 1, h: img.naturalHeight || 1 };
+            const c = document.createElement('canvas'); c.width = img.naturalWidth || 64; c.height = img.naturalHeight || 64;
+            c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);   /* WEBP → PNG for jsPDF */
+            return { data: c.toDataURL('image/png'), fmt: 'PNG', w: c.width, h: c.height };
+        }
+        let pdfBusy = false;
+        const setPdfButtons = d => $$('.btn-pdf').forEach(b => b.disabled = d);
+
+        async function generatePDF() {
+            if (pdfBusy) return;
+            if (!S.medicines.length) { toast('Add at least one medicine before downloading the PDF.', 'error'); return; }
+            pdfBusy = true; setPdfButtons(true); showLoader('Generating PDF…');
+            try {
+                await ensureJsPDF();
+                if (document.fonts && document.fonts.ready) await document.fonts.ready;
+                const logo = await pdfLogo().catch(err => { console.warn('[PDF] logo skipped:', err); return null; });
+                const T = calculateOrderTotals();
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF({ orientation: 'p', unit: 'pt', format: 'a4', compress: true });
+                const PW = 595.28, PH = 841.89, M = 40, CW = PW - 2 * M, BOT = PH - 52;
+                const A = TPL_ACCENT[S.template] || TPL_ACCENT.classic;
+                const acc = () => doc.setTextColor(A[0], A[1], A[2]);
+                const ink = c => doc.setTextColor(c[0], c[1], c[2]);
+                const DARK = [26, 29, 48], BODY = [60, 65, 90], GREY = [95, 100, 125], LGREY = [150, 154, 172];
+                const mono = (S.company.name || '').trim().split(/\s+/).slice(0, 2).map(w => w[0] || '').join('').toUpperCase() || 'PO';
+
+                /* ---------- header ---------- */
+                let y = M, tx = M;
+                if (logo) {
+                    const bs = 52, r = Math.min(bs / logo.w, bs / logo.h), lw = logo.w * r, lh = logo.h * r;
+                    doc.addImage(logo.data, logo.fmt, M + (bs - lw) / 2, y + (bs - lh) / 2, lw, lh);
+                    tx = M + bs + 14;
+                }
+                const rightW = 222, leftW = CW - (logo ? 66 : 0) - rightW - 12;
+                doc.setFont('helvetica', 'bold'); doc.setFontSize(14); ink(DARK);
+                doc.text(doc.splitTextToSize(S.company.name || 'Your Pharmacy Name', leftW), tx, y + 13);
+                doc.setFont('helvetica', 'normal'); doc.setFontSize(8); ink(GREY);
+                const addr = [S.company.address, S.company.phone ? ('Phone: ' + S.company.phone) : '', S.company.email].filter(Boolean).join('  ·  ');
+                const aL = doc.splitTextToSize(addr, leftW); doc.text(aL, tx, y + 25);
+                let ly = y + 25 + aL.length * 10;
+                const reg = [S.company.gstin ? ('GSTIN: ' + S.company.gstin) : '', S.company.dl ? ('DL No.: ' + S.company.dl) : ''].filter(Boolean).join('    ');
+                if (reg) { doc.text(doc.splitTextToSize(reg, leftW), tx, ly); ly += 10; }
+                const rx = PW - M;
+                doc.setFont('helvetica', 'bold'); doc.setFontSize(10.5); acc();
+                const poW = doc.getTextWidth('PURCHASE ORDER') + 18;
+                doc.roundedRect(rx - poW, y, poW, 19, 4, 4);
+                doc.text('PURCHASE ORDER', rx - poW / 2, y + 12.5, { align: 'center' });
+                let ry = y + 31;
+                doc.setFont('helvetica', 'normal'); doc.setFontSize(8);
+                [['ORDER NO.', S.order.number || '—'], ['ORDER DATE', fmtDate(S.order.date)], ['SUPPLIER', S.order.supplier || '—'], ['SUPPLIER GSTIN', S.order.supplierGstin || '—'], ['PAYMENT', S.order.payment || '—']]
+                    .forEach(mt => { const L = doc.splitTextToSize(mt[0] + ':  ' + mt[1], rightW); ink(GREY); doc.text(L, rx, ry, { align: 'right' }); ry += L.length * 9.5; });
+                y = Math.max(ly, ry) + 4;
+                if (S.order.delivery) {
+                    doc.setFontSize(8); ink(GREY);
+                    const dL = doc.splitTextToSize('Delivery To: ' + S.order.delivery, CW);
+                    doc.text(dL, M, y + 6); y += 6 + dL.length * 9.5;
+                }
+                y += 4;
+                doc.setDrawColor(A[0], A[1], A[2]); doc.setLineWidth(1.6); doc.line(M, y, PW - M, y);
+
+                /* ---------- table ---------- */
+                const cols = [{ k: 'sn', l: 'S.No', w: 20, a: 'c' }, { k: 'name', l: 'Medicine Name', flex: 1 }, { k: 'generic', l: 'Generic', w: 56 }];
+                if (S.show.mfr) cols.push({ k: 'mfr', l: 'Mfr', w: 46 });
+                cols.push({ k: 'pack', l: 'Pack', w: 44 });
+                if (S.show.batch) cols.push({ k: 'batch', l: 'Batch', w: 40 });
+                if (S.show.expiry) cols.push({ k: 'expiry', l: 'Expiry', w: 36 });
+                cols.push({ k: 'qty', l: 'Qty', w: 32, a: 'r' }, { k: 'rate', l: 'Rate', w: 34, a: 'r' });
+                if (S.show.disc) cols.push({ k: 'disc', l: 'Disc%', w: 26, a: 'r' });
+                if (S.show.gst) cols.push({ k: 'gst', l: 'GST%', w: 26, a: 'r' });
+                cols.push({ k: 'amount', l: 'Amount', w: 46, a: 'r' });
+                const fixed = cols.reduce((s, c) => s + (c.w || 0), 0);
+                cols.forEach(c => { if (c.flex) c.w = Math.max(60, CW - fixed); });
+                let xx = M; cols.forEach(c => { c.x = xx; xx += c.w; });
+                const ax = c => c.a === 'r' ? c.x + c.w - 4 : c.a === 'c' ? c.x + c.w / 2 : c.x + 4;
+                const al = c => c.a === 'r' ? 'right' : c.a === 'c' ? 'center' : 'left';
+                const tint = A.map(v => Math.round(v + (255 - v) * 0.88));
+                y += 14;
+                function headRow() {
+                    doc.setFillColor(tint[0], tint[1], tint[2]);
+                    doc.rect(M, y - 4, CW, 16, 'F');
+                    doc.setDrawColor(A[0], A[1], A[2]); doc.setLineWidth(0.8); doc.line(M, y + 12, PW - M, y + 12);
+                    doc.setFont('helvetica', 'bold'); doc.setFontSize(6.8); ink(DARK);
+                    cols.forEach(c => doc.text(c.l, ax(c), y + 4, { align: al(c) }));
+                    return y + 20;
+                }
+                y = headRow();
+                let zebra = false;
+                S.medicines.forEach((m, i) => {
+                    const k = calcItem(m);
+                    const cell = {};
+                    cols.forEach(c => {
+                        switch (c.k) {
+                            case 'sn': cell.sn = [String(i + 1)]; break;
+                            case 'name': cell.name = doc.splitTextToSize(m.name || '', c.w - 8); break;
+                            case 'generic': cell.generic = doc.splitTextToSize(m.generic || '—', c.w - 6); break;
+                            case 'mfr': cell.mfr = doc.splitTextToSize(m.mfr || '—', c.w - 6); break;
+                            case 'pack': cell.pack = doc.splitTextToSize(m.pack || '—', c.w - 6); break;
+                            case 'batch': cell.batch = doc.splitTextToSize(m.batch || '—', c.w - 6); break;
+                            case 'expiry': cell.expiry = [m.expiry ? fmtDate(m.expiry) : '—']; break;
+                            case 'qty': cell.qty = [fmtQ(m.qty)]; if (num(m.free) > 0) cell.qty.push('+' + fmtQ(m.free) + ' free'); break;
+                            case 'rate': cell.rate = [fmtN(m.rate)]; break;
+                            case 'disc': cell.disc = [fmtN(m.disc) + '%']; break;
+                            case 'gst': cell.gst = [fmtN(m.gst) + '%']; break;
+                            case 'amount': cell.amount = [fmtN(k.total)]; break;
+                        }
+                    });
+                    let maxL = 1; cols.forEach(c => { if (cell[c.k]) maxL = Math.max(maxL, cell[c.k].length); });
+                    const rowH = Math.max(18, maxL * 9 + 9);
+                    if (y + rowH > BOT) { doc.addPage(); y = M + 6; y = headRow(); }   /* never cut a row */
+                    if (zebra) { doc.setFillColor(247, 248, 252); doc.rect(M, y - 3, CW, rowH + 2, 'F'); }
+                    zebra = !zebra;
+                    cols.forEach(c => {
+                        if (c.k === 'name') { doc.setFont('helvetica', 'bold'); doc.setFontSize(7.6); ink(DARK); }
+                        else if (c.k === 'amount') { doc.setFont('helvetica', 'bold'); doc.setFontSize(7.4); ink(DARK); }
+                        else if (c.k === 'generic') { doc.setFont('helvetica', 'normal'); doc.setFontSize(6.6); ink(GREY); }
+                        else { doc.setFont('helvetica', 'normal'); doc.setFontSize(7.2); ink(BODY); }
+                        doc.text(cell[c.k] || ['—'], ax(c), y + 5, { align: al(c), lineHeightFactor: 1.2 });
+                    });
+                    doc.setDrawColor(228, 230, 240); doc.setLineWidth(0.5); doc.line(M, y + rowH - 2, PW - M, y + rowH - 2);
+                    y += rowH;
+                });
+
+                /* ---------- totals + words ---------- */
+                y += 10;
+                if (y > PH - 200) { doc.addPage(); y = M; }
+                const tw = 212, tx0 = PW - M - tw;
+                doc.setFont('helvetica', 'bold'); doc.setFontSize(7); acc();
+                doc.text('AMOUNT IN WORDS', M, y + 8);
+                doc.setFont('helvetica', 'normal'); doc.setFontSize(8); ink(GREY);
+                doc.text(doc.splitTextToSize(amountWords(T.grandTotal), CW - tw - 18), M, y + 19);
+                let ty = y;
+                const trow = (l, v, bold) => {
+                    doc.setFont('helvetica', bold ? 'bold' : 'normal'); doc.setFontSize(bold ? 9 : 8);
+                    ink(bold ? DARK : GREY);
+                    doc.text(l, tx0, ty + 8); doc.text(v, PW - M, ty + 8, { align: 'right' }); ty += 13;
+                };
+                trow('Subtotal', fmtRs(T.subtotal));
+                if (T.discount) trow('Discount (−)', '-' + fmtRs(T.discount));
+                trow('Taxable Amount', fmtRs(T.taxableAmount));
+                if (S.tax === 'gst') { trow('CGST', fmtRs(T.cgst)); trow('SGST', fmtRs(T.sgst)); }
+                else if (S.tax === 'igst') trow('IGST', fmtRs(T.igst));
+                else trow('Tax', 'Rs. 0.00');
+                ty += 3;
+                doc.setFillColor(A[0], A[1], A[2]);
+                doc.roundedRect(tx0 - 8, ty, tw + 8, 24, 4, 4, 'F');
+                doc.setFont('helvetica', 'bold'); doc.setFontSize(10); doc.setTextColor(255, 255, 255);
+                doc.text('GRAND TOTAL', tx0, ty + 15.5);
+                doc.text(fmtRs(T.grandTotal), PW - M - 4, ty + 15.5, { align: 'right' });
+                y = Math.max(y + 22, ty + 34) + 8;
+
+                /* ---------- notes + signature ---------- */
+                const notes = [S.order.notes].filter(Boolean).join('\n');
+                if (notes) {
+                    if (y > PH - 130) { doc.addPage(); y = M; }
+                    doc.setFont('helvetica', 'bold'); doc.setFontSize(7); acc(); doc.text('TERMS & NOTES', M, y + 6);
+                    doc.setFont('helvetica', 'normal'); doc.setFontSize(8); ink(GREY);
+                    const nL = doc.splitTextToSize(notes, CW); doc.text(nL, M, y + 17); y += 17 + nL.length * 9.5 + 6;
+                }
+                if (y > PH - 120) { doc.addPage(); y = M; }
+                doc.setFont('helvetica', 'bold'); doc.setFontSize(8.5); ink(DARK);
+                doc.text('For ' + (S.company.name || '—'), PW - M, y + 8, { align: 'right' });
+                y += 42;
+                doc.setDrawColor(120, 124, 148); doc.setLineWidth(0.7); doc.line(PW - M - 175, y, PW - M, y);
+                doc.setFont('helvetica', 'normal'); doc.setFontSize(7.5); ink(GREY);
+                if (S.order.authorized) doc.text(S.order.authorized, PW - M, y + 11, { align: 'right' });
+                doc.text('Authorised Signatory', PW - M, y + (S.order.authorized ? 21 : 11), { align: 'right' });
+
+                /* ---------- footers with page numbers ---------- */
+                const pages = doc.getNumberOfPages();
+                for (let p = 1; p <= pages; p++) {
+                    doc.setPage(p);
+                    doc.setDrawColor(225, 227, 236); doc.setLineWidth(0.5); doc.line(M, PH - 30, PW - M, PH - 30);
+                    doc.setFont('helvetica', 'normal'); doc.setFontSize(7); ink(LGREY);
+                    doc.text((S.company.name || 'Pharmacy') + '  ·  Purchase Order ' + (S.order.number || ''), M, PH - 19);
+                    doc.text('Page ' + p + ' of ' + pages, PW - M, PH - 19, { align: 'right' });
+                }
+                doc.save(fileBase() + '.pdf');
+                toast('PDF downloaded successfully.', 'success');
+            } catch (e) {
+                console.error('[PDF Generation]', e);
+                toast('Unable to generate PDF. Please try again.', 'error');
+            } finally { pdfBusy = false; setPdfButtons(false); hideLoader(); }
+        }
+
+        /* ================================================================
+           PNG — html2canvas on a clean offscreen clone
+        ================================================================ */
+        let pngBusy = false;
+        async function generatePNG() {
+            if (pngBusy) return;
+            if (!S.medicines.length) { toast('Add at least one medicine before downloading the PNG.', 'error'); return; }
+            pngBusy = true; showLoader('Rendering PNG…');
+            try {
+                await ensureH2C();
+                if (document.fonts && document.fonts.ready) await document.fonts.ready;
+                const mount = $('#pdfMount'); mount.innerHTML = '';
+                const clone = $('#orderSheet').cloneNode(true);
+                clone.style.transform = 'none'; clone.removeAttribute('id');
+                mount.appendChild(clone);
+                const canvas = await html2canvas(clone, { scale: 2, backgroundColor: '#ffffff', useCORS: true, logging: false });
+                canvas.toBlob(blob => {
+                    if (!blob) { hideLoader(); toast('PNG generation failed. Please try again.', 'error'); return; }
+                    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = fileBase() + '.png';
+                    document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+                    toast('PNG image downloaded successfully.', 'success'); hideLoader();
+                }, 'image/png');
+            } catch (e) { console.error('[PNG Generation]', e); hideLoader(); toast('PNG generation failed. Please try again.', 'error'); }
+            finally { pngBusy = false; }
+        }
+
+        /* ================================================================
+           PRINT — only the sheet (enforced by @media print CSS)
+        ================================================================ */
+        function doPrint() {
+            if (!S.medicines.length) { toast('Add at least one medicine before printing.', 'error'); return; }
+            window.print();
+        }
+
+        /* wire every action button to the SAME handlers */
+        [['#btnPdf', generatePDF], ['#osPdf', generatePDF], ['#mbPdf', generatePDF],
+        ['#btnPrint', doPrint], ['#osPrint', doPrint], ['#mbPrint', doPrint],
+        ['#osSave', doSaveDraft], ['#btnSave', doSaveDraft], ['#mbSave', doSaveDraft],
+        ['#btnLoad', doLoadDraft], ['#btnJson', doBackup], ['#btnCsv', exportCSV], ['#osCsv', exportCSV], ['#btnPng', generatePNG]]
+            .forEach(([sel, fn]) => $(sel).addEventListener('click', fn));
+
+        /* ================================================================
+           PALETTE (Ctrl+K)
+        ================================================================ */
+        const ACTIONS = [
+            { l: 'Add Medicine', ic: 'plus', fn: () => openItemModal() },
+            { l: 'Import CSV / Excel / JSON', ic: 'upload', fn: () => $('#fileImport').click() },
+            { l: 'Upload Logo', ic: 'image', fn: () => $('#logoInput').click() },
+            { l: 'Download PDF', ic: 'download', fn: generatePDF },
+            { l: 'Print Order', ic: 'printer', fn: doPrint },
+            { l: 'Download PNG', ic: 'image', fn: generatePNG },
+            { l: 'Export CSV', ic: 'grid', fn: exportCSV },
+            { l: 'Save Draft', ic: 'save', fn: doSaveDraft },
+            { l: 'Load Draft', ic: 'folder', fn: doLoadDraft },
+            { l: 'Download Draft Backup (JSON)', ic: 'code', fn: doBackup },
+            { l: 'Clear All Medicines', ic: 'trash', danger: true, fn: () => $('#btnClearAll').click() },
+            { l: 'Toggle Dark / Light Mode', ic: 'moon', fn: () => $('#themeBtn').click() },
+            ...TEMPLATES.map(t => ({ l: 'Template: ' + t.name, ic: 'eye', fn: () => { const c = document.querySelector('.tpl-card[data-tpl="' + t.id + '"]'); c && c.click(); } }))];
+        let palSel = 0, palFiltered = ACTIONS;
+        function renderPal() {
+            const q = $('#palInput').value.trim().toLowerCase();
+            palFiltered = ACTIONS.filter(a => a.l.toLowerCase().includes(q));
+            palSel = Math.min(palSel, Math.max(0, palFiltered.length - 1));
+            $('#palList').innerHTML = palFiltered.length ? palFiltered.map((a, i) =>
+                '<button type="button" class="pal-item' + (i === palSel ? ' sel' : '') + '" data-pi="' + i + '" role="option"><span class="ic">' + ic(a.ic) + '</span>' + esc(a.l) + '</button>').join('')
+                : '<div class="pal-empty">No matching actions</div>';
+        }
+        function openPalette() { openScrim($('#palette')); $('#palInput').value = ''; palSel = 0; renderPal(); }
+        function runPal(i) { const a = palFiltered[i]; if (!a) return; closeScrim($('#palette')); setTimeout(a.fn, 80); }
+        $('#searchBtn').addEventListener('click', openPalette);
+        $('#mobSearch').addEventListener('click', e => { e.preventDefault(); openPalette(); });
+        $('#palInput').addEventListener('input', () => { palSel = 0; renderPal(); });
+        $('#palInput').addEventListener('keydown', e => {
+            if (e.key === 'ArrowDown') { palSel = Math.min(palSel + 1, palFiltered.length - 1); renderPal(); e.preventDefault(); }
+            else if (e.key === 'ArrowUp') { palSel = Math.max(palSel - 1, 0); renderPal(); e.preventDefault(); }
+            else if (e.key === 'Enter') { runPal(palSel); }
+        });
+        $('#palList').addEventListener('click', e => { const b = e.target.closest('[data-pi]'); if (b) runPal(+b.dataset.pi); });
+        document.addEventListener('keydown', e => { if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); openPalette(); } });
+
+        /* ================================================================
+           INIT
+        ================================================================ */
+        hydrateIcons(document);
+        if (!S.order.number) { S.order.number = genOrderNo(); $('#oNo').value = S.order.number; }
+        syncTaxButtons(); renderTplGrid(); updateLogoMono();
+        refresh(true);
+        fitPreview();
+        addEventListener('load', fitPreview);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitPreview);
+    </script>
+    <noscript>
+        <div style="padding:30px;text-align:center;font-weight:700">This tool requires JavaScript. Please enable it in
+            your browser.</div>
+    </noscript>
+</body>
+
+</html>

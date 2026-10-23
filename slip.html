@@ -1,0 +1,3209 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+    <title>Salary Slip PDF Generator — Create Professional Payslips Online | Tools24</title>
+    <meta name="description"
+        content="Create professional Indian salary slips online with Tools24. Add earnings, deductions, PF, ESI, TDS, company logo, signatures. Download as PDF instantly.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ===== VARIABLES ===== */
+        .tools24-salary-slip {
+            --bg: #F5F7FB;
+            --bg-grad: linear-gradient(145deg, #ede7ff 0%, #dceeff 45%, #fde4ef 100%);
+            --card: rgba(255, 255, 255, 0.65);
+            --card-solid: #fff;
+            --card-hover: rgba(255, 255, 255, 0.8);
+            --text: #111;
+            --text-sec: #555;
+            --text-inv: #fff;
+            --primary: #7C6AEF;
+            --primary-h: #6354d4;
+            --primary-light: rgba(124, 106, 239, 0.1);
+            --secondary: #5BB8F5;
+            --accent: #F2A0C4;
+            --border: rgba(255, 255, 255, 0.8);
+            --border-s: rgba(0, 0, 0, 0.07);
+            --shadow: 0 8px 32px rgba(124, 106, 239, 0.08);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+            --success: #10B981;
+            --warning: #F59E0B;
+            --error: #EF4444;
+            --muted: #94A3B8;
+            --radius: 20px;
+            --radius-sm: 12px;
+            --radius-xs: 8px;
+            --blur: 20px;
+            --font: 'Plus Jakarta Sans', sans-serif;
+            --input-bg: rgba(255, 255, 255, 0.7);
+            --input-border: rgba(0, 0, 0, 0.09);
+            --input-focus: rgba(124, 106, 239, 0.35)
+        }
+
+        [data-theme="dark"] .tools24-salary-slip {
+            --bg: #080B18;
+            --bg-grad: linear-gradient(145deg, #0e0f20 0%, #0a1225 45%, #140a18 100%);
+            --card: rgba(20, 25, 45, 0.75);
+            --card-solid: #141929;
+            --card-hover: rgba(30, 36, 60, 0.8);
+            --text: #F1F5F9;
+            --text-sec: #94A3B8;
+            --text-inv: #080B18;
+            --primary: #A78BFA;
+            --primary-h: #7C6AEF;
+            --primary-light: rgba(167, 139, 250, 0.12);
+            --secondary: #60A5FA;
+            --accent: #F472B6;
+            --border: rgba(255, 255, 255, 0.1);
+            --border-s: rgba(255, 255, 255, 0.07);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+            --success: #34D399;
+            --warning: #FBBF24;
+            --error: #F87171;
+            --muted: #475569;
+            --input-bg: rgba(15, 18, 35, 0.6);
+            --input-border: rgba(255, 255, 255, 0.1);
+            --input-focus: rgba(167, 139, 250, 0.3)
+        }
+
+        /* ===== BASE ===== */
+        .tools24-salary-slip {
+            font-family: var(--font);
+            color: var(--text);
+            background: var(--bg-grad);
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden
+        }
+
+        .tools24-salary-slip *,
+        .tools24-salary-slip *::before,
+        .tools24-salary-slip *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        .tools24-salary-slip a {
+            color: var(--primary);
+            text-decoration: none
+        }
+
+        .tools24-salary-slip img {
+            max-width: 100%;
+            display: block
+        }
+
+        /* ===== HEADER ===== */
+        .tools24-salary-slip .t24-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--card);
+            backdrop-filter: blur(var(--blur));
+            -webkit-backdrop-filter: blur(var(--blur));
+            border-bottom: 1px solid var(--border)
+        }
+
+        .tools24-salary-slip .t24-header-inner {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 10px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px
+        }
+
+        .tools24-salary-slip .t24-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: var(--text);
+            text-decoration: none;
+            flex-shrink: 0
+        }
+
+        .tools24-salary-slip .t24-logo:hover {
+            text-decoration: none;
+            color: var(--text)
+        }
+
+        .tools24-salary-slip .t24-logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: .72rem;
+            font-weight: 900;
+            letter-spacing: -.5px
+        }
+
+        .tools24-salary-slip .t24-nav {
+            display: flex;
+            gap: 4px;
+            align-items: center
+        }
+
+        .tools24-salary-slip .t24-nav a {
+            padding: 6px 14px;
+            border-radius: var(--radius-xs);
+            color: var(--text-sec);
+            font-size: .88rem;
+            font-weight: 500;
+            transition: all .2s
+        }
+
+        .tools24-salary-slip .t24-nav a:hover {
+            background: var(--primary-light);
+            color: var(--primary);
+            text-decoration: none
+        }
+
+        .tools24-salary-slip .t24-theme-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: all .2s;
+            flex-shrink: 0;
+            cursor: pointer;
+            border: none;
+            background: none;
+            color: var(--text)
+        }
+
+        .tools24-salary-slip .t24-theme-btn:hover {
+            background: var(--primary-light);
+            color: var(--primary)
+        }
+
+        .tools24-salary-slip .t24-mobile-menu {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border: none;
+            background: none;
+            color: var(--text)
+        }
+
+        /* ===== HERO ===== */
+        .tools24-salary-slip .hero {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 50px 24px 30px;
+            text-align: center
+        }
+
+        .tools24-salary-slip .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            border-radius: 50px;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: .78rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            border: 1px solid var(--border)
+        }
+
+        .tools24-salary-slip .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 14px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text
+        }
+
+        .tools24-salary-slip .hero p {
+            color: var(--text-sec);
+            font-size: 1.05rem;
+            max-width: 620px;
+            margin: 0 auto 24px
+        }
+
+        .tools24-salary-slip .hero-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap
+        }
+
+        .tools24-salary-slip .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: .95rem;
+            transition: all .2s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(124, 106, 239, 0.25)
+        }
+
+        .tools24-salary-slip .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(124, 106, 239, 0.35)
+        }
+
+        .tools24-salary-slip .btn-primary:active {
+            transform: translateY(0)
+        }
+
+        .tools24-salary-slip .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border: 1px solid var(--border-s);
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: .95rem;
+            transition: all .2s;
+            cursor: pointer;
+            background: var(--card);
+            color: var(--text);
+            backdrop-filter: blur(12px)
+        }
+
+        .tools24-salary-slip .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--card-hover)
+        }
+
+        .tools24-salary-slip .btn-sm {
+            padding: 8px 16px;
+            font-size: .82rem;
+            border-radius: var(--radius-xs)
+        }
+
+        .tools24-salary-slip .btn-icon {
+            width: 36px;
+            height: 36px;
+            padding: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-xs);
+            border: 1px solid var(--border-s);
+            background: var(--card);
+            color: var(--text-sec);
+            cursor: pointer;
+            transition: all .15s;
+            flex-shrink: 0
+        }
+
+        .tools24-salary-slip .btn-icon:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--primary-light)
+        }
+
+        .tools24-salary-slip .btn-danger {
+            border-color: var(--error);
+            color: var(--error)
+        }
+
+        .tools24-salary-slip .btn-danger:hover {
+            background: rgba(239, 68, 68, 0.1);
+            border-color: var(--error);
+            color: var(--error)
+        }
+
+        /* ===== GENERATOR LAYOUT ===== */
+        .tools24-salary-slip .generator {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 0 24px 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            align-items: start
+        }
+
+        .tools24-salary-slip .form-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: sticky;
+            top: 80px
+        }
+
+        .tools24-salary-slip .preview-panel {
+            position: sticky;
+            top: 80px
+        }
+
+        /* ===== GLASS CARD ===== */
+        .tools24-salary-slip .glass-card {
+            background: var(--card);
+            backdrop-filter: blur(var(--blur));
+            -webkit-backdrop-filter: blur(var(--blur));
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 24px;
+            transition: box-shadow .2s
+        }
+
+        .tools24-salary-slip .glass-card:hover {
+            box-shadow: 0 12px 40px rgba(124, 106, 239, 0.12)
+        }
+
+        .tools24-salary-slip .card-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px
+        }
+
+        .tools24-salary-slip .card-title i {
+            color: var(--primary);
+            font-size: 1.05rem;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-light);
+            border-radius: 8px
+        }
+
+        /* ===== FORM INPUTS ===== */
+        .tools24-salary-slip .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px
+        }
+
+        .tools24-salary-slip .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px
+        }
+
+        .tools24-salary-slip .form-group.full {
+            grid-column: 1/-1
+        }
+
+        .tools24-salary-slip .form-label {
+            font-size: .8rem;
+            font-weight: 600;
+            color: var(--text-sec);
+            display: flex;
+            align-items: center;
+            gap: 4px
+        }
+
+        .tools24-salary-slip .form-label .req {
+            color: var(--error);
+            font-weight: 700
+        }
+
+        .tools24-salary-slip .form-input,
+        .tools24-salary-slip .form-select {
+            width: 100%;
+            padding: 10px 14px;
+            background: var(--input-bg);
+            border: 1.5px solid var(--input-border);
+            border-radius: var(--radius-xs);
+            font-size: .9rem;
+            color: var(--text);
+            transition: all .2s;
+            outline: none;
+            font-family: var(--font)
+        }
+
+        .tools24-salary-slip .form-input::placeholder {
+            color: var(--muted)
+        }
+
+        .tools24-salary-slip .form-input:focus,
+        .tools24-salary-slip .form-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--input-focus)
+        }
+
+        .tools24-salary-slip .form-input.error {
+            border-color: var(--error);
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15)
+        }
+
+        .tools24-salary-slip .form-error {
+            font-size: .75rem;
+            color: var(--error);
+            min-height: 0;
+            overflow: hidden;
+            transition: all .2s
+        }
+
+        .tools24-salary-slip .form-hint {
+            font-size: .72rem;
+            color: var(--muted)
+        }
+
+        .tools24-salary-slip .form-select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2394A3B8' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 32px
+        }
+
+        .tools24-salary-slip .form-select option {
+            background: var(--card-solid);
+            color: var(--text)
+        }
+
+        /* ===== FILE UPLOAD ===== */
+        .tools24-salary-slip .file-upload {
+            border: 2px dashed var(--input-border);
+            border-radius: var(--radius-sm);
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all .2s;
+            position: relative
+        }
+
+        .tools24-salary-slip .file-upload:hover {
+            border-color: var(--primary);
+            background: var(--primary-light)
+        }
+
+        .tools24-salary-slip .file-upload input {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer
+        }
+
+        .tools24-salary-slip .file-upload i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 6px
+        }
+
+        .tools24-salary-slip .file-upload p {
+            font-size: .82rem;
+            color: var(--text-sec)
+        }
+
+        .tools24-salary-slip .file-preview {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px;
+            border: 1px solid var(--border-s);
+            border-radius: var(--radius-xs);
+            margin-top: 8px
+        }
+
+        .tools24-salary-slip .file-preview img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            border-radius: 6px;
+            border: 1px solid var(--border-s)
+        }
+
+        .tools24-salary-slip .file-preview .file-info {
+            flex: 1;
+            min-width: 0
+        }
+
+        .tools24-salary-slip .file-preview .file-name {
+            font-size: .82rem;
+            font-weight: 600;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap
+        }
+
+        .tools24-salary-slip .file-preview .file-size {
+            font-size: .72rem;
+            color: var(--muted)
+        }
+
+        /* ===== EARNINGS / DEDUCTIONS ===== */
+        .tools24-salary-slip .ed-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 8px
+        }
+
+        .tools24-salary-slip .ed-toggle {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: .78rem;
+            color: var(--text-sec);
+            cursor: pointer
+        }
+
+        .tools24-salary-slip .ed-toggle input {
+            accent-color: var(--primary)
+        }
+
+        .tools24-salary-slip .ed-rows {
+            display: flex;
+            flex-direction: column;
+            gap: 8px
+        }
+
+        .tools24-salary-slip .ed-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto auto;
+            gap: 8px;
+            align-items: end
+        }
+
+        .tools24-salary-slip .ed-row.pct-mode {
+            grid-template-columns: 1fr 80px 1fr auto auto
+        }
+
+        .tools24-salary-slip .ed-row .pct-select {
+            padding: 10px 8px;
+            background: var(--input-bg);
+            border: 1.5px solid var(--input-border);
+            border-radius: var(--radius-xs);
+            font-size: .78rem;
+            color: var(--text);
+            outline: none;
+            font-family: var(--font);
+            cursor: pointer
+        }
+
+        .tools24-salary-salary-slip .ed-row .pct-select:focus {
+            border-color: var(--primary)
+        }
+
+        .tools24-salary-slip .amount-wrap {
+            position: relative
+        }
+
+        .tools24-salary-slip .amount-wrap .rupee {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--muted);
+            font-size: .85rem;
+            pointer-events: none
+        }
+
+        .tools24-salary-slip .amount-wrap .form-input {
+            padding-left: 28px
+        }
+
+        .tools24-salary-slip .ed-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
+            background: var(--primary-light);
+            border-radius: var(--radius-xs);
+            margin-top: 8px;
+            font-weight: 700;
+            font-size: .95rem
+        }
+
+        .tools24-salary-slip .ed-total .total-amt {
+            color: var(--primary);
+            font-size: 1.05rem
+        }
+
+        .tools24-salary-slip .add-row-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+            padding: 10px;
+            border: 1.5px dashed var(--input-border);
+            border-radius: var(--radius-xs);
+            color: var(--text-sec);
+            font-size: .85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .2s;
+            background: none;
+            font-family: var(--font);
+            margin-top: 8px
+        }
+
+        .tools24-salary-slip .add-row-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--primary-light)
+        }
+
+        /* ===== NET SALARY DISPLAY ===== */
+        .tools24-salary-slip .net-display {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: var(--radius-sm);
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+            margin-top: 4px
+        }
+
+        .tools24-salary-slip .net-label {
+            font-size: .82rem;
+            opacity: .85;
+            margin-bottom: 4px;
+            font-weight: 500
+        }
+
+        .tools24-salary-slip .net-amount {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: -.5px
+        }
+
+        .tools24-salary-slip .net-words {
+            font-size: .78rem;
+            opacity: .8;
+            margin-top: 4px;
+            font-style: italic
+        }
+
+        /* ===== PREVIEW ===== */
+        .tools24-salary-slip .preview-container {
+            background: var(--card);
+            backdrop-filter: blur(var(--blur));
+            -webkit-backdrop-filter: blur(var(--blur));
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden
+        }
+
+        .tools24-salary-slip .preview-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border-s);
+            flex-wrap: wrap;
+            gap: 8px
+        }
+
+        .tools24-salary-slip .preview-toolbar-left {
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .tools24-salary-slip .preview-toolbar-right {
+            display: flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .tools24-salary-slip .template-select {
+            padding: 6px 28px 6px 10px;
+            background: var(--input-bg);
+            border: 1px solid var(--input-border);
+            border-radius: var(--radius-xs);
+            font-size: .8rem;
+            color: var(--text);
+            outline: none;
+            font-family: var(--font);
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='%2394A3B8' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 8px center
+        }
+
+        .tools24-salary-slip .status-badge {
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-size: .7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .5px
+        }
+
+        .tools24-salary-slip .status-badge.draft {
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--warning)
+        }
+
+        .tools24-salary-slip .status-badge.final {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--success)
+        }
+
+        .tools24-salary-slip .preview-scroll {
+            padding: 24px;
+            display: flex;
+            justify-content: center;
+            overflow: auto;
+            max-height: calc(100vh - 200px);
+            background: rgba(0, 0, 0, 0.03)
+        }
+
+        [data-theme="dark"] .tools24-salary-slip .preview-scroll {
+            background: rgba(0, 0, 0, 0.2)
+        }
+
+        /* ===== SALARY SLIP PAGE (Preview) ===== */
+        .tools24-salary-slip .slip-page {
+            width: 595px;
+            min-height: 842px;
+            background: #fff;
+            color: #111;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+            border-radius: 2px;
+            position: relative;
+            overflow: hidden;
+            transform-origin: top center;
+            font-size: 11px;
+            line-height: 1.5
+        }
+
+        .tools24-salary-slip .slip-inner {
+            padding: 36px 40px
+        }
+
+        .tools24-salary-slip .slip-header {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            margin-bottom: 16px
+        }
+
+        .tools24-salary-slip .slip-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f8f8
+        }
+
+        .tools24-salary-slip .slip-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain
+        }
+
+        .tools24-salary-slip .slip-logo .logo-placeholder {
+            color: #ccc;
+            font-size: 1.4rem
+        }
+
+        .tools24-salary-slip .slip-company {
+            flex: 1
+        }
+
+        .tools24-salary-slip .slip-company h2 {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 2px;
+            color: #111
+        }
+
+        .tools24-salary-slip .slip-company p {
+            font-size: 9.5px;
+            color: #555;
+            line-height: 1.4
+        }
+
+        .tools24-salary-slip .slip-title-bar {
+            text-align: center;
+            margin-bottom: 14px
+        }
+
+        .tools24-salary-slip .slip-title-bar h1 {
+            font-size: 15px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px
+        }
+
+        .tools24-salary-slip .slip-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 9px;
+            color: #666;
+            margin-bottom: 12px;
+            padding: 6px 0;
+            border-bottom: 1px solid #e5e5e5
+        }
+
+        .tools24-salary-slip .slip-employee {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 20px;
+            font-size: 10px;
+            margin-bottom: 14px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #e5e5e5
+        }
+
+        .tools24-salary-slip .slip-emp-row {
+            display: flex;
+            gap: 6px
+        }
+
+        .tools24-salary-slip .slip-emp-label {
+            color: #777;
+            min-width: 80px;
+            flex-shrink: 0
+        }
+
+        .tools24-salary-slip .slip-emp-val {
+            font-weight: 600;
+            color: #222
+        }
+
+        .tools24-salary-slip .slip-tables {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 14px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden
+        }
+
+        .tools24-salary-slip .slip-table {
+            border-right: 1px solid #ddd
+        }
+
+        .tools24-salary-slip .slip-table:last-child {
+            border-right: none
+        }
+
+        .tools24-salary-slip .slip-table-head {
+            background: #f5f5f5;
+            padding: 8px 12px;
+            font-weight: 700;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            border-bottom: 1px solid #ddd
+        }
+
+        .tools24-salary-slip .slip-table-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 12px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 10px
+        }
+
+        .tools24-salary-slip .slip-table-row:last-child {
+            border-bottom: none
+        }
+
+        .tools24-salary-slip .slip-table-row .comp-name {
+            color: #444
+        }
+
+        .tools24-salary-slip .slip-table-row .comp-amt {
+            font-weight: 600;
+            color: #222;
+            text-align: right
+        }
+
+        .tools24-salary-slip .slip-table-total {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 12px;
+            background: #f0f0f0;
+            font-weight: 700;
+            font-size: 10px;
+            border-top: 2px solid #ddd
+        }
+
+        .tools24-salary-slip .slip-table-total .comp-amt {
+            color: #111
+        }
+
+        .tools24-salary-slip .slip-summary {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 10px
+        }
+
+        .tools24-salary-slip .slip-summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 7px 14px;
+            font-size: 10px;
+            border-bottom: 1px solid #f0f0f0
+        }
+
+        .tools24-salary-slip .slip-summary-row:last-child {
+            border-bottom: none
+        }
+
+        .tools24-salary-slip .slip-summary-row.net {
+            background: #f5f5f5;
+            font-weight: 800;
+            font-size: 12px
+        }
+
+        .tools24-salary-slip .slip-summary-row .sum-label {
+            color: #555
+        }
+
+        .tools24-salary-slip .slip-summary-row.net .sum-label {
+            color: #111
+        }
+
+        .tools24-salary-slip .slip-summary-row.net .sum-amt {
+            color: #111
+        }
+
+        .tools24-salary-slip .slip-words {
+            font-size: 9px;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 16px;
+            padding: 8px 0;
+            border-top: 1px dashed #ddd
+        }
+
+        .tools24-salary-slip .slip-signatures {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px
+        }
+
+        .tools24-salary-slip .slip-sig-box {
+            text-align: center
+        }
+
+        .tools24-salary-slip .slip-sig-box img {
+            max-height: 40px;
+            margin-bottom: 4px
+        }
+
+        .tools24-salary-slip .slip-sig-line {
+            border-top: 1px solid #999;
+            padding-top: 4px;
+            font-size: 9px;
+            color: #666;
+            font-weight: 600
+        }
+
+        .tools24-salary-slip .slip-seal {
+            position: absolute;
+            bottom: 60px;
+            right: 50px;
+            opacity: .7
+        }
+
+        .tools24-salary-slip .slip-seal img {
+            max-width: 80px;
+            max-height: 80px
+        }
+
+        .tools24-salary-slip .slip-watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-35deg);
+            font-size: 48px;
+            font-weight: 900;
+            color: rgba(0, 0, 0, 0.04);
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            pointer-events: none;
+            white-space: nowrap
+        }
+
+        /* Template: Modern */
+        .tools24-salary-slip .slip-page.template-modern .slip-title-bar {
+            background: #3B82F6;
+            color: #fff;
+            padding: 12px;
+            margin: -36px -40px 16px;
+            border-radius: 0
+        }
+
+        .tools24-salary-slip .slip-page.template-modern .slip-title-bar h1 {
+            color: #fff;
+            letter-spacing: 3px
+        }
+
+        .tools24-salary-slip .slip-page.template-modern .slip-table-head {
+            background: #3B82F6;
+            color: #fff;
+            border-bottom-color: #2563EB
+        }
+
+        .tools24-salary-slip .slip-page.template-modern .slip-summary-row.net {
+            background: #EFF6FF;
+            color: #1D4ED8
+        }
+
+        .tools24-salary-slip .slip-page.template-modern .slip-summary-row.net .sum-amt {
+            color: #1D4ED8
+        }
+
+        .tools24-salary-slip .slip-page.template-modern .slip-inner {
+            padding-top: 52px
+        }
+
+        /* Template: Minimal */
+        .tools24-salary-slip .slip-page.template-minimal {
+            border: 1px solid #ccc
+        }
+
+        .tools24-salary-slip .slip-page.template-minimal .slip-title-bar h1 {
+            border-bottom: 2px solid #111;
+            display: inline-block;
+            padding-bottom: 4px
+        }
+
+        .tools24-salary-slip .slip-page.template-minimal .slip-table-head {
+            background: #fff;
+            border-bottom: 2px solid #111;
+            font-weight: 800
+        }
+
+        .tools24-salary-slip .slip-page.template-minimal .slip-tables {
+            border: 2px solid #111
+        }
+
+        .tools24-salary-slip .slip-page.template-minimal .slip-table {
+            border-right-color: #111
+        }
+
+        .tools24-salary-slip .slip-page.template-minimal .slip-summary {
+            border: 2px solid #111
+        }
+
+        .tools24-salary-slip .slip-page.template-minimal .slip-summary-row.net {
+            background: #fff;
+            border-top: 2px solid #111
+        }
+
+        /* Accent colors for modern template */
+        .tools24-salary-slip .slip-page.accent-purple .slip-title-bar {
+            background: #7C3AED
+        }
+
+        .tools24-salary-slip .slip-page.accent-purple .slip-table-head {
+            background: #7C3AED;
+            border-bottom-color: #6D28D9
+        }
+
+        .tools24-salary-slip .slip-page.accent-purple .slip-summary-row.net {
+            background: #F5F3FF;
+            color: #7C3AED
+        }
+
+        .tools24-salary-slip .slip-page.accent-purple .slip-summary-row.net .sum-amt {
+            color: #7C3AED
+        }
+
+        .tools24-salary-slip .slip-page.accent-green .slip-title-bar {
+            background: #059669
+        }
+
+        .tools24-salary-slip .slip-page.accent-green .slip-table-head {
+            background: #059669;
+            border-bottom-color: #047857
+        }
+
+        .tools24-salary-slip .slip-page.accent-green .slip-summary-row.net {
+            background: #ECFDF5;
+            color: #059669
+        }
+
+        .tools24-salary-slip .slip-page.accent-green .slip-summary-row.net .sum-amt {
+            color: #059669
+        }
+
+        .tools24-salary-slip .slip-page.accent-black .slip-title-bar {
+            background: #111
+        }
+
+        .tools24-salary-slip .slip-page.accent-black .slip-table-head {
+            background: #111;
+            border-bottom-color: #000
+        }
+
+        .tools24-salary-slip .slip-page.accent-black .slip-summary-row.net {
+            background: #F5F5F5
+        }
+
+        .tools24-salary-slip .slip-page.accent-black .slip-summary-row.net .sum-amt {
+            color: #111
+        }
+
+        /* ===== ACTION BAR ===== */
+        .tools24-salary-slip .action-bar {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 8px
+        }
+
+        .tools24-salary-slip .action-bar .btn-primary,
+        .tools24-salary-slip .action-bar .btn-secondary {
+            flex: 1;
+            min-width: 120px;
+            justify-content: center
+        }
+
+        /* ===== ADVANCED OPTIONS ===== */
+        .tools24-salary-slip .adv-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: .88rem;
+            font-weight: 600;
+            color: var(--text-sec);
+            margin-bottom: 12px
+        }
+
+        .tools24-salary-slip .adv-toggle i {
+            transition: transform .2s;
+            font-size: .7rem
+        }
+
+        .tools24-salary-slip .adv-toggle.open i {
+            transform: rotate(90deg)
+        }
+
+        .tools24-salary-slip .adv-content {
+            display: none;
+            flex-direction: column;
+            gap: 12px
+        }
+
+        .tools24-salary-slip .adv-content.open {
+            display: flex
+        }
+
+        .tools24-salary-slip .watermark-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .tools24-salary-slip .watermark-controls label {
+            font-size: .82rem;
+            color: var(--text-sec);
+            display: flex;
+            align-items: center;
+            gap: 4px
+        }
+
+        .tools24-salary-slip .watermark-controls input[type="range"] {
+            width: 80px;
+            accent-color: var(--primary)
+        }
+
+        /* ===== MODAL ===== */
+        .tools24-salary-slip .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px
+        }
+
+        .tools24-salary-slip .modal-overlay.open {
+            display: flex
+        }
+
+        .tools24-salary-slip .modal-box {
+            background: var(--card-solid);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            padding: 28px;
+            animation: slideUp .25s ease
+        }
+
+        .tools24-salary-slip .modal-box h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px
+        }
+
+        .tools24-salary-slip .modal-box p {
+            color: var(--text-sec);
+            font-size: .9rem;
+            margin-bottom: 20px
+        }
+
+        .tools24-salary-slip .modal-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end
+        }
+
+        /* ===== TOAST ===== */
+        .tools24-salary-slip .toast-wrap {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 5000;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            pointer-events: none
+        }
+
+        .tools24-salary-slip .toast {
+            padding: 12px 20px;
+            border-radius: var(--radius-sm);
+            font-size: .85rem;
+            font-weight: 500;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            animation: slideUp .3s ease;
+            pointer-events: all;
+            max-width: 360px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(12px)
+        }
+
+        .tools24-salary-slip .toast.success {
+            background: rgba(16, 185, 129, 0.95);
+            color: #fff
+        }
+
+        .tools24-salary-slip .toast.error {
+            background: rgba(239, 68, 68, 0.95);
+            color: #fff
+        }
+
+        .tools24-salary-slip .toast.warning {
+            background: rgba(245, 158, 11, 0.95);
+            color: #fff
+        }
+
+        .tools24-salary-slip .toast.info {
+            background: rgba(124, 106, 239, 0.95);
+            color: #fff
+        }
+
+        /* ===== SEO ===== */
+        .tools24-salary-slip .seo-section {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 40px 24px 0
+        }
+
+        .tools24-salary-slip .seo-section h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 16px
+        }
+
+        .tools24-salary-slip .seo-section p {
+            color: var(--text-sec);
+            font-size: .95rem;
+            max-width: 800px;
+            line-height: 1.7;
+            margin-bottom: 12px
+        }
+
+        .tools24-salary-slip .seo-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+            margin: 20px 0
+        }
+
+        .tools24-salary-slip .seo-feat {
+            padding: 16px;
+            background: var(--card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm)
+        }
+
+        .tools24-salary-slip .seo-feat i {
+            color: var(--primary);
+            margin-bottom: 6px;
+            font-size: 1.1rem
+        }
+
+        .tools24-salary-slip .seo-feat h4 {
+            font-size: .88rem;
+            font-weight: 700;
+            margin-bottom: 4px
+        }
+
+        .tools24-salary-slip .seo-feat p {
+            font-size: .8rem;
+            color: var(--muted);
+            margin: 0;
+            line-height: 1.4
+        }
+
+        .tools24-salary-slip .privacy-note {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 16px 20px;
+            background: var(--primary-light);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            margin-top: 20px;
+            font-size: .85rem;
+            color: var(--text-sec)
+        }
+
+        .tools24-salary-slip .privacy-note i {
+            color: var(--primary);
+            margin-top: 2px
+        }
+
+        /* ===== FAQ ===== */
+        .tools24-salary-slip .faq-section {
+            max-width: 800px;
+            margin: 40px auto 0;
+            padding: 0 24px 60px
+        }
+
+        .tools24-salary-slip .faq-section h2 {
+            text-align: center;
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 24px
+        }
+
+        .tools24-salary-slip .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px
+        }
+
+        .tools24-salary-slip .faq-item {
+            border: 1px solid var(--border-s);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            background: var(--card);
+            backdrop-filter: blur(8px);
+            transition: all .2s
+        }
+
+        .tools24-salary-slip .faq-item.open {
+            border-color: var(--primary-light)
+        }
+
+        .tools24-salary-slip .faq-q {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 18px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: .92rem;
+            gap: 12px;
+            transition: color .15s
+        }
+
+        .tools24-salary-slip .faq-q:hover {
+            color: var(--primary)
+        }
+
+        .tools24-salary-slip .faq-q i {
+            transition: transform .2s;
+            color: var(--muted);
+            font-size: .75rem;
+            flex-shrink: 0
+        }
+
+        .tools24-salary-slip .faq-item.open .faq-q i {
+            transform: rotate(180deg);
+            color: var(--primary)
+        }
+
+        .tools24-salary-slip .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .3s ease, padding .3s ease;
+            padding: 0 18px
+        }
+
+        .tools24-salary-slip .faq-item.open .faq-a {
+            max-height: 300px;
+            padding: 0 18px 14px
+        }
+
+        .tools24-salary-slip .faq-a p {
+            color: var(--text-sec);
+            font-size: .88rem;
+            line-height: 1.7
+        }
+
+        /* ===== FOOTER ===== */
+        .tools24-salary-slip .t24-footer {
+            text-align: center;
+            padding: 30px 24px;
+            border-top: 1px solid var(--border);
+            font-size: .82rem;
+            color: var(--muted)
+        }
+
+        .tools24-salary-slip .t24-footer span {
+            font-weight: 600;
+            color: var(--text-sec)
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+
+            .tools24-salary-slip *,
+            .tools24-salary-slip *::before,
+            .tools24-salary-slip *::after {
+                animation-duration: .01ms !important;
+                transition-duration: .01ms !important
+            }
+        }
+
+        /* ===== PRINT ===== */
+        @media print {
+            body>*:not(.print-area) {
+                display: none !important
+            }
+
+            .print-area {
+                display: block !important;
+                position: static !important
+            }
+
+            .print-area .slip-page {
+                box-shadow: none !important;
+                border: none !important;
+                transform: none !important;
+                margin: 0 !important;
+                width: 100% !important
+            }
+
+            .print-area .slip-watermark {
+                color: rgba(0, 0, 0, 0.06) !important
+            }
+
+            .print-area .slip-seal {
+                opacity: 1 !important
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media(max-width:1024px) {
+            .tools24-salary-slip .generator {
+                grid-template-columns: 1fr
+            }
+
+            .tools24-salary-slip .form-panel {
+                position: static
+            }
+
+            .tools24-salary-slip .preview-panel {
+                position: static;
+                order: -1
+            }
+
+            .tools24-salary-slip .preview-scroll {
+                max-height: 60vh
+            }
+        }
+
+        @media(max-width:768px) {
+            .tools24-salary-slip .t24-nav {
+                display: none
+            }
+
+            .tools24-salary-slip .t24-mobile-menu {
+                display: flex
+            }
+
+            .tools24-salary-slip .hero {
+                padding: 30px 16px 20px
+            }
+
+            .tools24-salary-slip .hero h1 {
+                font-size: 1.8rem
+            }
+
+            .tools24-salary-slip .generator {
+                padding: 0 16px 40px
+            }
+
+            .tools24-salary-slip .glass-card {
+                padding: 18px;
+                border-radius: var(--radius-sm)
+            }
+
+            .tools24-salary-slip .form-grid {
+                grid-template-columns: 1fr
+            }
+
+            .tools24-salary-slip .ed-row {
+                grid-template-columns: 1fr;
+                gap: 6px
+            }
+
+            .tools24-salary-slip .ed-row.pct-mode {
+                grid-template-columns: 1fr
+            }
+
+            .tools24-salary-slip .slip-page {
+                width: 100%;
+                min-height: auto;
+                transform: none !important;
+                font-size: 10px
+            }
+
+            .tools24-salary-slip .slip-inner {
+                padding: 24px 20px
+            }
+
+            .tools24-salary-slip .slip-tables {
+                grid-template-columns: 1fr
+            }
+
+            .tools24-salary-slip .slip-table {
+                border-right: none;
+                border-bottom: 1px solid #ddd
+            }
+
+            .tools24-salary-slip .slip-employee {
+                grid-template-columns: 1fr
+            }
+
+            .tools24-salary-slip .slip-signatures {
+                grid-template-columns: 1fr;
+                gap: 20px
+            }
+
+            .tools24-salary-slip .slip-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center
+            }
+
+            .tools24-salary-slip .action-bar {
+                flex-direction: column
+            }
+
+            .tools24-salary-slip .action-bar .btn-primary,
+            .tools24-salary-slip .action-bar .btn-secondary {
+                width: 100%
+            }
+
+            .tools24-salary-slip .preview-toolbar {
+                flex-direction: column;
+                align-items: stretch
+            }
+
+            .tools24-salary-slip .preview-toolbar-right {
+                justify-content: flex-end
+            }
+
+            .tools24-salary-slip .net-amount {
+                font-size: 1.4rem
+            }
+
+            .tools24-salary-slip .seo-features {
+                grid-template-columns: 1fr
+            }
+        }
+
+        @media(max-width:480px) {
+            .tools24-salary-slip .hero h1 {
+                font-size: 1.5rem
+            }
+
+            .tools24-salary-slip .hero p {
+                font-size: .92rem
+            }
+
+            .tools24-salary-slip .slip-meta {
+                flex-direction: column;
+                gap: 2px
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="tools24-salary-slip">
+        <!-- HEADER -->
+        <header class="t24-header">
+            <div class="t24-header-inner">
+                <a href="https://tools24.si" class="t24-logo" aria-label="Tools24 Home">
+                    <span class="t24-logo-icon">T24</span>
+                    <span>Tools24</span>
+                </a>
+                <nav class="t24-nav" aria-label="Main navigation">
+                    <a href="https://tools24.si">Home</a>
+                    <a href="https://tools24.si/about">About</a>
+                    <a href="https://tools24.si/privacy">Privacy</a>
+                    <a href="https://tools24.si/contact">Contact</a>
+                </nav>
+                <div style="display:flex;align-items:center;gap:6px">
+                    <button class="t24-theme-btn" id="t24-theme-toggle" aria-label="Toggle dark mode"><i
+                            class="fas fa-moon"></i></button>
+                    <button class="t24-mobile-menu" aria-label="Menu"><i class="fas fa-bars"></i></button>
+                </div>
+            </div>
+        </header>
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-badge"><i class="fas fa-landmark"></i> India Payroll Ready</div>
+            <h1>Salary Slip PDF Generator</h1>
+            <p>Create professional salary slips in minutes. Enter employee details, salary components and deductions,
+                preview your slip and download a clean PDF.</p>
+            <div class="hero-actions">
+                <button class="btn-primary"
+                    onclick="document.querySelector('.form-panel').scrollIntoView({behavior:'smooth'})"><i
+                        class="fas fa-plus"></i> Create Salary Slip</button>
+                <button class="btn-secondary" onclick="loadSample()"><i class="fas fa-eye"></i> View Sample</button>
+            </div>
+        </section>
+
+        <!-- GENERATOR -->
+        <section class="generator">
+            <!-- FORM PANEL -->
+            <div class="form-panel">
+
+                <!-- Employee Information -->
+                <div class="glass-card" id="card-employee">
+                    <div class="card-title"><i class="fas fa-user"></i> Employee Information</div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Employee Name <span class="req">*</span></label>
+                            <input class="form-input" data-field="employee.name" placeholder="e.g. Rahul Kumar">
+                            <div class="form-error" data-error="employee.name"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Employee ID</label>
+                            <input class="form-input" data-field="employee.id" placeholder="e.g. EMP1024">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Employee Code</label>
+                            <input class="form-input" data-field="employee.code" placeholder="e.g. TC-1024">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Designation</label>
+                            <input class="form-input" data-field="employee.designation"
+                                placeholder="e.g. Software Developer">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Department</label>
+                            <input class="form-input" data-field="employee.department" placeholder="e.g. Technology">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Date of Joining</label>
+                            <input class="form-input" type="date" data-field="employee.doj">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">PAN</label>
+                            <input class="form-input" data-field="employee.pan" placeholder="e.g. ABCDE1234F"
+                                maxlength="10" style="text-transform:uppercase">
+                            <div class="form-hint">Format: ABCDE1234F</div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">UAN</label>
+                            <input class="form-input" data-field="employee.uan" placeholder="e.g. 101234567890">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">PF Number</label>
+                            <input class="form-input" data-field="employee.pfNo" placeholder="e.g. PF/MH/12345/000">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">ESI Number</label>
+                            <input class="form-input" data-field="employee.esiNo"
+                                placeholder="e.g. 31-00-123456-000-0001">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Bank Account</label>
+                            <input class="form-input" data-field="employee.bankAccount"
+                                placeholder="e.g. 1234567890123456" maxlength="18">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Bank Name</label>
+                            <input class="form-input" data-field="employee.bankName"
+                                placeholder="e.g. State Bank of India">
+                        </div>
+                        <div class="form-group full">
+                            <label class="form-label">Work Location</label>
+                            <input class="form-input" data-field="employee.location"
+                                placeholder="e.g. Mumbai, Maharashtra">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Company Information -->
+                <div class="glass-card" id="card-company">
+                    <div class="card-title"><i class="fas fa-building"></i> Company Information</div>
+                    <div class="form-grid">
+                        <div class="form-group full">
+                            <label class="form-label">Company Name <span class="req">*</span></label>
+                            <input class="form-input" data-field="company.name"
+                                placeholder="e.g. Tools24 Technologies Pvt Ltd">
+                            <div class="form-error" data-error="company.name"></div>
+                        </div>
+                        <div class="form-group full">
+                            <label class="form-label">Company Address</label>
+                            <input class="form-input" data-field="company.address"
+                                placeholder="e.g. 123, Tech Park, Sector 5">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">City</label>
+                            <input class="form-input" data-field="company.city" placeholder="e.g. Noida">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">State</label>
+                            <input class="form-input" data-field="company.state" placeholder="e.g. Uttar Pradesh">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">PIN Code</label>
+                            <input class="form-input" data-field="company.pin" placeholder="e.g. 201301" maxlength="6">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">GSTIN</label>
+                            <input class="form-input" data-field="company.gstin" placeholder="e.g. 09AABCT1234F1Z5"
+                                maxlength="15" style="text-transform:uppercase">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Company Email</label>
+                            <input class="form-input" type="email" data-field="company.email"
+                                placeholder="e.g. hr@company.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Company Phone</label>
+                            <input class="form-input" data-field="company.phone" placeholder="e.g. +91-9876543210">
+                        </div>
+                        <div class="form-group full">
+                            <label class="form-label">Company Website</label>
+                            <input class="form-input" data-field="company.website" placeholder="e.g. www.company.com">
+                        </div>
+                        <div class="form-group full">
+                            <label class="form-label">Company Logo</label>
+                            <div class="file-upload" id="logo-upload">
+                                <input type="file" accept="image/png,image/jpeg,image/webp" id="logo-file"
+                                    aria-label="Upload company logo">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Upload logo (PNG, JPG, WEBP)</p>
+                            </div>
+                            <div class="file-preview" id="logo-preview" style="display:none">
+                                <img id="logo-preview-img" alt="Company logo">
+                                <div class="file-info">
+                                    <div class="file-name" id="logo-file-name"></div>
+                                    <div class="file-size" id="logo-file-size"></div>
+                                </div>
+                                <button class="btn-icon btn-danger" onclick="removeFile('logo')"
+                                    aria-label="Remove logo"><i class="fas fa-times"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Salary Period -->
+                <div class="glass-card">
+                    <div class="card-title"><i class="fas fa-calendar-alt"></i> Salary Period</div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Month</label>
+                            <select class="form-select" data-field="period.month" id="period-month"></select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Year</label>
+                            <select class="form-select" data-field="period.year" id="period-year"></select>
+                        </div>
+                        <div class="form-group full">
+                            <label class="form-label">Salary Slip No.</label>
+                            <div style="display:flex;gap:8px">
+                                <input class="form-input" data-field="period.slipNo" id="slip-no-input" style="flex:1">
+                                <button class="btn-icon" onclick="regenerateSlipNo()" title="Auto Generate"
+                                    aria-label="Regenerate slip number"><i class="fas fa-sync-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Earnings -->
+                <div class="glass-card">
+                    <div class="ed-header">
+                        <div class="card-title" style="margin-bottom:0"><i class="fas fa-arrow-up"></i> Earnings</div>
+                        <label class="ed-toggle"><input type="checkbox" id="pct-earnings-toggle"> % Mode</label>
+                    </div>
+                    <div class="ed-rows" id="earnings-rows"></div>
+                    <button class="add-row-btn" onclick="addEarning()"><i class="fas fa-plus"></i> Add Earning</button>
+                    <div class="ed-total"><span>Total Earnings</span><span class="total-amt"
+                            id="total-earnings">₹0.00</span></div>
+                </div>
+
+                <!-- Deductions -->
+                <div class="glass-card">
+                    <div class="ed-header">
+                        <div class="card-title" style="margin-bottom:0"><i class="fas fa-arrow-down"></i> Deductions
+                        </div>
+                        <label class="ed-toggle"><input type="checkbox" id="pct-deductions-toggle"> % Mode</label>
+                    </div>
+                    <div class="ed-rows" id="deductions-rows"></div>
+                    <button class="add-row-btn" onclick="addDeduction()"><i class="fas fa-plus"></i> Add
+                        Deduction</button>
+                    <div class="ed-total"><span>Total Deductions</span><span class="total-amt"
+                            id="total-deductions">₹0.00</span></div>
+                </div>
+
+                <!-- Net Salary -->
+                <div class="net-display" id="net-display">
+                    <div class="net-label">NET SALARY</div>
+                    <div class="net-amount" id="net-amount">₹0.00</div>
+                    <div class="net-words" id="net-words">Rupees Zero Only</div>
+                </div>
+
+                <!-- Advanced Options -->
+                <div class="glass-card">
+                    <div class="adv-toggle" id="adv-toggle"><i class="fas fa-chevron-right"></i> Advanced Options</div>
+                    <div class="adv-content" id="adv-content">
+                        <div class="form-grid">
+                            <div class="form-group full">
+                                <label class="form-label">Employee Signature</label>
+                                <div class="file-upload" id="emp-sig-upload">
+                                    <input type="file" accept="image/png,image/jpeg,image/webp" id="emp-sig-file"
+                                        aria-label="Upload employee signature">
+                                    <i class="fas fa-signature"></i>
+                                    <p>Upload signature image</p>
+                                </div>
+                                <div class="file-preview" id="emp-sig-preview" style="display:none">
+                                    <img id="emp-sig-preview-img" alt="Employee signature">
+                                    <div class="file-info">
+                                        <div class="file-name">Employee Signature</div>
+                                    </div>
+                                    <button class="btn-icon btn-danger" onclick="removeFile('empSig')"
+                                        aria-label="Remove signature"><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                            <div class="form-group full">
+                                <label class="form-label">Employer / HR Signature</label>
+                                <div class="file-upload" id="emp-hr-sig-upload">
+                                    <input type="file" accept="image/png,image/jpeg,image/webp" id="emp-hr-sig-file"
+                                        aria-label="Upload employer signature">
+                                    <i class="fas fa-signature"></i>
+                                    <p>Upload employer signature image</p>
+                                </div>
+                                <div class="file-preview" id="emp-hr-sig-preview" style="display:none">
+                                    <img id="emp-hr-sig-preview-img" alt="Employer signature">
+                                    <div class="file-info">
+                                        <div class="file-name">Employer Signature</div>
+                                    </div>
+                                    <button class="btn-icon btn-danger" onclick="removeFile('hrSig')"
+                                        aria-label="Remove signature"><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                            <div class="form-group full">
+                                <label class="form-label">Company Seal</label>
+                                <div class="file-upload" id="seal-upload">
+                                    <input type="file" accept="image/png,image/jpeg,image/webp" id="seal-file"
+                                        aria-label="Upload company seal">
+                                    <i class="fas fa-stamp"></i>
+                                    <p>Upload company seal (transparent PNG recommended)</p>
+                                </div>
+                                <div class="file-preview" id="seal-preview" style="display:none">
+                                    <img id="seal-preview-img" alt="Company seal">
+                                    <div class="file-info">
+                                        <div class="file-name">Company Seal</div>
+                                    </div>
+                                    <button class="btn-icon btn-danger" onclick="removeFile('seal')"
+                                        aria-label="Remove seal"><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                            <div class="form-group full">
+                                <label class="form-label">Watermark</label>
+                                <div class="watermark-controls">
+                                    <label><input type="checkbox" id="watermark-toggle"> Enable</label>
+                                    <input class="form-input" type="text" id="watermark-text" value="CONFIDENTIAL"
+                                        placeholder="Watermark text"
+                                        style="width:160px;padding:6px 10px;font-size:.82rem">
+                                    <label>Opacity <input type="range" id="watermark-opacity" min="2" max="15" value="4"
+                                            style="width:70px"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="action-bar">
+                    <button class="btn-primary" onclick="generateAndDownload()"><i class="fas fa-download"></i> Download
+                        PDF</button>
+                    <button class="btn-secondary" onclick="printSlip()"><i class="fas fa-print"></i> Print</button>
+                    <button class="btn-secondary btn-sm" onclick="saveDraft()"><i class="fas fa-save"></i> Save
+                        Draft</button>
+                    <button class="btn-secondary btn-sm" onclick="loadDraft()"><i class="fas fa-folder-open"></i> Load
+                        Draft</button>
+                    <button class="btn-secondary btn-sm btn-danger" onclick="confirmReset()"><i class="fas fa-undo"></i>
+                        Reset</button>
+                </div>
+            </div>
+
+            <!-- PREVIEW PANEL -->
+            <div class="preview-panel">
+                <div class="preview-container">
+                    <div class="preview-toolbar">
+                        <div class="preview-toolbar-left">
+                            <select class="template-select" id="template-select" aria-label="Select template">
+                                <option value="professional">Professional</option>
+                                <option value="modern">Modern</option>
+                                <option value="minimal">Minimal</option>
+                            </select>
+                            <select class="template-select" id="accent-select" aria-label="Select accent color"
+                                style="display:none">
+                                <option value="">Blue</option>
+                                <option value="accent-purple">Purple</option>
+                                <option value="accent-green">Green</option>
+                                <option value="accent-black">Black</option>
+                            </select>
+                            <span class="status-badge draft" id="status-badge">Draft</span>
+                        </div>
+                        <div class="preview-toolbar-right">
+                            <button class="btn-icon" onclick="previewPDF()" title="Preview PDF in new tab"
+                                aria-label="Preview PDF"><i class="fas fa-external-link-alt"></i></button>
+                            <button class="btn-icon" onclick="shareSlip()" title="Share" aria-label="Share"><i
+                                    class="fas fa-share-alt"></i></button>
+                        </div>
+                    </div>
+                    <div class="preview-scroll" id="preview-scroll">
+                        <div class="slip-page template-professional" id="slip-page">
+                            <div class="slip-inner" id="slip-inner"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEO SECTION -->
+        <section class="seo-section">
+            <h2>Salary Slip Generator Online</h2>
+            <p>Create professional Indian salary slips with our free online tool. Designed for Indian businesses,
+                freelancers, and HR teams who need a quick, reliable way to generate payslip documents.</p>
+            <p>Our salary slip generator supports all standard Indian salary components including Basic Salary, HRA, PF,
+                ESI, Professional Tax, and TDS. Add custom earnings and deductions, upload your company logo, and
+                download a print-ready PDF in seconds.</p>
+            <div class="seo-features">
+                <div class="seo-feat"><i class="fas fa-rupee-sign"></i>
+                    <h4>Indian Format</h4>
+                    <p>Lakh and Crore numbering with rupee symbol formatting throughout</p>
+                </div>
+                <div class="seo-feat"><i class="fas fa-file-pdf"></i>
+                    <h4>Professional PDF</h4>
+                    <p>Three templates — Professional, Modern, and Minimal — for any use case</p>
+                </div>
+                <div class="seo-feat"><i class="fas fa-mobile-alt"></i>
+                    <h4>Mobile Ready</h4>
+                    <p>Works on Android, iPhone, and tablet. Create slips from anywhere</p>
+                </div>
+                <div class="seo-feat"><i class="fas fa-lock"></i>
+                    <h4>Private by Design</h4>
+                    <p>Everything runs in your browser. No salary data leaves your device</p>
+                </div>
+                <div class="seo-feat"><i class="fas fa-calculator"></i>
+                    <h4>Auto Calculation</h4>
+                    <p>Gross, deductions, and net salary update instantly as you type</p>
+                </div>
+                <div class="seo-feat"><i class="fas fa-language"></i>
+                    <h4>Multilingual Ready</h4>
+                    <p>Architecture prepared for Hindi and other Indian languages</p>
+                </div>
+            </div>
+            <div class="privacy-note">
+                <i class="fas fa-shield-alt"></i>
+                <span>Your salary slip is generated locally in your browser. No data is uploaded to any server. Employee
+                    and salary information remains entirely on your device.</span>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-list" id="faq-list"></div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="t24-footer">
+            <p>&copy; 2024 <span>Tools24</span> — PDF tools made simple. Powered by <span>Taskforce Ai Pvt Ltd</span>
+            </p>
+        </footer>
+    </div>
+
+    <!-- RESET MODAL -->
+    <div class="modal-overlay" id="reset-modal">
+        <div class="modal-box">
+            <h3>Clear All Data?</h3>
+            <p>Are you sure you want to clear all salary information? This action cannot be undone.</p>
+            <div class="modal-actions">
+                <button class="btn-secondary btn-sm" onclick="closeModal('reset-modal')">Cancel</button>
+                <button class="btn-primary btn-sm" style="background:var(--error)" onclick="resetAll()"><i
+                        class="fas fa-trash"></i> Clear Data</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST CONTAINER -->
+    <div class="toast-wrap" id="toast-wrap"></div>
+
+    <!-- PRINT AREA (hidden, used for printing) -->
+    <div class="print-area" id="print-area" style="display:none"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        /* ============================================================
+           Tools24 Salary Slip PDF Generator — Complete Application
+           All processing is local/client-side.
+           ============================================================ */
+
+        // ── State ──
+        const S = {
+            employee: { name: '', id: '', code: '', designation: '', department: '', doj: '', pan: '', uan: '', pfNo: '', esiNo: '', bankAccount: '', bankName: '', location: '' },
+            company: { name: '', address: '', city: '', state: '', pin: '', email: '', phone: '', website: '', gstin: '' },
+            period: { month: new Date().getMonth(), year: new Date().getFullYear(), slipNo: '' },
+            earnings: [
+                { name: 'Basic Salary', amount: 0, mode: 'fixed', pct: 0 },
+                { name: 'HRA', amount: 0, mode: 'fixed', pct: 0 },
+                { name: 'Conveyance Allowance', amount: 0, mode: 'fixed', pct: 0 },
+                { name: 'Medical Allowance', amount: 0, mode: 'fixed', pct: 0 },
+                { name: 'Special Allowance', amount: 0, mode: 'fixed', pct: 0 }
+            ],
+            deductions: [
+                { name: 'Provident Fund (PF)', amount: 0, mode: 'fixed', pct: 0 },
+                { name: 'ESI', amount: 0, mode: 'fixed', pct: 0 },
+                { name: 'Professional Tax', amount: 0, mode: 'fixed', pct: 0 },
+                { name: 'TDS', amount: 0, mode: 'fixed', pct: 0 }
+            ],
+            template: 'professional',
+            accent: '',
+            watermark: { enabled: false, text: 'CONFIDENTIAL', opacity: 4 },
+            files: { logo: null, empSig: null, hrSig: null, seal: null }
+        };
+
+        const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        const MONTH_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+        // ── Utilities ──
+        function $(sel, ctx) { return (ctx || document).querySelector(sel); }
+        function $$(sel, ctx) { return (ctx || document).querySelectorAll(sel); }
+
+        function formatINR(n) {
+            const abs = Math.abs(n);
+            const parts = abs.toFixed(2).split('.');
+            let int = parts[0], dec = parts[1];
+            const sign = n < 0 ? '-' : '';
+            if (int.length <= 3) return sign + '₹' + int + '.' + dec;
+            const last3 = int.slice(-3);
+            const rest = int.slice(0, -3);
+            return sign + '₹' + rest.replace(/\B(?=(\d{2})+(?!\d))/g, ',') + ',' + last3 + '.' + dec;
+        }
+
+        function formatINRPlain(n) {
+            const abs = Math.abs(n);
+            const parts = abs.toFixed(2).split('.');
+            let int = parts[0], dec = parts[1];
+            const sign = n < 0 ? '-' : '';
+            if (int.length <= 3) return sign + int + '.' + dec;
+            const last3 = int.slice(-3);
+            const rest = int.slice(0, -3);
+            return sign + rest.replace(/\B(?=(\d{2})+(?!\d))/g, ',') + ',' + last3 + '.' + dec;
+        }
+
+        const ONES = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+        const TENS = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+
+        function numToWords(n) {
+            n = Math.round(Math.abs(n));
+            if (n === 0) return 'Zero';
+            function w(x) {
+                if (x < 20) return ONES[x];
+                if (x < 100) return TENS[Math.floor(x / 10)] + (x % 10 ? ' ' + ONES[x % 10] : '');
+                if (x < 1000) return ONES[Math.floor(x / 100)] + ' Hundred' + (x % 100 ? ' and ' + w(x % 100) : '');
+                if (x < 100000) return w(Math.floor(x / 1000)) + ' Thousand' + (x % 1000 ? ' ' + w(x % 1000) : '');
+                if (x < 10000000) return w(Math.floor(x / 100000)) + ' Lakh' + (x % 100000 ? ' ' + w(x % 100000) : '');
+                return w(Math.floor(x / 10000000)) + ' Crore' + (x % 10000000 ? ' ' + w(x % 10000000) : '');
+            }
+            return w(n);
+        }
+
+        function formatFileSize(b) {
+            if (b < 1024) return b + ' B';
+            if (b < 1048576) return (b / 1024).toFixed(1) + ' KB';
+            return (b / 1048576).toFixed(1) + ' MB';
+        }
+
+        function sanitizeFilename(s) {
+            return s.replace(/[^a-zA-Z0-9_\- ]/g, '').replace(/\s+/g, '_').substring(0, 50);
+        }
+
+        function generateSlipNo() {
+            const m = String(S.period.month + 1).padStart(2, '0');
+            const y = S.period.year;
+            const r = String(Math.floor(Math.random() * 999999)).padStart(6, '0');
+            return 'TS24-' + y + '-' + m + '-' + r;
+        }
+
+        function regenerateSlipNo() {
+            S.period.slipNo = generateSlipNo();
+            $('#slip-no-input').value = S.period.slipNo;
+            updatePreview();
+        }
+
+        function getBasicSalary() {
+            const e = S.earnings.find(x => x.name.toLowerCase().includes('basic'));
+            return e ? e.amount : 0;
+        }
+
+        function calcAmount(item) {
+            if (item.mode === 'pct') {
+                const base = getBasicSalary();
+                return Math.round(base * item.pct / 100);
+            }
+            return item.amount || 0;
+        }
+
+        function calcTotals() {
+            let gross = 0, totalDed = 0;
+            S.earnings.forEach(e => gross += calcAmount(e));
+            S.deductions.forEach(d => totalDed += calcAmount(d));
+            const net = gross - totalDed;
+            return { gross, totalDed, net };
+        }
+
+        // ── Toast ──
+        function toast(msg, type = 'info') {
+            const t = document.createElement('div');
+            t.className = 'toast ' + type;
+            const icons = { success: 'check-circle', error: 'exclamation-circle', warning: 'exclamation-triangle', info: 'info-circle' };
+            t.innerHTML = '<i class="fas fa-' + icons[type] + '"></i> ' + msg;
+            $('#toast-wrap').appendChild(t);
+            setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translateY(8px)'; t.style.transition = 'all .3s'; setTimeout(() => t.remove(), 300); }, 3000);
+        }
+
+        // ── Modal ──
+        function openModal(id) { $('#' + id).classList.add('open'); }
+        function closeModal(id) { $('#' + id).classList.remove('open'); }
+
+        // ── Theme ──
+        function initTheme() {
+            const saved = localStorage.getItem('t24-theme');
+            if (saved) document.documentElement.setAttribute('data-theme', saved);
+            updateThemeIcon();
+        }
+        function toggleTheme() {
+            const curr = document.documentElement.getAttribute('data-theme');
+            const next = curr === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('t24-theme', next);
+            updateThemeIcon();
+        }
+        function updateThemeIcon() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            $('#t24-theme-toggle').innerHTML = '<i class="fas fa-' + (isDark ? 'sun' : 'moon') + '"></i>';
+        }
+
+        // ── Period Selects ──
+        function initPeriodSelects() {
+            const ms = $('#period-month');
+            MONTHS.forEach((m, i) => { const o = document.createElement('option'); o.value = i; o.textContent = m; ms.appendChild(o); });
+            ms.value = S.period.month;
+
+            const ys = $('#period-year');
+            const cy = new Date().getFullYear();
+            for (let y = cy - 3; y <= cy + 2; y++) { const o = document.createElement('option'); o.value = y; o.textContent = y; ys.appendChild(o); }
+            ys.value = S.period.year;
+
+            S.period.slipNo = generateSlipNo();
+            $('#slip-no-input').value = S.period.slipNo;
+        }
+
+        // ── Earnings / Deductions Rendering ──
+        function renderEarnings() {
+            const pctMode = $('#pct-earnings-toggle').checked;
+            const container = $('#earnings-rows');
+            container.innerHTML = '';
+            S.earnings.forEach((e, i) => {
+                const row = document.createElement('div');
+                row.className = 'ed-row' + (pctMode ? ' pct-mode' : '');
+                row.innerHTML = `
+      <div class="form-group"><input class="form-input" value="${esc(e.name)}" placeholder="Component name" data-e-name="${i}" aria-label="Earning name"></div>
+      ${pctMode ? `<select class="pct-select" data-e-mode="${i}" aria-label="Calculation mode"><option value="fixed"${e.mode === 'fixed' ? ' selected' : ''}>Fixed</option><option value="pct"${e.mode === 'pct' ? ' selected' : ''}>% of Basic</option></select>` : ''}
+      <div class="form-group"><div class="amount-wrap"><span class="rupee">₹</span><input class="form-input" type="number" value="${e.mode === 'pct' ? e.pct : e.amount}" placeholder="${e.mode === 'pct' ? '%' : 'Amount'}" data-e-amount="${i}" min="0" aria-label="Amount"></div></div>
+      <button class="btn-icon btn-danger" onclick="removeEarning(${i})" aria-label="Remove earning" title="Remove"><i class="fas fa-times"></i></button>
+    `;
+                container.appendChild(row);
+            });
+            bindEarningEvents();
+        }
+
+        function renderDeductions() {
+            const pctMode = $('#pct-deductions-toggle').checked;
+            const container = $('#deductions-rows');
+            container.innerHTML = '';
+            S.deductions.forEach((d, i) => {
+                const row = document.createElement('div');
+                row.className = 'ed-row' + (pctMode ? ' pct-mode' : '');
+                row.innerHTML = `
+      <div class="form-group"><input class="form-input" value="${esc(d.name)}" placeholder="Deduction name" data-d-name="${i}" aria-label="Deduction name"></div>
+      ${pctMode ? `<select class="pct-select" data-d-mode="${i}" aria-label="Calculation mode"><option value="fixed"${d.mode === 'fixed' ? ' selected' : ''}>Fixed</option><option value="pct"${d.mode === 'pct' ? ' selected' : ''}>% of Basic</option></select>` : ''}
+      <div class="form-group"><div class="amount-wrap"><span class="rupee">₹</span><input class="form-input" type="number" value="${d.mode === 'pct' ? d.pct : d.amount}" placeholder="${d.mode === 'pct' ? '%' : 'Amount'}" data-d-amount="${i}" min="0" aria-label="Amount"></div></div>
+      <button class="btn-icon btn-danger" onclick="removeDeduction(${i})" aria-label="Remove deduction" title="Remove"><i class="fas fa-times"></i></button>
+    `;
+                container.appendChild(row);
+            });
+            bindDeductionEvents();
+        }
+
+        function esc(s) { return String(s).replace(/"/g, '&quot;').replace(/</g, '&lt;'); }
+
+        function addEarning() {
+            S.earnings.push({ name: '', amount: 0, mode: 'fixed', pct: 0 });
+            renderEarnings(); updateCalc();
+        }
+        function removeEarning(i) {
+            S.earnings.splice(i, 1);
+            renderEarnings(); updateCalc();
+        }
+        function addDeduction() {
+            S.deductions.push({ name: '', amount: 0, mode: 'fixed', pct: 0 });
+            renderDeductions(); updateCalc();
+        }
+        function removeDeduction(i) {
+            S.deductions.splice(i, 1);
+            renderDeductions(); updateCalc();
+        }
+
+        function bindEarningEvents() {
+            $$('[data-e-name]').forEach(inp => {
+                inp.addEventListener('input', e => { S.earnings[+e.target.dataset.eName].name = e.target.value; updatePreview(); });
+            });
+            $$('[data-e-amount]').forEach(inp => {
+                inp.addEventListener('input', e => {
+                    const i = +e.target.dataset.eAmount;
+                    const pctMode = $('#pct-earnings-toggle').checked;
+                    const item = S.earnings[i];
+                    if (pctMode && item.mode === 'pct') { item.pct = parseFloat(e.target.value) || 0; }
+                    else { item.amount = parseFloat(e.target.value) || 0; }
+                    updateCalc();
+                });
+            });
+            $$('[data-e-mode]').forEach(sel => {
+                sel.addEventListener('change', e => {
+                    const i = +e.target.dataset.eMode;
+                    S.earnings[i].mode = e.target.value;
+                    const amtInp = $(`[data-e-amount="${i}"]`);
+                    if (amtInp) amtInp.placeholder = e.target.value === 'pct' ? '%' : 'Amount';
+                    updateCalc();
+                });
+            });
+        }
+
+        function bindDeductionEvents() {
+            $$('[data-d-name]').forEach(inp => {
+                inp.addEventListener('input', e => { S.deductions[+e.target.dataset.dName].name = e.target.value; updatePreview(); });
+            });
+            $$('[data-d-amount]').forEach(inp => {
+                inp.addEventListener('input', e => {
+                    const i = +e.target.dataset.dAmount;
+                    const pctMode = $('#pct-deductions-toggle').checked;
+                    const item = S.deductions[i];
+                    if (pctMode && item.mode === 'pct') { item.pct = parseFloat(e.target.value) || 0; }
+                    else { item.amount = parseFloat(e.target.value) || 0; }
+                    updateCalc();
+                });
+            });
+            $$('[data-d-mode]').forEach(sel => {
+                sel.addEventListener('change', e => {
+                    const i = +e.target.dataset.dMode;
+                    S.deductions[i].mode = e.target.value;
+                    const amtInp = $(`[data-d-amount="${i}"]`);
+                    if (amtInp) amtInp.placeholder = e.target.value === 'pct' ? '%' : 'Amount';
+                    updateCalc();
+                });
+            });
+        }
+
+        // ── Calculation Update ──
+        function updateCalc() {
+            const { gross, totalDed, net } = calcTotals();
+            $('#total-earnings').textContent = formatINR(gross);
+            $('#total-deductions').textContent = formatINR(totalDed);
+            $('#net-amount').textContent = formatINR(net);
+            $('#net-words').textContent = 'Rupees ' + numToWords(net) + ' Only';
+            updatePreview();
+        }
+
+        // ── Preview Rendering ──
+        let previewTimer = null;
+        function updatePreview() {
+            clearTimeout(previewTimer);
+            previewTimer = setTimeout(renderPreview, 60);
+        }
+
+        function renderPreview() {
+            const { gross, totalDed, net } = calcTotals();
+            const m = S.period.month, y = S.period.year;
+            const periodStr = MONTHS[m] + ' ' + y;
+            const e = S.employee, c = S.company;
+
+            // Company address lines
+            let addrLines = [];
+            if (c.address) addrLines.push(c.address);
+            let cityLine = [c.city, c.state, c.pin].filter(Boolean).join(', ');
+            if (cityLine) addrLines.push(cityLine);
+
+            // Logo HTML
+            let logoHtml = '<div class="slip-logo"><span class="logo-placeholder"><i class="fas fa-building"></i></span></div>';
+            if (S.files.logo) {
+                logoHtml = '<div class="slip-logo"><img src="' + S.files.logo + '" alt="Logo"></div>';
+            }
+
+            // Employee rows
+            let empRows = '';
+            const empFields = [
+                ['Employee Name', e.name], ['Employee ID', e.id], ['Employee Code', e.code],
+                ['Designation', e.designation], ['Department', e.department], ['Date of Joining', e.doj],
+                ['PAN', e.pan], ['UAN', e.uan], ['PF Number', e.pfNo], ['Bank', e.bankName + (e.bankAccount ? ' — ' + e.bankAccount : '')], ['Location', e.location]
+            ];
+            empFields.forEach(([label, val]) => {
+                if (val) empRows += '<div class="slip-emp-row"><span class="slip-emp-label">' + label + ':</span><span class="slip-emp-val">' + esc(val) + '</span></div>';
+            });
+
+            // Earnings rows
+            let earnRows = '';
+            S.earnings.forEach(item => {
+                if (item.name) {
+                    const amt = calcAmount(item);
+                    earnRows += '<div class="slip-table-row"><span class="comp-name">' + esc(item.name) + (item.mode === 'pct' ? ' (' + item.pct + '%)' : '') + '</span><span class="comp-amt">' + formatINR(amt) + '</span></div>';
+                }
+            });
+
+            // Deduction rows
+            let dedRows = '';
+            S.deductions.forEach(item => {
+                if (item.name) {
+                    const amt = calcAmount(item);
+                    dedRows += '<div class="slip-table-row"><span class="comp-name">' + esc(item.name) + (item.mode === 'pct' ? ' (' + item.pct + '%)' : '') + '</span><span class="comp-amt">' + formatINR(amt) + '</span></div>';
+                }
+            });
+
+            // Signatures
+            let sigHtml = '<div class="slip-sig-box"><div class="slip-sig-line">Employee Signature</div></div>';
+            if (S.files.empSig) sigHtml = '<div class="slip-sig-box"><img src="' + S.files.empSig + '" alt="Employee signature"><div class="slip-sig-line">Employee Signature</div></div>';
+            let hrSigHtml = '<div class="slip-sig-box"><div class="slip-sig-line">Employer / HR</div></div>';
+            if (S.files.hrSig) hrSigHtml = '<div class="slip-sig-box"><img src="' + S.files.hrSig + '" alt="Employer signature"><div class="slip-sig-line">Employer / HR</div></div>';
+
+            // Seal
+            let sealHtml = '';
+            if (S.files.seal) sealHtml = '<div class="slip-seal"><img src="' + S.files.seal + '" alt="Company seal"></div>';
+
+            // Watermark
+            let wmHtml = '';
+            if (S.watermark.enabled) {
+                wmHtml = '<div class="slip-watermark" style="opacity:' + (S.watermark.opacity / 100) + '">' + esc(S.watermark.text) + '</div>';
+            }
+
+            const html = `
+    ${logoHtml}
+    <div class="slip-company">
+      <h2>${esc(c.name || 'Company Name')}</h2>
+      ${addrLines.map(l => '<p>' + esc(l) + '</p>').join('')}
+      ${c.gstin ? '<p>GSTIN: ' + esc(c.gstin) + '</p>' : ''}
+    </div>
+    <div class="slip-title-bar"><h1>Salary Slip</h1></div>
+    <div class="slip-meta">
+      <span>Month: ${periodStr}</span>
+      <span>Slip No: ${esc(S.period.slipNo)}</span>
+    </div>
+    <div class="slip-employee">${empRows}</div>
+    <div class="slip-tables">
+      <div class="slip-table">
+        <div class="slip-table-head">Earnings</div>
+        ${earnRows}
+        <div class="slip-table-total"><span>Total Earnings</span><span class="comp-amt">${formatINR(gross)}</span></div>
+      </div>
+      <div class="slip-table">
+        <div class="slip-table-head">Deductions</div>
+        ${dedRows}
+        <div class="slip-table-total"><span>Total Deductions</span><span class="comp-amt">${formatINR(totalDed)}</span></div>
+      </div>
+    </div>
+    <div class="slip-summary">
+      <div class="slip-summary-row"><span class="sum-label">Gross Salary</span><span class="sum-amt">${formatINR(gross)}</span></div>
+      <div class="slip-summary-row"><span class="sum-label">Total Deductions</span><span class="sum-amt">${formatINR(totalDed)}</span></div>
+      <div class="slip-summary-row net"><span class="sum-label">Net Salary</span><span class="sum-amt">${formatINR(net)}</span></div>
+    </div>
+    <div class="slip-words">Rupees ${numToWords(net)} Only</div>
+    <div class="slip-signatures">${sigHtml}${hrSigHtml}</div>
+    ${sealHtml}
+    ${wmHtml}
+  `;
+
+            $('#slip-inner').innerHTML = html;
+
+            // Update template classes
+            const page = $('#slip-page');
+            page.className = 'slip-page template-' + S.template + (S.accent ? ' ' + S.accent : '');
+        }
+
+        // ── PDF Generation ──
+        function generatePDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+            const pw = 210, ph = 297, ml = 15, mr = 15, mt = 15, mb = 15;
+            const cw = pw - ml - mr;
+            const { gross, totalDed, net } = calcTotals();
+            const m = S.period.month, y = S.period.year;
+            const periodStr = MONTHS[m] + ' ' + y;
+            const e = S.employee, c = S.company;
+            let yy = mt;
+
+            const template = S.template;
+            const isModern = template === 'modern';
+            const isMinimal = template === 'minimal';
+
+            // Colors
+            let headerBg = [59, 130, 246]; // blue default
+            if (S.accent === 'accent-purple') headerBg = [124, 58, 237];
+            else if (S.accent === 'accent-green') headerBg = [5, 150, 105];
+            else if (S.accent === 'accent-black') headerBg = [17, 24, 39];
+
+            // Helper functions
+            function setColor(r, g, b) { doc.setTextColor(r, g, b); }
+            function setDrawColor(r, g, b) { doc.setDrawColor(r, g, b); }
+            function setFillColor(r, g, b) { doc.setFillColor(r, g, b); }
+            function line(x1, y1, x2, y2, w) { doc.setLineWidth(w || 0.3); doc.line(x1, y1, x2, y2); }
+            function rect(x, y, w, h, style) { doc.rect(x, y, w, h, style || 'S'); }
+
+            // Logo
+            if (S.files.logo) {
+                try { doc.addImage(S.files.logo, 'PNG', ml, yy, 18, 18); } catch (ex) { try { doc.addImage(S.files.logo, 'JPEG', ml, yy, 18, 18); } catch (e2) { } }
+            }
+            const logoW = S.files.logo ? 24 : 0;
+
+            // Company name
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(14);
+            setColor(17, 24, 39);
+            doc.text(c.name || 'Company Name', ml + logoW, yy + 6, { maxWidth: cw - logoW });
+
+            // Company address
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(8);
+            setColor(100, 100, 100);
+            let addrY = yy + 10;
+            if (c.address) { doc.text(c.address, ml + logoW, addrY, { maxWidth: cw - logoW }); addrY += 3.5; }
+            let cityLine = [c.city, c.state, c.pin].filter(Boolean).join(', ');
+            if (cityLine) { doc.text(cityLine, ml + logoW, addrY, { maxWidth: cw - logoW }); addrY += 3.5; }
+            if (c.gstin) { doc.text('GSTIN: ' + c.gstin.toUpperCase(), ml + logoW, addrY); addrY += 3.5; }
+
+            yy = addrY + 3;
+
+            // Title bar (modern template has colored background)
+            if (isModern) {
+                setFillColor(headerBg[0], headerBg[1], headerBg[2]);
+                doc.roundedRect(ml, yy, cw, 10, 2, 2, 'F');
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(12);
+                setColor(255, 255, 255);
+                doc.text('SALARY SLIP', pw / 2, yy + 6.5, { align: 'center' });
+                yy += 13;
+            } else {
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(13);
+                setColor(17, 24, 39);
+                doc.text('SALARY SLIP', pw / 2, yy + 5, { align: 'center' });
+                if (isMinimal) {
+                    setDrawColor(17, 24, 39);
+                    line(ml, yy + 7, ml + 35, yy + 7, 1);
+                } else {
+                    line(ml, yy + 8, ml + cw, yy + 8, 0.3);
+                }
+                yy += 12;
+            }
+
+            // Meta line
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(8);
+            setColor(100, 100, 100);
+            doc.text('Month: ' + periodStr, ml, yy);
+            doc.text('Slip No: ' + S.period.slipNo, ml + cw, yy, { align: 'right' });
+            yy += 2;
+            setDrawColor(200, 200, 200);
+            line(ml, yy + 2, ml + cw, yy + 2, 0.2);
+            yy += 6;
+
+            // Employee details
+            doc.setFontSize(8.5);
+            const empFields = [
+                ['Employee Name', e.name], ['Employee ID', e.id], ['Designation', e.designation],
+                ['Department', e.department], ['PAN', e.pan], ['UAN', e.uan]
+            ];
+            empFields.forEach(([label, val]) => {
+                if (!val) return;
+                setColor(120, 120, 120);
+                doc.setFont('helvetica', 'normal');
+                doc.text(label + ':', ml, yy);
+                setColor(30, 30, 30);
+                doc.setFont('helvetica', 'bold');
+                doc.text(val, ml + 35, yy);
+                yy += 4.5;
+            });
+
+            // Second column of employee details
+            yy -= (empFields.filter(([l, v]) => v).length * 4.5);
+            const empFields2 = [
+                ['Date of Joining', e.doj], ['Bank', e.bankName], ['Location', e.location]
+            ];
+            empFields2.forEach(([label, val]) => {
+                if (!val) return;
+                setColor(120, 120, 120);
+                doc.setFont('helvetica', 'normal');
+                doc.text(label + ':', ml + cw / 2, yy);
+                setColor(30, 30, 30);
+                doc.setFont('helvetica', 'bold');
+                doc.text(val, ml + cw / 2 + 30, yy, { maxWidth: cw / 2 - 32 });
+                yy += 4.5;
+            });
+
+            yy = Math.max(yy + 2, mt + (S.files.logo ? 55 : 45));
+            setDrawColor(200, 200, 200);
+            line(ml, yy, ml + cw, yy, 0.3);
+            yy += 4;
+
+            // Tables
+            const colW = cw / 2 - 2;
+            const leftX = ml, rightX = ml + cw / 2 + 2;
+            let leftY = yy, rightY = yy;
+
+            // Table header
+            function tableHead(x, y, w, title, bgColor) {
+                if (bgColor) {
+                    setFillColor(bgColor[0], bgColor[1], bgColor[2]);
+                    rect(x, y, w, 7, 'F');
+                    setColor(255, 255, 255);
+                } else {
+                    setFillColor(245, 245, 245);
+                    rect(x, y, w, 7, 'F');
+                    setColor(60, 60, 60);
+                }
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(8);
+                doc.text(title, x + 3, y + 4.8);
+                return y + 7;
+            }
+
+            function tableRow(x, y, w, name, amt) {
+                setDrawColor(235, 235, 235);
+                line(x, y + 5.5, x + w, y + 5.5, 0.15);
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(8.5);
+                setColor(80, 80, 80);
+                doc.text(name, x + 3, y + 4, { maxWidth: w * 0.6 });
+                setColor(30, 30, 30);
+                doc.setFont('helvetica', 'bold');
+                doc.text(formatINRPlain(amt), x + w - 3, y + 4, { align: 'right' });
+                return y + 5.5;
+            }
+
+            function tableTotal(x, y, w, label, amt, isBold) {
+                setDrawColor(180, 180, 180);
+                line(x, y - 0.5, x + w, y - 0.5, 0.5);
+                if (!isBold) { setFillColor(240, 240, 240); rect(x, y, w, 7, 'F'); }
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(8.5);
+                setColor(isBold ? 17 : 60, isBold ? 24 : 60, isBold ? 39 : 60);
+                doc.text(label, x + 3, y + 4.8);
+                setColor(isBold ? 17 : 30, isBold ? 24 : 30, isBold ? 39 : 30);
+                doc.text(formatINRPlain(amt), x + w - 3, y + 4.8, { align: 'right' });
+                return y + 7;
+            }
+
+            // Earnings table
+            const eBg = isModern ? headerBg : null;
+            leftY = tableHead(leftX, leftY, colW, 'EARNINGS', eBg);
+            S.earnings.forEach(item => {
+                if (!item.name) return;
+                const amt = calcAmount(item);
+                const pctLabel = item.mode === 'pct' ? ' (' + item.pct + '%)' : '';
+                leftY = tableRow(leftX, leftY, colW, item.name + pctLabel, amt);
+            });
+            leftY = tableTotal(leftX, leftY, colW, 'Total Earnings', gross, false);
+
+            // Deductions table
+            rightY = tableHead(rightX, rightY, colW, 'DEDUCTIONS', eBg);
+            S.deductions.forEach(item => {
+                if (!item.name) return;
+                const amt = calcAmount(item);
+                const pctLabel = item.mode === 'pct' ? ' (' + item.pct + '%)' : '';
+                rightY = tableRow(rightX, rightY, colW, item.name + pctLabel, amt);
+            });
+            rightY = tableTotal(rightX, rightY, colW, 'Total Deductions', totalDed, false);
+
+            // Border around tables
+            if (isMinimal) {
+                setDrawColor(17, 24, 39);
+                doc.setLineWidth(0.8);
+                doc.rect(leftX, yy, colW, leftY - yy);
+                doc.rect(rightX, yy, colW, rightY - yy);
+                doc.setLineWidth(0.3);
+            } else {
+                setDrawColor(210, 210, 210);
+                doc.rect(leftX, yy, colW, leftY - yy);
+                doc.rect(rightX, yy, colW, rightY - yy);
+            }
+
+            yy = Math.max(leftY, rightY) + 4;
+
+            // Summary
+            setDrawColor(210, 210, 210);
+            rect(ml, yy, cw, 22, 'S');
+            doc.setFontSize(9);
+            doc.setFont('helvetica', 'normal');
+            setColor(100, 100, 100);
+            doc.text('Gross Salary', ml + 4, yy + 5);
+            doc.text('Total Deductions', ml + 4, yy + 10);
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(9.5);
+            setColor(30, 30, 30);
+            doc.text(formatINRPlain(gross), ml + cw - 4, yy + 5, { align: 'right' });
+            doc.text(formatINRPlain(totalDed), ml + cw - 4, yy + 10, { align: 'right' });
+
+            // Net salary highlight
+            if (isModern && S.accent !== 'accent-black') {
+                setFillColor(headerBg[0], headerBg[1], headerBg[2]);
+                setFillOpacity?.(0.08);
+                doc.setFillColor(
+                    Math.round(headerBg[0] * 0.9 + 255 * 0.1),
+                    Math.round(headerBg[1] * 0.9 + 255 * 0.1),
+                    Math.round(headerBg[2] * 0.9 + 255 * 0.1)
+                );
+                rect(ml, yy + 12, cw, 10, 'F');
+            }
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(12);
+            setColor(17, 24, 39);
+            doc.text('Net Salary', ml + 4, yy + 19);
+            doc.text(formatINRPlain(net), ml + cw - 4, yy + 19, { align: 'right' });
+            yy += 26;
+
+            // Amount in words
+            setDrawColor(200, 200, 200);
+            line(ml, yy, ml + cw, yy, 0.2);
+            yy += 4;
+            doc.setFont('helvetica', 'italic');
+            doc.setFontSize(8);
+            setColor(100, 100, 100);
+            doc.text('Rupees ' + numToWords(net) + ' Only', ml, yy);
+            yy += 30;
+
+            // Signatures
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(8);
+            setColor(100, 100, 100);
+            const sigY = Math.min(yy, ph - mb - 15);
+
+            // Employee signature
+            if (S.files.empSig) {
+                try { doc.addImage(S.files.empSig, 'PNG', ml, sigY - 14, 30, 12); } catch (ex) { try { doc.addImage(S.files.empSig, 'JPEG', ml, sigY - 14, 30, 12); } catch (e2) { } }
+            }
+            setDrawColor(100, 100, 100);
+            line(ml, sigY, ml + 50, sigY, 0.3);
+            doc.text('Employee Signature', ml, sigY + 4);
+
+            // Employer signature
+            if (S.files.hrSig) {
+                try { doc.addImage(S.files.hrSig, 'PNG', ml + cw - 50, sigY - 14, 30, 12); } catch (ex) { try { doc.addImage(S.files.hrSig, 'JPEG', ml + cw - 50, sigY - 14, 30, 12); } catch (e2) { } }
+            }
+            line(ml + cw - 50, sigY, ml + cw, sigY, 0.3);
+            doc.text('Employer / HR', ml + cw - 50, sigY + 4);
+
+            // Company seal
+            if (S.files.seal) {
+                try { doc.addImage(S.files.seal, 'PNG', ml + cw - 35, sigY - 22, 25, 25); } catch (ex) { try { doc.addImage(S.files.seal, 'JPEG', ml + cw - 35, sigY - 22, 25, 25); } catch (e2) { } }
+            }
+
+            // Watermark
+            if (S.watermark.enabled) {
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(48);
+                setColor(200, 200, 200);
+                doc.setGState?.(new doc.GState({ opacity: S.watermark.opacity / 100 }));
+                doc.text(S.watermark.text, pw / 2, ph / 2, { align: 'center', angle: 35 });
+                doc.setGState?.(new doc.GState({ opacity: 1 }));
+            }
+
+            return doc;
+        }
+
+        function generateAndDownload() {
+            if (!validateForm()) return;
+
+            try {
+                const doc = generatePDF();
+                const name = sanitizeFilename(S.employee.name || 'Employee');
+                const month = MONTH_SHORT[S.period.month];
+                const year = S.period.year;
+                const filename = 'Salary-Slip-' + name + '-' + month + '-' + year + '.pdf';
+
+                doc.save(filename);
+                $('#status-badge').textContent = 'FINAL';
+                $('#status-badge').className = 'status-badge final';
+                toast('PDF generated successfully!', 'success');
+            } catch (err) {
+                console.error(err);
+                toast('PDF generation failed. Please try again.', 'error');
+            }
+        }
+
+        function previewPDF() {
+            if (!validateForm()) return;
+            try {
+                const doc = generatePDF();
+                const blob = doc.output('blob');
+                const url = URL.createObjectURL(blob);
+                window.open(url, '_blank');
+                setTimeout(() => URL.revokeObjectURL(url), 60000);
+            } catch (err) {
+                toast('Preview failed.', 'error');
+            }
+        }
+
+        function printSlip() {
+            if (!validateForm()) return;
+            try {
+                const doc = generatePDF();
+                const blob = doc.output('blob');
+                const url = URL.createObjectURL(blob);
+                const iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.src = url;
+                document.body.appendChild(iframe);
+                iframe.onload = () => {
+                    iframe.contentWindow.print();
+                    setTimeout(() => { document.body.removeChild(iframe); URL.revokeObjectURL(url); }, 5000);
+                };
+            } catch (err) {
+                toast('Print failed.', 'error');
+            }
+        }
+
+        function shareSlip() {
+            if (!validateForm()) return;
+            if (navigator.share) {
+                try {
+                    const doc = generatePDF();
+                    const blob = doc.output('blob');
+                    const file = new File([blob], 'salary-slip.pdf', { type: 'application/pdf' });
+                    navigator.share({ files: [file], title: 'Salary Slip' }).catch(() => { });
+                } catch (err) { toast('Share failed.', 'error'); }
+            } else {
+                toast('Share not supported in this browser. Use Download instead.', 'warning');
+            }
+        }
+
+        // ── Validation ──
+        function validateForm() {
+            let valid = true;
+            clearErrors();
+
+            if (!S.employee.name.trim()) {
+                showError('employee.name', 'Please enter employee name.');
+                valid = false;
+            }
+            if (!S.company.name.trim()) {
+                showError('company.name', 'Please enter company name.');
+                valid = false;
+            }
+
+            const { gross } = calcTotals();
+            if (gross <= 0) {
+                toast('Please enter at least one earning amount.', 'warning');
+                valid = false;
+            }
+
+            if (S.company.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(S.company.email)) {
+                toast('Please enter a valid company email.', 'warning');
+            }
+
+            return valid;
+        }
+
+        function showError(field, msg) {
+            const errEl = $('[data-error="' + field + '"]');
+            const inpEl = $('[data-field="' + field + '"]');
+            if (errEl) errEl.textContent = msg;
+            if (inpEl) inpEl.classList.add('error');
+        }
+
+        function clearErrors() {
+            $$('.form-error').forEach(el => el.textContent = '');
+            $$('.form-input.error').forEach(el => el.classList.remove('error'));
+        }
+
+        // ── File Handling ──
+        function handleFile(inputId, previewId, imgId, nameId, sizeId, stateKey) {
+            const input = $('#' + inputId);
+            input.addEventListener('change', () => {
+                const file = input.files[0];
+                if (!file) return;
+                if (file.size > 5 * 1024 * 1024) { toast('File too large. Max 5 MB.', 'error'); return; }
+                const reader = new FileReader();
+                reader.onload = e => {
+                    S.files[stateKey] = e.target.result;
+                    $('#' + previewId).style.display = 'flex';
+                    $('#' + imgId).src = e.target.result;
+                    if (nameId) $('#' + nameId).textContent = file.name;
+                    if (sizeId) $('#' + sizeId).textContent = formatFileSize(file.size);
+                    updatePreview();
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function removeFile(key) {
+            S.files[key] = null;
+            const map = { logo: ['logo-preview'], empSig: ['emp-sig-preview'], hrSig: ['emp-hr-sig-preview'], seal: ['seal-preview'] };
+            (map[key] || []).forEach(id => { const el = $('#' + id); if (el) el.style.display = 'none'; });
+            // Reset file input
+            const inputMap = { logo: 'logo-file', empSig: 'emp-sig-file', hrSig: 'emp-hr-sig-file', seal: 'seal-file' };
+            const inp = $('#' + inputMap[key]);
+            if (inp) inp.value = '';
+            updatePreview();
+        }
+
+        // ── Storage ──
+        function saveDraft() {
+            try {
+                const data = {
+                    employee: S.employee,
+                    company: S.company,
+                    period: S.period,
+                    earnings: S.earnings,
+                    deductions: S.deductions,
+                    template: S.template,
+                    accent: S.accent,
+                    watermark: S.watermark,
+                    hasLogo: !!S.files.logo,
+                    hasEmpSig: !!S.files.empSig,
+                    hasHrSig: !!S.files.hrSig,
+                    hasSeal: !!S.files.seal
+                };
+                // Save file data separately (can be large)
+                if (S.files.logo) localStorage.setItem('t24_draft_logo', S.files.logo);
+                if (S.files.empSig) localStorage.setItem('t24_draft_empSig', S.files.empSig);
+                if (S.files.hrSig) localStorage.setItem('t24_draft_hrSig', S.files.hrSig);
+                if (S.files.seal) localStorage.setItem('t24_draft_seal', S.files.seal);
+
+                localStorage.setItem('t24_salary_draft', JSON.stringify(data));
+                toast('Draft saved successfully.', 'success');
+            } catch (err) {
+                toast('Failed to save draft. Storage may be full.', 'error');
+            }
+        }
+
+        function loadDraft() {
+            try {
+                const raw = localStorage.getItem('t24_salary_draft');
+                if (!raw) { toast('No saved draft found.', 'warning'); return; }
+                const data = JSON.parse(raw);
+
+                Object.assign(S.employee, data.employee || {});
+                Object.assign(S.company, data.company || {});
+                Object.assign(S.period, data.period || {});
+                S.earnings = data.earnings || S.earnings;
+                S.deductions = data.deductions || S.deductions;
+                S.template = data.template || 'professional';
+                S.accent = data.accent || '';
+                S.watermark = data.watermark || S.watermark;
+
+                // Load files
+                if (data.hasLogo) { S.files.logo = localStorage.getItem('t24_draft_logo'); if (S.files.logo) { $('#logo-preview').style.display = 'flex'; $('#logo-preview-img').src = S.files.logo; } }
+                if (data.hasEmpSig) { S.files.empSig = localStorage.getItem('t24_draft_empSig'); if (S.files.empSig) { $('#emp-sig-preview').style.display = 'flex'; $('#emp-sig-preview-img').src = S.files.empSig; } }
+                if (data.hasHrSig) { S.files.hrSig = localStorage.getItem('t24_draft_hrSig'); if (S.files.hrSig) { $('#emp-hr-sig-preview').style.display = 'flex'; $('#emp-hr-sig-preview-img').src = S.files.hrSig; } }
+                if (data.hasSeal) { S.files.seal = localStorage.getItem('t24_draft_seal'); if (S.files.seal) { $('#seal-preview').style.display = 'flex'; $('#seal-preview-img').src = S.files.seal; } }
+
+                // Update form fields
+                populateForm();
+                renderEarnings();
+                renderDeductions();
+                updateCalc();
+
+                $('#template-select').value = S.template;
+                $('#accent-select').value = S.accent;
+
+                toast('Draft loaded successfully.', 'success');
+            } catch (err) {
+                toast('Failed to load draft.', 'error');
+            }
+        }
+
+        function populateForm() {
+            $$('[data-field]').forEach(inp => {
+                const path = inp.dataset.field.split('.');
+                let val = S;
+                for (const key of path) val = val?.[key];
+                if (val !== undefined && val !== null) inp.value = val;
+            });
+        }
+
+        function confirmReset() { openModal('reset-modal'); }
+
+        function resetAll() {
+            closeModal('reset-modal');
+            S.employee = { name: '', id: '', code: '', designation: '', department: '', doj: '', pan: '', uan: '', pfNo: '', esiNo: '', bankAccount: '', bankName: '', location: '' };
+            S.company = { name: '', address: '', city: '', state: '', pin: '', email: '', phone: '', website: '', gstin: '' };
+            S.period.slipNo = generateSlipNo();
+            S.earnings = [
+                { name: 'Basic Salary', amount: 0, mode: 'fixed', pct: 0 },
+                { name: 'HRA', amount: 0, mode: 'fixed', pct: 0 },
+                { name: 'Conveyance Allowance', amount: 0, mode: 'fixed', pct: 0 },
+                { name: 'Medical Allowance', amount: 0, mode: 'fixed', pct: 0 },
+                { name: 'Special Allowance', amount: 0, mode: 'fixed', pct: 0 }
+            ];
+            S.deductions = [
+                { name: 'Provident Fund (PF)', amount: 0, mode: 'fixed', pct: 0 },
+                { name: 'ESI', amount: 0, mode: 'fixed', pct: 0 },
+                { name: 'Professional Tax', amount: 0, mode: 'fixed', pct: 0 },
+                { name: 'TDS', amount: 0, mode: 'fixed', pct: 0 }
+            ];
+            S.files = { logo: null, empSig: null, hrSig: null, seal: null };
+            S.watermark = { enabled: false, text: 'CONFIDENTIAL', opacity: 4 };
+            $('#status-badge').textContent = 'DRAFT';
+            $('#status-badge').className = 'status-badge draft';
+            // Clear UI
+            $$('[data-field]').forEach(inp => inp.value = '');
+            $('#slip-no-input').value = S.period.slipNo;
+            $('#period-month').value = new Date().getMonth();
+            $('#period-year').value = new Date().getFullYear();
+            $('#watermark-toggle').checked = false;
+            $$('.file-preview').forEach(el => el.style.display = 'none');
+            clearErrors();
+            renderEarnings();
+            renderDeductions();
+            updateCalc();
+            toast('All data cleared.', 'info');
+        }
+
+        // ── Sample Data ──
+        function loadSample() {
+            S.employee = { name: 'Rahul Kumar', id: 'EMP1024', code: 'TC-1024', designation: 'Software Developer', department: 'Technology', doj: '2023-03-15', pan: 'ABCDE1234F', uan: '101234567890', pfNo: 'PF/MH/12345/000', esiNo: '31-00-123456-000-0001', bankAccount: '1234567890123456', bankName: 'State Bank of India', location: 'Mumbai, Maharashtra' };
+            S.company = { name: 'Tools24 Technologies Pvt Ltd', address: '123, Tech Park, Sector 5', city: 'Noida', state: 'Uttar Pradesh', pin: '201301', email: 'hr@tools24.com', phone: '+91-9876543210', website: 'www.tools24.com', gstin: '09AABCT1234F1Z5' };
+            S.period = { month: 7, year: 2026, slipNo: 'TS24-2026-08-000124' };
+            S.earnings = [
+                { name: 'Basic Salary', amount: 30000, mode: 'fixed', pct: 0 },
+                { name: 'HRA', amount: 12000, mode: 'fixed', pct: 0 },
+                { name: 'Conveyance Allowance', amount: 3000, mode: 'fixed', pct: 0 },
+                { name: 'Medical Allowance', amount: 2000, mode: 'fixed', pct: 0 },
+                { name: 'Special Allowance', amount: 5000, mode: 'fixed', pct: 0 }
+            ];
+            S.deductions = [
+                { name: 'Provident Fund (PF)', amount: 3600, mode: 'pct', pct: 12 },
+                { name: 'Professional Tax', amount: 200, mode: 'fixed', pct: 0 },
+                { name: 'TDS', amount: 1000, mode: 'fixed', pct: 0 }
+            ];
+            populateForm();
+            renderEarnings();
+            renderDeductions();
+            updateCalc();
+            toast('Sample data loaded.', 'success');
+            document.querySelector('.form-panel').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // ── FAQ ──
+        function initFAQ() {
+            const faqs = [
+                { q: 'What is a salary slip?', a: 'A salary slip (also called payslip) is a document issued by an employer to an employee that details the salary components, earnings, deductions, and net pay for a specific pay period. It serves as proof of income and is required for loans, visa applications, and tax filing.' },
+                { q: 'How can I create a salary slip online?', a: 'Simply enter your employee and company details, add salary components (earnings and deductions) in the form, and the live preview updates instantly. Choose a template, then click "Download PDF" to generate a professional salary slip.' },
+                { q: 'Can I generate a salary slip PDF?', a: 'Yes. This tool generates a proper PDF document using jsPDF — not a screenshot. The PDF has sharp text, proper tables, embedded logo and signatures, and is fully print-ready on A4 paper.' },
+                { q: 'Can I create a salary slip from mobile?', a: 'Absolutely. The tool is fully responsive and works on Android, iPhone, and tablets. All form fields, earnings, deductions, and the preview adapt to mobile screens with touch-friendly controls.' },
+                { q: 'Can I add PF and ESI?', a: 'Yes. Provident Fund and ESI are included as default deduction components. You can also enable "Percentage Mode" to set PF as a percentage of Basic Salary (e.g., 12%) for automatic calculation.' },
+                { q: 'Can I add TDS?', a: 'Yes. TDS (Tax Deducted at Source) is included as a default deduction. Enter the TDS amount manually based on the employee\'s tax slab.' },
+                { q: 'Can I add custom earnings?', a: 'Yes. Click "Add Earning" to add any custom component like Performance Bonus, Overtime, Incentive, Travel Allowance, Food Allowance, or any other earning.' },
+                { q: 'Can I add custom deductions?', a: 'Yes. Click "Add Deduction" to add any custom deduction like Leave Deduction, Advance Salary, Loan EMI, or any other deduction specific to your organization.' },
+                { q: 'Can I add a company logo?', a: 'Yes. In the Company Information section, upload your logo as PNG, JPG, or WEBP. It will appear in both the live preview and the generated PDF.' },
+                { q: 'Can I add an employee signature?', a: 'Yes. In Advanced Options, you can upload employee and employer/HR signature images. These appear at the bottom of the salary slip in the preview and PDF.' },
+                { q: 'Can I download the salary slip as PDF?', a: 'Yes. Click the "Download PDF" button to generate and download a professional A4 PDF. The filename is auto-generated as "Salary-Slip-EmployeeName-Month-Year.pdf".' },
+                { q: 'Can I create a Hindi salary slip?', a: 'The architecture supports multilingual output. Hindi PDF support requires embedding a Unicode-compatible Devanagari font, which is planned for a future update. Currently, the tool generates English salary slips.' },
+                { q: 'Is salary information stored online?', a: 'No. All salary data is processed entirely in your browser. Nothing is uploaded to any server. The "Save Draft" feature uses your browser\'s localStorage only. Clear your browser data to remove saved drafts.' },
+                { q: 'Can this replace official payroll software?', a: 'This is a document-generation utility for creating professional salary slip PDFs. It does not automatically calculate statutory compliance, maintain attendance records, process payroll, or handle tax filings. For full payroll management, use dedicated payroll software that covers statutory requirements under Indian labour laws.' }
+            ];
+            const list = $('#faq-list');
+            faqs.forEach(faq => {
+                const item = document.createElement('div');
+                item.className = 'faq-item';
+                item.innerHTML = '<div class="faq-q" role="button" tabindex="0" aria-expanded="false"><span>' + faq.q + '</span><i class="fas fa-chevron-down"></i></div><div class="faq-a"><p>' + faq.a + '</p></div>';
+                item.querySelector('.faq-q').addEventListener('click', () => {
+                    const isOpen = item.classList.contains('open');
+                    $$('.faq-item').forEach(i => { i.classList.remove('open'); i.querySelector('.faq-q').setAttribute('aria-expanded', 'false'); });
+                    if (!isOpen) { item.classList.add('open'); item.querySelector('.faq-q').setAttribute('aria-expanded', 'true'); }
+                });
+                list.appendChild(item);
+            });
+        }
+
+        // ── Event Binding ──
+        function initEvents() {
+            // Theme
+            $('#t24-theme-toggle').addEventListener('click', toggleTheme);
+
+            // Form field binding via data-field
+            document.addEventListener('input', e => {
+                const field = e.target.dataset.field;
+                if (!field) return;
+                const path = field.split('.');
+                let obj = S;
+                for (let i = 0; i < path.length - 1; i++) obj = obj[path[i]];
+                obj[path[path.length - 1]] = e.target.value;
+                // Clear error on input
+                const errEl = $('[data-error="' + field + '"]');
+                if (errEl) errEl.textContent = '';
+                e.target.classList.remove('error');
+                updatePreview();
+            });
+
+            // Period selects
+            $('#period-month').addEventListener('change', e => { S.period.month = parseInt(e.target.value); updatePreview(); });
+            $('#period-year').addEventListener('change', e => { S.period.year = parseInt(e.target.value); updatePreview(); });
+            $('#slip-no-input').addEventListener('input', e => { S.period.slipNo = e.target.value; updatePreview(); });
+
+            // Template & accent
+            $('#template-select').addEventListener('change', e => {
+                S.template = e.target.value;
+                $('#accent-select').style.display = e.target.value === 'modern' ? '' : 'none';
+                updatePreview();
+            });
+            $('#accent-select').addEventListener('change', e => { S.accent = e.target.value; updatePreview(); });
+
+            // Pct mode toggles
+            $('#pct-earnings-toggle').addEventListener('change', () => renderEarnings());
+            $('#pct-deductions-toggle').addEventListener('change', () => renderDeductions());
+
+            // Advanced toggle
+            $('#adv-toggle').addEventListener('click', () => {
+                $('#adv-toggle').classList.toggle('open');
+                $('#adv-content').classList.toggle('open');
+            });
+
+            // Watermark
+            $('#watermark-toggle').addEventListener('change', e => { S.watermark.enabled = e.target.checked; updatePreview(); });
+            $('#watermark-text').addEventListener('input', e => { S.watermark.text = e.target.value; updatePreview(); });
+            $('#watermark-opacity').addEventListener('input', e => { S.watermark.opacity = parseInt(e.target.value); updatePreview(); });
+
+            // File uploads
+            handleFile('logo-file', 'logo-preview', 'logo-preview-img', 'logo-file-name', 'logo-file-size', 'logo');
+            handleFile('emp-sig-file', 'emp-sig-preview', 'emp-sig-preview-img', null, null, 'empSig');
+            handleFile('hr-sig-file', 'emp-hr-sig-preview', 'emp-hr-sig-preview-img', null, null, 'hrSig');
+            handleFile('seal-file', 'seal-preview', 'seal-preview-img', null, null, 'seal');
+
+            // Modal close on overlay click
+            $$('.modal-overlay').forEach(overlay => {
+                overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('open'); });
+            });
+
+            // Keyboard: Escape closes modals
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape') $$('.modal-overlay.open').forEach(m => m.classList.remove('open'));
+            });
+        }
+
+        // ── Initialization ──
+        function init() {
+            initTheme();
+            initPeriodSelects();
+            renderEarnings();
+            renderDeductions();
+            initFAQ();
+            initEvents();
+            updateCalc();
+        }
+
+        init();
+    </script>
+</body>
+
+</html>

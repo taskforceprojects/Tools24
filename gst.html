@@ -1,0 +1,2346 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>GST Calculator India – Calculate CGST, SGST & IGST | Tools24</title>
+<meta name="description" content="Free Indian GST Calculator to calculate GST, CGST, SGST and IGST instantly. Calculate GST inclusive and exclusive prices with accurate Indian Rupee formatting.">
+<meta name="theme-color" content="#6366f1">
+<meta name="keywords" content="GST Calculator, Indian GST, CGST, SGST, IGST, GST inclusive, GST exclusive, Tools24">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Tools24">
+
+<!-- Open Graph -->
+<meta property="og:title" content="GST Calculator India – Tools24">
+<meta property="og:description" content="Calculate GST, CGST, SGST and IGST instantly with Tools24's free Indian GST Calculator.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================
+   TOOLS24 - GST CALCULATOR STYLES
+   ============================================ */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Light Mode - Tools24 Pastel Gradient */
+  --bg-gradient: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 40%, #fce7f3 100%);
+  --bg-blob-1: #c4b5fd;
+  --bg-blob-2: #f0abfc;
+  --bg-blob-3: #93c5fd;
+
+  --card-bg: rgba(255, 255, 255, 0.65);
+  --card-border: rgba(255, 255, 255, 0.8);
+  --card-shadow: 0 8px 32px rgba(99, 102, 241, 0.12), 0 2px 8px rgba(168, 85, 247, 0.08);
+  --card-shadow-hover: 0 12px 48px rgba(99, 102, 241, 0.18);
+
+  --surface: rgba(255, 255, 255, 0.5);
+  --surface-strong: rgba(255, 255, 255, 0.85);
+  --surface-subtle: rgba(245, 243, 255, 0.6);
+
+  --text-primary: #1e1b2e;
+  --text-secondary: #52525b;
+  --text-muted: #71717a;
+
+  --gradient-primary: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+  --gradient-primary-hover: linear-gradient(135deg, #5b5fe8 0%, #9333ea 50%, #db2777 100%);
+  --gradient-soft: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 50%, #fce7f3 100%);
+
+  --indigo: #6366f1;
+  --purple: #a855f7;
+  --pink: #ec4899;
+  --blue: #3b82f6;
+  --green: #10b981;
+  --amber: #f59e0b;
+  --red: #ef4444;
+
+  --border-color: rgba(99, 102, 241, 0.15);
+  --border-strong: rgba(99, 102, 241, 0.25);
+  --input-bg: rgba(255, 255, 255, 0.7);
+  --input-border: rgba(99, 102, 241, 0.2);
+
+  --shadow-sm: 0 2px 8px rgba(99, 102, 241, 0.08);
+  --shadow-md: 0 4px 16px rgba(99, 102, 241, 0.12);
+  --shadow-lg: 0 8px 32px rgba(99, 102, 241, 0.15);
+  --shadow-glow: 0 0 32px rgba(168, 85, 247, 0.25);
+
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-2xl: 36px;
+
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+}
+
+[data-theme="dark"] {
+  --bg-gradient: linear-gradient(135deg, #0a0118 0%, #1a0b2e 40%, #2d1b3d 100%);
+  --bg-blob-1: #6d28d9;
+  --bg-blob-2: #be185d;
+  --bg-blob-3: #1e40af;
+
+  --card-bg: rgba(30, 20, 50, 0.55);
+  --card-border: rgba(168, 85, 247, 0.2);
+  --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(168, 85, 247, 0.08);
+  --card-shadow-hover: 0 12px 48px rgba(168, 85, 247, 0.25), 0 0 0 1px rgba(168, 85, 247, 0.15);
+
+  --surface: rgba(40, 25, 65, 0.5);
+  --surface-strong: rgba(45, 30, 70, 0.85);
+  --surface-subtle: rgba(35, 20, 55, 0.6);
+
+  --text-primary: #f5f3ff;
+  --text-secondary: #c7d2fe;
+  --text-muted: #a1a1aa;
+
+  --gradient-soft: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(168, 85, 247, 0.2) 50%, rgba(236, 72, 153, 0.2) 100%);
+
+  --border-color: rgba(168, 85, 247, 0.2);
+  --border-strong: rgba(168, 85, 247, 0.35);
+  --input-bg: rgba(30, 20, 50, 0.6);
+  --input-border: rgba(168, 85, 247, 0.25);
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 32px rgba(168, 85, 247, 0.4);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-gradient);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  transition: background 0.4s ease, color 0.3s ease;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Background blobs */
+.bg-blobs {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  animation: floatBlob 20s ease-in-out infinite;
+}
+
+[data-theme="dark"] .blob {
+  opacity: 0.35;
+}
+
+.blob:nth-child(1) {
+  width: 500px;
+  height: 500px;
+  background: var(--bg-blob-1);
+  top: -150px;
+  left: -150px;
+}
+
+.blob:nth-child(2) {
+  width: 450px;
+  height: 450px;
+  background: var(--bg-blob-2);
+  top: 30%;
+  right: -150px;
+  animation-delay: -7s;
+}
+
+.blob:nth-child(3) {
+  width: 400px;
+  height: 400px;
+  background: var(--bg-blob-3);
+  bottom: -100px;
+  left: 30%;
+  animation-delay: -14s;
+}
+
+@keyframes floatBlob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(40px, -30px) scale(1.05); }
+  66% { transform: translate(-30px, 40px) scale(0.95); }
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--card-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--border-color);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+}
+
+.logo-mark {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  background: var(--gradient-primary);
+  display: grid;
+  place-items: center;
+  color: white;
+  font-weight: 800;
+  font-size: 1rem;
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-mark::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.2) 50%, transparent 60%);
+}
+
+.logo-text {
+  font-family: var(--font-sans);
+}
+
+.logo-text .accent {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--text-primary);
+  background: var(--surface);
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid var(--indigo);
+  outline-offset: 2px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.theme-toggle {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle:hover {
+  background: var(--gradient-soft);
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--indigo);
+  outline-offset: 2px;
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.4s ease, opacity 0.25s ease;
+}
+
+.theme-toggle .sun-icon {
+  position: absolute;
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+
+.theme-toggle .moon-icon {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+[data-theme="dark"] .theme-toggle .sun-icon {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+[data-theme="dark"] .theme-toggle .moon-icon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.5);
+}
+
+.hamburger {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+
+.hamburger span {
+  width: 18px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.2s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+.main-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 40px;
+  animation: fadeUp 0.6s ease both;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  background: var(--surface-strong);
+  border: 1px solid var(--border-color);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 18px;
+  backdrop-filter: blur(10px);
+}
+
+.hero-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.6);
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--purple) 50%, var(--pink) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  color: var(--text-secondary);
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   CALCULATOR CARD
+   ============================================ */
+.calculator-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--card-shadow);
+  padding: clamp(20px, 4vw, 40px);
+  max-width: 1080px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  animation: fadeUp 0.7s 0.1s ease both;
+}
+
+.calculator-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+}
+
+[data-theme="dark"] .calculator-card::before {
+  background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.3), transparent);
+}
+
+.card-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.card-header h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+
+.card-header p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.calc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+@media (max-width: 880px) {
+  .calc-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* Form Sections */
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  letter-spacing: -0.01em;
+}
+
+.field-label .label-hint {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.currency-symbol {
+  position: absolute;
+  left: 16px;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 1rem;
+  pointer-events: none;
+}
+
+.text-input,
+.select-input {
+  width: 100%;
+  background: var(--input-bg);
+  border: 1.5px solid var(--input-border);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  font-size: 1rem;
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.text-input.has-prefix {
+  padding-left: 36px;
+}
+
+.text-input::placeholder {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.text-input:focus,
+.select-input:focus,
+.custom-rate-input:focus {
+  outline: none;
+  border-color: var(--indigo);
+  background: var(--surface-strong);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+}
+
+[data-theme="dark"] .text-input:focus,
+[data-theme="dark"] .select-input:focus,
+[data-theme="dark"] .custom-rate-input:focus {
+  box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.2);
+}
+
+.select-wrap {
+  position: relative;
+}
+
+.select-input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 44px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.select-arrow {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--text-muted);
+  display: flex;
+}
+
+.field-error {
+  font-size: 0.8rem;
+  color: var(--red);
+  font-weight: 500;
+  display: none;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.field-error.visible {
+  display: flex;
+  animation: shake 0.3s ease;
+}
+
+.text-input.invalid,
+.select-input.invalid,
+.custom-rate-input.invalid {
+  border-color: var(--red);
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+/* Quick chips */
+.quick-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  background: var(--surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 7px 14px;
+  border-radius: 100px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font-sans);
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.chip:hover {
+  background: var(--gradient-soft);
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+.chip.active {
+  background: var(--gradient-primary);
+  border-color: transparent;
+  color: white;
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.35);
+}
+
+.chip:focus-visible {
+  outline: 2px solid var(--indigo);
+  outline-offset: 2px;
+}
+
+/* Toggle group */
+.toggle-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  background: var(--surface-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 4px;
+  position: relative;
+}
+
+.toggle-btn {
+  padding: 11px 16px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: var(--font-sans);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  position: relative;
+  z-index: 1;
+}
+
+.toggle-btn.active {
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+}
+
+.toggle-btn:not(.active):hover {
+  color: var(--text-primary);
+  background: var(--surface);
+}
+
+.toggle-btn:focus-visible {
+  outline: 2px solid var(--indigo);
+  outline-offset: 2px;
+}
+
+/* Custom rate */
+.custom-rate-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--input-bg);
+  border: 1.5px solid var(--input-border);
+  border-radius: var(--radius-md);
+  padding: 0 12px;
+  transition: all 0.2s ease;
+}
+
+.custom-rate-wrap:focus-within {
+  border-color: var(--indigo);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+}
+
+.custom-rate-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 14px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+}
+
+.custom-rate-input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.custom-rate-suffix {
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Action buttons */
+.action-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.btn {
+  flex: 1;
+  min-width: 120px;
+  min-height: 48px;
+  padding: 13px 20px;
+  border-radius: var(--radius-md);
+  font-size: 0.92rem;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  border: none;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  letter-spacing: -0.01em;
+}
+
+.btn-primary {
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: 0 6px 20px rgba(168, 85, 247, 0.35);
+}
+
+.btn-primary:hover {
+  background: var(--gradient-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(168, 85, 247, 0.45);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: var(--surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  background: var(--surface-strong);
+  border-color: var(--border-strong);
+  transform: translateY(-2px);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--indigo);
+  outline-offset: 2px;
+}
+
+.btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ============================================
+   RESULTS
+   ============================================ */
+.results-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.results-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.results-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.results-title svg {
+  width: 18px;
+  height: 18px;
+  color: var(--purple);
+}
+
+.mode-pill {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: var(--gradient-soft);
+  color: var(--purple);
+  border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .mode-pill {
+  color: #d8b4fe;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.result-card {
+  background: var(--surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.result-card.hidden {
+  display: none;
+}
+
+.result-card.highlight {
+  background: var(--gradient-soft);
+  border-color: var(--border-strong);
+}
+
+.result-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.result-value {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  letter-spacing: -0.02em;
+  transition: opacity 0.2s ease;
+}
+
+.result-value.updating {
+  opacity: 0.4;
+}
+
+.rate-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 10px;
+  border-radius: 100px;
+  background: var(--gradient-primary);
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  letter-spacing: -0.01em;
+}
+
+/* Grand Total */
+.grand-total-card {
+  background: var(--gradient-primary);
+  border-radius: var(--radius-lg);
+  padding: 22px 24px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 32px rgba(168, 85, 247, 0.4);
+  margin-top: 4px;
+}
+
+.grand-total-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.grand-total-card::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.grand-total-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.9;
+  margin-bottom: 6px;
+  position: relative;
+  z-index: 1;
+}
+
+.grand-total-value {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 800;
+  font-family: var(--font-mono);
+  letter-spacing: -0.03em;
+  position: relative;
+  z-index: 1;
+  line-height: 1.1;
+}
+
+.grand-total-sub {
+  font-size: 0.82rem;
+  opacity: 0.85;
+  margin-top: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-muted);
+}
+
+.empty-state svg {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 12px;
+  opacity: 0.4;
+}
+
+.empty-state p {
+  font-size: 0.9rem;
+}
+
+/* Summary section */
+.summary-note {
+  margin-top: 8px;
+  padding: 12px 14px;
+  background: var(--surface-subtle);
+  border: 1px dashed var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.summary-note strong {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+/* ============================================
+   INFO SECTION
+   ============================================ */
+.info-section {
+  max-width: 1080px;
+  margin: 60px auto 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.info-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  transition: all 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.info-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--gradient-soft);
+  display: grid;
+  place-items: center;
+  margin-bottom: 12px;
+  color: var(--purple);
+}
+
+[data-theme="dark"] .info-icon {
+  color: #d8b4fe;
+}
+
+.info-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.info-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--text-primary);
+}
+
+.info-card p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.site-footer {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid var(--border-color);
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  margin-top: 60px;
+}
+
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 28px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.footer-brand .logo-mark {
+  width: 30px;
+  height: 30px;
+  font-size: 0.8rem;
+  border-radius: 9px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--text-primary);
+}
+
+.footer-copy {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  width: 100%;
+  text-align: center;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+  margin-top: 8px;
+}
+
+/* ============================================
+   TOAST
+   ============================================ */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(120px);
+  background: var(--gradient-primary);
+  color: white;
+  padding: 14px 22px;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 10px 32px rgba(168, 85, 247, 0.4);
+  z-index: 1000;
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+  max-width: 90vw;
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.toast svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes valuePop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+.result-value.animate,
+.grand-total-value.animate {
+  animation: valuePop 0.3s ease;
+}
+
+/* ============================================
+   MOBILE NAV
+   ============================================ */
+.mobile-menu {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  background: var(--card-bg);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid var(--border-color);
+  padding: 16px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 99;
+}
+
+.mobile-menu.open {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu .nav-link {
+  padding: 12px 14px;
+  font-size: 1rem;
+  border-radius: var(--radius-md);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .header-inner {
+    padding: 12px 16px;
+  }
+  .main-nav { display: none; }
+  .hamburger { display: flex; }
+  .main-content {
+    padding: 32px 16px 60px;
+  }
+  .calculator-card {
+    padding: 22px 18px;
+    border-radius: var(--radius-xl);
+  }
+  .result-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .info-section {
+    margin-top: 40px;
+  }
+  .action-row .btn {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 430px) {
+  .header-inner { gap: 8px; }
+  .logo { font-size: 1.1rem; }
+  .logo-mark { width: 34px; height: 34px; font-size: 0.9rem; }
+  .hero h1 { font-size: 1.75rem; }
+  .hero p { font-size: 0.9rem; }
+  .card-header h2 { font-size: 1.4rem; }
+  .quick-chips { gap: 6px; }
+  .chip { padding: 6px 12px; font-size: 0.78rem; }
+  .toggle-btn { font-size: 0.85rem; padding: 10px 8px; }
+  .grand-total-value { font-size: 1.65rem; }
+  .result-value { font-size: 1rem; }
+}
+
+@media (max-width: 360px) {
+  .calculator-card { padding: 18px 14px; }
+  .quick-chips .chip { font-size: 0.74rem; padding: 6px 10px; }
+  .grand-total-card { padding: 18px 18px; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .blob { animation: none; }
+}
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+</style>
+</head>
+<body>
+
+<!-- Background blobs -->
+<div class="bg-blobs" aria-hidden="true">
+  <div class="blob"></div>
+  <div class="blob"></div>
+  <div class="blob"></div>
+</div>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#" class="logo" aria-label="Tools24 home">
+      <span class="logo-mark">T24</span>
+      <span class="logo-text">Tools<span class="accent">24</span></span>
+    </a>
+
+    <nav class="main-nav" aria-label="Primary navigation">
+      <a href="#" class="nav-link">Home</a>
+      <a href="#" class="nav-link">About</a>
+      <a href="#" class="nav-link">Privacy</a>
+      <a href="#" class="nav-link">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+      </button>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu" role="menu">
+    <a href="#" class="nav-link" role="menuitem">Home</a>
+    <a href="#" class="nav-link" role="menuitem">About</a>
+    <a href="#" class="nav-link" role="menuitem">Privacy</a>
+    <a href="#" class="nav-link" role="menuitem">Contact</a>
+  </div>
+</header>
+
+<!-- Main content -->
+<main class="main-content">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      GST Tools · India
+    </div>
+    <h1>GST Calculator – India</h1>
+    <p>Calculate GST, CGST, SGST &amp; IGST instantly with accurate Indian Rupee formatting.</p>
+  </section>
+
+  <!-- Calculator Card -->
+  <section class="calculator-card" aria-labelledby="calc-title">
+    <div class="card-header">
+      <h2 id="calc-title">GST Calculator</h2>
+      <p>Calculate GST, CGST, SGST and IGST accurately in seconds.</p>
+    </div>
+
+    <div class="calc-grid">
+      <!-- LEFT: Form -->
+      <div class="form-section">
+        <!-- Calculation Type -->
+        <div class="field-group">
+          <label class="field-label">
+            Calculation Type
+            <span class="label-hint">Exclusive or Inclusive</span>
+          </label>
+          <div class="toggle-group" role="tablist" aria-label="Calculation type">
+            <button class="toggle-btn active" id="exclusiveBtn" role="tab" aria-selected="true" data-mode="exclusive">
+              GST Exclusive
+            </button>
+            <button class="toggle-btn" id="inclusiveBtn" role="tab" aria-selected="false" data-mode="inclusive">
+              GST Inclusive
+            </button>
+          </div>
+        </div>
+
+        <!-- Amount -->
+        <div class="field-group">
+          <label class="field-label" for="amountInput">
+            <span id="amountLabel">Amount</span>
+            <span class="label-hint">Enter amount in ₹</span>
+          </label>
+          <div class="input-wrap">
+            <span class="currency-symbol">₹</span>
+            <input
+              type="text"
+              id="amountInput"
+              class="text-input has-prefix"
+              placeholder="0.00"
+              inputmode="decimal"
+              autocomplete="off"
+              aria-describedby="amountError"
+            />
+          </div>
+          <div class="field-error" id="amountError" role="alert">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            <span>Please enter a valid amount.</span>
+          </div>
+          <!-- Quick amount buttons -->
+          <div class="quick-chips" role="group" aria-label="Quick amount buttons" style="margin-top:6px;">
+            <button class="chip" data-amount="500">₹500</button>
+            <button class="chip" data-amount="1000">₹1,000</button>
+            <button class="chip" data-amount="5000">₹5,000</button>
+            <button class="chip" data-amount="10000">₹10,000</button>
+            <button class="chip" data-amount="25000">₹25,000</button>
+            <button class="chip" data-amount="50000">₹50,000</button>
+            <button class="chip" data-amount="100000">₹1,00,000</button>
+          </div>
+        </div>
+
+        <!-- GST Rate -->
+        <div class="field-group">
+          <label class="field-label" for="gstRateSelect">
+            GST Rate
+            <span class="label-hint">Standard slabs</span>
+          </label>
+          <div class="select-wrap">
+            <select id="gstRateSelect" class="select-input">
+              <option value="0">0% (Nil rated)</option>
+              <option value="5">5%</option>
+              <option value="12">12%</option>
+              <option value="18" selected>18%</option>
+              <option value="28">28%</option>
+              <option value="custom">Custom rate…</option>
+            </select>
+            <span class="select-arrow" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </span>
+          </div>
+          <!-- Quick GST rate buttons -->
+          <div class="quick-chips" role="group" aria-label="Quick GST rate buttons" style="margin-top:6px;">
+            <button class="chip" data-rate="0">0%</button>
+            <button class="chip" data-rate="5">5%</button>
+            <button class="chip" data-rate="12">12%</button>
+            <button class="chip active" data-rate="18">18%</button>
+            <button class="chip" data-rate="28">28%</button>
+          </div>
+        </div>
+
+        <!-- Custom rate (hidden by default) -->
+        <div class="field-group" id="customRateGroup" style="display:none;">
+          <label class="field-label" for="customRateInput">
+            Custom GST Rate
+            <span class="label-hint">0 – 100 %</span>
+          </label>
+          <div class="custom-rate-wrap">
+            <input
+              type="text"
+              id="customRateInput"
+              class="custom-rate-input"
+              placeholder="Enter rate"
+              inputmode="decimal"
+              autocomplete="off"
+              aria-describedby="customRateError"
+            />
+            <span class="custom-rate-suffix">%</span>
+          </div>
+          <div class="field-error" id="customRateError" role="alert">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            <span>Please enter a valid GST rate (0–100).</span>
+          </div>
+        </div>
+
+        <!-- GST Type -->
+        <div class="field-group">
+          <label class="field-label">
+            GST Type
+            <span class="label-hint">Transaction type</span>
+          </label>
+          <div class="toggle-group" role="tablist" aria-label="GST type">
+            <button class="toggle-btn active" id="intraBtn" role="tab" aria-selected="true" data-type="intra">
+              Intra-State
+            </button>
+            <button class="toggle-btn" id="interBtn" role="tab" aria-selected="false" data-type="inter">
+              Inter-State
+            </button>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="action-row">
+          <button class="btn btn-primary" id="calculateBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="2" width="16" height="20" rx="2"/>
+              <line x1="8" y1="6" x2="16" y2="6"/>
+              <line x1="8" y1="10" x2="16" y2="10"/>
+              <line x1="8" y1="14" x2="12" y2="14"/>
+            </svg>
+            Calculate GST
+          </button>
+          <button class="btn btn-secondary" id="resetBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="1 4 1 10 7 10"/>
+              <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+            </svg>
+            Reset
+          </button>
+          <button class="btn btn-secondary" id="copyBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            </svg>
+            Copy
+          </button>
+        </div>
+      </div>
+
+      <!-- RIGHT: Results -->
+      <div class="results-section" id="resultsSection" aria-live="polite">
+        <div class="results-header">
+          <h3 class="results-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 3v18h18"/>
+              <path d="M18 17V9"/>
+              <path d="M13 17V5"/>
+              <path d="M8 17v-3"/>
+            </svg>
+            Results
+          </h3>
+          <span class="mode-pill" id="modePill">Exclusive · Intra</span>
+        </div>
+
+        <div class="result-grid" id="resultGrid">
+          <div class="result-card" id="baseAmountCard">
+            <div class="result-label">Base Amount</div>
+            <div class="result-value" id="baseAmountVal">₹0.00</div>
+          </div>
+
+          <div class="result-card highlight">
+            <div class="result-label">GST Rate</div>
+            <div class="result-value"><span class="rate-badge" id="gstRateBadge">18%</span></div>
+          </div>
+
+          <div class="result-card">
+            <div class="result-label">GST Amount</div>
+            <div class="result-value" id="gstAmountVal">₹0.00</div>
+          </div>
+
+          <div class="result-card" id="cgstCard">
+            <div class="result-label">CGST</div>
+            <div class="result-value" id="cgstVal">₹0.00</div>
+          </div>
+
+          <div class="result-card" id="sgstCard">
+            <div class="result-label">SGST</div>
+            <div class="result-value" id="sgstVal">₹0.00</div>
+          </div>
+
+          <div class="result-card hidden" id="igstCard">
+            <div class="result-label">IGST</div>
+            <div class="result-value" id="igstVal">₹0.00</div>
+          </div>
+
+          <div class="result-card hidden" id="gstIncludedCard">
+            <div class="result-label">GST Included</div>
+            <div class="result-value" id="gstIncludedVal">₹0.00</div>
+          </div>
+
+          <div class="result-card hidden" id="totalAmountCard">
+            <div class="result-label">Total Amount</div>
+            <div class="result-value" id="totalAmountVal">₹0.00</div>
+          </div>
+        </div>
+
+        <!-- Grand Total -->
+        <div class="grand-total-card">
+          <div class="grand-total-label">Grand Total</div>
+          <div class="grand-total-value" id="grandTotalVal">₹0.00</div>
+          <div class="grand-total-sub" id="grandTotalSub">Enter an amount to calculate</div>
+        </div>
+
+        <div class="summary-note" id="summaryNote" style="display:none;">
+          <strong>Note:</strong> <span id="summaryNoteText"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Info cards -->
+  <section class="info-section" aria-label="GST information">
+    <article class="info-card">
+      <div class="info-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+          <path d="M2 17l10 5 10-5"/>
+          <path d="M2 12l10 5 10-5"/>
+        </svg>
+      </div>
+      <h3>What is GST?</h3>
+      <p>Goods and Services Tax (GST) is an indirect tax levied on the supply of goods and services in India, replacing multiple earlier taxes.</p>
+    </article>
+
+    <article class="info-card">
+      <div class="info-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="1" x2="12" y2="23"/>
+          <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+        </svg>
+      </div>
+      <h3>CGST &amp; SGST</h3>
+      <p>For intra-state transactions, GST is split equally into CGST (Central) and SGST (State) components — each being half of the total GST.</p>
+    </article>
+
+    <article class="info-card">
+      <div class="info-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+      </div>
+      <h3>IGST</h3>
+      <p>For inter-state transactions, the full GST amount is collected as Integrated GST (IGST) by the Central Government.</p>
+    </article>
+
+    <article class="info-card">
+      <div class="info-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+          <line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8" y1="2" x2="8" y2="6"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+      </div>
+      <h3>GST Rate Slabs</h3>
+      <p>India has 5 main GST slabs: 0%, 5%, 12%, 18% and 28%. Some items also attract special rates or cess depending on category.</p>
+    </article>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo-mark">T24</span>
+      <span>Tools<span class="accent" style="background: var(--gradient-primary); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">24</span></span>
+    </div>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Privacy</a>
+      <a href="#">Contact</a>
+    </nav>
+    <div class="footer-copy">
+      © <span id="year"></span> Tools24. GST Calculator India. For informational purposes only.
+    </div>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="20 6 9 17 4 12"/>
+  </svg>
+  <span id="toastMsg">Result copied!</span>
+</div>
+
+<script>
+/* ============================================
+   TOOLS24 - GST CALCULATOR
+   ============================================ */
+
+(function () {
+  'use strict';
+
+  // ----- State -----
+  const state = {
+    mode: 'exclusive',   // 'exclusive' | 'inclusive'
+    type: 'intra',       // 'intra' | 'inter'
+    amount: 0,
+    rate: 18,
+    useCustomRate: false,
+    customRate: null,
+    result: null
+  };
+
+  // ----- DOM Refs -----
+  const $ = (id) => document.getElementById(id);
+
+  const els = {
+    amountInput: $('amountInput'),
+    amountError: $('amountError'),
+    amountLabel: $('amountLabel'),
+    gstRateSelect: $('gstRateSelect'),
+    customRateGroup: $('customRateGroup'),
+    customRateInput: $('customRateInput'),
+    customRateError: $('customRateError'),
+    exclusiveBtn: $('exclusiveBtn'),
+    inclusiveBtn: $('inclusiveBtn'),
+    intraBtn: $('intraBtn'),
+    interBtn: $('interBtn'),
+    calculateBtn: $('calculateBtn'),
+    resetBtn: $('resetBtn'),
+    copyBtn: $('copyBtn'),
+    // result refs
+    baseAmountVal: $('baseAmountVal'),
+    gstAmountVal: $('gstAmountVal'),
+    cgstVal: $('cgstVal'),
+    sgstVal: $('sgstVal'),
+    igstVal: $('igstVal'),
+    gstIncludedVal: $('gstIncludedVal'),
+    totalAmountVal: $('totalAmountVal'),
+    grandTotalVal: $('grandTotalVal'),
+    grandTotalSub: $('grandTotalSub'),
+    gstRateBadge: $('gstRateBadge'),
+    modePill: $('modePill'),
+    cgstCard: $('cgstCard'),
+    sgstCard: $('sgstCard'),
+    igstCard: $('igstCard'),
+    gstIncludedCard: $('gstIncludedCard'),
+    totalAmountCard: $('totalAmountCard'),
+    summaryNote: $('summaryNote'),
+    summaryNoteText: $('summaryNoteText'),
+    toast: $('toast'),
+    toastMsg: $('toastMsg'),
+    themeToggle: $('themeToggle'),
+    hamburger: $('hamburger'),
+    mobileMenu: $('mobileMenu')
+  };
+
+  // ----- Indian Currency Formatting -----
+  function formatINR(num) {
+    if (!isFinite(num)) num = 0;
+    const rounded = Math.round((num + Number.EPSILON) * 100) / 100;
+    return new Intl.NumberFormat('en-IN', {
+      style: 'currency',
+      currency: 'INR',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(rounded);
+  }
+
+  function formatRate(r) {
+    return Number.isInteger(r) ? r + '%' : r.toFixed(2).replace(/\.?0+$/, '') + '%';
+  }
+
+  // ----- Validation helpers -----
+  function parseAmount(str) {
+    if (typeof str === 'number') return str;
+    if (!str) return NaN;
+    // Allow digits, comma, dot
+    const cleaned = String(str).replace(/[₹,\s]/g, '');
+    if (cleaned === '' || cleaned === '.') return NaN;
+    const num = parseFloat(cleaned);
+    return num;
+  }
+
+  function parseRate(str) {
+    if (typeof str === 'number') return str;
+    if (!str) return NaN;
+    const cleaned = String(str).replace(/[%\s]/g, '');
+    if (cleaned === '' || cleaned === '.') return NaN;
+    return parseFloat(cleaned);
+  }
+
+  // ----- Calculations -----
+  function calculate() {
+    const amt = state.amount;
+    const rate = state.rate;
+    const mode = state.mode;
+    const type = state.type;
+
+    let result;
+
+    if (mode === 'exclusive') {
+      const baseAmount = amt;
+      const gstAmount = (baseAmount * rate) / 100;
+      const grandTotal = baseAmount + gstAmount;
+
+      result = {
+        mode,
+        type,
+        rate,
+        baseAmount,
+        gstAmount,
+        grandTotal,
+        cgst: type === 'intra' ? gstAmount / 2 : 0,
+        sgst: type === 'intra' ? gstAmount / 2 : 0,
+        igst: type === 'inter' ? gstAmount : 0
+      };
+    } else {
+      // inclusive
+      const totalAmount = amt;
+      const baseAmount = totalAmount / (1 + rate / 100);
+      const gstAmount = totalAmount - baseAmount;
+      const grandTotal = totalAmount;
+
+      result = {
+        mode,
+        type,
+        rate,
+        totalAmount,
+        baseAmount,
+        gstAmount,
+        grandTotal,
+        cgst: type === 'intra' ? gstAmount / 2 : 0,
+        sgst: type === 'intra' ? gstAmount / 2 : 0,
+        igst: type === 'inter' ? gstAmount : 0
+      };
+    }
+
+    state.result = result;
+    return result;
+  }
+
+  // ----- Render -----
+  function animateValue(el) {
+    if (!el) return;
+    el.classList.remove('animate');
+    void el.offsetWidth; // restart animation
+    el.classList.add('animate');
+  }
+
+  function render() {
+    const r = state.result;
+    if (!r) return;
+
+    // Rate badge
+    els.gstRateBadge.textContent = formatRate(r.rate);
+
+    // Mode pill
+    const modeTxt = r.mode === 'exclusive' ? 'Exclusive' : 'Inclusive';
+    const typeTxt = r.type === 'intra' ? 'Intra' : 'Inter';
+    els.modePill.textContent = `${modeTxt} · ${typeTxt}`;
+
+    // Visibility
+    els.cgstCard.classList.toggle('hidden', r.type !== 'intra');
+    els.sgstCard.classList.toggle('hidden', r.type !== 'intra');
+    els.igstCard.classList.toggle('hidden', r.type !== 'inter');
+    els.gstIncludedCard.classList.toggle('hidden', r.mode !== 'inclusive');
+    els.totalAmountCard.classList.toggle('hidden', r.mode !== 'inclusive');
+
+    // Label updates
+    if (r.mode === 'inclusive') {
+      els.amountLabel.textContent = 'Total Amount (incl. GST)';
+      els.grandTotalSub.textContent = `Includes GST of ${formatINR(r.gstAmount)} at ${formatRate(r.rate)}`;
+    } else {
+      els.amountLabel.textContent = 'Base Amount';
+      els.grandTotalSub.textContent = `Base + ${formatRate(r.rate)} GST`;
+    }
+
+    // Values
+    els.baseAmountVal.textContent = formatINR(r.baseAmount);
+    els.gstAmountVal.textContent = formatINR(r.gstAmount);
+    els.cgstVal.textContent = formatINR(r.cgst);
+    els.sgstVal.textContent = formatINR(r.sgst);
+    els.igstVal.textContent = formatINR(r.igst);
+    if (r.mode === 'inclusive') {
+      els.gstIncludedVal.textContent = formatINR(r.gstAmount);
+      els.totalAmountVal.textContent = formatINR(r.totalAmount);
+    }
+    els.grandTotalVal.textContent = formatINR(r.grandTotal);
+
+    // Animations
+    animateValue(els.baseAmountVal);
+    animateValue(els.gstAmountVal);
+    if (r.type === 'intra') {
+      animateValue(els.cgstVal);
+      animateValue(els.sgstVal);
+    } else {
+      animateValue(els.igstVal);
+    }
+    animateValue(els.grandTotalVal);
+
+    // Summary note
+    if (r.mode === 'exclusive' && r.type === 'intra') {
+      els.summaryNote.style.display = 'block';
+      els.summaryNoteText.textContent = 'GST is equally split into CGST and SGST (50% each) for intra-state supplies.';
+    } else if (r.mode === 'exclusive' && r.type === 'inter') {
+      els.summaryNote.style.display = 'block';
+      els.summaryNoteText.textContent = 'Full GST is charged as IGST for inter-state supplies.';
+    } else if (r.mode === 'inclusive' && r.type === 'intra') {
+      els.summaryNote.style.display = 'block';
+      els.summaryNoteText.textContent = 'GST included in total is extracted and split into CGST and SGST (50% each).';
+    } else {
+      els.summaryNote.style.display = 'block';
+      els.summaryNoteText.textContent = 'GST included in total is extracted as full IGST for inter-state supplies.';
+    }
+  }
+
+  // ----- Validation & Live Update -----
+  function validateAmount(showError = true) {
+    const raw = els.amountInput.value.trim();
+    if (raw === '') {
+      if (showError) {
+        els.amountError.classList.add('visible');
+        els.amountInput.classList.add('invalid');
+        els.amountError.querySelector('span').textContent = 'Please enter a valid amount.';
+      }
+      state.amount = 0;
+      return false;
+    }
+    const num = parseAmount(raw);
+    if (isNaN(num) || num < 0) {
+      els.amountError.classList.add('visible');
+      els.amountInput.classList.add('invalid');
+      els.amountError.querySelector('span').textContent = 'Please enter a valid amount.';
+      state.amount = 0;
+      return false;
+    }
+    // limit to reasonable amount
+    if (num > 1e15) {
+      els.amountError.classList.add('visible');
+      els.amountInput.classList.add('invalid');
+      els.amountError.querySelector('span').textContent = 'Amount is too large.';
+      state.amount = 0;
+      return false;
+    }
+    els.amountError.classList.remove('visible');
+    els.amountInput.classList.remove('invalid');
+    state.amount = num;
+    return true;
+  }
+
+  function validateCustomRate(showError = true) {
+    const raw = els.customRateInput.value.trim();
+    if (raw === '') {
+      if (showError) {
+        els.customRateError.classList.add('visible');
+        els.customRateInput.classList.add('invalid');
+      }
+      return false;
+    }
+    const num = parseRate(raw);
+    if (isNaN(num) || num < 0 || num > 100) {
+      els.customRateError.classList.add('visible');
+      els.customRateInput.classList.add('invalid');
+      return false;
+    }
+    els.customRateError.classList.remove('visible');
+    els.customRateInput.classList.remove('invalid');
+    state.customRate = num;
+    state.rate = num;
+    return true;
+  }
+
+  function update() {
+    // Resolve rate
+    if (state.useCustomRate) {
+      if (!validateCustomRate(false)) {
+        return; // don't render with invalid rate
+      }
+      state.rate = state.customRate;
+    } else {
+      state.rate = parseFloat(els.gstRateSelect.value) || 0;
+    }
+    // Resolve amount
+    if (!validateAmount(false)) {
+      // still render zeros if amount empty/invalid? We'll render with 0 silently
+      state.amount = 0;
+    }
+    calculate();
+    render();
+  }
+
+  // ----- Event Handlers -----
+  function handleAmountInput(e) {
+    // Allow only valid characters
+    let val = e.target.value;
+    // Strip invalid chars but keep digits, dot, comma
+    val = val.replace(/[^0-9.,]/g, '');
+    if (val !== e.target.value) e.target.value = val;
+    validateAmount(false);
+    update();
+  }
+
+  function handleAmountBlur() {
+    // Format on blur if valid
+    const num = parseAmount(els.amountInput.value);
+    if (!isNaN(num) && num > 0 && els.amountInput.value !== '') {
+      // Keep raw but clean commas - format without symbol
+      const formatted = new Intl.NumberFormat('en-IN', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      }).format(num);
+      els.amountInput.value = formatted;
+    }
+    validateAmount(false);
+    update();
+  }
+
+  function handleRateSelect() {
+    const v = els.gstRateSelect.value;
+    if (v === 'custom') {
+      state.useCustomRate = true;
+      els.customRateGroup.style.display = 'flex';
+      // Deactivate quick chips
+      document.querySelectorAll('[data-rate]').forEach(c => c.classList.remove('active'));
+      els.customRateInput.focus();
+    } else {
+      state.useCustomRate = false;
+      els.customRateGroup.style.display = 'none';
+      state.rate = parseFloat(v);
+      // Update active chip
+      document.querySelectorAll('[data-rate]').forEach(c => {
+        c.classList.toggle('active', parseFloat(c.dataset.rate) === state.rate);
+      });
+    }
+    update();
+  }
+
+  function handleCustomRateInput(e) {
+    let val = e.target.value.replace(/[^0-9.]/g, '');
+    if (val !== e.target.value) e.target.value = val;
+    validateCustomRate(false);
+    update();
+  }
+
+  function handleQuickAmount(e) {
+    const chip = e.target.closest('[data-amount]');
+    if (!chip) return;
+    const amt = parseFloat(chip.dataset.amount);
+    els.amountInput.value = new Intl.NumberFormat('en-IN', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(amt);
+    validateAmount(false);
+    update();
+    // Highlight chip briefly
+    document.querySelectorAll('[data-amount]').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    setTimeout(() => chip.classList.remove('active'), 1200);
+  }
+
+  function handleQuickRate(e) {
+    const chip = e.target.closest('[data-rate]');
+    if (!chip) return;
+    const rate = parseFloat(chip.dataset.rate);
+    state.useCustomRate = false;
+    els.customRateGroup.style.display = 'none';
+    els.gstRateSelect.value = String(rate);
+    state.rate = rate;
+    document.querySelectorAll('[data-rate]').forEach(c => {
+      c.classList.toggle('active', parseFloat(c.dataset.rate) === rate);
+    });
+    update();
+  }
+
+  function handleModeToggle(e) {
+    const btn = e.target.closest('.toggle-btn');
+    if (!btn || !btn.dataset.mode) return;
+    state.mode = btn.dataset.mode;
+    els.exclusiveBtn.classList.toggle('active', state.mode === 'exclusive');
+    els.inclusiveBtn.classList.toggle('active', state.mode === 'inclusive');
+    els.exclusiveBtn.setAttribute('aria-selected', state.mode === 'exclusive');
+    els.inclusiveBtn.setAttribute('aria-selected', state.mode === 'inclusive');
+    update();
+  }
+
+  function handleTypeToggle(e) {
+    const btn = e.target.closest('.toggle-btn');
+    if (!btn || !btn.dataset.type) return;
+    state.type = btn.dataset.type;
+    els.intraBtn.classList.toggle('active', state.type === 'intra');
+    els.interBtn.classList.toggle('active', state.type === 'inter');
+    els.intraBtn.setAttribute('aria-selected', state.type === 'intra');
+    els.interBtn.setAttribute('aria-selected', state.type === 'inter');
+    update();
+  }
+
+  function handleReset() {
+    els.amountInput.value = '';
+    els.customRateInput.value = '';
+    els.gstRateSelect.value = '18';
+    els.customRateGroup.style.display = 'none';
+    state.mode = 'exclusive';
+    state.type = 'intra';
+    state.amount = 0;
+    state.rate = 18;
+    state.useCustomRate = false;
+    state.customRate = null;
+    els.exclusiveBtn.classList.add('active');
+    els.inclusiveBtn.classList.remove('active');
+    els.intraBtn.classList.add('active');
+    els.interBtn.classList.remove('active');
+    els.exclusiveBtn.setAttribute('aria-selected', 'true');
+    els.inclusiveBtn.setAttribute('aria-selected', 'false');
+    els.intraBtn.setAttribute('aria-selected', 'true');
+    els.interBtn.setAttribute('aria-selected', 'false');
+    document.querySelectorAll('[data-rate]').forEach(c => {
+      c.classList.toggle('active', parseFloat(c.dataset.rate) === 18);
+    });
+    els.amountError.classList.remove('visible');
+    els.customRateError.classList.remove('visible');
+    els.amountInput.classList.remove('invalid');
+    els.customRateInput.classList.remove('invalid');
+    update();
+    showToast('Calculator reset', 'reset');
+  }
+
+  function handleCalculate() {
+    const amtOk = validateAmount(true);
+    let rateOk = true;
+    if (state.useCustomRate) rateOk = validateCustomRate(true);
+    if (!amtOk || !rateOk) {
+      showToast('Please fix the errors above', 'error');
+      return;
+    }
+    update();
+    showToast('GST calculated', 'success');
+  }
+
+  function handleCopy() {
+    if (!state.result) return;
+    const r = state.result;
+    let lines = ['GST Calculation', '--------------------'];
+
+    if (r.mode === 'exclusive') {
+      lines.push('Mode: GST Exclusive');
+      lines.push('Base Amount: ' + formatINR(r.baseAmount));
+      lines.push('GST Rate: ' + formatRate(r.rate));
+      lines.push('GST Amount: ' + formatINR(r.gstAmount));
+      if (r.type === 'intra') {
+        lines.push('CGST: ' + formatINR(r.cgst));
+        lines.push('SGST: ' + formatINR(r.sgst));
+      } else {
+        lines.push('IGST: ' + formatINR(r.igst));
+      }
+      lines.push('Grand Total: ' + formatINR(r.grandTotal));
+    } else {
+      lines.push('Mode: GST Inclusive');
+      lines.push('Total Amount: ' + formatINR(r.totalAmount));
+      lines.push('Base Amount: ' + formatINR(r.baseAmount));
+      lines.push('GST Rate: ' + formatRate(r.rate));
+      lines.push('GST Included: ' + formatINR(r.gstAmount));
+      if (r.type === 'intra') {
+        lines.push('CGST: ' + formatINR(r.cgst));
+        lines.push('SGST: ' + formatINR(r.sgst));
+      } else {
+        lines.push('IGST: ' + formatINR(r.igst));
+      }
+      lines.push('Grand Total: ' + formatINR(r.grandTotal));
+    }
+    lines.push('--------------------');
+    lines.push('Calculated with Tools24 GST Calculator');
+
+    const text = lines.join('\n');
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('Result copied!', 'success');
+      }).catch(() => {
+        fallbackCopy(text);
+      });
+    } else {
+      fallbackCopy(text);
+    }
+  }
+
+  function fallbackCopy(text) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+      showToast('Result copied!', 'success');
+    } catch (e) {
+      showToast('Copy failed', 'error');
+    }
+    document.body.removeChild(ta);
+  }
+
+  // ----- Toast -----
+  let toastTimer = null;
+  function showToast(msg, type) {
+    els.toastMsg.textContent = msg;
+    els.toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      els.toast.classList.remove('show');
+    }, 2400);
+  }
+
+  // ----- Theme -----
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', theme === 'dark' ? '#0a0118' : '#6366f1');
+    try { localStorage.setItem('tools24-theme', theme); } catch (e) {}
+  }
+
+  function initTheme() {
+    let saved = null;
+    try { saved = localStorage.getItem('tools24-theme'); } catch (e) {}
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyTheme(saved || (prefersDark ? 'dark' : 'light'));
+  }
+
+  function toggleTheme() {
+    const cur = document.documentElement.getAttribute('data-theme');
+    applyTheme(cur === 'dark' ? 'light' : 'dark');
+  }
+
+  // ----- Mobile Menu -----
+  function toggleMobileMenu() {
+    const open = els.mobileMenu.classList.toggle('open');
+    els.hamburger.classList.toggle('active', open);
+    els.hamburger.setAttribute('aria-expanded', String(open));
+  }
+
+  // ----- Init -----
+  function init() {
+    // Year
+    $('year').textContent = new Date().getFullYear();
+
+    // Theme
+    initTheme();
+    els.themeToggle.addEventListener('click', toggleTheme);
+
+    // Mobile menu
+    els.hamburger.addEventListener('click', toggleMobileMenu);
+    els.mobileMenu.querySelectorAll('.nav-link').forEach(a => {
+      a.addEventListener('click', () => {
+        els.mobileMenu.classList.remove('open');
+        els.hamburger.classList.remove('active');
+        els.hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Amount
+    els.amountInput.addEventListener('input', handleAmountInput);
+    els.amountInput.addEventListener('blur', handleAmountBlur);
+    els.amountInput.addEventListener('focus', () => {
+      // Strip formatting for easier editing
+      const num = parseAmount(els.amountInput.value);
+      if (!isNaN(num) && els.amountInput.value !== '') {
+        els.amountInput.value = String(num);
+      }
+    });
+
+    // Rate select
+    els.gstRateSelect.addEventListener('change', handleRateSelect);
+
+    // Custom rate
+    els.customRateInput.addEventListener('input', handleCustomRateInput);
+    els.customRateInput.addEventListener('blur', () => {
+      const num = parseRate(els.customRateInput.value);
+      if (!isNaN(num) && els.customRateInput.value !== '') {
+        els.customRateInput.value = String(num);
+      }
+      validateCustomRate(true);
+      update();
+    });
+
+    // Quick chips
+    document.querySelectorAll('[data-amount]').forEach(c => {
+      c.addEventListener('click', handleQuickAmount);
+    });
+    document.querySelectorAll('[data-rate]').forEach(c => {
+      c.addEventListener('click', handleQuickRate);
+    });
+
+    // Toggles
+    els.exclusiveBtn.addEventListener('click', handleModeToggle);
+    els.inclusiveBtn.addEventListener('click', handleModeToggle);
+    els.intraBtn.addEventListener('click', handleTypeToggle);
+    els.interBtn.addEventListener('click', handleTypeToggle);
+
+    // Actions
+    els.calculateBtn.addEventListener('click', handleCalculate);
+    els.resetBtn.addEventListener('click', handleReset);
+    els.copyBtn.addEventListener('click', handleCopy);
+
+    // Keyboard: Enter triggers calculate
+    els.amountInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        handleCalculate();
+      }
+    });
+
+    // Initial render with defaults
+    update();
+  }
+
+  // Wait for DOM
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+</body>
+</html>
