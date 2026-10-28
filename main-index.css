@@ -1512,3 +1512,511 @@ body.dark .tools24-faq,
     transition: none !important;
   }
 }
+
+/* Tools24 Search and Category Navigation */
+.tools-directory {
+  width: min(100% - 32px, 1200px);
+  margin: 28px auto 36px;
+  font-family: inherit;
+}
+
+.tools-search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  margin-bottom: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 14px;
+  background: linear-gradient(
+    110deg,
+    #b5a3f3 0%,
+    #9bd0ff 52%,
+    #f3b3d2 100%
+  );
+  box-shadow: 0 4px 14px rgba(95, 91, 150, 0.10);
+}
+
+.tools-search-box input {
+  flex: 1;
+  min-width: 0;
+  padding: 11px 5px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #171326;
+  font: inherit;
+  font-size: 15px;
+}
+
+.tools-search-box input::placeholder {
+  color: #514b67;
+}
+
+.tools-search-box button {
+  border: none;
+  background: transparent;
+  color: #171326;
+  font-size: 23px;
+  cursor: pointer;
+}
+
+.tool-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.category-btn {
+  padding: 8px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: 9px;
+  background: linear-gradient(
+    115deg,
+    #b5a3f3,
+    #9bd0ff 55%,
+    #f3b3d2
+  );
+  color: #171326;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.category-btn:hover,
+.category-btn.active {
+  box-shadow: 0 3px 10px rgba(82, 69, 145, 0.2);
+  transform: translateY(-1px);
+}
+
+.tool-name-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.tool-name-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 34px;
+  padding: 6px 9px;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  background: linear-gradient(
+    115deg,
+    #b5a3f3 0%,
+    #9bd0ff 52%,
+    #f3b3d2 100%
+  );
+  color: #171326;
+  text-align: center;
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tool-name-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(90, 75, 150, 0.18);
+}
+
+#noToolsMessage {
+  padding: 12px 0;
+  color: #625b75;
+  font-size: 14px;
+}
+
+@media (max-width: 700px) {
+  .tool-name-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tool-categories {
+    gap: 6px;
+  }
+
+  .category-btn {
+    padding: 7px 10px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .tools-directory {
+    width: calc(100% - 20px);
+  }
+
+  .tool-name-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 5px;
+  }
+
+  .tool-name-btn {
+    padding: 6px 4px;
+    font-size: 11px;
+  }
+}
+
+/* ===== Tools24 Premium Search ===== */
+
+.tools-search-section {
+  width: min(850px, calc(100% - 32px));
+  margin: 34px auto 46px;
+  position: relative;
+  z-index: 20;
+  font-family: inherit;
+}
+
+.tools-search-heading {
+  text-align: center;
+  font-size: clamp(25px, 4vw, 38px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -1px;
+  margin: 0 0 12px;
+  color: #17152d;
+  background: linear-gradient(
+    100deg, #7660dc, #398ce5, #dc70b2
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tools-search-subtitle {
+  text-align: center;
+  font-size: 15px;
+  color: #77768d;
+  margin: 0 0 24px;
+}
+
+.tools-search-box {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  width: 100%;
+  min-height: 68px;
+  padding: 0 19px;
+  border-radius: 22px;
+  position: relative;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(
+      115deg, #bba6ff, #8ecbff, #f0a9d1
+    ) border-box;
+  border: 1.5px solid transparent;
+  box-shadow:
+    0 12px 35px rgba(99, 91, 170, 0.13),
+    0 3px 10px rgba(68, 106, 180, 0.06);
+  transition: box-shadow .25s ease,
+              transform .25s ease;
+}
+
+.tools-search-box:focus-within {
+  box-shadow:
+    0 15px 42px rgba(117, 96, 220, .18),
+    0 0 0 4px rgba(150, 135, 255, .12);
+  transform: translateY(-1px);
+}
+
+.search-icon {
+  width: 25px;
+  height: 25px;
+  flex-shrink: 0;
+  color: #7866d9;
+  display: flex;
+}
+
+.search-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+#toolSearch {
+  width: 100%;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #201c3b;
+  font: inherit;
+  font-size: 16px;
+  padding: 19px 0;
+}
+
+#toolSearch::placeholder {
+  color: #9b98b0;
+}
+
+#toolSearch::-webkit-search-cancel-button {
+  display: none;
+}
+
+#clearSearch {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #6256b5;
+  background: #f0edff;
+  font-size: 23px;
+  line-height: 1;
+}
+
+#clearSearch[hidden],
+.search-suggestions[hidden] {
+  display: none !important;
+}
+
+/* Suggestions appear only after typing */
+.search-suggestions {
+  position: absolute;
+  top: calc(100% - 29px);
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 38px 9px 9px;
+  border: 1px solid #e3ddff;
+  border-radius: 0 0 22px 22px;
+  background: rgba(255, 255, 255, .98);
+  box-shadow: 0 20px 45px rgba(64, 48, 120, .16);
+  backdrop-filter: blur(20px);
+  max-height: 340px;
+  overflow-y: auto;
+}
+
+.search-suggestion {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  text-align: left;
+  padding: 13px 14px;
+  margin: 0 0 5px;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  background: transparent;
+  color: #211d3e;
+  cursor: pointer;
+  font: inherit;
+  transition: background .2s, border-color .2s;
+}
+
+.search-suggestion:hover,
+.search-suggestion:focus-visible {
+  outline: none;
+  background: linear-gradient(
+    110deg, #f1edff, #edf6ff, #fff0f8
+  );
+  border-color: #e3d9ff;
+}
+
+.suggestion-icon {
+  display: grid;
+  place-items: center;
+  width: 43px;
+  height: 43px;
+  flex-shrink: 0;
+  border-radius: 13px;
+  color: #38306d;
+  background: linear-gradient(
+    135deg, #c6b5ff, #acd9ff, #f4bfdc
+  );
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.suggestion-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.suggestion-name {
+  display: block;
+  font-size: 15px;
+  font-weight: 750;
+  margin-bottom: 4px;
+}
+
+.suggestion-description {
+  display: block;
+  color: #77748c;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.suggestion-arrow {
+  color: #7c69d7;
+  font-size: 21px;
+}
+
+.search-no-results {
+  padding: 20px 12px;
+  text-align: center;
+  color: #77748c;
+  font-size: 14px;
+}
+
+/* Dark mode support */
+body.dark-mode .tools-search-heading {
+  color: #f3efff;
+}
+
+body.dark-mode .tools-search-subtitle {
+  color: #b5b0ca;
+}
+
+body.dark-mode .tools-search-box {
+  background:
+    linear-gradient(#201d35, #201d35) padding-box,
+    linear-gradient(
+      115deg, #bba6ff, #8ecbff, #f0a9d1
+    ) border-box;
+}
+
+body.dark-mode #toolSearch {
+  color: #f6f3ff;
+}
+
+body.dark-mode .search-suggestions {
+  background: rgba(32, 29, 53, .98);
+  border-color: #484064;
+}
+
+body.dark-mode .search-suggestion {
+  color: #f4f0ff;
+}
+
+body.dark-mode .search-suggestion:hover,
+body.dark-mode .search-suggestion:focus-visible {
+  background: linear-gradient(
+    110deg, #37304e, #25364b, #463044
+  );
+}
+
+body.dark-mode .suggestion-description,
+body.dark-mode .search-no-results {
+  color: #c1bbd5;
+}
+
+/* Mobile optimization */
+@media (max-width: 600px) {
+  .tools-search-section {
+    width: calc(100% - 28px);
+    margin: 26px auto 32px;
+  }
+
+  .tools-search-heading {
+    letter-spacing: -.5px;
+  }
+
+  .tools-search-subtitle {
+    font-size: 13px;
+    margin-bottom: 18px;
+  }
+
+  .tools-search-box {
+    min-height: 59px;
+    padding: 0 13px;
+    gap: 10px;
+    border-radius: 17px;
+  }
+
+  #toolSearch {
+    font-size: 14px;
+  }
+
+  .search-suggestions {
+    border-radius: 0 0 17px 17px;
+    max-height: 280px;
+  }
+
+  .search-suggestion {
+    padding: 11px 8px;
+  }
+}
+
+/* Tools24: Mobile hamburger menu overlap fix */
+
+@media screen and (max-width: 600px) {
+
+  /* Header ko menu ke liye proper positioning dein */
+  header,
+  .navbar,
+  .nav-container,
+  .nav-wrapper {
+    position: relative;
+    z-index: 1000;
+    overflow: visible;
+  }
+
+  /* Hamburger ke neeche menu show karein */
+  .nav-links,
+  .nav-menu,
+  .navbar-links {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    left: auto;
+    width: 190px;
+    max-width: calc(100vw - 24px);
+    box-sizing: border-box;
+
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 5px;
+
+    padding: 12px;
+    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid #e2d9ff;
+    box-shadow: 0 12px 30px rgba(40, 30, 90, 0.2);
+
+    z-index: 9999;
+  }
+
+  /* Toggle click karne par menu khule */
+  .nav-links.active,
+  .nav-menu.active,
+  .navbar-links.active {
+    display: flex;
+  }
+
+  /* Menu ke buttons */
+  .nav-links a,
+  .nav-menu a,
+  .navbar-links a {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 12px;
+    border-radius: 9px;
+    text-align: left;
+    color: #201b3d;
+    background: transparent;
+  }
+
+  .nav-links a:hover,
+  .nav-menu a:hover,
+  .navbar-links a:hover {
+    background: linear-gradient(
+      110deg, #eee7ff, #e5f3ff, #ffedf7
+    );
+  }
+
+  /* Search heading ko header se alag rakhein */
+  .tools-search-section {
+    position: relative;
+    z-index: 1;
+    margin-top: 28px;
+  }
+}
