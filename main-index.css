@@ -2020,3 +2020,27 @@ body.dark-mode .search-no-results {
     margin-top: 28px;
   }
 }
+
+/* Tools24 India Tagline */
+.india-tagline {
+  text-align: center;
+  margin: 16px auto 0;
+  padding: 0 12px;
+}
+
+.india-tagline p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.6;
+  background: linear-gradient(90deg, #138808, #5b63e8, #ff9933);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@media (max-width: 600px) {
+  .india-tagline p {
+    font-size: 14px;
+  }
+}
