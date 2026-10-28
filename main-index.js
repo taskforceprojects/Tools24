@@ -240,7 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       name: "Convert Images & Files to PDF Online",
       description: "Combine images and files into a PDF",
-      href: "image-to-pdf.html",
+      href: "image-and-files.html",
       icon: "PDF"
     },
     {
