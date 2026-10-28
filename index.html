@@ -52,6 +52,52 @@
        🌙
   </button>
 </header>
+
+<!-- Tools24 Premium Live Search -->
+<section class="tools-search-section">
+  <h2 class="tools-search-heading">
+    Find the Perfect Tool for Your Task
+  </h2>
+
+  <p class="tools-search-subtitle">
+    Search any tool and get instant suggestions.
+  </p>
+
+  <div class="tools-search-box">
+    <span class="search-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <circle cx="10.8" cy="10.8" r="6.8"
+          stroke="currentColor" stroke-width="2"/>
+        <path d="m16 16 4.2 4.2"
+          stroke="currentColor" stroke-width="2"
+          stroke-linecap="round"/>
+      </svg>
+    </span>
+
+    <input
+      type="search"
+      id="toolSearch"
+      placeholder="Search tools... e.g. PDF, Photo, Resume"
+      autocomplete="off"
+      aria-label="Search Tools24 tools"
+      aria-controls="searchSuggestions"
+      aria-expanded="false"
+    />
+
+    <button id="clearSearch" type="button"
+      aria-label="Clear search" hidden>
+      &times;
+    </button>
+  </div>
+
+  <div id="searchSuggestions"
+    class="search-suggestions"
+    role="listbox"
+    aria-label="Matching tools"
+    hidden>
+  </div>
+</section>
+
       <!-- TOOLS SECTION -->
 <section class="tools-page" id="tools">
   <div class="section-divider"></div>
