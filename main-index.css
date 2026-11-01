@@ -2044,3 +2044,285 @@ body.dark-mode .search-no-results {
     font-size: 14px;
   }
 }
+/* ========================================== */
+/* TOOLS24 DARK MODE CARDS (NO BUTTONS)       */
+/* ========================================== */
+
+.tools24-features-section {
+  position: relative;
+  padding: 80px 20px;
+  background-color: #0b0f19; /* Pure dark mode background */
+  color: #f3f4f6;
+  font-family: inherit;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Ambient glow accent */
+.tools24-features-section::before {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 550px;
+  height: 280px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.12), rgba(236, 72, 153, 0.12));
+  filter: blur(110px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.tools24-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header Styles */
+.tools24-section-header {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 50px auto;
+}
+
+.tools24-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #c084fc;
+  margin-bottom: 16px;
+  backdrop-filter: blur(8px);
+}
+
+.badge-icon {
+  color: #c084fc;
+}
+
+.tools24-title {
+  font-size: clamp(2rem, 3.2vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+
+.tools24-subtitle {
+  font-size: 1.05rem;
+  color: #9ca3af;
+  line-height: 1.6;
+}
+
+/* Grid Layout */
+.tools24-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+@media (max-width: 1024px) {
+  .tools24-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .tools24-features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* ========================================== */
+/* TOOLS24 ADAPTIVE THEME STYLES              */
+/* ========================================== */
+
+/* Default: Light Mode Theme Variables */
+.tools24-features-section {
+  --bg-section: #f8fafc;
+  --bg-card: #ffffff;
+  --text-main: #0f172a;
+  --text-subtitle: #64748b;
+  --text-desc: #475569;
+  --border-card: rgba(226, 232, 240, 0.9);
+  --badge-bg: rgba(139, 92, 246, 0.08);
+  --badge-border: rgba(139, 92, 246, 0.2);
+  --badge-text: #7c3aed;
+  --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+
+  position: relative;
+  padding: 80px 20px;
+  background-color: var(--bg-section);
+  color: var(--text-main);
+  font-family: inherit;
+  overflow: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  z-index: 1;
+}
+
+/* Dark Mode Overrides (supports multiple common dark mode toggles) */
+body.dark .tools24-features-section,
+body.dark-mode .tools24-features-section,
+[data-theme="dark"] .tools24-features-section,
+.dark-theme .tools24-features-section,
+.dark .tools24-features-section {
+  --bg-section: #0b0f19;
+  --bg-card: rgba(17, 24, 39, 0.75);
+  --text-main: #ffffff;
+  --text-subtitle: #9ca3af;
+  --text-desc: #9ca3af;
+  --border-card: rgba(255, 255, 255, 0.08);
+  --badge-bg: rgba(139, 92, 246, 0.1);
+  --badge-border: rgba(139, 92, 246, 0.25);
+  --badge-text: #c084fc;
+  --card-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Container & Layout */
+.tools24-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tools24-section-header {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 50px auto;
+}
+
+.tools24-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: var(--badge-bg);
+  border: 1px solid var(--badge-border);
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--badge-text);
+  margin-bottom: 16px;
+  backdrop-filter: blur(8px);
+}
+
+.badge-icon {
+  color: var(--badge-text);
+}
+
+.tools24-title {
+  font-size: clamp(2rem, 3.2vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+
+.tools24-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-subtitle);
+  line-height: 1.6;
+}
+
+/* Grid */
+.tools24-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+@media (max-width: 1024px) {
+  .tools24-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .tools24-features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Feature Card */
+.tools24-feature-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 20px;
+  padding: 36px 30px;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+}
+
+.tools24-feature-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(139, 92, 246, 0.35);
+  box-shadow: 0 20px 40px -15px rgba(139, 92, 246, 0.15), 
+              0 0 25px var(--card-glow);
+}
+
+.card-glow-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top right, var(--card-glow), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.tools24-feature-card:hover .card-glow-bg {
+  opacity: 1;
+}
+
+/* Icon Gradients */
+.feature-icon-wrapper {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+  color: #ffffff;
+}
+
+.purple-gradient {
+  background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.35);
+}
+
+.blue-gradient {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.35);
+}
+
+.pink-gradient {
+  background: linear-gradient(135deg, #ec4899, #be185d);
+  box-shadow: 0 8px 20px rgba(236, 72, 153, 0.35);
+}
+
+/* Typography */
+.feature-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.feature-desc {
+  font-size: 0.95rem;
+  color: var(--text-desc);
+  line-height: 1.6;
+  margin: 0;
+}
